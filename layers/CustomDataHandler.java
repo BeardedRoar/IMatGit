@@ -3,6 +3,7 @@ package layers;
 import java.util.List;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Product;
+import se.chalmers.ait.dat215.project.ShoppingCart;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -16,14 +17,14 @@ import se.chalmers.ait.dat215.project.Product;
  */
 public class CustomDataHandler {
     
-    private final CustomDataHandler singelton = new CustomDataHandler();
+    private static final CustomDataHandler singelton = new CustomDataHandler();
     private final IMatDataHandler dataHandler;
     
     private CustomDataHandler(){
         dataHandler = IMatDataHandler.getInstance();
     }
     
-    public CustomDataHandler getInstance(){
+    public static CustomDataHandler getInstance(){
         return singelton;
     }
     
@@ -37,5 +38,9 @@ public class CustomDataHandler {
     
     public List<Product> findProducts(String s){
         return dataHandler.findProducts(s);
+    }
+    
+    protected ShoppingCart getCart(){
+        return this.dataHandler.getShoppingCart();
     }
 }
