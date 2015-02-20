@@ -23,4 +23,8 @@ public class CustomProduct {
         return p.getName();
     }
     
+    protected Product getProduct(){
+        return this.p;
+    }
+    
 }
