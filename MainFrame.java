@@ -206,10 +206,14 @@ public class MainFrame extends javax.swing.JFrame {
         featurePanelLayout.setHorizontalGroup(
             featurePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 <<<<<<< HEAD
+<<<<<<< HEAD
             .addGap(0, 896, Short.MAX_VALUE)
 =======
             .addGap(0, 1000, Short.MAX_VALUE)
 >>>>>>> ed070bd3f0087f573160019b8a8f3d45c3c91004
+=======
+            .addGap(0, 1000, Short.MAX_VALUE)
+>>>>>>> parent of b088751... changed size for main
         );
         featurePanelLayout.setVerticalGroup(
             featurePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -238,7 +242,10 @@ public class MainFrame extends javax.swing.JFrame {
 =======
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(featurePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+<<<<<<< HEAD
 >>>>>>> ed070bd3f0087f573160019b8a8f3d45c3c91004
+=======
+>>>>>>> parent of b088751... changed size for main
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
