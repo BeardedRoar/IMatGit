@@ -14,16 +14,16 @@ import se.chalmers.ait.dat215.project.Product;
  *
  * @author Joel
  */
-public class DataHandlerLayer {
+public class CustomDataHandler {
     
-    private final DataHandlerLayer singelton = new DataHandlerLayer();
+    private final CustomDataHandler singelton = new CustomDataHandler();
     private final IMatDataHandler dataHandler;
     
-    private DataHandlerLayer(){
+    private CustomDataHandler(){
         dataHandler = IMatDataHandler.getInstance();
     }
     
-    public DataHandlerLayer getInstance(){
+    public CustomDataHandler getInstance(){
         return singelton;
     }
     
