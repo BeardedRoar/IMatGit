@@ -10,12 +10,13 @@
  */
 public class CheckoutPanel extends javax.swing.JPanel {
 
-    
+    private IMatModel imatmodel;
     
     /**
      * Creates new form CheckoutPanel
      */
-    public CheckoutPanel() {
+    public CheckoutPanel(IMatModel imatmodel) {
+        this.imatmodel = imatmodel;    
         initComponents();
     }
 
