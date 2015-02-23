@@ -1,4 +1,5 @@
 
+import java.util.List;
 import layers.CustomCart;
 import layers.CustomDataHandler;
 import layers.CustomProduct;
@@ -31,5 +32,25 @@ public class IMatModel {
         cart.addProduct(p);
     }
     
+    public void clearCart(){
+        cart.clear();
+    }
+    
+    // This should return a list of created visual items instead when they are made
+    public List<ShoppingItem> getItems(){
+        return cart.getItems();
+    }
+    
+    public double getTotalCost(){
+        return cart.getTotal();
+    }
+    
+    public void removeItemFromCart(int index){
+        cart.removeItem(index);
+    }
+    
+    public void removeItemFromCart(ShoppingItem sci){
+        cart.removeItem(sci);
+    }
     
 }
