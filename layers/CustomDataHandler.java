@@ -1,9 +1,7 @@
 package layers;
 
 import java.util.List;
-import se.chalmers.ait.dat215.project.IMatDataHandler;
-import se.chalmers.ait.dat215.project.Product;
-import se.chalmers.ait.dat215.project.ShoppingCart;
+import se.chalmers.ait.dat215.project.*;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -42,5 +40,13 @@ public class CustomDataHandler {
     
     protected ShoppingCart getCart(){
         return this.dataHandler.getShoppingCart();
+    }
+    
+    public CreditCard getCard(){
+        return this.dataHandler.getCreditCard();
+    }
+    
+    public Customer getCustomer(){
+        return this.dataHandler.getCustomer();
     }
 }
