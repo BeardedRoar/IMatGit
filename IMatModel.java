@@ -31,5 +31,8 @@ public class IMatModel {
         cart.addProduct(p);
     }
     
+    public String getCardNumber(){
+        return card.getCardNumber();
+    }
     
 }

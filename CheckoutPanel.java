@@ -18,6 +18,8 @@ public class CheckoutPanel extends javax.swing.JPanel {
     public CheckoutPanel(IMatModel imatmodel) {
         this.imatmodel = imatmodel;    
         initComponents();
+   
+        cardNumberTextField.setText(imatmodel.getCardNumber());
     }
 
     /**
