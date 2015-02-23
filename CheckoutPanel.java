@@ -10,6 +10,8 @@
  */
 public class CheckoutPanel extends javax.swing.JPanel {
 
+    
+    
     /**
      * Creates new form CheckoutPanel
      */
@@ -31,27 +33,33 @@ public class CheckoutPanel extends javax.swing.JPanel {
         cardLabel = new javax.swing.JLabel();
         cardComboBox = new javax.swing.JComboBox();
         cardNumberLabel = new javax.swing.JLabel();
-        dateLabel = new javax.swing.JLabel();
-        cvcLabel = new javax.swing.JLabel();
         cardNumberTextField = new javax.swing.JTextField();
-        monthTextField = new javax.swing.JTextField();
+        dateLabel = new javax.swing.JLabel();
         dayTextField = new javax.swing.JTextField();
+        monthTextField = new javax.swing.JTextField();
+        yearTextField = new javax.swing.JTextField();
+        cvcLabel = new javax.swing.JLabel();
         cvcTextField = new javax.swing.JTextField();
         nameLabel = new javax.swing.JLabel();
+        nameTextField = new javax.swing.JTextField();
+        nameTextField2 = new javax.swing.JTextField();
         deliveryInformationLabel = new javax.swing.JLabel();
         adressLabel = new javax.swing.JLabel();
-        emailLabel = new javax.swing.JLabel();
-        phoneLabel = new javax.swing.JLabel();
-        nameTextField = new javax.swing.JTextField();
         adressTextField = new javax.swing.JTextField();
-        phoneTextField = new javax.swing.JTextField();
+        adressTextField2 = new javax.swing.JTextField();
+        emailLabel = new javax.swing.JLabel();
         emailTextField = new javax.swing.JTextField();
-        yearTextField = new javax.swing.JTextField();
-        nameTextField1 = new javax.swing.JTextField();
+        phoneLabel = new javax.swing.JLabel();
+        phoneTextField = new javax.swing.JTextField();
+        phoneTextField2 = new javax.swing.JTextField();
+        sendToMailCheckBox = new javax.swing.JCheckBox();
+        sendToOtherAdress = new javax.swing.JCheckBox();
+        buyButton = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(1000, 600));
         setRequestFocusEnabled(false);
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(1000, 600));
         jPanel1.setRequestFocusEnabled(false);
 
@@ -68,10 +76,6 @@ public class CheckoutPanel extends javax.swing.JPanel {
 
         cardNumberLabel.setText("Kortnummer");
 
-        dateLabel.setText("Datum");
-
-        cvcLabel.setText("CVC");
-
         cardNumberTextField.setText("888 888 8888 8888");
         cardNumberTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -79,7 +83,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
             }
         });
 
-        monthTextField.setText("02");
+        dateLabel.setText("Datum");
 
         dayTextField.setText("20");
         dayTextField.addActionListener(new java.awt.event.ActionListener() {
@@ -88,30 +92,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
             }
         });
 
-        cvcTextField.setText("***");
-
-        nameLabel.setText("Namn");
-
-        deliveryInformationLabel.setText("Leveransuppgifter");
-
-        adressLabel.setText("Adress");
-
-        emailLabel.setText("Email");
-
-        phoneLabel.setText("Telefon");
-
-        nameTextField.setText("Anders");
-
-        adressTextField.setText("Tvärvägen 20");
-
-        phoneTextField.setText("070-00000");
-        phoneTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                phoneTextFieldActionPerformed(evt);
-            }
-        });
-
-        emailTextField.setText("anders@andersson.com");
+        monthTextField.setText("02");
 
         yearTextField.setText("15");
         yearTextField.addActionListener(new java.awt.event.ActionListener() {
@@ -120,54 +101,104 @@ public class CheckoutPanel extends javax.swing.JPanel {
             }
         });
 
-        nameTextField1.setText("Andersson");
-        nameTextField1.addActionListener(new java.awt.event.ActionListener() {
+        cvcLabel.setText("CVC");
+
+        cvcTextField.setText("***");
+
+        nameLabel.setText("Namn");
+
+        nameTextField.setText("Anders");
+
+        nameTextField2.setText("Andersson");
+        nameTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nameTextField1ActionPerformed(evt);
+                nameTextField2ActionPerformed(evt);
             }
         });
+
+        deliveryInformationLabel.setText("Leveransuppgifter");
+
+        adressLabel.setText("Adress");
+
+        adressTextField.setText("Tvärvägen 20");
+
+        adressTextField2.setText("Tvärvägen 21");
+
+        emailLabel.setText("Email");
+
+        emailTextField.setText("anders@andersson.com");
+
+        phoneLabel.setText("Telefon");
+
+        phoneTextField.setText("070-00000");
+        phoneTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                phoneTextFieldActionPerformed(evt);
+            }
+        });
+
+        phoneTextField2.setText("070-00001");
+
+        sendToMailCheckBox.setText("Skicka kvitto till min mail");
+
+        sendToOtherAdress.setText("Leverera till annan adress");
+
+        buyButton.setBackground(new java.awt.Color(255, 102, 102));
+        buyButton.setText("Köp");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cardInformationLabel)
-                    .addComponent(cardComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cardNumberLabel)
-                    .addComponent(dateLabel)
-                    .addComponent(cvcLabel)
-                    .addComponent(cardNumberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cvcTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(dayTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(monthTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(yearTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(cardLabel)
-                    .addComponent(deliveryInformationLabel)
-                    .addComponent(adressLabel)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nameLabel)
-                            .addComponent(adressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(nameTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(240, 240, 240)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(phoneTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(phoneLabel)
-                            .addComponent(emailLabel)
-                            .addComponent(emailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(0, 497, Short.MAX_VALUE))
+                    .addComponent(sendToMailCheckBox)
+                    .addComponent(sendToOtherAdress)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(cardInformationLabel)
+                        .addComponent(cardComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cardNumberLabel)
+                        .addComponent(dateLabel)
+                        .addComponent(cvcLabel)
+                        .addComponent(cardNumberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cvcTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(dayTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(monthTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(yearTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cardLabel)
+                        .addComponent(deliveryInformationLabel)
+                        .addComponent(adressLabel)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(nameLabel)
+                                .addComponent(adressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(nameTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGap(240, 240, 240)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(phoneTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(phoneLabel)
+                                .addComponent(emailLabel)
+                                .addComponent(emailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addComponent(adressTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(phoneTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(77, 77, 77))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 373, Short.MAX_VALUE)
+                .addComponent(buyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(cardInformationLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cardLabel)
@@ -198,7 +229,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(emailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nameTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nameTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(adressLabel)
@@ -207,7 +238,17 @@ public class CheckoutPanel extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(adressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(phoneTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 169, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(phoneTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(adressTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addComponent(sendToOtherAdress)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sendToMailCheckBox))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -248,14 +289,16 @@ public class CheckoutPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_yearTextFieldActionPerformed
 
-    private void nameTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameTextField1ActionPerformed
+    private void nameTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameTextField2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nameTextField1ActionPerformed
+    }//GEN-LAST:event_nameTextField2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel adressLabel;
     private javax.swing.JTextField adressTextField;
+    private javax.swing.JTextField adressTextField2;
+    private javax.swing.JButton buyButton;
     private javax.swing.JComboBox cardComboBox;
     private javax.swing.JLabel cardInformationLabel;
     private javax.swing.JLabel cardLabel;
@@ -272,9 +315,12 @@ public class CheckoutPanel extends javax.swing.JPanel {
     private javax.swing.JTextField monthTextField;
     private javax.swing.JLabel nameLabel;
     private javax.swing.JTextField nameTextField;
-    private javax.swing.JTextField nameTextField1;
+    private javax.swing.JTextField nameTextField2;
     private javax.swing.JLabel phoneLabel;
     private javax.swing.JTextField phoneTextField;
+    private javax.swing.JTextField phoneTextField2;
+    private javax.swing.JCheckBox sendToMailCheckBox;
+    private javax.swing.JCheckBox sendToOtherAdress;
     private javax.swing.JTextField yearTextField;
     // End of variables declaration//GEN-END:variables
 }
