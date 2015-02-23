@@ -12,6 +12,8 @@ package IMat;
  */
 public class MainFrame extends javax.swing.JFrame {
 
+    IMatModel model;
+    
     /**
      * Creates new form MainFrame
      */
@@ -34,6 +36,11 @@ public class MainFrame extends javax.swing.JFrame {
         this.categoryPanel.add(new CategoryPanel("Nötter & Frön"));
         this.categoryPanel.add(new CategoryPanel("Sötsaker"));
         this.categoryPanel.add(new CategoryPanel("Örtkryddor"));
+    }
+    
+    public MainFrame(IMatModel model){
+        this();
+        this.model = model;
     }
 
     /**
