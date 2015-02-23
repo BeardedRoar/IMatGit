@@ -42,6 +42,10 @@ public class MainFrame extends javax.swing.JFrame {
         this();
         this.model = model;
     }
+    
+    public IMatModel getModel(){
+        return model;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
