@@ -13,8 +13,10 @@ package IMat;
 public class Main {
     
     public static void main(String[] args){
-        MainFrame mFrame = new MainFrame();
+        IMatModel model = new IMatModel();
+        MainFrame mFrame = new MainFrame(model);
         mFrame.setVisible(true);
-    } //end of main    
+    } //end of main
+    
 } //end of 
 
