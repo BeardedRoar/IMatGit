@@ -12,17 +12,20 @@ package IMat;
  */
 public class CheckoutPanel extends javax.swing.JPanel {
 
-    private IMatModel imatmodel;
+    private IMatModel model;
     
     /**
      * Creates new form CheckoutPanel
      */
-    public CheckoutPanel(IMatModel imatmodel) {
-        this.imatmodel = imatmodel;    
+    public CheckoutPanel(IMatModel model) {
+        this.model = model;    
         initComponents();
-   
-        cardNumberTextField.setText(imatmodel.getCardNumber());
-    }
+        if(model != null){
+            cardNumberTextField.setText(model.getCardNumber());
+        }
+           
+        
+    }    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -81,7 +84,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
 
         cardNumberLabel.setText("Kortnummer");
 
-        cardNumberTextField.setText("888 888 8888 8888");
+        cardNumberTextField.setText("8888 8888 8888 8888");
         cardNumberTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cardNumberTextFieldActionPerformed(evt);
@@ -112,9 +115,9 @@ public class CheckoutPanel extends javax.swing.JPanel {
 
         nameLabel.setText("Namn");
 
-        nameTextField.setText("Anders");
+        nameTextField.setText("Förnamn");
 
-        nameTextField2.setText("Andersson");
+        nameTextField2.setText("Efternamn");
         nameTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nameTextField2ActionPerformed(evt);
@@ -169,11 +172,11 @@ public class CheckoutPanel extends javax.swing.JPanel {
                         .addComponent(cardNumberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(cvcTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(dayTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(yearTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(monthTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(yearTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(dayTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(cardLabel)
                         .addComponent(deliveryInformationLabel)
                         .addComponent(adressLabel)
@@ -196,7 +199,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(phoneTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(77, 77, 77))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 373, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 363, Short.MAX_VALUE)
                 .addComponent(buyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
