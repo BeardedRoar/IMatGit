@@ -33,10 +33,6 @@ public class IMatModel {
     public void addProduct(CustomProduct p){
         cart.addProduct(p);
     }
-    
-    public String getCardNumber(){
-        return card.getCardNumber();
-    }    
 
     public void clearCart(){
         cart.clear();
@@ -60,4 +56,56 @@ public class IMatModel {
 
     }
     
+    //card methods
+    
+    public String getCardNumber(){
+        return card.getCardNumber();
+    }    
+    
+    public void setCardNumber(String cardNumber){
+        card.setCardNumber(cardNumber);
+    }
+    
+    public String getCardType(){
+        return card.getCardType();
+    }
+    
+    public void setCardType(String cardType){
+        card.setCardType(cardType);
+    }
+    
+    public String getHoldersName(){
+        return card.getHoldersName();
+    }
+    
+    public void setHoldersName(String holdersName){
+        card.setHoldersName(holdersName);
+    }
+    
+    public int getValidMonth(){
+        return card.getValidMonth();
+    } 
+    
+    public void setValidMonth(int validMonth){
+        card.setValidMonth(validMonth);
+    }
+    
+    public int getValidYear(){
+        return card.getValidYear();
+    }
+    
+    public void setValidYear(int validYear){
+        card.setValidYear(validYear);
+    }
+    
+    public int getVerificationCode(){
+        return card.getVerificationCode();
+    }
+    
+     public void setVerificationCode(int verificationCode){
+         card.setVerificationCode(verificationCode);
+     }
+    
+    //end of card methods 
+     
 }
