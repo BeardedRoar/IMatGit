@@ -13,6 +13,10 @@ package IMat;
 public class CheckoutPanel extends javax.swing.JPanel {
 
     private IMatModel model;
+    private String cardNumber;
+    private int validYear;
+    private int validMonth;
+    private int verificationCode;
     
     /**
      * Creates new form CheckoutPanel
@@ -20,11 +24,22 @@ public class CheckoutPanel extends javax.swing.JPanel {
     public CheckoutPanel(IMatModel model) {
         this.model = model;    
         initComponents();
-        if(model != null){
+        
+      
+        
+        if(!model.getCardNumber().equals("")){
+            
             cardNumberTextField.setText(model.getCardNumber());
         }
-           
-        
+        if(model.getValidYear() != 0){
+            yearTextField.setText(Integer.toString(model.getValidYear()));
+        }    
+        if(model.getValidMonth() < 12 && model.getValidMonth() > 0){
+            monthTextField.setText(Integer.toString(model.getValidMonth()));
+        }
+        if(verificationCode != 0){
+            cvcTextField.setText(Integer.toString(verificationCode));
+        }
     }    
 
     /**
@@ -265,15 +280,13 @@ public class CheckoutPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
