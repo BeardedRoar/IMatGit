@@ -19,13 +19,16 @@ import se.chalmers.ait.dat215.project.*;
  */
 public class IMatModel {
     
-    private CustomCart cart = CustomCart.getCart();
-    private CreditCard card = CustomDataHandler.getInstance().getCard();
+    private final CustomDataHandler handler = CustomDataHandler.getInstance();
+    private final CustomCart cart = CustomCart.getCart();
+    private final CreditCard card = handler.getCard();
     
     public IMatModel(){
         
     }
     
+    
+    //cart methods
     public void addItem(ShoppingItem sci){
         cart.addItem(sci);
     }
@@ -108,4 +111,16 @@ public class IMatModel {
     
     //end of card methods 
      
+     public boolean isFavorite(Product p){
+         return this.handler.isFavorite(p);
+     }
+     
+     public boolean changeFaoriteStatus(Product p){
+         boolean becomeFavorite = !isFavorite(p);
+         if(becomeFavorite)
+             handler.addFavorite(p);
+         else
+             handler.removeFavorite(p);
+         return becomeFavorite;
+     }
 }
