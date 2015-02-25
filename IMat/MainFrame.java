@@ -6,6 +6,7 @@ import java.awt.GridLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JPanel;
+import se.chalmers.ait.dat215.project.ProductCategory;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -58,6 +59,7 @@ public class MainFrame extends javax.swing.JFrame {
         this();
         this.model = model;
         this.checkoutPanelHolder.add(new CheckoutPanel(model));
+        this.resultPanelHolder.add(new ResultPanel(ProductCategory.BERRY, model));
         repaint();
         revalidate();
     }
@@ -90,6 +92,7 @@ public class MainFrame extends javax.swing.JFrame {
         categoryPanel = new javax.swing.JPanel();
         categoryPanel1 = new javax.swing.JPanel();
         featurePanel = new javax.swing.JPanel();
+        resultPanelHolder = new javax.swing.JPanel();
         checkoutPanelHolder = new javax.swing.JPanel();
         menuBarPanel = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -250,6 +253,9 @@ public class MainFrame extends javax.swing.JFrame {
         featurePanel.setPreferredSize(new java.awt.Dimension(993, 600));
         featurePanel.setLayout(new java.awt.CardLayout());
 
+        resultPanelHolder.setLayout(new java.awt.GridLayout());
+        featurePanel.add(resultPanelHolder, "resultCard");
+
         checkoutPanelHolder.setLayout(new java.awt.GridLayout());
         featurePanel.add(checkoutPanelHolder, "checkoutCard");
 
@@ -338,6 +344,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar menuBarPanel;
+    private javax.swing.JPanel resultPanelHolder;
     private javax.swing.JLabel seachIcon;
     private javax.swing.JPanel searchPanel;
     private javax.swing.JTextField searchTextField;

@@ -3,6 +3,8 @@ package IMat;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import layers.CustomCart;
 import layers.CustomDataHandler;
@@ -132,6 +134,16 @@ public class IMatModel {
       public  List<Product> getProducts(ProductCategory pc){
         return handler.getProducts(pc);
     }
+      public List<ProductPanel> getProductPanels(ProductCategory pc) {
+          List<Product> products = handler.getProducts(pc);
+          ArrayList<ProductPanel> panels = new ArrayList(products.size());
+          Iterator<Product> it = products.iterator();
+            while(it.hasNext()){
+                panels.add(new ProductPanel());
+                it.next();
+            }
+        return panels;
+      }
 
      public static class CategoryListener implements MouseListener {
         @Override
