@@ -6,8 +6,7 @@
 package layers;
 
 import java.util.List;
-import se.chalmers.ait.dat215.project.ShoppingCart;
-import se.chalmers.ait.dat215.project.ShoppingItem;
+import se.chalmers.ait.dat215.project.*;
 
 /**
  *
@@ -30,12 +29,12 @@ public class CustomCart {
         cart.addItem(sci);
     }
     
-    public void addProduct(CustomProduct p){
-        cart.addProduct(p.getProduct());
+    public void addProduct(Product p){
+        cart.addProduct(p);
     }
     
-    public void addProduct(CustomProduct p, double d){
-        cart.addProduct(p.getProduct(), d);
+    public void addProduct(Product p, double d){
+        cart.addProduct(p, d);
     }
     
     public void clear(){

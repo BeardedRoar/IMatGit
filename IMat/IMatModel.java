@@ -6,7 +6,6 @@ import java.awt.event.MouseListener;
 import java.util.List;
 import layers.CustomCart;
 import layers.CustomDataHandler;
-import layers.CustomProduct;
 import se.chalmers.ait.dat215.project.*;
 
 /*
@@ -35,8 +34,12 @@ public class IMatModel {
         cart.addItem(sci);
     }
     
-    public void addProduct(CustomProduct p){
+    public void addProduct(Product p){
         cart.addProduct(p);
+    }
+    
+    public void addProduct(Product p, double d){
+        cart.addProduct(p, d);
     }
 
     public void clearCart(){
