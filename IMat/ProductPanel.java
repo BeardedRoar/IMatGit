@@ -215,6 +215,7 @@ public class ProductPanel extends javax.swing.JPanel {
     private void FavouritePanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FavouritePanelMouseClicked
         nbrOfClicksOnFavouriteLabel++;
         nbrOfClicksOnFavouriteLabel=nbrOfClicksOnFavouriteLabel%2;
+        model.changeFavoriteStatus(product);
     }//GEN-LAST:event_FavouritePanelMouseClicked
 
     private void FavouritePanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FavouritePanelMouseEntered
