@@ -169,9 +169,9 @@ public class CheckoutPanel extends javax.swing.JPanel {
         sendToMailCheckBox.setText("Skicka kvitto till min mail");
 
         sendToOtherAdressCheckBox.setText("Leverera till annan adress");
-        sendToOtherAdressCheckBox.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                sendToOtherAdressCheckBoxStateChanged(evt);
+        sendToOtherAdressCheckBox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                sendToOtherAdressCheckBoxMousePressed(evt);
             }
         });
 
@@ -324,11 +324,11 @@ public class CheckoutPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_nameTextField2ActionPerformed
 
-    private void sendToOtherAdressCheckBoxStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sendToOtherAdressCheckBoxStateChanged
+    private void sendToOtherAdressCheckBoxMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sendToOtherAdressCheckBoxMousePressed
         adressTextField2.setVisible(!sendToOtherAdressCheckBox.isSelected());
-        repaint();
-        revalidate();
-    }//GEN-LAST:event_sendToOtherAdressCheckBoxStateChanged
+            repaint();
+            revalidate();
+    }//GEN-LAST:event_sendToOtherAdressCheckBoxMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
