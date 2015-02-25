@@ -34,6 +34,14 @@ public class CustomDataHandler {
         return dataHandler.favorites();
     }
     
+    public void removeFavorite(Product p){
+        this.dataHandler.removeFavorite(p);
+    }
+    
+    public boolean isFavorite (Product p){
+        return this.dataHandler.isFavorite(p);
+    }
+    
     public List<Product> findProducts(String s){
         return dataHandler.findProducts(s);
     }
