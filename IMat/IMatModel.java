@@ -144,28 +144,4 @@ public class IMatModel {
         return panels;
       }
 
-     public static class CategoryListener implements MouseListener {
-        @Override
-        public void mouseClicked(MouseEvent e) {
-        }
-        @Override
-        public void mousePressed(MouseEvent e) {
-            CategoryPanel panel = (CategoryPanel)e.getSource();
-            System.out.println(panel.getString());
-            if ( (panel.getString().equals("Frukt & Grönt")) || (panel.getString().equals("Kolyhydrater")) 
-                    || (panel.getString().equals("Drycker")) ){
-                
-            }     
-        }
-        @Override
-        public void mouseReleased(MouseEvent e) {
-        }
-        @Override
-        public void mouseEntered(MouseEvent e) {
-        }
-        @Override
-        public void mouseExited(MouseEvent e) {
-        }
-    } 
-
 }

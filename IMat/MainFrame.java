@@ -1,7 +1,7 @@
 package IMat;
 
-import IMat.IMatModel.CategoryListener;
 import java.awt.CardLayout;
+import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import se.chalmers.ait.dat215.project.ProductCategory;
 
@@ -19,49 +19,77 @@ public class MainFrame extends javax.swing.JFrame {
 
     private IMatModel model;
     private CardLayout card;
+    private MouseListener categoryListener;
     /**
      * Creates new form MainFrame
      */
     public MainFrame() {
-        initComponents();
-        MouseListener CategoryList = new CategoryListener();
-      
-        this.favoritePanel.add(new CategoryPanel("Mina Favoriter", CategoryList));
-        this.favoritePanel.add(new CategoryPanel("Ofta Köpta", CategoryList));      
-        this.featureHeaderPanel.add(new CategoryPanel("Populära Varor", CategoryList));    
-        this.featureHeaderPanel.add(new CategoryPanel("Inköpslista", CategoryList));
-        this.featureHeaderPanel.add(new CategoryPanel("Veckans Varor", CategoryList));
-        this.featureHeaderPanel.add(new CategoryPanel("Veckans Recept", CategoryList));
-        this.categoryPanel.add(new CategoryPanel("Bakvaror", CategoryList));
-        this.categoryPanel.add(new CategoryPanel("Bröd", CategoryList));
-        this.categoryPanel.add(new CategoryPanel("Drycker", CategoryList));
-        this.categoryPanel.add(new CategoryPanel("Fisk", CategoryList));
-        this.categoryPanel.add(new CategoryPanel("Frukt & Grönt", CategoryList));
-        this.categoryPanel.add(new CategoryPanel("Kolhydrater", CategoryList));
-        this.categoryPanel.add(new CategoryPanel("Kött", CategoryList));
-        this.categoryPanel.add(new CategoryPanel("Mejeriprodukter", CategoryList)); 
-        this.categoryPanel.add(new CategoryPanel("Nötter & Frön", CategoryList));
-        this.categoryPanel.add(new CategoryPanel("Sötsaker", CategoryList));
-        this.categoryPanel.add(new CategoryPanel("Örtkryddor", CategoryList)); 
-        this.categoryPanel1.add(new CategoryPanel("Bär", CategoryList));
-        this.categoryPanel1.add(new CategoryPanel("Baljväxter", CategoryList));
-        this.categoryPanel1.add(new CategoryPanel("Citrusfrukter", CategoryList));
-        this.categoryPanel1.add(new CategoryPanel("Grönsaksrukter", CategoryList));
-        this.categoryPanel1.add(new CategoryPanel("Kål", CategoryList));
-        this.categoryPanel1.add(new CategoryPanel("Meloner", CategoryList));
-  
-           
+        initComponents();      
     }
     
     public MainFrame(IMatModel model){
         this();
         this.model = model;
+        
+        this.categoryListener = new MouseListener(){
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                MainFrame.this.categoryClicked(e);
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+            }
+            
+        };
+        
+        this.createCategories();
+        
         this.card = (CardLayout)this.featurePanel.getLayout();
         this.checkoutPanelHolder.add(new CheckoutPanel(model));
         this.resultPanelHolder.add(new ResultPanel(ProductCategory.POD, model));
         card.show(this.featurePanel, "resultCard");
         repaint();
         revalidate();
+    }
+    
+    private void createCategories(){
+        this.favoritePanel.add(new CategoryPanel("Mina Favoriter", categoryListener));
+        this.favoritePanel.add(new CategoryPanel("Ofta Köpta", categoryListener));      
+        this.featureHeaderPanel.add(new CategoryPanel("Populära Varor", categoryListener));    
+        this.featureHeaderPanel.add(new CategoryPanel("Inköpslista", categoryListener));
+        this.featureHeaderPanel.add(new CategoryPanel("Veckans Varor", categoryListener));
+        this.featureHeaderPanel.add(new CategoryPanel("Veckans Recept", categoryListener));
+        this.categoryPanel.add(new CategoryPanel("Bakvaror", categoryListener));
+        this.categoryPanel.add(new CategoryPanel(ProductCategory.BREAD, categoryListener));
+        this.categoryPanel.add(new CategoryPanel("Drycker", categoryListener));
+        this.categoryPanel.add(new CategoryPanel(ProductCategory.FISH, categoryListener));
+        this.categoryPanel.add(new CategoryPanel("Frukt & Grönt", categoryListener));
+        this.categoryPanel.add(new CategoryPanel("Kolhydrater", categoryListener));
+        this.categoryPanel.add(new CategoryPanel(ProductCategory.MEAT, categoryListener));
+        this.categoryPanel.add(new CategoryPanel(ProductCategory.DAIRIES, categoryListener)); 
+        this.categoryPanel.add(new CategoryPanel("Nötter & Frön", categoryListener));
+        this.categoryPanel.add(new CategoryPanel(ProductCategory.SWEET, categoryListener));
+        this.categoryPanel.add(new CategoryPanel(ProductCategory.HERB, categoryListener)); 
+        this.categoryPanel1.add(new CategoryPanel(ProductCategory.BERRY, categoryListener));
+        this.categoryPanel1.add(new CategoryPanel(ProductCategory.POD, categoryListener));
+        this.categoryPanel1.add(new CategoryPanel(ProductCategory.CITRUS_FRUIT, categoryListener));
+        this.categoryPanel1.add(new CategoryPanel(ProductCategory.VEGETABLE_FRUIT, categoryListener));
+        this.categoryPanel1.add(new CategoryPanel(ProductCategory.CABBAGE, categoryListener));
+        this.categoryPanel1.add(new CategoryPanel(ProductCategory.MELONS, categoryListener));
     }
     
     public IMatModel getModel(){
@@ -351,4 +379,19 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel startLabel;
     private javax.swing.JPanel startTextPanel;
     // End of variables declaration//GEN-END:variables
+
+    private void categoryClicked(MouseEvent e) {
+        CategoryPanel panel = (CategoryPanel) e.getSource();
+        System.out.println(panel.getCategory());
+        if ((panel.getName().equals("Frukt & Grönt")) || (panel.getName().equals("Kolyhydrater"))
+                || (panel.getName().equals("Drycker"))) {
+
+        } else{
+            this.resultPanelHolder.removeAll();
+            this.resultPanelHolder.add(new ResultPanel(panel.getCategory(), model));
+            card.show(this.featurePanel, "resultCard");
+            repaint();
+            revalidate();
+        }
+    }
 }
