@@ -1,6 +1,7 @@
 package IMat;
 
 import IMat.IMatModel.CategoryListener;
+import java.awt.CardLayout;
 import java.awt.event.MouseListener;
 import se.chalmers.ait.dat215.project.ProductCategory;
 
@@ -16,7 +17,8 @@ import se.chalmers.ait.dat215.project.ProductCategory;
  */
 public class MainFrame extends javax.swing.JFrame {
 
-    IMatModel model;
+    private IMatModel model;
+    private CardLayout card;
     /**
      * Creates new form MainFrame
      */
@@ -54,8 +56,10 @@ public class MainFrame extends javax.swing.JFrame {
     public MainFrame(IMatModel model){
         this();
         this.model = model;
+        this.card = (CardLayout)this.featurePanel.getLayout();
         this.checkoutPanelHolder.add(new CheckoutPanel(model));
         this.resultPanelHolder.add(new ResultPanel(ProductCategory.BERRY, model));
+        card.show(this.featurePanel, "checkoutCard");
         repaint();
         revalidate();
     }
