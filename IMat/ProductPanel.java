@@ -237,7 +237,8 @@ public class ProductPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_FavouritePanelMouseExited
 
     private void cartButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cartButtonActionPerformed
-        
+        int nbrOfProducts=Integer.parseInt(nbrOfProductsTextfield.getText());
+        model.addProduct(product, nbrOfProducts);
     }//GEN-LAST:event_cartButtonActionPerformed
 
 
