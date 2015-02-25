@@ -27,7 +27,7 @@ public class ProductPanel extends javax.swing.JPanel {
         model=m;
         
         //Creates an image for a specific product and scales it to an appropriate size.
-        productImage=new javax.swing.ImageIcon(getClass().getResource("/iMat.resources/images/" + p.getImageName()));
+        productImage=new javax.swing.ImageIcon(("~\\.dat215\\imat\\images\\" + p.getImageName()));
         Image scaledImage=productImage.getImage().getScaledInstance(143, 111, Image.SCALE_FAST);
         productImage=new ImageIcon(scaledImage);
         initComponents();
