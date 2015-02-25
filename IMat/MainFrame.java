@@ -57,6 +57,9 @@ public class MainFrame extends javax.swing.JFrame {
     public MainFrame(IMatModel model){
         this();
         this.model = model;
+        this.checkoutPanelHolder.add(new CheckoutPanel(model));
+        repaint();
+        revalidate();
     }
     
     public IMatModel getModel(){
@@ -87,6 +90,7 @@ public class MainFrame extends javax.swing.JFrame {
         categoryPanel = new javax.swing.JPanel();
         categoryPanel1 = new javax.swing.JPanel();
         featurePanel = new javax.swing.JPanel();
+        checkoutPanelHolder = new javax.swing.JPanel();
         menuBarPanel = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -244,17 +248,10 @@ public class MainFrame extends javax.swing.JFrame {
 
         featurePanel.setMinimumSize(new java.awt.Dimension(1000, 600));
         featurePanel.setPreferredSize(new java.awt.Dimension(993, 600));
+        featurePanel.setLayout(new java.awt.CardLayout());
 
-        javax.swing.GroupLayout featurePanelLayout = new javax.swing.GroupLayout(featurePanel);
-        featurePanel.setLayout(featurePanelLayout);
-        featurePanelLayout.setHorizontalGroup(
-            featurePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1000, Short.MAX_VALUE)
-        );
-        featurePanelLayout.setVerticalGroup(
-            featurePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+        checkoutPanelHolder.setLayout(new java.awt.GridLayout());
+        featurePanel.add(checkoutPanelHolder, "checkoutCard");
 
         jMenu1.setText("File");
         menuBarPanel.add(jMenu1);
@@ -281,7 +278,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(featurePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 673, Short.MAX_VALUE)
-                    .addComponent(browseScrollPanel)))
+                    .addComponent(browseScrollPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 673, Short.MAX_VALUE)))
         );
 
         pack();
@@ -331,6 +328,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane browseScrollPanel;
     private javax.swing.JPanel categoryPanel;
     private javax.swing.JPanel categoryPanel1;
+    private javax.swing.JPanel checkoutPanelHolder;
     private javax.swing.JPanel favoritePanel;
     private javax.swing.JPanel featureHeaderPanel;
     private javax.swing.JPanel featurePanel;
