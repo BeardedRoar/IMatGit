@@ -117,7 +117,7 @@ public class IMatModel {
          return this.handler.isFavorite(p);
      }
      
-     public boolean changeFaoriteStatus(Product p){
+     public boolean changeFavoriteStatus(Product p){
          boolean becomeFavorite = !isFavorite(p);
          if(becomeFavorite)
              handler.addFavorite(p);

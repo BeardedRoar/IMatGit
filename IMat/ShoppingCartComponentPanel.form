@@ -39,7 +39,7 @@
               <Component id="increaseLabel" min="-2" pref="30" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
               <Component id="totalPriceLabel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="207" max="32767" attributes="0"/>
+              <EmptySpace pref="211" max="32767" attributes="0"/>
               <Component id="removeLabel" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -112,6 +112,11 @@
     <Component class="javax.swing.JTextField" name="nrOfProductsTextField">
       <Properties>
         <Property name="text" type="java.lang.String" value="Nr Of Products"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+            <LineBorder/>
+          </Border>
+        </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="totalPriceLabel">
