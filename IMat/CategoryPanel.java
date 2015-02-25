@@ -16,7 +16,7 @@ import se.chalmers.ait.dat215.project.ProductCategory;
 public class CategoryPanel extends javax.swing.JPanel {
     private String labelText;
     private MouseListener listener;
-    private ProductCategory category;
+    private ProductCategory category = null;
     /**
      * Creates new form CategoryPanel
      */

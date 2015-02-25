@@ -382,7 +382,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void categoryClicked(MouseEvent e) {
         CategoryPanel panel = (CategoryPanel) e.getSource();
-        if ( panel.getCategory()!= null ){
+        if ( panel.getCategory() == null ){
 
         } else{
             this.resultPanelHolder.removeAll();
