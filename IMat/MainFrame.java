@@ -74,22 +74,22 @@ public class MainFrame extends javax.swing.JFrame {
         this.featureHeaderPanel.add(new CategoryPanel("Veckans Varor", categoryListener));
         this.featureHeaderPanel.add(new CategoryPanel("Veckans Recept", categoryListener));
         this.categoryPanel.add(new CategoryPanel("Bakvaror", categoryListener));
-        this.categoryPanel.add(new CategoryPanel(ProductCategory.BREAD, categoryListener));
+        this.categoryPanel.add(new CategoryPanel("Bröd", ProductCategory.BREAD, categoryListener));
         this.categoryPanel.add(new CategoryPanel("Drycker", categoryListener));
-        this.categoryPanel.add(new CategoryPanel(ProductCategory.FISH, categoryListener));
+        this.categoryPanel.add(new CategoryPanel("Fisk", ProductCategory.FISH, categoryListener));
         this.categoryPanel.add(new CategoryPanel("Frukt & Grönt", categoryListener));
         this.categoryPanel.add(new CategoryPanel("Kolhydrater", categoryListener));
-        this.categoryPanel.add(new CategoryPanel(ProductCategory.MEAT, categoryListener));
-        this.categoryPanel.add(new CategoryPanel(ProductCategory.DAIRIES, categoryListener)); 
+        this.categoryPanel.add(new CategoryPanel("Kött", ProductCategory.MEAT, categoryListener));
+        this.categoryPanel.add(new CategoryPanel("Mejeri", ProductCategory.DAIRIES, categoryListener)); 
         this.categoryPanel.add(new CategoryPanel("Nötter & Frön", categoryListener));
-        this.categoryPanel.add(new CategoryPanel(ProductCategory.SWEET, categoryListener));
-        this.categoryPanel.add(new CategoryPanel(ProductCategory.HERB, categoryListener)); 
-        this.categoryPanel1.add(new CategoryPanel(ProductCategory.BERRY, categoryListener));
-        this.categoryPanel1.add(new CategoryPanel(ProductCategory.POD, categoryListener));
-        this.categoryPanel1.add(new CategoryPanel(ProductCategory.CITRUS_FRUIT, categoryListener));
-        this.categoryPanel1.add(new CategoryPanel(ProductCategory.VEGETABLE_FRUIT, categoryListener));
-        this.categoryPanel1.add(new CategoryPanel(ProductCategory.CABBAGE, categoryListener));
-        this.categoryPanel1.add(new CategoryPanel(ProductCategory.MELONS, categoryListener));
+        this.categoryPanel.add(new CategoryPanel("Sötsaker", ProductCategory.SWEET, categoryListener));
+        this.categoryPanel.add(new CategoryPanel("Örtkryddor", ProductCategory.HERB, categoryListener)); 
+        this.categoryPanel1.add(new CategoryPanel("Bär", ProductCategory.BERRY, categoryListener));
+        this.categoryPanel1.add(new CategoryPanel("Baljväxter", ProductCategory.POD, categoryListener));
+        this.categoryPanel1.add(new CategoryPanel("Citrusfrukter", ProductCategory.CITRUS_FRUIT, categoryListener));
+        this.categoryPanel1.add(new CategoryPanel("Grönsaksfrukter", ProductCategory.VEGETABLE_FRUIT, categoryListener));
+        this.categoryPanel1.add(new CategoryPanel("Kål", ProductCategory.CABBAGE, categoryListener));
+        this.categoryPanel1.add(new CategoryPanel("Meloner", ProductCategory.MELONS, categoryListener));
     }
     
     public IMatModel getModel(){
@@ -382,9 +382,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void categoryClicked(MouseEvent e) {
         CategoryPanel panel = (CategoryPanel) e.getSource();
-        System.out.println(panel.getCategory());
-        if ((panel.getName().equals("Frukt & Grönt")) || (panel.getName().equals("Kolyhydrater"))
-                || (panel.getName().equals("Drycker"))) {
+        if ( panel.getCategory()!= null ){
 
         } else{
             this.resultPanelHolder.removeAll();

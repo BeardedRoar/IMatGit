@@ -32,8 +32,8 @@ public class CategoryPanel extends javax.swing.JPanel {
 
     }
     
-    public CategoryPanel(ProductCategory pc, MouseListener listener){
-        this(pc.name(), listener);
+    public CategoryPanel(String text, ProductCategory pc, MouseListener listener){
+        this(text, listener);
         this.category = pc;
         this.listener = listener;
     }
