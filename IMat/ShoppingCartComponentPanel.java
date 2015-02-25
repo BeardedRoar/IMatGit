@@ -5,16 +5,21 @@
  */
 package IMat;
 
+import se.chalmers.ait.dat215.project.ShoppingItem;
+
 /**
  *
  * @author axel
  */
 public class ShoppingCartComponentPanel extends javax.swing.JPanel {
 
+    ShoppingItem shoppingItem;
     /**
      * Creates new form shoppingCartComponentPanel
      */
-    public ShoppingCartComponentPanel() {
+    public ShoppingCartComponentPanel(ShoppingItem shoppingItem) {
+        this.shoppingItem = shoppingItem;
+        
         initComponents();
     }
 
@@ -46,6 +51,7 @@ public class ShoppingCartComponentPanel extends javax.swing.JPanel {
         priceLabel.setText("Pris");
 
         nrOfProductsTextField.setText("Nr Of Products");
+        nrOfProductsTextField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         totalPriceLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         totalPriceLabel.setText("Totalpris");
@@ -73,7 +79,7 @@ public class ShoppingCartComponentPanel extends javax.swing.JPanel {
                 .addComponent(increaseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addComponent(totalPriceLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 207, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 211, Short.MAX_VALUE)
                 .addComponent(removeLabel)
                 .addContainerGap())
         );
