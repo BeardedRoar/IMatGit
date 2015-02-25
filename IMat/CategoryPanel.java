@@ -1,5 +1,7 @@
 package IMat;
 
+import java.awt.event.MouseListener;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -12,7 +14,7 @@ package IMat;
  */
 public class CategoryPanel extends javax.swing.JPanel {
     private String labelText;
-
+    private MouseListener listener;
     /**
      * Creates new form CategoryPanel
      */
@@ -20,9 +22,16 @@ public class CategoryPanel extends javax.swing.JPanel {
         initComponents();
     }
     
-    public CategoryPanel(String text){
+    public CategoryPanel(String text, MouseListener listener){
+        this.listener = listener;
         labelText = text;
         initComponents();
+        this.addMouseListener(listener);
+
+    }   
+    
+    public String getString(){
+        return labelText;
     }
 
     /**
@@ -56,6 +65,9 @@ public class CategoryPanel extends javax.swing.JPanel {
                 .addComponent(textLabel)
                 .addGap(0, 13, Short.MAX_VALUE))
         );
+
+        getAccessibleContext().setAccessibleName("default");
+        getAccessibleContext().setAccessibleDescription("default");
     }// </editor-fold>//GEN-END:initComponents
 
 

@@ -1,5 +1,12 @@
 package IMat;
 
+import IMat.IMatModel.CategoryListener;
+import java.awt.Component;
+import java.awt.GridLayout;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import javax.swing.JPanel;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -13,29 +20,38 @@ package IMat;
 public class MainFrame extends javax.swing.JFrame {
 
     IMatModel model;
-    
     /**
      * Creates new form MainFrame
      */
     public MainFrame() {
         initComponents();
-        this.favoritePanel.add(new CategoryPanel("Mina Favoriter"));
-        this.favoritePanel.add(new CategoryPanel("Ofta Köpta"));
-        this.featureHeaderPanel.add(new CategoryPanel("Populära Varor"));
-        this.featureHeaderPanel.add(new CategoryPanel("Inköpslista"));
-        this.featureHeaderPanel.add(new CategoryPanel("Veckans Varor"));
-        this.featureHeaderPanel.add(new CategoryPanel("Veckans Recept"));
-        this.categoryPanel.add(new CategoryPanel("Bakvaror"));
-        this.categoryPanel.add(new CategoryPanel("Bröd"));
-        this.categoryPanel.add(new CategoryPanel("Drycker"));
-        this.categoryPanel.add(new CategoryPanel("Fisk"));
-        this.categoryPanel.add(new CategoryPanel("Frukt & Grönt"));
-        this.categoryPanel.add(new CategoryPanel("Kolhydrater"));
-        this.categoryPanel.add(new CategoryPanel("Kött"));
-        this.categoryPanel.add(new CategoryPanel("Mejeriprodukter"));
-        this.categoryPanel.add(new CategoryPanel("Nötter & Frön"));
-        this.categoryPanel.add(new CategoryPanel("Sötsaker"));
-        this.categoryPanel.add(new CategoryPanel("Örtkryddor"));
+        MouseListener CategoryList = new CategoryListener();
+      
+        this.favoritePanel.add(new CategoryPanel("Mina Favoriter", CategoryList));
+        this.favoritePanel.add(new CategoryPanel("Ofta Köpta", CategoryList));      
+        this.featureHeaderPanel.add(new CategoryPanel("Populära Varor", CategoryList));    
+        this.featureHeaderPanel.add(new CategoryPanel("Inköpslista", CategoryList));
+        this.featureHeaderPanel.add(new CategoryPanel("Veckans Varor", CategoryList));
+        this.featureHeaderPanel.add(new CategoryPanel("Veckans Recept", CategoryList));
+        this.categoryPanel.add(new CategoryPanel("Bakvaror", CategoryList));
+        this.categoryPanel.add(new CategoryPanel("Bröd", CategoryList));
+        this.categoryPanel.add(new CategoryPanel("Drycker", CategoryList));
+        this.categoryPanel.add(new CategoryPanel("Fisk", CategoryList));
+        this.categoryPanel.add(new CategoryPanel("Frukt & Grönt", CategoryList));
+        this.categoryPanel.add(new CategoryPanel("Kolhydrater", CategoryList));
+        this.categoryPanel.add(new CategoryPanel("Kött", CategoryList));
+        this.categoryPanel.add(new CategoryPanel("Mejeriprodukter", CategoryList)); 
+        this.categoryPanel.add(new CategoryPanel("Nötter & Frön", CategoryList));
+        this.categoryPanel.add(new CategoryPanel("Sötsaker", CategoryList));
+        this.categoryPanel.add(new CategoryPanel("Örtkryddor", CategoryList)); 
+        this.categoryPanel1.add(new CategoryPanel("Bär", CategoryList));
+        this.categoryPanel1.add(new CategoryPanel("Baljväxter", CategoryList));
+        this.categoryPanel1.add(new CategoryPanel("Citrusfrukter", CategoryList));
+        this.categoryPanel1.add(new CategoryPanel("Grönsaksrukter", CategoryList));
+        this.categoryPanel1.add(new CategoryPanel("Kål", CategoryList));
+        this.categoryPanel1.add(new CategoryPanel("Meloner", CategoryList));
+  
+           
     }
     
     public MainFrame(IMatModel model){
@@ -69,6 +85,7 @@ public class MainFrame extends javax.swing.JFrame {
         favoritePanel = new javax.swing.JPanel();
         featureHeaderPanel = new javax.swing.JPanel();
         categoryPanel = new javax.swing.JPanel();
+        categoryPanel1 = new javax.swing.JPanel();
         featurePanel = new javax.swing.JPanel();
         menuBarPanel = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -126,7 +143,7 @@ public class MainFrame extends javax.swing.JFrame {
         headerPanelLayout.setHorizontalGroup(
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(headerPanelLayout.createSequentialGroup()
-                .addGap(183, 183, 183)
+                .addGap(203, 203, 203)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(searchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -150,6 +167,9 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        browsePanel.setPreferredSize(new java.awt.Dimension(190, 600));
+        browsePanel.setRequestFocusEnabled(false);
+
         startTextPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 startTextPanelMousePressed(evt);
@@ -166,7 +186,7 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(startTextPanelLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(startLabel)
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         startTextPanelLayout.setVerticalGroup(
             startTextPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -176,37 +196,48 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        favoritePanel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                favoritePanelMousePressed(evt);
-            }
-        });
+        favoritePanel.setPreferredSize(new java.awt.Dimension(150, 0));
+        favoritePanel.setRequestFocusEnabled(false);
+        favoritePanel.setVerifyInputWhenFocusTarget(false);
         favoritePanel.setLayout(new java.awt.GridLayout(2, 0));
 
+        featureHeaderPanel.setPreferredSize(new java.awt.Dimension(150, 0));
+        featureHeaderPanel.setRequestFocusEnabled(false);
         featureHeaderPanel.setLayout(new java.awt.GridLayout(4, 0));
 
-        categoryPanel.setLayout(new java.awt.GridLayout(26, 0));
+        categoryPanel.setPreferredSize(new java.awt.Dimension(150, 0));
+        categoryPanel.setLayout(new java.awt.GridLayout(11, 0));
+
+        categoryPanel1.setPreferredSize(new java.awt.Dimension(150, 0));
+        categoryPanel1.setLayout(new java.awt.GridLayout(26, 0));
 
         javax.swing.GroupLayout browsePanelLayout = new javax.swing.GroupLayout(browsePanel);
         browsePanel.setLayout(browsePanelLayout);
         browsePanelLayout.setHorizontalGroup(
             browsePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(favoritePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(startTextPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(featureHeaderPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(categoryPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(browsePanelLayout.createSequentialGroup()
+                .addGroup(browsePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(browsePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(categoryPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(favoritePanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(featureHeaderPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(categoryPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 48, Short.MAX_VALUE))
         );
         browsePanelLayout.setVerticalGroup(
             browsePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(browsePanelLayout.createSequentialGroup()
                 .addComponent(startTextPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(favoritePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(featureHeaderPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(favoritePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 13, Short.MAX_VALUE)
+                .addGap(18, 31, Short.MAX_VALUE)
+                .addComponent(featureHeaderPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 13, Short.MAX_VALUE)
                 .addGap(29, 29, 29)
-                .addComponent(categoryPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 533, Short.MAX_VALUE))
+                .addComponent(categoryPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 4, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
+                .addComponent(categoryPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 9, Short.MAX_VALUE)
+                .addGap(0, 481, Short.MAX_VALUE))
         );
 
         browseScrollPanel.setViewportView(browsePanel);
@@ -250,7 +281,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(featurePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 673, Short.MAX_VALUE)
-                    .addComponent(browseScrollPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 673, Short.MAX_VALUE)))
+                    .addComponent(browseScrollPanel)))
         );
 
         pack();
@@ -259,11 +290,7 @@ public class MainFrame extends javax.swing.JFrame {
     private void startTextPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_startTextPanelMousePressed
         System.out.println("Start clicked");
     }//GEN-LAST:event_startTextPanelMousePressed
-
-    private void favoritePanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_favoritePanelMousePressed
-        System.out.println("Favorite clicked");
-    }//GEN-LAST:event_favoritePanelMousePressed
-
+   
     /**
      * @param args the command line arguments
      */
@@ -303,6 +330,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel browsePanel;
     private javax.swing.JScrollPane browseScrollPanel;
     private javax.swing.JPanel categoryPanel;
+    private javax.swing.JPanel categoryPanel1;
     private javax.swing.JPanel favoritePanel;
     private javax.swing.JPanel featureHeaderPanel;
     private javax.swing.JPanel featurePanel;
