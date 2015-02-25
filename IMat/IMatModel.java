@@ -1,6 +1,8 @@
 package IMat;
 
 
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.List;
 import layers.CustomCart;
 import layers.CustomDataHandler;
@@ -57,7 +59,7 @@ public class IMatModel {
     public void removeItemFromCart(ShoppingItem sci){
         cart.removeItem(sci);
 
-    }
+    }  
     
     //card methods
     
@@ -123,4 +125,27 @@ public class IMatModel {
              handler.removeFavorite(p);
          return becomeFavorite;
      }
+     public static class CategoryListener implements MouseListener {
+        @Override
+        public void mouseClicked(MouseEvent e) {
+        }
+        @Override
+        public void mousePressed(MouseEvent e) {
+            CategoryPanel panel = (CategoryPanel)e.getSource();
+            System.out.println(panel.getString());
+            if ( (panel.getString().equals("Frukt & Grönt")) || (panel.getString().equals("Kolyhydrater")) 
+                    || (panel.getString().equals("Drycker")) ){
+                
+            }     
+        }
+        @Override
+        public void mouseReleased(MouseEvent e) {
+        }
+        @Override
+        public void mouseEntered(MouseEvent e) {
+        }
+        @Override
+        public void mouseExited(MouseEvent e) {
+        }
+    } 
 }
