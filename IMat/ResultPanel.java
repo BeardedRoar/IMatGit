@@ -28,9 +28,9 @@ public class ResultPanel extends javax.swing.JPanel {
         
         List<ProductPanel> products = model.getProductPanels(pc);
         Iterator<ProductPanel> it = products.iterator();
-        this.setLayout(new GridLayout(4, (products.size() +3)/4));
+        this.resultPanel.setLayout(new GridLayout((products.size() +3)/4, 4));
         while(it.hasNext()){
-            this.add(it.next());
+            this.resultPanel.add(it.next());
         }
     }
     
@@ -46,19 +46,37 @@ public class ResultPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        resultScrollPanel = new javax.swing.JScrollPane();
+        resultPanel = new javax.swing.JPanel();
+
+        javax.swing.GroupLayout resultPanelLayout = new javax.swing.GroupLayout(resultPanel);
+        resultPanel.setLayout(resultPanelLayout);
+        resultPanelLayout.setHorizontalGroup(
+            resultPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 398, Short.MAX_VALUE)
+        );
+        resultPanelLayout.setVerticalGroup(
+            resultPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 298, Short.MAX_VALUE)
+        );
+
+        resultScrollPanel.setViewportView(resultPanel);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(resultScrollPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(resultScrollPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel resultPanel;
+    private javax.swing.JScrollPane resultScrollPanel;
     // End of variables declaration//GEN-END:variables
 }
