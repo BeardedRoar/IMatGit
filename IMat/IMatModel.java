@@ -139,8 +139,7 @@ public class IMatModel {
           ArrayList<ProductPanel> panels = new ArrayList(products.size());
           Iterator<Product> it = products.iterator();
             while(it.hasNext()){
-                panels.add(new ProductPanel());
-                it.next();
+                panels.add(new ProductPanel(it.next(), this));
             }
         return panels;
       }

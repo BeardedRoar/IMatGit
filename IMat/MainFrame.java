@@ -58,8 +58,8 @@ public class MainFrame extends javax.swing.JFrame {
         this.model = model;
         this.card = (CardLayout)this.featurePanel.getLayout();
         this.checkoutPanelHolder.add(new CheckoutPanel(model));
-        this.resultPanelHolder.add(new ResultPanel(ProductCategory.BERRY, model));
-        card.show(this.featurePanel, "checkoutCard");
+        this.resultPanelHolder.add(new ResultPanel(ProductCategory.POD, model));
+        card.show(this.featurePanel, "resultCard");
         repaint();
         revalidate();
     }
@@ -256,7 +256,7 @@ public class MainFrame extends javax.swing.JFrame {
         resultPanelHolder.setLayout(new java.awt.GridLayout());
         featurePanel.add(resultPanelHolder, "resultCard");
 
-        checkoutPanelHolder.setLayout(new java.awt.GridLayout());
+        checkoutPanelHolder.setLayout(new java.awt.GridLayout(1, 0));
         featurePanel.add(checkoutPanelHolder, "checkoutCard");
 
         jMenu1.setText("File");
