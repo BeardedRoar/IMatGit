@@ -1,11 +1,7 @@
 package IMat;
 
 import IMat.IMatModel.CategoryListener;
-import java.awt.Component;
-import java.awt.GridLayout;
-import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import javax.swing.JPanel;
 import se.chalmers.ait.dat215.project.ProductCategory;
 
 /*
