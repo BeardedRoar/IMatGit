@@ -123,4 +123,8 @@ public class IMatModel {
              handler.removeFavorite(p);
          return becomeFavorite;
      }
+     
+      public  List<Product> getProducts(ProductCategory pc){
+        return handler.getProducts(pc);
+    }
 }

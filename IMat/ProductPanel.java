@@ -153,7 +153,7 @@ public class ProductPanel extends javax.swing.JPanel {
 
         EnbFavouriteLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iMat.resources/EnabledFavoriteIcon.png"))); // NOI18N
         FavouritePanel.add(EnbFavouriteLabel);
-        EnbFavouriteLabel.setVisible(false);
+        EnbFavouriteLabel.setVisible(model.isFavorite(product));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
