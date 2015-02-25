@@ -5,18 +5,37 @@
  */
 package IMat;
 
+import java.awt.GridLayout;
+import java.util.Iterator;
+import java.util.List;
+import se.chalmers.ait.dat215.project.ProductCategory;
+
 /**
  *
  * @author axel
  */
 public class ResultPanel extends javax.swing.JPanel {
-
+    private IMatModel model;
+    private ProductCategory pc;
+    
     /**
      * Creates new form ResultPanel
      */
-    public ResultPanel() {
+    public ResultPanel(ProductCategory pc, IMatModel model) {
+        this.pc = pc;
+        this.model = model;
         initComponents();
+        
+        List<ProductPanel> products = model.getProductPanels(pc);
+        Iterator<ProductPanel> it = products.iterator();
+        this.setLayout(new GridLayout(4, (products.size() +3)/4));
+        while(it.hasNext()){
+            this.add(it.next());
+        }
     }
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
