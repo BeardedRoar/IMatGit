@@ -6,6 +6,7 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import javax.swing.ImageIcon;
 import layers.CustomCart;
 import layers.CustomDataHandler;
 import se.chalmers.ait.dat215.project.*;
@@ -142,6 +143,10 @@ public class IMatModel {
                 panels.add(new ProductPanel(it.next(), this));
             }
         return panels;
+      }
+      
+      public ImageIcon getImageIcon(Product p, int width, int height){
+          return this.handler.getImageIcon(p, width, height);
       }
 
 }
