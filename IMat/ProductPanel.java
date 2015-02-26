@@ -5,8 +5,6 @@
  */
 package IMat;
 
-import java.awt.*;
-import java.awt.event.ActionListener;
 import javax.swing.*;
 import se.chalmers.ait.dat215.project.*;
 
@@ -228,20 +226,22 @@ public class ProductPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_downButtonActionPerformed
 
     private void FavouritePanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FavouritePanelMouseClicked
-        nbrOfClicksOnFavouriteLabel++;
-        nbrOfClicksOnFavouriteLabel=nbrOfClicksOnFavouriteLabel%2;
         model.changeFavoriteStatus(product);
+        if(!model.isFavorite(product)){
+          EnbFavouriteLabel.setVisible(false);
+          DisFavouriteLabel.setVisible(true);
+        }
     }//GEN-LAST:event_FavouritePanelMouseClicked
 
     private void FavouritePanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FavouritePanelMouseEntered
-        if(DisFavouriteLabel.isVisible()){
+        if(!model.isFavorite(product)){
           EnbFavouriteLabel.setVisible(true);
           DisFavouriteLabel.setVisible(false);   
         }
     }//GEN-LAST:event_FavouritePanelMouseEntered
 
     private void FavouritePanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FavouritePanelMouseExited
-        if(EnbFavouriteLabel.isVisible() && nbrOfClicksOnFavouriteLabel % 2 == 0){
+        if(!model.isFavorite(product)){
            EnbFavouriteLabel.setVisible(false);
            DisFavouriteLabel.setVisible(true);
         }
