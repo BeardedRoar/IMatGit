@@ -27,12 +27,12 @@ public class ProductPanel extends javax.swing.JPanel {
         product=p;
         model=m;
         
-        //Creates an image for a specific product and scales it to an appropriate size.
-        productImage=new javax.swing.ImageIcon("C:/Users/amar__000/.dat215/imat/images/" + p.getImageName());
-        Image scaledImage=productImage.getImage().getScaledInstance(143, 111, Image.SCALE_FAST);
-        productImage=new ImageIcon(scaledImage);
         initComponents();
         
+        if(model.isFavorite(product)){
+          EnbFavouriteLabel.setVisible(true);
+          DisFavouriteLabel.setVisible(false);   
+        }
     }
     public ProductPanel(){}
 
@@ -65,7 +65,8 @@ public class ProductPanel extends javax.swing.JPanel {
             }
         });
 
-        productIcon.setIcon(productImage);
+        productIcon.setIcon(model.getImageIcon(product, 143, 111)
+        );
         productIcon.setText("productIcon");
         productIcon.setPreferredSize(new java.awt.Dimension(180, 111));
 
