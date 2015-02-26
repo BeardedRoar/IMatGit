@@ -8,6 +8,7 @@ package IMat;
 import java.awt.GridLayout;
 import java.util.Iterator;
 import java.util.List;
+import javax.swing.JPanel;
 import se.chalmers.ait.dat215.project.ShoppingItem;
 
 /**
@@ -17,6 +18,7 @@ import se.chalmers.ait.dat215.project.ShoppingItem;
 public class ShoppingCartPanel extends javax.swing.JPanel {
     
     private final IMatModel model;
+    private MainFrame frame;
 
     /**
      * Creates new form ShoppingCartPanel
@@ -33,6 +35,11 @@ public class ShoppingCartPanel extends javax.swing.JPanel {
         }
         
         this.costLabel.setText(model.getTotalCost() + " kr");
+    }
+    
+    public ShoppingCartPanel(IMatModel model, MainFrame frame) {
+        this(model);
+        this.frame = frame;
     }
 
     /**
@@ -127,7 +134,8 @@ public class ShoppingCartPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
-        
+        if (frame != null)
+            frame.setFeatureCard("checkoutCard");
     }//GEN-LAST:event_nextButtonActionPerformed
 
 

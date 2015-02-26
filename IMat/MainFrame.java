@@ -60,7 +60,6 @@ public class MainFrame extends javax.swing.JFrame {
         
         this.card = (CardLayout)this.featurePanel.getLayout();
         this.checkoutPanelHolder.add(new CheckoutPanel(model));
-        this.resultPanelHolder.add(new ResultPanel(ProductCategory.POD, model));
         card.show(this.featurePanel, "frontPageCard");
         repaint();
         revalidate();
@@ -341,7 +340,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void cartLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cartLabelMouseClicked
         this.shoppingCartPanelHolder.removeAll();
-        this.shoppingCartPanelHolder.add(new ShoppingCartPanel(model));
+        this.shoppingCartPanelHolder.add(new ShoppingCartPanel(model, this));
         card.show(this.featurePanel, "shoppingCartCard");
     }//GEN-LAST:event_cartLabelMouseClicked
    
