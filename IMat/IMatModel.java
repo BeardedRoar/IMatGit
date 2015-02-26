@@ -26,6 +26,7 @@ public class IMatModel {
     private final CustomDataHandler handler = CustomDataHandler.getInstance();
     private final CustomCart cart = CustomCart.getCart();
     private final CreditCard card = handler.getCard();
+    private final Customer customer = handler.getCustomer();
     
     public IMatModel(){
         
@@ -116,9 +117,45 @@ public class IMatModel {
      public void setVerificationCode(int verificationCode){
          card.setVerificationCode(verificationCode);
      }
-    
-    //end of card methods 
      
+     //end of card methods
+    
+    //customer methods
+     
+     public String getAdress(){
+         return customer.getAddress();
+     }
+     
+     public String getEmail(){
+         return customer.getEmail();
+     }
+     
+     public String getFirstName(){
+         return customer.getFirstName();
+     }
+     
+     public String getLastName() {
+         return customer.getLastName();
+     }
+     
+     public String getMobilePhoneNumber(){
+         return customer.getMobilePhoneNumber();
+     }
+     
+     public String getPhoneNumber(){
+         return customer.getPhoneNumber();
+     }
+     
+     public String getPostAdress(){
+         return customer.getPostAddress();
+     }
+     
+     public String getPostCode(){
+         return customer.getPostAddress();
+     }
+     
+     //end of customer methods
+             
      public boolean isFavorite(Product p){
          return this.handler.isFavorite(p);
      }
