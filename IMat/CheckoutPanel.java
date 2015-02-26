@@ -42,6 +42,22 @@ public class CheckoutPanel extends javax.swing.JPanel {
         if(!model.getCardType().equals("")){
             cardComboBox.setSelectedItem(model.getCardType());
         }
+        if(!model.getAdress().equals("")){
+            adressTextField.setText(model.getAdress());
+            adressTextField2.setText(model.getAdress());
+        }
+        if(!(model.getFirstName().equals("") && model.getLastName().equals(""))){
+            nameTextField.setText(model.getFirstName());
+            nameTextField2.setText(model.getLastName());
+        }
+     
+        
+            
+        
+        
+        
+        
+        
     }    
 
     /**
