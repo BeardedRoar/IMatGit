@@ -21,7 +21,6 @@ public class ShoppingCartComponentPanel extends javax.swing.JPanel {
         this.shoppingItem = shoppingItem;
         
         initComponents();
-        this.productLabel.setText(shoppingItem.getProduct().getName());
     }
 
     /**
@@ -33,109 +32,134 @@ public class ShoppingCartComponentPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        productLabel = new javax.swing.JLabel();
-        priceLabel = new javax.swing.JLabel();
-        nrOfProductsTextField = new javax.swing.JTextField();
-        totalPriceLabel = new javax.swing.JLabel();
-        increaseLabel = new javax.swing.JLabel();
-        decreaseLabel = new javax.swing.JLabel();
-        removeLabel = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         accualProductLabel = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        priceLabel = new javax.swing.JLabel();
         accualPriceLabel = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        nrOfProductsTextField = new javax.swing.JTextField();
+        jPanel4 = new javax.swing.JPanel();
+        totalPriceLabel = new javax.swing.JLabel();
         accualTotalPriceLabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        setMaximumSize(new java.awt.Dimension(900, 64));
+        setMinimumSize(new java.awt.Dimension(900, 64));
+        setPreferredSize(new java.awt.Dimension(900, 64));
+        setLayout(new java.awt.GridLayout(1, 4));
 
-        productLabel.setBackground(new java.awt.Color(0, 0, 0));
-        productLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        productLabel.setText("Produkt");
-
-        priceLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        priceLabel.setText("Pris");
-
-        nrOfProductsTextField.setText(this.shoppingItem.getAmount() + " " + this.shoppingItem.getProduct().getUnitSuffix());
-        nrOfProductsTextField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        totalPriceLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        totalPriceLabel.setText("Totalpris");
+        jPanel1.setOpaque(false);
 
         accualProductLabel.setBackground(new java.awt.Color(0, 0, 0));
         accualProductLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         accualProductLabel.setText(this.shoppingItem.getProduct().getName());
 
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(accualProductLabel)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(accualProductLabel)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        add(jPanel1);
+
+        jPanel2.setOpaque(false);
+
+        priceLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        priceLabel.setText("Pris");
+
         accualPriceLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         accualPriceLabel.setText(this.shoppingItem.getProduct().getPrice()+" "+this.shoppingItem.getProduct().getUnit());
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(priceLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(accualPriceLabel)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(priceLabel)
+                    .addComponent(accualPriceLabel))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        add(jPanel2);
+
+        jPanel3.setOpaque(false);
+
+        nrOfProductsTextField.setText(this.shoppingItem.getAmount() + " " + this.shoppingItem.getProduct().getUnitSuffix());
+        nrOfProductsTextField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addComponent(nrOfProductsTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(130, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(nrOfProductsTextField)
+                .addGap(17, 17, 17))
+        );
+
+        add(jPanel3);
+
+        jPanel4.setOpaque(false);
+
+        totalPriceLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        totalPriceLabel.setText("Totalpris");
 
         accualTotalPriceLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         accualTotalPriceLabel.setText(""+this.shoppingItem.getTotal());
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(productLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(accualProductLabel)
-                .addGap(67, 67, 67)
-                .addComponent(priceLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(accualPriceLabel)
-                .addGap(87, 87, 87)
-                .addComponent(decreaseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(nrOfProductsTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(increaseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
                 .addComponent(totalPriceLabel)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(removeLabel)
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(accualTotalPriceLabel)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(accualTotalPriceLabel)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(productLabel)
-                                    .addComponent(priceLabel)
-                                    .addComponent(accualProductLabel)
-                                    .addComponent(accualPriceLabel)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(nrOfProductsTextField)
-                                .addGap(2, 2, 2))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGap(8, 8, 8)
-                                .addComponent(increaseLabel)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(15, 15, 15))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(totalPriceLabel)
-                                .addComponent(accualTotalPriceLabel))
-                            .addComponent(removeLabel))
-                        .addGap(20, 20, 20))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(13, 13, 13)
-                        .addComponent(decreaseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(totalPriceLabel)
+                    .addComponent(accualTotalPriceLabel))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        add(jPanel4);
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -143,12 +167,12 @@ public class ShoppingCartComponentPanel extends javax.swing.JPanel {
     private javax.swing.JLabel accualPriceLabel;
     private javax.swing.JLabel accualProductLabel;
     private javax.swing.JLabel accualTotalPriceLabel;
-    private javax.swing.JLabel decreaseLabel;
-    private javax.swing.JLabel increaseLabel;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JTextField nrOfProductsTextField;
     private javax.swing.JLabel priceLabel;
-    private javax.swing.JLabel productLabel;
-    private javax.swing.JLabel removeLabel;
     private javax.swing.JLabel totalPriceLabel;
     // End of variables declaration//GEN-END:variables
 }
