@@ -15,9 +15,7 @@ import se.chalmers.ait.dat215.project.*;
 public class ProductPanel extends javax.swing.JPanel {
     private Product product;
     private IMatModel model;
-    private ImageIcon productImage;
     int currentNbrOfProducts=1;
-    int nbrOfClicksOnFavouriteLabel=0;
     /**
      * Creates new form ProductPanel
      */
