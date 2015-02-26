@@ -1,6 +1,7 @@
 package IMat;
 
 import java.awt.event.MouseListener;
+import se.chalmers.ait.dat215.project.ProductCategory;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -15,6 +16,7 @@ import java.awt.event.MouseListener;
 public class CategoryPanel extends javax.swing.JPanel {
     private String labelText;
     private MouseListener listener;
+    private ProductCategory category = null;
     /**
      * Creates new form CategoryPanel
      */
@@ -28,10 +30,20 @@ public class CategoryPanel extends javax.swing.JPanel {
         initComponents();
         this.addMouseListener(listener);
 
-    }   
+    }
     
-    public String getString(){
+    public CategoryPanel(String text, ProductCategory pc, MouseListener listener){
+        this(text, listener);
+        this.category = pc;
+        this.listener = listener;
+    }
+    
+    public String getName(){
         return labelText;
+    }
+    
+    public ProductCategory getCategory(){
+        return this.category;
     }
 
     /**

@@ -1,7 +1,7 @@
 package IMat;
 
-import IMat.IMatModel.CategoryListener;
 import java.awt.CardLayout;
+import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import se.chalmers.ait.dat215.project.ProductCategory;
 
@@ -19,53 +19,84 @@ public class MainFrame extends javax.swing.JFrame {
 
     private IMatModel model;
     private CardLayout card;
+    private MouseListener categoryListener;
     /**
      * Creates new form MainFrame
      */
     public MainFrame() {
-        initComponents();
-        MouseListener CategoryList = new CategoryListener();
-      
-        this.favoritePanel.add(new CategoryPanel("Mina Favoriter", CategoryList));
-        this.favoritePanel.add(new CategoryPanel("Ofta Köpta", CategoryList));      
-        this.featureHeaderPanel.add(new CategoryPanel("Populära Varor", CategoryList));    
-        this.featureHeaderPanel.add(new CategoryPanel("Inköpslista", CategoryList));
-        this.featureHeaderPanel.add(new CategoryPanel("Veckans Varor", CategoryList));
-        this.featureHeaderPanel.add(new CategoryPanel("Veckans Recept", CategoryList));
-        this.categoryPanel.add(new CategoryPanel("Bakvaror", CategoryList));
-        this.categoryPanel.add(new CategoryPanel("Bröd", CategoryList));
-        this.categoryPanel.add(new CategoryPanel("Drycker", CategoryList));
-        this.categoryPanel.add(new CategoryPanel("Fisk", CategoryList));
-        this.categoryPanel.add(new CategoryPanel("Frukt & Grönt", CategoryList));
-        this.categoryPanel.add(new CategoryPanel("Kolhydrater", CategoryList));
-        this.categoryPanel.add(new CategoryPanel("Kött", CategoryList));
-        this.categoryPanel.add(new CategoryPanel("Mejeriprodukter", CategoryList)); 
-        this.categoryPanel.add(new CategoryPanel("Nötter & Frön", CategoryList));
-        this.categoryPanel.add(new CategoryPanel("Sötsaker", CategoryList));
-        this.categoryPanel.add(new CategoryPanel("Örtkryddor", CategoryList)); 
-        this.categoryPanel1.add(new CategoryPanel("Bär", CategoryList));
-        this.categoryPanel1.add(new CategoryPanel("Baljväxter", CategoryList));
-        this.categoryPanel1.add(new CategoryPanel("Citrusfrukter", CategoryList));
-        this.categoryPanel1.add(new CategoryPanel("Grönsaksrukter", CategoryList));
-        this.categoryPanel1.add(new CategoryPanel("Kål", CategoryList));
-        this.categoryPanel1.add(new CategoryPanel("Meloner", CategoryList));
-  
-           
+        initComponents();      
     }
     
     public MainFrame(IMatModel model){
         this();
         this.model = model;
+        
+        this.categoryListener = new MouseListener(){
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                MainFrame.this.categoryClicked(e);
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+            }
+            
+        };
+        
+        this.createCategories();
+        
         this.card = (CardLayout)this.featurePanel.getLayout();
         this.checkoutPanelHolder.add(new CheckoutPanel(model));
-        this.resultPanelHolder.add(new ResultPanel(ProductCategory.BERRY, model));
-        card.show(this.featurePanel, "checkoutCard");
+        card.show(this.featurePanel, "frontPageCard");
         repaint();
         revalidate();
     }
     
+    private void createCategories(){
+        this.favoritePanel.add(new CategoryPanel("Mina Favoriter", categoryListener));
+        this.favoritePanel.add(new CategoryPanel("Ofta Köpta", categoryListener));      
+        this.featureHeaderPanel.add(new CategoryPanel("Populära Varor", categoryListener));    
+        this.featureHeaderPanel.add(new CategoryPanel("Inköpslista", categoryListener));
+        this.featureHeaderPanel.add(new CategoryPanel("Veckans Varor", categoryListener));
+        this.featureHeaderPanel.add(new CategoryPanel("Veckans Recept", categoryListener));
+        this.categoryPanel.add(new CategoryPanel("Bakvaror", categoryListener));
+        this.categoryPanel.add(new CategoryPanel("Bröd", ProductCategory.BREAD, categoryListener));
+        this.categoryPanel.add(new CategoryPanel("Drycker", categoryListener));
+        this.categoryPanel.add(new CategoryPanel("Fisk", ProductCategory.FISH, categoryListener));
+        this.categoryPanel.add(new CategoryPanel("Frukt & Grönt", categoryListener));
+        this.categoryPanel.add(new CategoryPanel("Kolhydrater", categoryListener));
+        this.categoryPanel.add(new CategoryPanel("Kött", ProductCategory.MEAT, categoryListener));
+        this.categoryPanel.add(new CategoryPanel("Mejeri", ProductCategory.DAIRIES, categoryListener)); 
+        this.categoryPanel.add(new CategoryPanel("Nötter & Frön", categoryListener));
+        this.categoryPanel.add(new CategoryPanel("Sötsaker", ProductCategory.SWEET, categoryListener));
+        this.categoryPanel.add(new CategoryPanel("Örtkryddor", ProductCategory.HERB, categoryListener)); 
+        this.categoryPanel1.add(new CategoryPanel("Bär", ProductCategory.BERRY, categoryListener));
+        this.categoryPanel1.add(new CategoryPanel("Baljväxter", ProductCategory.POD, categoryListener));
+        this.categoryPanel1.add(new CategoryPanel("Citrusfrukter", ProductCategory.CITRUS_FRUIT, categoryListener));
+        this.categoryPanel1.add(new CategoryPanel("Grönsaksfrukter", ProductCategory.VEGETABLE_FRUIT, categoryListener));
+        this.categoryPanel1.add(new CategoryPanel("Kål", ProductCategory.CABBAGE, categoryListener));
+        this.categoryPanel1.add(new CategoryPanel("Meloner", ProductCategory.MELONS, categoryListener));
+    }
+    
     public IMatModel getModel(){
         return model;
+    }
+    
+    public void setFeatureCard(String cardName){
+        card.show(this.featurePanel, cardName);
     }
 
     /**
@@ -79,7 +110,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         headerPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        cartLabel = new javax.swing.JLabel();
         searchPanel = new javax.swing.JPanel();
         seachIcon = new javax.swing.JLabel();
         searchTextField = new javax.swing.JTextField();
@@ -92,6 +123,8 @@ public class MainFrame extends javax.swing.JFrame {
         categoryPanel = new javax.swing.JPanel();
         categoryPanel1 = new javax.swing.JPanel();
         featurePanel = new javax.swing.JPanel();
+        shoppingCartPanelHolder = new javax.swing.JPanel();
+        frontPagePanel = new javax.swing.JPanel();
         resultPanelHolder = new javax.swing.JPanel();
         checkoutPanelHolder = new javax.swing.JPanel();
         menuBarPanel = new javax.swing.JMenuBar();
@@ -108,8 +141,13 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("iMat");
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iMat.resources/cart.png"))); // NOI18N
-        jLabel2.setText("jLabel2");
+        cartLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iMat.resources/cart.png"))); // NOI18N
+        cartLabel.setText("jLabel2");
+        cartLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cartLabelMouseClicked(evt);
+            }
+        });
 
         searchPanel.setBackground(new java.awt.Color(255, 255, 255));
         searchPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -155,7 +193,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(searchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(101, 101, 101)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cartLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         headerPanelLayout.setVerticalGroup(
@@ -163,7 +201,7 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(headerPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cartLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(headerPanelLayout.createSequentialGroup()
                         .addGap(36, 36, 36)
                         .addComponent(searchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -253,10 +291,16 @@ public class MainFrame extends javax.swing.JFrame {
         featurePanel.setPreferredSize(new java.awt.Dimension(993, 600));
         featurePanel.setLayout(new java.awt.CardLayout());
 
-        resultPanelHolder.setLayout(new java.awt.GridLayout());
+        shoppingCartPanelHolder.setLayout(new java.awt.GridLayout());
+        featurePanel.add(shoppingCartPanelHolder, "shoppingCartCard");
+
+        frontPagePanel.setLayout(new java.awt.GridLayout(2, 0, 0, 2));
+        featurePanel.add(frontPagePanel, "frontPageCard");
+
+        resultPanelHolder.setLayout(new java.awt.GridLayout(1, 0));
         featurePanel.add(resultPanelHolder, "resultCard");
 
-        checkoutPanelHolder.setLayout(new java.awt.GridLayout());
+        checkoutPanelHolder.setLayout(new java.awt.GridLayout(1, 0));
         featurePanel.add(checkoutPanelHolder, "checkoutCard");
 
         jMenu1.setText("File");
@@ -293,6 +337,12 @@ public class MainFrame extends javax.swing.JFrame {
     private void startTextPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_startTextPanelMousePressed
         System.out.println("Start clicked");
     }//GEN-LAST:event_startTextPanelMousePressed
+
+    private void cartLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cartLabelMouseClicked
+        this.shoppingCartPanelHolder.removeAll();
+        this.shoppingCartPanelHolder.add(new ShoppingCartPanel(model, this));
+        card.show(this.featurePanel, "shoppingCartCard");
+    }//GEN-LAST:event_cartLabelMouseClicked
    
     /**
      * @param args the command line arguments
@@ -332,15 +382,16 @@ public class MainFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel browsePanel;
     private javax.swing.JScrollPane browseScrollPanel;
+    private javax.swing.JLabel cartLabel;
     private javax.swing.JPanel categoryPanel;
     private javax.swing.JPanel categoryPanel1;
     private javax.swing.JPanel checkoutPanelHolder;
     private javax.swing.JPanel favoritePanel;
     private javax.swing.JPanel featureHeaderPanel;
     private javax.swing.JPanel featurePanel;
+    private javax.swing.JPanel frontPagePanel;
     private javax.swing.JPanel headerPanel;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar menuBarPanel;
@@ -348,7 +399,21 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel seachIcon;
     private javax.swing.JPanel searchPanel;
     private javax.swing.JTextField searchTextField;
+    private javax.swing.JPanel shoppingCartPanelHolder;
     private javax.swing.JLabel startLabel;
     private javax.swing.JPanel startTextPanel;
     // End of variables declaration//GEN-END:variables
+
+    private void categoryClicked(MouseEvent e) {
+        CategoryPanel panel = (CategoryPanel) e.getSource();
+        if ( panel.getCategory() == null ){
+
+        } else{
+            this.resultPanelHolder.removeAll();
+            this.resultPanelHolder.add(new ResultPanel(panel.getCategory(), model));
+            card.show(this.featurePanel, "resultCard");
+            repaint();
+            revalidate();
+        }
+    }
 }

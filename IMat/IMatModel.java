@@ -6,6 +6,7 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import javax.swing.ImageIcon;
 import layers.CustomCart;
 import layers.CustomDataHandler;
 import se.chalmers.ait.dat215.project.*;
@@ -139,34 +140,13 @@ public class IMatModel {
           ArrayList<ProductPanel> panels = new ArrayList(products.size());
           Iterator<Product> it = products.iterator();
             while(it.hasNext()){
-                panels.add(new ProductPanel());
-                it.next();
+                panels.add(new ProductPanel(it.next(), this));
             }
         return panels;
       }
-
-     public static class CategoryListener implements MouseListener {
-        @Override
-        public void mouseClicked(MouseEvent e) {
-        }
-        @Override
-        public void mousePressed(MouseEvent e) {
-            CategoryPanel panel = (CategoryPanel)e.getSource();
-            System.out.println(panel.getString());
-            if ( (panel.getString().equals("Frukt & Grönt")) || (panel.getString().equals("Kolyhydrater")) 
-                    || (panel.getString().equals("Drycker")) ){
-                
-            }     
-        }
-        @Override
-        public void mouseReleased(MouseEvent e) {
-        }
-        @Override
-        public void mouseEntered(MouseEvent e) {
-        }
-        @Override
-        public void mouseExited(MouseEvent e) {
-        }
-    } 
+      
+      public ImageIcon getImageIcon(Product p, int width, int height){
+          return this.handler.getImageIcon(p, width, height);
+      }
 
 }

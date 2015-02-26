@@ -1,6 +1,7 @@
 package layers;
 
 import java.util.List;
+import javax.swing.ImageIcon;
 import se.chalmers.ait.dat215.project.*;
 
 /*
@@ -60,5 +61,9 @@ public class CustomDataHandler {
     
     public Customer getCustomer(){
         return this.dataHandler.getCustomer();
+    }
+    
+    public ImageIcon getImageIcon(Product p, int width, int height){
+        return dataHandler.getImageIcon(p, width, height);
     }
 }
