@@ -406,8 +406,15 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void categoryClicked(MouseEvent e) {
         CategoryPanel panel = (CategoryPanel) e.getSource();
-        if ( panel.getCategory() == null ){
+        if (panel.getCategory() == null) {
+            if (panel.getName().equals("Mina Favoriter")) {
+                this.resultPanelHolder.removeAll();
+                this.resultPanelHolder.add(new ResultPanel(model.getFavoritePanels(), model));
 
+            }
+            card.show(this.featurePanel, "resultCard");
+            repaint();
+            revalidate();
         } else{
             this.resultPanelHolder.removeAll();
             this.resultPanelHolder.add(new ResultPanel(panel.getCategory(), model));

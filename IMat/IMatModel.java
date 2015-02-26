@@ -139,10 +139,20 @@ public class IMatModel {
           List<Product> products = handler.getProducts(pc);
           ArrayList<ProductPanel> panels = new ArrayList(products.size());
           Iterator<Product> it = products.iterator();
-            while(it.hasNext()){
-                panels.add(new ProductPanel(it.next(), this));
-            }
-        return panels;
+          while (it.hasNext()) {
+              panels.add(new ProductPanel(it.next(), this));
+          }
+          return panels;
+      }
+      
+      public List<ProductPanel> getFavoritePanels(){
+          List<Product> favorites = handler.favorites();
+          ArrayList<ProductPanel> panels = new ArrayList(favorites.size());
+          Iterator<Product> it = favorites.iterator();
+          while (it.hasNext()) {
+              panels.add(new ProductPanel(it.next(), this));
+          }
+          return panels;
       }
       
       public ImageIcon getImageIcon(Product p, int width, int height){
