@@ -26,6 +26,7 @@ public class IMatModel {
     private final CustomDataHandler handler = CustomDataHandler.getInstance();
     private final CustomCart cart = CustomCart.getCart();
     private final CreditCard card = handler.getCard();
+    private final Customer customer = handler.getCustomer();
     
     public IMatModel(){
         
@@ -116,9 +117,45 @@ public class IMatModel {
      public void setVerificationCode(int verificationCode){
          card.setVerificationCode(verificationCode);
      }
-    
-    //end of card methods 
      
+     //end of card methods
+    
+    //customer methods
+     
+     public String getAdress(){
+         return customer.getAddress();
+     }
+     
+     public String getEmail(){
+         return customer.getEmail();
+     }
+     
+     public String getFirstName(){
+         return customer.getFirstName();
+     }
+     
+     public String getLastName() {
+         return customer.getLastName();
+     }
+     
+     public String getMobilePhoneNumber(){
+         return customer.getMobilePhoneNumber();
+     }
+     
+     public String getPhoneNumber(){
+         return customer.getPhoneNumber();
+     }
+     
+     public String getPostAdress(){
+         return customer.getPostAddress();
+     }
+     
+     public String getPostCode(){
+         return customer.getPostAddress();
+     }
+     
+     //end of customer methods
+             
      public boolean isFavorite(Product p){
          return this.handler.isFavorite(p);
      }
@@ -139,10 +176,20 @@ public class IMatModel {
           List<Product> products = handler.getProducts(pc);
           ArrayList<ProductPanel> panels = new ArrayList(products.size());
           Iterator<Product> it = products.iterator();
-            while(it.hasNext()){
-                panels.add(new ProductPanel(it.next(), this));
-            }
-        return panels;
+          while (it.hasNext()) {
+              panels.add(new ProductPanel(it.next(), this));
+          }
+          return panels;
+      }
+      
+      public List<ProductPanel> getFavoritePanels(){
+          List<Product> favorites = handler.favorites();
+          ArrayList<ProductPanel> panels = new ArrayList(favorites.size());
+          Iterator<Product> it = favorites.iterator();
+          while (it.hasNext()) {
+              panels.add(new ProductPanel(it.next(), this));
+          }
+          return panels;
       }
       
       public ImageIcon getImageIcon(Product p, int width, int height){

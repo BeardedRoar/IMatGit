@@ -30,9 +30,10 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -68,20 +69,24 @@
                                   <Component id="dayTextField" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Component id="cardLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="deliveryInformationLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="nameLabel" min="-2" max="-2" attributes="0"/>
-                                      <Component id="adressTextField" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="adressLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="nameTextField" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="nameTextField2" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="adressLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="sendToOtherAdressCheckBox" min="-2" max="-2" attributes="0"/>
+                                      <Component id="adressTextField" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="sendToOtherAdressCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="adressTextField2" alignment="0" min="-2" pref="84" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="postalCodeLabel" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
+                                          <Component id="postalAdressLabel" min="-2" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
-                                  <EmptySpace min="-2" pref="192" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="169" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="phoneTextField" min="-2" max="-2" attributes="0"/>
                                       <Component id="phoneLabel" min="-2" max="-2" attributes="0"/>
@@ -90,9 +95,12 @@
                                       <Component id="phoneTextField2" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Component id="adressTextField2" alignment="0" min="-2" pref="84" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="163" max="-2" attributes="0"/>
+                                  <Component id="postalAdressTextField" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <EmptySpace pref="363" max="32767" attributes="0"/>
+                          <EmptySpace pref="360" max="32767" attributes="0"/>
                           <Component id="buyButton" min="-2" pref="100" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
@@ -102,6 +110,9 @@
                               <Component id="cardNumberTextField" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="cvcLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="cvcTextField" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="deliveryInformationLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="nameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="postalCodeTextField" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
@@ -114,63 +125,77 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="cardInformationLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="cardLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="cardComboBox" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="cardNumberLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="cardNumberTextField" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                  <Component id="dateLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="dayTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="monthTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="yearTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="cvcLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="cvcTextField" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                  <Component id="deliveryInformationLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="nameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="emailLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="emailTextField" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="nameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="nameTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <Component id="sendToOtherAdressCheckBox" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="adressTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="phoneTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="cardInformationLabel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="cardLabel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="cardComboBox" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="cardNumberLabel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="cardNumberTextField" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="8" max="32767" attributes="0"/>
+                          <Component id="dateLabel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="dayTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="monthTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="yearTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="cvcLabel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="cvcTextField" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="deliveryInformationLabel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="nameLabel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="nameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="nameTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="9" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="emailLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="adressLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="emailTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="adressTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="phoneLabel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="adressLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="phoneLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="adressTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="phoneTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="sendToOtherAdressCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="phoneTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="postalCodeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="postalAdressLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="adressTextField2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="49" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="buyButton" alignment="1" min="-2" pref="34" max="-2" attributes="0"/>
-                      <Component id="sendToMailCheckBox" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="postalCodeTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="postalAdressTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="25" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="buyButton" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                      <Component id="sendToMailCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -341,6 +366,26 @@
               <Color blue="66" green="66" red="ff" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="K&#xf6;p"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="postalCodeLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Postnummer"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="postalAdressLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Postort"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="postalCodeTextField">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Postnummer"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="postalAdressTextField">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Postort"/>
           </Properties>
         </Component>
       </SubComponents>

@@ -34,6 +34,17 @@ public class ResultPanel extends javax.swing.JPanel {
         }
     }
     
+    public ResultPanel(List<ProductPanel> products, IMatModel model){
+        this.pc = pc;
+        this.model = model;
+        initComponents();
+        
+        Iterator<ProductPanel> it = products.iterator();
+        this.resultPanel.setLayout(new GridLayout((products.size() +3)/4, 4));
+        while(it.hasNext()){
+            this.resultPanel.add(it.next());
+        }
+    }
     
     
 
