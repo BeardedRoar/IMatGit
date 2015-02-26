@@ -5,8 +5,6 @@
  */
 package IMat;
 
-import java.awt.*;
-import java.awt.event.ActionListener;
 import javax.swing.*;
 import se.chalmers.ait.dat215.project.*;
 
@@ -240,7 +238,6 @@ public class ProductPanel extends javax.swing.JPanel {
           EnbFavouriteLabel.setVisible(true);
           DisFavouriteLabel.setVisible(false);   
         }
-        
     }//GEN-LAST:event_FavouritePanelMouseEntered
 
     private void FavouritePanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FavouritePanelMouseExited
