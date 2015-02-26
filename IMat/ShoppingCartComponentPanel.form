@@ -29,9 +29,13 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="productLabel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="155" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="accualProductLabel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
               <Component id="priceLabel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="132" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="accualPriceLabel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
               <Component id="decreaseLabel" min="-2" pref="15" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="nrOfProductsTextField" min="-2" max="-2" attributes="0"/>
@@ -39,9 +43,18 @@
               <Component id="increaseLabel" min="-2" pref="30" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
               <Component id="totalPriceLabel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="211" max="32767" attributes="0"/>
-              <Component id="removeLabel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="removeLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="accualTotalPriceLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+              </Group>
           </Group>
       </Group>
     </DimensionLayout>
@@ -57,6 +70,8 @@
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="productLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="priceLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="accualProductLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="accualPriceLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
@@ -74,7 +89,10 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="totalPriceLabel" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="totalPriceLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="accualTotalPriceLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                           <Component id="removeLabel" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
@@ -111,7 +129,9 @@
     </Component>
     <Component class="javax.swing.JTextField" name="nrOfProductsTextField">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Nr Of Products"/>
+        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="this.shoppingItem.getAmount() + &quot; &quot; + this.shoppingItem.getProduct().getUnitSuffix()" type="code"/>
+        </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
             <LineBorder/>
@@ -128,23 +148,41 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="increaseLabel">
-      <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\axel\Documents\NetBeansProjects\IMat\IMatGit\iMat.resources\plus-2x.png"/>
-        </Property>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="decreaseLabel">
+    </Component>
+    <Component class="javax.swing.JLabel" name="removeLabel">
+    </Component>
+    <Component class="javax.swing.JLabel" name="accualProductLabel">
       <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\axel\Documents\NetBeansProjects\IMat\IMatGit\iMat.resources\minus-2x.png"/>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="0" type="rgb"/>
+        </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="24" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="this.shoppingItem.getProduct().getName()" type="code"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="removeLabel">
+    <Component class="javax.swing.JLabel" name="accualPriceLabel">
       <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\axel\Documents\NetBeansProjects\IMat\IMatGit\iMat.resources\x-2x.png"/>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="24" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="this.shoppingItem.getProduct().getPrice()+&quot; &quot;+this.shoppingItem.getProduct().getUnit()" type="code"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="accualTotalPriceLabel">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="24" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="&quot;&quot;+this.shoppingItem.getTotal()" type="code"/>
         </Property>
       </Properties>
     </Component>

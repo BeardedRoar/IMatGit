@@ -31,6 +31,8 @@ public class ShoppingCartPanel extends javax.swing.JPanel {
         while (it.hasNext()){
             this.itemPanel.add(new ShoppingCartComponentPanel(it.next()));
         }
+        
+        this.costLabel.setText(model.getTotalCost() + " kr");
     }
 
     /**
@@ -66,6 +68,11 @@ public class ShoppingCartPanel extends javax.swing.JPanel {
 
         nextButton.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         nextButton.setText("Next");
+        nextButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nextButtonActionPerformed(evt);
+            }
+        });
 
         totLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         totLabel.setText("Totalt:");
@@ -78,7 +85,7 @@ public class ShoppingCartPanel extends javax.swing.JPanel {
         infoPanelLayout.setHorizontalGroup(
             infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(infoPanelLayout.createSequentialGroup()
-                .addContainerGap(800, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(nextButton, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, infoPanelLayout.createSequentialGroup()
@@ -118,6 +125,10 @@ public class ShoppingCartPanel extends javax.swing.JPanel {
                 .addComponent(infoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
+        
+    }//GEN-LAST:event_nextButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

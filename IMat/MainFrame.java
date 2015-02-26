@@ -61,7 +61,7 @@ public class MainFrame extends javax.swing.JFrame {
         this.card = (CardLayout)this.featurePanel.getLayout();
         this.checkoutPanelHolder.add(new CheckoutPanel(model));
         this.resultPanelHolder.add(new ResultPanel(ProductCategory.POD, model));
-        card.show(this.featurePanel, "resultCard");
+        card.show(this.featurePanel, "frontPageCard");
         repaint();
         revalidate();
     }
@@ -95,6 +95,10 @@ public class MainFrame extends javax.swing.JFrame {
     public IMatModel getModel(){
         return model;
     }
+    
+    public void setFeatureCard(String cardName){
+        card.show(this.featurePanel, cardName);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -107,7 +111,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         headerPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        cartLabel = new javax.swing.JLabel();
         searchPanel = new javax.swing.JPanel();
         seachIcon = new javax.swing.JLabel();
         searchTextField = new javax.swing.JTextField();
@@ -120,6 +124,8 @@ public class MainFrame extends javax.swing.JFrame {
         categoryPanel = new javax.swing.JPanel();
         categoryPanel1 = new javax.swing.JPanel();
         featurePanel = new javax.swing.JPanel();
+        shoppingCartPanelHolder = new javax.swing.JPanel();
+        frontPagePanel = new javax.swing.JPanel();
         resultPanelHolder = new javax.swing.JPanel();
         checkoutPanelHolder = new javax.swing.JPanel();
         menuBarPanel = new javax.swing.JMenuBar();
@@ -136,8 +142,13 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("iMat");
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iMat.resources/cart.png"))); // NOI18N
-        jLabel2.setText("jLabel2");
+        cartLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iMat.resources/cart.png"))); // NOI18N
+        cartLabel.setText("jLabel2");
+        cartLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cartLabelMouseClicked(evt);
+            }
+        });
 
         searchPanel.setBackground(new java.awt.Color(255, 255, 255));
         searchPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -183,7 +194,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(searchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(101, 101, 101)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cartLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         headerPanelLayout.setVerticalGroup(
@@ -191,7 +202,7 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(headerPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cartLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(headerPanelLayout.createSequentialGroup()
                         .addGap(36, 36, 36)
                         .addComponent(searchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -281,7 +292,13 @@ public class MainFrame extends javax.swing.JFrame {
         featurePanel.setPreferredSize(new java.awt.Dimension(993, 600));
         featurePanel.setLayout(new java.awt.CardLayout());
 
-        resultPanelHolder.setLayout(new java.awt.GridLayout());
+        shoppingCartPanelHolder.setLayout(new java.awt.GridLayout());
+        featurePanel.add(shoppingCartPanelHolder, "shoppingCartCard");
+
+        frontPagePanel.setLayout(new java.awt.GridLayout(2, 0, 0, 2));
+        featurePanel.add(frontPagePanel, "frontPageCard");
+
+        resultPanelHolder.setLayout(new java.awt.GridLayout(1, 0));
         featurePanel.add(resultPanelHolder, "resultCard");
 
         checkoutPanelHolder.setLayout(new java.awt.GridLayout(1, 0));
@@ -321,6 +338,12 @@ public class MainFrame extends javax.swing.JFrame {
     private void startTextPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_startTextPanelMousePressed
         System.out.println("Start clicked");
     }//GEN-LAST:event_startTextPanelMousePressed
+
+    private void cartLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cartLabelMouseClicked
+        this.shoppingCartPanelHolder.removeAll();
+        this.shoppingCartPanelHolder.add(new ShoppingCartPanel(model));
+        card.show(this.featurePanel, "shoppingCartCard");
+    }//GEN-LAST:event_cartLabelMouseClicked
    
     /**
      * @param args the command line arguments
@@ -360,15 +383,16 @@ public class MainFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel browsePanel;
     private javax.swing.JScrollPane browseScrollPanel;
+    private javax.swing.JLabel cartLabel;
     private javax.swing.JPanel categoryPanel;
     private javax.swing.JPanel categoryPanel1;
     private javax.swing.JPanel checkoutPanelHolder;
     private javax.swing.JPanel favoritePanel;
     private javax.swing.JPanel featureHeaderPanel;
     private javax.swing.JPanel featurePanel;
+    private javax.swing.JPanel frontPagePanel;
     private javax.swing.JPanel headerPanel;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar menuBarPanel;
@@ -376,6 +400,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel seachIcon;
     private javax.swing.JPanel searchPanel;
     private javax.swing.JTextField searchTextField;
+    private javax.swing.JPanel shoppingCartPanelHolder;
     private javax.swing.JLabel startLabel;
     private javax.swing.JPanel startTextPanel;
     // End of variables declaration//GEN-END:variables
