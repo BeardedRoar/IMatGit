@@ -6,6 +6,7 @@
 package IMat;
 
 import java.awt.*;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 import se.chalmers.ait.dat215.project.*;
 
@@ -26,14 +27,14 @@ public class ProductPanel extends javax.swing.JPanel {
         product=p;
         model=m;
         
-        //Creates an image for a specific product and scales it to an appropriate size.
-        productImage=new javax.swing.ImageIcon(("~\\.dat215\\imat\\images\\" + p.getImageName()));
-        Image scaledImage=productImage.getImage().getScaledInstance(143, 111, Image.SCALE_FAST);
-        productImage=new ImageIcon(scaledImage);
         initComponents();
         
+        if(model.isFavorite(product)){
+          EnbFavouriteLabel.setVisible(true);
+          DisFavouriteLabel.setVisible(false);   
+        }
     }
-    public ProductPanel() {}
+    public ProductPanel(){}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -58,8 +59,14 @@ public class ProductPanel extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(180, 240));
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
 
-        productIcon.setIcon(productImage);
+        productIcon.setIcon(model.getImageIcon(product, 143, 111)
+        );
         productIcon.setText("productIcon");
         productIcon.setPreferredSize(new java.awt.Dimension(180, 111));
 
@@ -73,6 +80,14 @@ public class ProductPanel extends javax.swing.JPanel {
         nbrOfProductsTextfield.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         nbrOfProductsTextfield.setText("1");
         nbrOfProductsTextfield.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 0, 1, new java.awt.Color(0, 0, 0)));
+        nbrOfProductsTextfield.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                nbrOfProductsTextfieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                nbrOfProductsTextfieldFocusLost(evt);
+            }
+        });
         nbrOfProductsTextfield.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nbrOfProductsTextfieldActionPerformed(evt);
@@ -153,7 +168,7 @@ public class ProductPanel extends javax.swing.JPanel {
 
         EnbFavouriteLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iMat.resources/EnabledFavoriteIcon.png"))); // NOI18N
         FavouritePanel.add(EnbFavouriteLabel);
-        EnbFavouriteLabel.setVisible(model.isFavorite(product));
+        EnbFavouriteLabel.setVisible(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -239,6 +254,18 @@ public class ProductPanel extends javax.swing.JPanel {
     private void cartButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cartButtonActionPerformed
         model.addProduct(product, Integer.parseInt(nbrOfProductsTextfield.getText()));
     }//GEN-LAST:event_cartButtonActionPerformed
+
+    private void nbrOfProductsTextfieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nbrOfProductsTextfieldFocusGained
+        nbrOfProductsTextfield.selectAll();
+    }//GEN-LAST:event_nbrOfProductsTextfieldFocusGained
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        this.requestFocus();
+    }//GEN-LAST:event_formMouseClicked
+
+    private void nbrOfProductsTextfieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nbrOfProductsTextfieldFocusLost
+        currentNbrOfProducts=Integer.parseInt(nbrOfProductsTextfield.getText());
+    }//GEN-LAST:event_nbrOfProductsTextfieldFocusLost
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel DisFavouriteLabel;
