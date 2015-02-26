@@ -42,6 +42,34 @@ public class CheckoutPanel extends javax.swing.JPanel {
         if(!model.getCardType().equals("")){
             cardComboBox.setSelectedItem(model.getCardType());
         }
+        if(!(model.getFirstName().equals("") && model.getLastName().equals(""))){
+            nameTextField.setText(model.getFirstName());
+            nameTextField2.setText(model.getLastName());
+        }
+        if(!model.getAdress().equals("")){
+            adressTextField.setText(model.getAdress());
+            adressTextField2.setText(model.getAdress());
+        }
+        if(!model.getPostCode().equals("") && model.getPostAdress().equals("")){
+            postalCodeTextField.setText(model.getPostCode());
+            postalAdressTextField.setText(model.getPostAdress());
+        }
+        if(!model.getEmail().equals("")){
+            emailTextField.setText(model.getEmail());
+        }
+        if(!model.getPhoneNumber().equals("") && 
+            model.getMobilePhoneNumber().equals("")){
+            phoneTextField.setText(model.getPhoneNumber());
+            phoneTextField2.setText(model.getMobilePhoneNumber());
+        }
+     
+        
+            
+        
+        
+        
+        
+        
     }    
 
     /**
@@ -157,7 +185,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
 
         emailLabel.setText("Email");
 
-        emailTextField.setText("anders@andersson.com");
+        emailTextField.setText("Enter Email Here");
 
         phoneLabel.setText("Telefon");
 
@@ -233,7 +261,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(163, 163, 163)
                                 .addComponent(postalAdressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 360, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 402, Short.MAX_VALUE)
                         .addComponent(buyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
