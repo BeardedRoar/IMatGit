@@ -107,6 +107,7 @@ public class MainFrame extends javax.swing.JFrame {
         featureHeaderPanel = new javax.swing.JPanel();
         categoryPanel = new javax.swing.JPanel();
         featurePanel = new javax.swing.JPanel();
+        historyPanelHolder = new javax.swing.JPanel();
         shoppingCartPanelHolder = new javax.swing.JPanel();
         frontPagePanel = new javax.swing.JPanel();
         resultPanelHolder = new javax.swing.JPanel();
@@ -267,6 +268,9 @@ public class MainFrame extends javax.swing.JFrame {
         featurePanel.setPreferredSize(new java.awt.Dimension(993, 600));
         featurePanel.setLayout(new java.awt.CardLayout());
 
+        historyPanelHolder.setLayout(new java.awt.GridLayout());
+        featurePanel.add(historyPanelHolder, "historyCard");
+
         shoppingCartPanelHolder.setLayout(new java.awt.GridLayout(1, 0));
         featurePanel.add(shoppingCartPanelHolder, "shoppingCartCard");
 
@@ -366,6 +370,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel featurePanel;
     private javax.swing.JPanel frontPagePanel;
     private javax.swing.JPanel headerPanel;
+    private javax.swing.JPanel historyPanelHolder;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -388,9 +393,12 @@ public class MainFrame extends javax.swing.JFrame {
             if (panel.getName().equals("Mina Favoriter")) {
                 this.resultPanelHolder.removeAll();
                 this.resultPanelHolder.add(new ResultPanel(model.getFavoritePanels(), model));
-
+                card.show(this.featurePanel, "resultCard");
+            } else if (panel.getName().equals("Ofta Köpta")){
+                this.historyPanelHolder.removeAll();
+                this.historyPanelHolder.add(new HistoryPanel(model));
+                card.show(this.featurePanel, "historyCard");
             }
-            card.show(this.featurePanel, "resultCard");
             repaint();
             revalidate();
         } else{
