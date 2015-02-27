@@ -499,6 +499,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_buyButtonActionPerformed
 
     private void saveInformationCheckBoxMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveInformationCheckBoxMousePressed
+        
         model.setCardNumber(cardNumberTextField.getText());
         //model.setCardType(cardComboBox.);
         model.setValidMonth(Integer.parseInt(monthTextField.getText()));
@@ -510,8 +511,11 @@ public class CheckoutPanel extends javax.swing.JPanel {
         model.setAddress(adressTextField.getText());
         
         model.setPostCode(postalCodeLabel.getText());
+        model.setPostAddress(postalAdressTextField.getText());
         
-        
+        model.setEmail(emailTextField.getText());
+        model.setPhoneNumber(phoneTextField.getText());
+        model.setMobilePhoneNumber(mobilePhoneTextField.getText());
     }//GEN-LAST:event_saveInformationCheckBoxMousePressed
 
     
