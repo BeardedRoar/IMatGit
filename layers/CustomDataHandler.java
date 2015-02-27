@@ -75,4 +75,8 @@ public class CustomDataHandler {
         return this.dataHandler.placeOrder(clearShoppingCart);
     }
     
+    public List<Order> getOrders(){
+        return this.dataHandler.getOrders();
+    }
+    
 }
