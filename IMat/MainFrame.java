@@ -124,6 +124,11 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("iMat");
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                startTextPanelMousePressed(evt);
+            }
+        });
 
         cartLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iMat.resources/cart.png"))); // NOI18N
         cartLabel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -311,7 +316,7 @@ public class MainFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void startTextPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_startTextPanelMousePressed
-        System.out.println("Start clicked");
+        card.show(this.featurePanel, "frontPageCard");
     }//GEN-LAST:event_startTextPanelMousePressed
 
     private void cartLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cartLabelMouseClicked
@@ -388,7 +393,6 @@ public class MainFrame extends javax.swing.JFrame {
             if (panel.getName().equals("Mina Favoriter")) {
                 this.resultPanelHolder.removeAll();
                 this.resultPanelHolder.add(new ResultPanel(model.getFavoritePanels(), model));
-
             }
             card.show(this.featurePanel, "resultCard");
             repaint();
