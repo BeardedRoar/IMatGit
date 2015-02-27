@@ -17,6 +17,7 @@ public class CategoryPanel extends javax.swing.JPanel {
     private String labelText;
     private MouseListener listener;
     private ProductCategory category = null;
+    private boolean isSubCategory = false;
     /**
      * Creates new form CategoryPanel
      */
@@ -37,7 +38,15 @@ public class CategoryPanel extends javax.swing.JPanel {
         this.category = pc;
         this.listener = listener;
     }
+     public CategoryPanel(String text, ProductCategory pc, MouseListener listener, boolean subBoolean){
+         this(text, pc, listener);
+         isSubCategory = subBoolean;
+     
+     }
     
+    public boolean isSub(){
+        return isSubCategory;
+    }
     public String getName(){
         return labelText;
     }
