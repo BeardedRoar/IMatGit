@@ -167,6 +167,38 @@ public class IMatModel {
          return customer.getPostAddress();
      }
      
+     public void setAddress(String adress){
+         customer.setAddress(adress);
+     }
+     
+     public void setEmail(String email){
+         customer.setEmail(email);
+     }
+     
+     public void setFirstName(String fn){
+         customer.setFirstName(fn);
+     }
+     
+     public void setLastName(String ln){
+         customer.setLastName(ln);
+     }
+     
+     public void setPhoneNumber(String phonenmr){
+         customer.setPhoneNumber(phonenmr);
+     }
+     
+     public void setMobilePhoneNumber(String mphonenmr){
+         customer.setMobilePhoneNumber(mphonenmr);
+     }
+     
+     public void setPostAddress(String postaddress){
+         customer.setPostAddress(postaddress);
+     }
+     
+     public void setPostCode(String postcode){
+         customer.setPostCode(postcode);
+     }
+     
      //end of customer methods
              
      public boolean isFavorite(Product p){
