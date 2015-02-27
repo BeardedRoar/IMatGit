@@ -14,14 +14,22 @@ import se.chalmers.ait.dat215.project.*;
 public class StartProductPanel extends javax.swing.JPanel {
     private Product product;
     private IMatModel model;
+    int currentNbrOfProducts=1;
     /**
      * Creates new form StartProductPanel
      */
     public StartProductPanel(Product p,IMatModel m) {
         product=p;
         model=m;
+        
         initComponents();
+        
+        if(model.isFavorite(product)){
+          EnbFavouriteLabel.setVisible(true);
+          DisFavouriteLabel.setVisible(false);   
+        }
     }
+    public StartProductPanel(){}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -35,8 +43,23 @@ public class StartProductPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        cartPanel = new javax.swing.JPanel();
+        nbrOfProductsTextfield = new javax.swing.JTextField();
+        cartButton = new javax.swing.JButton();
+        upButton = new javax.swing.JButton();
+        downButton = new javax.swing.JButton();
+        FavouritePanel = new javax.swing.JPanel();
+        DisFavouriteLabel = new javax.swing.JLabel();
+        EnbFavouriteLabel = new javax.swing.JLabel();
 
-        jLabel1.setIcon(model.getImageIcon(product, 100, 72));
+        setBackground(new java.awt.Color(255, 255, 255));
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
+
+        jLabel1.setIcon(model.getImageIcon(product, 138, 72));
         jLabel1.setPreferredSize(new java.awt.Dimension(72, 100));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
@@ -45,6 +68,100 @@ public class StartProductPanel extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel3.setText(product.getPrice() + " " + product.getUnit());
 
+        cartPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)));
+
+        nbrOfProductsTextfield.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        nbrOfProductsTextfield.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        nbrOfProductsTextfield.setText("1");
+        nbrOfProductsTextfield.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 0, 1, new java.awt.Color(0, 0, 0)));
+        nbrOfProductsTextfield.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                nbrOfProductsTextfieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                nbrOfProductsTextfieldFocusLost(evt);
+            }
+        });
+        nbrOfProductsTextfield.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nbrOfProductsTextfieldActionPerformed(evt);
+            }
+        });
+
+        cartButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iMat.resources/Productcart.png"))); // NOI18N
+        cartButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cartButtonActionPerformed(evt);
+            }
+        });
+
+        upButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iMat.resources/ArrowUpImage.png"))); // NOI18N
+        upButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        upButton.setPreferredSize(new java.awt.Dimension(73, 26));
+        upButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                upButtonActionPerformed(evt);
+            }
+        });
+
+        downButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iMat.resources/ArrowDownImage.png"))); // NOI18N
+        downButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        downButton.setPreferredSize(new java.awt.Dimension(73, 26));
+        downButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                downButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout cartPanelLayout = new javax.swing.GroupLayout(cartPanel);
+        cartPanel.setLayout(cartPanelLayout);
+        cartPanelLayout.setHorizontalGroup(
+            cartPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cartPanelLayout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addGroup(cartPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(upButton, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(downButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0)
+                .addComponent(nbrOfProductsTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(cartButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        cartPanelLayout.setVerticalGroup(
+            cartPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cartPanelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(cartPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(downButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nbrOfProductsTextfield, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cartPanelLayout.createSequentialGroup()
+                        .addComponent(upButton, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addComponent(cartButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+        );
+
+        FavouritePanel.setBackground(new java.awt.Color(255, 255, 255));
+        FavouritePanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                FavouritePanelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                FavouritePanelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                FavouritePanelMouseExited(evt);
+            }
+        });
+        FavouritePanel.setLayout(new javax.swing.OverlayLayout(FavouritePanel));
+
+        DisFavouriteLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iMat.resources/DisabledFavoriteIcon.png"))); // NOI18N
+        DisFavouriteLabel.setPreferredSize(new java.awt.Dimension(25, 28));
+        FavouritePanel.add(DisFavouriteLabel);
+
+        EnbFavouriteLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iMat.resources/EnabledFavoriteIcon.png"))); // NOI18N
+        FavouritePanel.add(EnbFavouriteLabel);
+        EnbFavouriteLabel.setVisible(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -52,11 +169,14 @@ public class StartProductPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(73, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(cartPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                        .addComponent(FavouritePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -67,14 +187,92 @@ public class StartProductPanel extends javax.swing.JPanel {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(cartPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(FavouritePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void nbrOfProductsTextfieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nbrOfProductsTextfieldFocusGained
+        nbrOfProductsTextfield.selectAll();
+    }//GEN-LAST:event_nbrOfProductsTextfieldFocusGained
+
+    private void nbrOfProductsTextfieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nbrOfProductsTextfieldFocusLost
+        currentNbrOfProducts=Integer.parseInt(nbrOfProductsTextfield.getText());
+    }//GEN-LAST:event_nbrOfProductsTextfieldFocusLost
+
+    private void nbrOfProductsTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nbrOfProductsTextfieldActionPerformed
+        try{
+            if(Integer.parseInt(nbrOfProductsTextfield.getText())<1){
+                nbrOfProductsTextfield.setText(Integer.toString(currentNbrOfProducts));
+            }
+            currentNbrOfProducts=Integer.parseInt(nbrOfProductsTextfield.getText());
+        }
+        catch(NumberFormatException e){
+            nbrOfProductsTextfield.setText(Integer.toString(currentNbrOfProducts));
+        }
+    }//GEN-LAST:event_nbrOfProductsTextfieldActionPerformed
+
+    private void cartButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cartButtonActionPerformed
+        model.addProduct(product, Integer.parseInt(nbrOfProductsTextfield.getText()));
+    }//GEN-LAST:event_cartButtonActionPerformed
+
+    private void upButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_upButtonActionPerformed
+        currentNbrOfProducts++;
+        nbrOfProductsTextfield.setText(Integer.toString(currentNbrOfProducts));
+    }//GEN-LAST:event_upButtonActionPerformed
+
+    private void downButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_downButtonActionPerformed
+        if(currentNbrOfProducts>1){
+            currentNbrOfProducts--;
+            nbrOfProductsTextfield.setText(Integer.toString(currentNbrOfProducts));
+        }
+    }//GEN-LAST:event_downButtonActionPerformed
+
+    private void FavouritePanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FavouritePanelMouseClicked
+        model.changeFavoriteStatus(product);
+        if(!model.isFavorite(product)){
+            EnbFavouriteLabel.setVisible(false);
+            DisFavouriteLabel.setVisible(true);
+        }
+    }//GEN-LAST:event_FavouritePanelMouseClicked
+
+    private void FavouritePanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FavouritePanelMouseEntered
+        if(!model.isFavorite(product)){
+            EnbFavouriteLabel.setVisible(true);
+            DisFavouriteLabel.setVisible(false);
+        }
+    }//GEN-LAST:event_FavouritePanelMouseEntered
+
+    private void FavouritePanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FavouritePanelMouseExited
+        if(!model.isFavorite(product)){
+            EnbFavouriteLabel.setVisible(false);
+            DisFavouriteLabel.setVisible(true);
+        }
+        else{
+            EnbFavouriteLabel.setVisible(true);
+            DisFavouriteLabel.setVisible(false);
+        }
+    }//GEN-LAST:event_FavouritePanelMouseExited
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        this.requestFocus();
+    }//GEN-LAST:event_formMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel DisFavouriteLabel;
+    private javax.swing.JLabel EnbFavouriteLabel;
+    private javax.swing.JPanel FavouritePanel;
+    private javax.swing.JButton cartButton;
+    private javax.swing.JPanel cartPanel;
+    private javax.swing.JButton downButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JTextField nbrOfProductsTextfield;
+    private javax.swing.JButton upButton;
     // End of variables declaration//GEN-END:variables
 }
