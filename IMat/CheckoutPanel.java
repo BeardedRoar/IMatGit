@@ -14,7 +14,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
 
     private IMatModel model;
     private MainFrame frame;
-    
+    private boolean noFault = true;
     /**
      * Creates new form CheckoutPanel
      */
@@ -24,6 +24,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
         initComponents();
         
         adressTextField2.setVisible(false);
+        errorLabel.setVisible(false);
         
         if(!model.getCardNumber().equals("")){ 
             cardNumberTextField.setText(model.getCardNumber());
@@ -102,6 +103,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
         sendToMailCheckBox = new javax.swing.JCheckBox();
         postalAdressTextField = new javax.swing.JTextField();
         postalAdressLabel = new javax.swing.JLabel();
+        saveInformationCheckBox = new javax.swing.JCheckBox();
         jPanel4 = new javax.swing.JPanel();
         emailLabel = new javax.swing.JLabel();
         emailTextField = new javax.swing.JTextField();
@@ -111,6 +113,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
         mobilePhoneTextField = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         buyButton = new javax.swing.JButton();
+        errorLabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(1000, 600));
@@ -245,6 +248,14 @@ public class CheckoutPanel extends javax.swing.JPanel {
 
         postalAdressLabel.setText("Postort");
 
+        saveInformationCheckBox.setText("Spara mina uppgifter");
+        saveInformationCheckBox.setOpaque(false);
+        saveInformationCheckBox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                saveInformationCheckBoxMousePressed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -259,6 +270,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
                         .addComponent(postalAdressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(saveInformationCheckBox)
                             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(jPanel3Layout.createSequentialGroup()
                                     .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -302,7 +314,9 @@ public class CheckoutPanel extends javax.swing.JPanel {
                 .addComponent(adressTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(sendToMailCheckBox)
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(saveInformationCheckBox)
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         jPanel4.setOpaque(false);
@@ -403,19 +417,27 @@ public class CheckoutPanel extends javax.swing.JPanel {
             }
         });
 
+        errorLabel.setText("Fel! Du har skrivit in fel värde!");
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(341, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(buyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(errorLabel)
+                .addContainerGap(269, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(68, 68, 68)
+                .addComponent(errorLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(buyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -445,15 +467,17 @@ public class CheckoutPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_phoneTextFieldActionPerformed
 
     private void cardNumberTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cardNumberTextFieldActionPerformed
-        // TODO add your handling code here:
+        if(cardNumberTextField.getText().length() != 16){
+            noFault = false;
+        }
     }//GEN-LAST:event_cardNumberTextFieldActionPerformed
 
     private void yearTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yearTextFieldActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_yearTextFieldActionPerformed
 
     private void nameTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameTextField2ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_nameTextField2ActionPerformed
 
     private void sendToOtherAdressCheckBoxMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sendToOtherAdressCheckBoxMousePressed
@@ -463,11 +487,36 @@ public class CheckoutPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_sendToOtherAdressCheckBoxMousePressed
 
     private void buyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buyButtonActionPerformed
-        if(frame != null){
+        
+        if(noFault){
+            model.placeOrder(true);
+            if(frame != null){
             frame.setFeatureCard("frontPageCard");
-        }
+            }
+        }else{
+            errorLabel.setVisible(true);
+        }        
     }//GEN-LAST:event_buyButtonActionPerformed
 
+    private void saveInformationCheckBoxMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveInformationCheckBoxMousePressed
+        model.setCardNumber(cardNumberTextField.getText());
+        //model.setCardType(cardComboBox.);
+        model.setValidMonth(Integer.parseInt(monthTextField.getText()));
+        model.setValidYear(Integer.parseInt(yearTextField.getText()));
+        model.setVerificationCode(Integer.parseInt(cvcTextField.getText()));
+        
+        model.setFirstName(nameTextField.getText());
+        model.setLastName(nameTextField.getText());
+        model.setAddress(adressTextField.getText());
+        
+        model.setPostCode(postalCodeLabel.getText());
+        
+        
+    }//GEN-LAST:event_saveInformationCheckBoxMousePressed
+
+    
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel adressLabel;
@@ -485,6 +534,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
     private javax.swing.JLabel deliveryInformationLabel;
     private javax.swing.JLabel emailLabel;
     private javax.swing.JTextField emailTextField;
+    private javax.swing.JLabel errorLabel;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -502,6 +552,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
     private javax.swing.JTextField postalAdressTextField;
     private javax.swing.JLabel postalCodeLabel;
     private javax.swing.JTextField postalCodeTextField;
+    private javax.swing.JCheckBox saveInformationCheckBox;
     private javax.swing.JCheckBox sendToMailCheckBox;
     private javax.swing.JCheckBox sendToOtherAdressCheckBox;
     private javax.swing.JTextField yearTextField;
