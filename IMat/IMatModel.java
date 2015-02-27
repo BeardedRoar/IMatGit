@@ -68,6 +68,19 @@ public class IMatModel {
 
     }  
     
+    // Order and history
+    public Order placeOrder(){
+        return this.handler.placeOrder();
+    }
+    
+    public Order placeOrder(boolean clearShoppingCart){
+        return this.handler.placeOrder(clearShoppingCart);
+    }
+    
+    public List<Order> getOrders(){
+        return this.handler.getOrders();
+    }
+    
     //card methods
     
     public String getCardNumber(){
