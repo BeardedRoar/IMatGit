@@ -59,7 +59,7 @@ public class MainFrame extends javax.swing.JFrame {
         this.createCategories();
         
         this.card = (CardLayout)this.featurePanel.getLayout();
-        this.checkoutPanelHolder.add(new CheckoutPanel(model));
+        this.checkoutPanelHolder.add(new CheckoutPanel(model, this));
         card.show(this.featurePanel, "frontPageCard");
         repaint();
         revalidate();
@@ -72,23 +72,7 @@ public class MainFrame extends javax.swing.JFrame {
         this.featureHeaderPanel.add(new CategoryPanel("Inköpslista", categoryListener));
         this.featureHeaderPanel.add(new CategoryPanel("Veckans Varor", categoryListener));
         this.featureHeaderPanel.add(new CategoryPanel("Veckans Recept", categoryListener));
-      
-        //this.categoryPanel.add(new CategoryPanel("Bakvaror", categoryListener));
         model.makeCategoryPanel(this.categoryPanel, "Start", categoryListener);
-        
-        /*
-        this.categoryPanel.add(new CategoryPanel("Bakvaror", categoryListener));
-        this.categoryPanel.add(new CategoryPanel("Bröd", ProductCategory.BREAD, categoryListener));
-        this.categoryPanel.add(new CategoryPanel("Drycker", categoryListener));
-        this.categoryPanel.add(new CategoryPanel("Fisk", ProductCategory.FISH, categoryListener));
-        this.categoryPanel.add(new CategoryPanel("Frukt & Grönt", categoryListener));
-        this.categoryPanel.add(new CategoryPanel("Kolhydrater", categoryListener));
-        this.categoryPanel.add(new CategoryPanel("Kött", ProductCategory.MEAT, categoryListener));
-        this.categoryPanel.add(new CategoryPanel("Mejeri", ProductCategory.DAIRIES, categoryListener)); 
-        this.categoryPanel.add(new CategoryPanel("Nötter & Frön", categoryListener));
-        this.categoryPanel.add(new CategoryPanel("Sötsaker", ProductCategory.SWEET, categoryListener));
-        this.categoryPanel.add(new CategoryPanel("Örtkryddor", ProductCategory.HERB, categoryListener)); 
-        */
         
     }
     
