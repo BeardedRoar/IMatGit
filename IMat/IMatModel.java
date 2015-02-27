@@ -1,12 +1,14 @@
 package IMat;
 
 
+import java.awt.GridLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import javax.swing.ImageIcon;
+import javax.swing.JPanel;
 import layers.CustomCart;
 import layers.CustomDataHandler;
 import se.chalmers.ait.dat215.project.*;
@@ -240,5 +242,71 @@ public class IMatModel {
       public ImageIcon getImageIcon(Product p, int width, int height){
           return this.handler.getImageIcon(p, width, height);
       }
-
+      public void makeCategoryPanel(JPanel panel, String string, MouseListener categoryListener){
+        panel.removeAll();
+        if (string.equals("Frukt & Grönt")){
+            panel.setLayout(new GridLayout(19,0));
+            panel.add(new CategoryPanel("Bakvaror", ProductCategory.FLOUR_SUGAR_SALT, categoryListener));
+            panel.add(new CategoryPanel("Bröd", ProductCategory.BREAD, categoryListener));
+            panel.add(new CategoryPanel("Drycker", categoryListener));
+            panel.add(new CategoryPanel("Fisk", ProductCategory.FISH, categoryListener));
+            panel.add(new CategoryPanel("Frukt & Grönt", categoryListener));
+            panel.add(new CategoryPanel("    Bär", ProductCategory.BERRY, categoryListener, true));
+            panel.add(new CategoryPanel("    Baljväxter", ProductCategory.POD, categoryListener, true));
+            panel.add(new CategoryPanel("    Citrusfrukter", ProductCategory.CITRUS_FRUIT, categoryListener, true));
+            panel.add(new CategoryPanel("    Exotiska frukter", ProductCategory.EXOTIC_FRUIT, categoryListener, true));
+            panel.add(new CategoryPanel("    Grönsaker", ProductCategory.VEGETABLE_FRUIT, categoryListener, true));
+            panel.add(new CategoryPanel("    Kål", ProductCategory.CABBAGE, categoryListener, true));
+            panel.add(new CategoryPanel("    Meloner", ProductCategory.MELONS, categoryListener, true));
+            panel.add(new CategoryPanel("    Stenfrukter", ProductCategory.FRUIT, categoryListener, true ));
+            panel.add(new CategoryPanel("Kolhydrater", categoryListener));
+            panel.add(new CategoryPanel("Kött", ProductCategory.MEAT, categoryListener));
+            panel.add(new CategoryPanel("Mejeriprodukter", ProductCategory.DAIRIES, categoryListener)); 
+            panel.add(new CategoryPanel("Nötter & Frön", ProductCategory.NUTS_AND_SEEDS, categoryListener));
+            panel.add(new CategoryPanel("Sötsaker", ProductCategory.SWEET, categoryListener));
+            panel.add(new CategoryPanel("Örtkryddor", ProductCategory.HERB, categoryListener));    
+        }else if (string.equals("Drycker")){
+            panel.setLayout(new GridLayout(13,0));
+            panel.add(new CategoryPanel("Bakvaror", ProductCategory.FLOUR_SUGAR_SALT, categoryListener));
+            panel.add(new CategoryPanel("Bröd", ProductCategory.BREAD, categoryListener));
+            panel.add(new CategoryPanel("Drycker",categoryListener));
+            panel.add(new CategoryPanel("    Drycker Kalla", ProductCategory.COLD_DRINKS, categoryListener, true));
+            panel.add(new CategoryPanel("    Drycker Varma", ProductCategory.HOT_DRINKS, categoryListener, true));
+            panel.add(new CategoryPanel("Fisk", ProductCategory.FISH, categoryListener));
+            panel.add(new CategoryPanel("Frukt & Grönt", categoryListener));
+            panel.add(new CategoryPanel("Kolhydrater", categoryListener));
+            panel.add(new CategoryPanel("Kött", ProductCategory.MEAT, categoryListener));
+            panel.add(new CategoryPanel("Mejeriprodukter", ProductCategory.DAIRIES, categoryListener)); 
+            panel.add(new CategoryPanel("Nötter & Frön", ProductCategory.NUTS_AND_SEEDS, categoryListener));
+            panel.add(new CategoryPanel("Sötsaker", ProductCategory.SWEET, categoryListener));
+            panel.add(new CategoryPanel("Örtkryddor", ProductCategory.HERB, categoryListener));
+        }else if (string.equals("Kolhydrater")){
+            panel.setLayout(new GridLayout(13,0));
+            panel.add(new CategoryPanel("Bakvaror", ProductCategory.FLOUR_SUGAR_SALT, categoryListener));
+            panel.add(new CategoryPanel("Bröd", ProductCategory.BREAD, categoryListener));
+            panel.add(new CategoryPanel("Drycker", categoryListener));   
+            panel.add(new CategoryPanel("Fisk", ProductCategory.FISH, categoryListener));
+            panel.add(new CategoryPanel("Frukt & Grönt", categoryListener));
+            panel.add(new CategoryPanel("Kolhydrater", categoryListener));
+            panel.add(new CategoryPanel("    Pasta", ProductCategory.PASTA, categoryListener, true));
+            panel.add(new CategoryPanel("    Potatis, ris", ProductCategory.POTATO_RICE, categoryListener, true));
+            panel.add(new CategoryPanel("Kött", ProductCategory.MEAT, categoryListener));
+            panel.add(new CategoryPanel("Mejeriprodukter", ProductCategory.DAIRIES, categoryListener)); 
+            panel.add(new CategoryPanel("Nötter & Frön", ProductCategory.NUTS_AND_SEEDS, categoryListener));
+            panel.add(new CategoryPanel("Sötsaker", ProductCategory.SWEET, categoryListener));
+            panel.add(new CategoryPanel("Örtkryddor", ProductCategory.HERB, categoryListener));
+        } else {
+            panel.add(new CategoryPanel("Bakvaror", ProductCategory.FLOUR_SUGAR_SALT, categoryListener));
+            panel.add(new CategoryPanel("Bröd", ProductCategory.BREAD, categoryListener));
+            panel.add(new CategoryPanel("Drycker", categoryListener));
+            panel.add(new CategoryPanel("Fisk", ProductCategory.FISH, categoryListener));
+            panel.add(new CategoryPanel("Frukt & Grönt", categoryListener));
+            panel.add(new CategoryPanel("Kolhydrater", categoryListener));
+            panel.add(new CategoryPanel("Kött", ProductCategory.MEAT, categoryListener));
+            panel.add(new CategoryPanel("Mejeriprodukter",ProductCategory.DAIRIES, categoryListener)); 
+            panel.add(new CategoryPanel("Nötter & Frön", ProductCategory.NUTS_AND_SEEDS, categoryListener));
+            panel.add(new CategoryPanel("Sötsaker", ProductCategory.SWEET, categoryListener));
+            panel.add(new CategoryPanel("Örtkryddor", ProductCategory.HERB, categoryListener)); 
+        }
+    }
 }

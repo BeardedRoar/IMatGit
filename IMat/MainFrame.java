@@ -72,23 +72,8 @@ public class MainFrame extends javax.swing.JFrame {
         this.featureHeaderPanel.add(new CategoryPanel("Inköpslista", categoryListener));
         this.featureHeaderPanel.add(new CategoryPanel("Veckans Varor", categoryListener));
         this.featureHeaderPanel.add(new CategoryPanel("Veckans Recept", categoryListener));
-        this.categoryPanel.add(new CategoryPanel("Bakvaror", ProductCategory.FLOUR_SUGAR_SALT, categoryListener));
-        this.categoryPanel.add(new CategoryPanel("Bröd", ProductCategory.BREAD, categoryListener));
-        this.categoryPanel.add(new CategoryPanel("Drycker", categoryListener));
-        this.categoryPanel.add(new CategoryPanel("Fisk", ProductCategory.FISH, categoryListener));
-        this.categoryPanel.add(new CategoryPanel("Frukt & Grönt", categoryListener));
-        this.categoryPanel.add(new CategoryPanel("Kolhydrater", categoryListener));
-        this.categoryPanel.add(new CategoryPanel("Kött", ProductCategory.MEAT, categoryListener));
-        this.categoryPanel.add(new CategoryPanel("Mejeri", ProductCategory.DAIRIES, categoryListener)); 
-        this.categoryPanel.add(new CategoryPanel("Nötter & Frön", categoryListener));
-        this.categoryPanel.add(new CategoryPanel("Sötsaker", ProductCategory.SWEET, categoryListener));
-        this.categoryPanel.add(new CategoryPanel("Örtkryddor", ProductCategory.HERB, categoryListener)); 
-        this.categoryPanel1.add(new CategoryPanel("Bär", ProductCategory.BERRY, categoryListener));
-        this.categoryPanel1.add(new CategoryPanel("Baljväxter", ProductCategory.POD, categoryListener));
-        this.categoryPanel1.add(new CategoryPanel("Citrusfrukter", ProductCategory.CITRUS_FRUIT, categoryListener));
-        this.categoryPanel1.add(new CategoryPanel("Grönsaksfrukter", ProductCategory.VEGETABLE_FRUIT, categoryListener));
-        this.categoryPanel1.add(new CategoryPanel("Kål", ProductCategory.CABBAGE, categoryListener));
-        this.categoryPanel1.add(new CategoryPanel("Meloner", ProductCategory.MELONS, categoryListener));
+        model.makeCategoryPanel(this.categoryPanel, "Start", categoryListener);
+        
     }
     
     public IMatModel getModel(){
@@ -121,8 +106,8 @@ public class MainFrame extends javax.swing.JFrame {
         favoritePanel = new javax.swing.JPanel();
         featureHeaderPanel = new javax.swing.JPanel();
         categoryPanel = new javax.swing.JPanel();
-        categoryPanel1 = new javax.swing.JPanel();
         featurePanel = new javax.swing.JPanel();
+        historyPanelHolder = new javax.swing.JPanel();
         shoppingCartPanelHolder = new javax.swing.JPanel();
         frontPagePanel = new javax.swing.JPanel();
         resultPanelHolder = new javax.swing.JPanel();
@@ -142,7 +127,6 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel1.setText("iMat");
 
         cartLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iMat.resources/cart.png"))); // NOI18N
-        cartLabel.setText("jLabel2");
         cartLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 cartLabelMouseClicked(evt);
@@ -250,11 +234,8 @@ public class MainFrame extends javax.swing.JFrame {
         featureHeaderPanel.setRequestFocusEnabled(false);
         featureHeaderPanel.setLayout(new java.awt.GridLayout(4, 0));
 
-        categoryPanel.setPreferredSize(new java.awt.Dimension(150, 0));
+        categoryPanel.setPreferredSize(new java.awt.Dimension(160, 0));
         categoryPanel.setLayout(new java.awt.GridLayout(11, 0));
-
-        categoryPanel1.setPreferredSize(new java.awt.Dimension(150, 0));
-        categoryPanel1.setLayout(new java.awt.GridLayout(26, 0));
 
         javax.swing.GroupLayout browsePanelLayout = new javax.swing.GroupLayout(browsePanel);
         browsePanel.setLayout(browsePanelLayout);
@@ -262,27 +243,23 @@ public class MainFrame extends javax.swing.JFrame {
             browsePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(startTextPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(browsePanelLayout.createSequentialGroup()
-                .addGroup(browsePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(browsePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(categoryPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(favoritePanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(featureHeaderPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(categoryPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 48, Short.MAX_VALUE))
+                .addGroup(browsePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(categoryPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(favoritePanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(featureHeaderPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 38, Short.MAX_VALUE))
         );
         browsePanelLayout.setVerticalGroup(
             browsePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(browsePanelLayout.createSequentialGroup()
                 .addComponent(startTextPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(favoritePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 13, Short.MAX_VALUE)
-                .addGap(18, 31, Short.MAX_VALUE)
-                .addComponent(featureHeaderPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 13, Short.MAX_VALUE)
+                .addComponent(favoritePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 12, Short.MAX_VALUE)
+                .addGap(18, 30, Short.MAX_VALUE)
+                .addComponent(featureHeaderPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 12, Short.MAX_VALUE)
                 .addGap(29, 29, 29)
-                .addComponent(categoryPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 4, Short.MAX_VALUE)
-                .addGap(0, 0, 0)
-                .addComponent(categoryPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 9, Short.MAX_VALUE)
-                .addGap(0, 481, Short.MAX_VALUE))
+                .addComponent(categoryPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 497, Short.MAX_VALUE))
         );
 
         browseScrollPanel.setViewportView(browsePanel);
@@ -291,7 +268,10 @@ public class MainFrame extends javax.swing.JFrame {
         featurePanel.setPreferredSize(new java.awt.Dimension(993, 600));
         featurePanel.setLayout(new java.awt.CardLayout());
 
-        shoppingCartPanelHolder.setLayout(new java.awt.GridLayout());
+        historyPanelHolder.setLayout(new java.awt.GridLayout());
+        featurePanel.add(historyPanelHolder, "historyCard");
+
+        shoppingCartPanelHolder.setLayout(new java.awt.GridLayout(1, 0));
         featurePanel.add(shoppingCartPanelHolder, "shoppingCartCard");
 
         frontPagePanel.setLayout(new java.awt.GridLayout(2, 0, 0, 2));
@@ -384,13 +364,13 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane browseScrollPanel;
     private javax.swing.JLabel cartLabel;
     private javax.swing.JPanel categoryPanel;
-    private javax.swing.JPanel categoryPanel1;
     private javax.swing.JPanel checkoutPanelHolder;
     private javax.swing.JPanel favoritePanel;
     private javax.swing.JPanel featureHeaderPanel;
     private javax.swing.JPanel featurePanel;
     private javax.swing.JPanel frontPagePanel;
     private javax.swing.JPanel headerPanel;
+    private javax.swing.JPanel historyPanelHolder;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -406,13 +386,19 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void categoryClicked(MouseEvent e) {
         CategoryPanel panel = (CategoryPanel) e.getSource();
+        if (!panel.isSub()){
+            model.makeCategoryPanel(this.categoryPanel, panel.getName(), categoryListener);
+        }
         if (panel.getCategory() == null) {
             if (panel.getName().equals("Mina Favoriter")) {
                 this.resultPanelHolder.removeAll();
                 this.resultPanelHolder.add(new ResultPanel(model.getFavoritePanels(), model));
-
+                card.show(this.featurePanel, "resultCard");
+            } else if (panel.getName().equals("Ofta Köpta")){
+                this.historyPanelHolder.removeAll();
+                this.historyPanelHolder.add(new HistoryPanel(model));
+                card.show(this.featurePanel, "historyCard");
             }
-            card.show(this.featurePanel, "resultCard");
             repaint();
             revalidate();
         } else{
