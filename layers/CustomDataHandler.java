@@ -66,4 +66,13 @@ public class CustomDataHandler {
     public ImageIcon getImageIcon(Product p, int width, int height){
         return dataHandler.getImageIcon(p, width, height);
     }
+    
+    public Order placeOrder(){
+        return this.dataHandler.placeOrder();
+    }
+    
+    public Order placeOrder(boolean clearShoppingCart){
+        return this.dataHandler.placeOrder(clearShoppingCart);
+    }
+    
 }

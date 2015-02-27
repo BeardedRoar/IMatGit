@@ -72,7 +72,7 @@ public class MainFrame extends javax.swing.JFrame {
         this.featureHeaderPanel.add(new CategoryPanel("Inköpslista", categoryListener));
         this.featureHeaderPanel.add(new CategoryPanel("Veckans Varor", categoryListener));
         this.featureHeaderPanel.add(new CategoryPanel("Veckans Recept", categoryListener));
-        this.categoryPanel.add(new CategoryPanel("Bakvaror", categoryListener));
+        this.categoryPanel.add(new CategoryPanel("Bakvaror", ProductCategory.FLOUR_SUGAR_SALT, categoryListener));
         this.categoryPanel.add(new CategoryPanel("Bröd", ProductCategory.BREAD, categoryListener));
         this.categoryPanel.add(new CategoryPanel("Drycker", categoryListener));
         this.categoryPanel.add(new CategoryPanel("Fisk", ProductCategory.FISH, categoryListener));
