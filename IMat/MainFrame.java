@@ -59,7 +59,7 @@ public class MainFrame extends javax.swing.JFrame {
         this.createCategories();
         
         this.card = (CardLayout)this.featurePanel.getLayout();
-        this.checkoutPanelHolder.add(new CheckoutPanel(model));
+        this.checkoutPanelHolder.add(new CheckoutPanel(model, this));
         card.show(this.featurePanel, "frontPageCard");
         repaint();
         revalidate();

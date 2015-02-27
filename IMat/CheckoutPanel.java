@@ -13,16 +13,14 @@ package IMat;
 public class CheckoutPanel extends javax.swing.JPanel {
 
     private IMatModel model;
-    private String cardNumber;
-    private int validYear;
-    private int validMonth;
-    private int verificationCode;
+    private MainFrame frame;
     
     /**
      * Creates new form CheckoutPanel
      */
     public CheckoutPanel(IMatModel model) {
         this.model = model;    
+        
         initComponents();
         
         adressTextField2.setVisible(false);
@@ -36,8 +34,8 @@ public class CheckoutPanel extends javax.swing.JPanel {
         if(model.getValidMonth() < 12 && model.getValidMonth() > 0){
             monthTextField.setText(Integer.toString(model.getValidMonth()));
         }
-        if(verificationCode != 0){
-            cvcTextField.setText(Integer.toString(verificationCode));
+        if(model.getVerificationCode() != 0){
+            cvcTextField.setText(Integer.toString(model.getVerificationCode()));
         }
         if(!model.getCardType().equals("")){
             cardComboBox.setSelectedItem(model.getCardType());
@@ -62,15 +60,12 @@ public class CheckoutPanel extends javax.swing.JPanel {
             phoneTextField.setText(model.getPhoneNumber());
             mobilePhoneTextField.setText(model.getMobilePhoneNumber());
         }
-     
-        
-            
-        
-        
-        
-        
-        
     }    
+    
+    public CheckoutPanel(IMatModel model, MainFrame frame){
+        this(model);
+        this.frame = frame;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -468,7 +463,9 @@ public class CheckoutPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_sendToOtherAdressCheckBoxMousePressed
 
     private void buyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buyButtonActionPerformed
-        // TODO add your handling code here:
+        if(frame != null){
+            frame.setFeatureCard("frontPageCard");
+        }
     }//GEN-LAST:event_buyButtonActionPerformed
 
 
