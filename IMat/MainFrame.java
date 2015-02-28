@@ -117,6 +117,12 @@ public class MainFrame extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setAutoRequestFocus(false);
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
 
         headerPanel.setBackground(new java.awt.Color(255, 0, 51));
         headerPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
@@ -149,9 +155,16 @@ public class MainFrame extends javax.swing.JFrame {
         seachIcon.setMinimumSize(new java.awt.Dimension(30, 30));
         seachIcon.setPreferredSize(new java.awt.Dimension(30, 30));
 
-        searchTextField.setText("Sök!");
+        searchTextField.setText("Sök...");
         searchTextField.setPreferredSize(new java.awt.Dimension(130, 30));
-        searchTextField.setRequestFocusEnabled(false);
+        searchTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                searchTextFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                searchTextFieldFocusLost(evt);
+            }
+        });
 
         javax.swing.GroupLayout searchPanelLayout = new javax.swing.GroupLayout(searchPanel);
         searchPanel.setLayout(searchPanelLayout);
@@ -273,7 +286,7 @@ public class MainFrame extends javax.swing.JFrame {
         featurePanel.setPreferredSize(new java.awt.Dimension(993, 600));
         featurePanel.setLayout(new java.awt.CardLayout());
 
-        historyPanelHolder.setLayout(new java.awt.GridLayout());
+        historyPanelHolder.setLayout(new java.awt.GridLayout(1, 0));
         featurePanel.add(historyPanelHolder, "historyCard");
 
         shoppingCartPanelHolder.setLayout(new java.awt.GridLayout(1, 0));
@@ -328,6 +341,25 @@ public class MainFrame extends javax.swing.JFrame {
         this.shoppingCartPanelHolder.add(new ShoppingCartPanel(model, this));
         card.show(this.featurePanel, "shoppingCartCard");
     }//GEN-LAST:event_cartLabelMouseClicked
+
+    private void searchTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchTextFieldFocusGained
+        if(searchTextField.getText().equals("Sök...")){
+           searchTextField.setText("");  
+        }
+        else{
+            searchTextField.selectAll();
+        }
+    }//GEN-LAST:event_searchTextFieldFocusGained
+
+    private void searchTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchTextFieldFocusLost
+        if(searchTextField.getText().equals("")){
+            searchTextField.setText("Sök...");  
+        }
+    }//GEN-LAST:event_searchTextFieldFocusLost
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        searchPanel.requestFocus();
+    }//GEN-LAST:event_formMouseClicked
    
     /**
      * @param args the command line arguments
