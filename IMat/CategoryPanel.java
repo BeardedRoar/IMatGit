@@ -1,5 +1,6 @@
 package IMat;
 
+import java.awt.*;
 import java.awt.event.MouseListener;
 import se.chalmers.ait.dat215.project.ProductCategory;
 
@@ -68,6 +69,11 @@ public class CategoryPanel extends javax.swing.JPanel {
 
         setMinimumSize(new java.awt.Dimension(100, 20));
         setPreferredSize(new java.awt.Dimension(100, 20));
+        addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                formMouseMoved(evt);
+            }
+        });
 
         textLabel.setText(labelText);
 
@@ -90,6 +96,10 @@ public class CategoryPanel extends javax.swing.JPanel {
         getAccessibleContext().setAccessibleName("default");
         getAccessibleContext().setAccessibleDescription("default");
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseMoved
+        textLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_formMouseMoved
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
