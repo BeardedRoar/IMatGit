@@ -1,6 +1,7 @@
 package IMat;
 
 import java.awt.CardLayout;
+import java.awt.Cursor;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import se.chalmers.ait.dat215.project.ProductCategory;
@@ -97,8 +98,8 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         cartLabel = new javax.swing.JLabel();
         searchPanel = new javax.swing.JPanel();
-        seachIcon = new javax.swing.JLabel();
         searchTextField = new javax.swing.JTextField();
+        searchIcon = new javax.swing.JLabel();
         browseScrollPanel = new javax.swing.JScrollPane();
         browsePanel = new javax.swing.JPanel();
         startTextPanel = new javax.swing.JPanel();
@@ -146,17 +147,11 @@ public class MainFrame extends javax.swing.JFrame {
 
         searchPanel.setBackground(new java.awt.Color(255, 255, 255));
         searchPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        searchPanel.setPreferredSize(new java.awt.Dimension(160, 30));
-
-        seachIcon.setBackground(new java.awt.Color(255, 255, 255));
-        seachIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iMat.resources/magnifier.png"))); // NOI18N
-        seachIcon.setText("jLabel3");
-        seachIcon.setMaximumSize(new java.awt.Dimension(30, 30));
-        seachIcon.setMinimumSize(new java.awt.Dimension(30, 30));
-        seachIcon.setPreferredSize(new java.awt.Dimension(30, 30));
+        searchPanel.setPreferredSize(new java.awt.Dimension(162, 30));
 
         searchTextField.setText("Sök...");
-        searchTextField.setPreferredSize(new java.awt.Dimension(130, 30));
+        searchTextField.setBorder(null);
+        searchTextField.setPreferredSize(new java.awt.Dimension(124, 29));
         searchTextField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 searchTextFieldFocusGained(evt);
@@ -166,23 +161,34 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        searchIcon.setBackground(new java.awt.Color(255, 255, 255));
+        searchIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iMat.resources/magnifier.png"))); // NOI18N
+        searchIcon.setMaximumSize(new java.awt.Dimension(30, 30));
+        searchIcon.setMinimumSize(new java.awt.Dimension(30, 30));
+        searchIcon.setPreferredSize(new java.awt.Dimension(30, 30));
+        searchIcon.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                searchIconMouseMoved(evt);
+            }
+        });
+
         javax.swing.GroupLayout searchPanelLayout = new javax.swing.GroupLayout(searchPanel);
         searchPanel.setLayout(searchPanelLayout);
         searchPanelLayout.setHorizontalGroup(
             searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, searchPanelLayout.createSequentialGroup()
-                .addComponent(seachIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(searchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addGroup(searchPanelLayout.createSequentialGroup()
+                .addGap(2, 2, 2)
+                .addComponent(searchTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(searchIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         searchPanelLayout.setVerticalGroup(
             searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, searchPanelLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(seachIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addGroup(searchPanelLayout.createSequentialGroup()
+                .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(searchIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout headerPanelLayout = new javax.swing.GroupLayout(headerPanel);
@@ -194,23 +200,23 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(searchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(101, 101, 101)
-                .addComponent(cartLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(73, 73, 73)
+                .addComponent(cartLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(58, 58, 58))
         );
         headerPanelLayout.setVerticalGroup(
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(headerPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cartLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(headerPanelLayout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addComponent(searchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(21, Short.MAX_VALUE))))
+                .addGap(47, 47, 47)
+                .addComponent(searchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(21, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addGroup(headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(cartLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(headerPanelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
@@ -272,12 +278,12 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(browsePanelLayout.createSequentialGroup()
                 .addComponent(startTextPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(favoritePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 12, Short.MAX_VALUE)
-                .addGap(18, 30, Short.MAX_VALUE)
-                .addComponent(featureHeaderPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 12, Short.MAX_VALUE)
+                .addComponent(favoritePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 13, Short.MAX_VALUE)
+                .addGap(18, 31, Short.MAX_VALUE)
+                .addComponent(featureHeaderPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 13, Short.MAX_VALUE)
                 .addGap(29, 29, 29)
                 .addComponent(categoryPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(0, 497, Short.MAX_VALUE))
+                .addGap(0, 496, Short.MAX_VALUE))
         );
 
         browseScrollPanel.setViewportView(browsePanel);
@@ -344,7 +350,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void searchTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchTextFieldFocusGained
         if(searchTextField.getText().equals("Sök...")){
-           searchTextField.setText("");  
+            searchTextField.setText("");
         }
         else{
             searchTextField.selectAll();
@@ -353,13 +359,17 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void searchTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchTextFieldFocusLost
         if(searchTextField.getText().equals("")){
-            searchTextField.setText("Sök...");  
+            searchTextField.setText("Sök...");
         }
     }//GEN-LAST:event_searchTextFieldFocusLost
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
         searchPanel.requestFocus();
     }//GEN-LAST:event_formMouseClicked
+
+    private void searchIconMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchIconMouseMoved
+        searchIcon.setCursor(new Cursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_searchIconMouseMoved
    
     /**
      * @param args the command line arguments
@@ -413,7 +423,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar menuBarPanel;
     private javax.swing.JPanel resultPanelHolder;
-    private javax.swing.JLabel seachIcon;
+    private javax.swing.JLabel searchIcon;
     private javax.swing.JPanel searchPanel;
     private javax.swing.JTextField searchTextField;
     private javax.swing.JPanel shoppingCartPanelHolder;
