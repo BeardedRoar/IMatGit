@@ -139,6 +139,11 @@ public class MainFrame extends javax.swing.JFrame {
         });
 
         cartLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iMat.resources/cart.png"))); // NOI18N
+        cartLabel.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                cartLabelMouseMoved(evt);
+            }
+        });
         cartLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 cartLabelMouseClicked(evt);
@@ -370,6 +375,10 @@ public class MainFrame extends javax.swing.JFrame {
     private void searchIconMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchIconMouseMoved
         searchIcon.setCursor(new Cursor(Cursor.HAND_CURSOR));
     }//GEN-LAST:event_searchIconMouseMoved
+
+    private void cartLabelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cartLabelMouseMoved
+        cartLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_cartLabelMouseMoved
    
     /**
      * @param args the command line arguments
