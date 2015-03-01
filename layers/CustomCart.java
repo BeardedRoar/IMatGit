@@ -5,6 +5,7 @@
  */
 package layers;
 
+import java.util.Iterator;
 import java.util.List;
 import se.chalmers.ait.dat215.project.*;
 
@@ -34,7 +35,22 @@ public class CustomCart {
     }
     
     public void addProduct(Product p, double d){
-        cart.addProduct(p, d);
+        ShoppingItem existingItem = this.getfromCart(p);
+        if (existingItem == null)
+            cart.addProduct(p, d);
+        else
+            existingItem.setAmount(existingItem.getAmount() + d);
+    }
+    
+    private ShoppingItem getfromCart(Product p){
+        Iterator<ShoppingItem> it = this.getItems().iterator();
+        ShoppingItem temp;
+        while(it.hasNext()){
+            temp = it.next();
+            if(temp.getProduct() == p)
+                return temp;
+        }
+        return null;
     }
     
     public void clear(){
