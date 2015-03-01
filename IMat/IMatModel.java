@@ -309,4 +309,8 @@ public class IMatModel {
             panel.add(new CategoryPanel("Örtkryddor", ProductCategory.HERB, categoryListener)); 
         }
     }
+
+    public void shutDown() {
+        this.handler.shutDown();
+    }
 }
