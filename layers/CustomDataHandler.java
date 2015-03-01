@@ -78,5 +78,9 @@ public class CustomDataHandler {
     public List<Order> getOrders(){
         return this.dataHandler.getOrders();
     }
+
+    public void shutDown() {
+        this.dataHandler.shutDown();
+    }
     
 }
