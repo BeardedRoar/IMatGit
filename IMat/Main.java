@@ -16,7 +16,7 @@ import java.awt.event.WindowEvent;
 public class Main {
     
     public static void main(String[] args){
-        IMatModel model = new IMatModel();
+        final IMatModel model = new IMatModel();
         MainFrame mFrame = new MainFrame(model);
         mFrame.addWindowListener(new WindowAdapter(){
             @Override
