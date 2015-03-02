@@ -2,6 +2,8 @@ package IMat;
 
 import java.awt.CardLayout;
 import java.awt.Cursor;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -32,7 +34,6 @@ public class MainFrame extends javax.swing.JFrame {
     public MainFrame(IMatModel model) {
         this();
         this.model = model;
-
         this.categoryListener = new MouseListener() {
 
             @Override
@@ -125,6 +126,7 @@ public class MainFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
         setBackground(new java.awt.Color(255, 255, 255));
+        setPreferredSize(new Dimension(Toolkit.getDefaultToolkit().getScreenSize().width-145, Toolkit.getDefaultToolkit().getScreenSize().height-40));
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 formMouseClicked(evt);
