@@ -28,7 +28,7 @@ public class IMatModel {
     private final CreditCard card = handler.getCard();
     private final Customer customer = handler.getCustomer();
     private final User user = handler.getUser();
-    private boolean loggedIn;
+    private boolean loggedIn = false;
 
     public IMatModel() {
 
@@ -285,6 +285,14 @@ public class IMatModel {
 
     public ImageIcon getImageIcon(Product p, int width, int height) {
         return this.handler.getImageIcon(p, width, height);
+    }
+    
+    public boolean isLoggedIn(){
+        return loggedIn;
+    }
+    
+    public void loggOut(){
+        loggedIn = false;
     }
 
     public void makeCategoryPanel(JPanel panel, String string, MouseListener categoryListener) {
