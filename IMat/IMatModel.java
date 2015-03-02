@@ -210,12 +210,19 @@ public class IMatModel {
         return becomeFavorite;
     }
 
+    public List<Product> getProducts() {
+        return handler.getProducts();
+    }
+    
     public List<Product> getProducts(ProductCategory pc) {
         return handler.getProducts(pc);
     }
 
     public List<Product> findProducts(String s) {
-        return handler.findProducts(s);
+        if (!s.equals(""))
+            return handler.findProducts(s);
+        else
+            return this.getProducts();
     }
 
     public List<ProductPanel> getProductPanels(ProductCategory pc) {

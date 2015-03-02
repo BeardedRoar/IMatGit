@@ -51,6 +51,10 @@ public class CustomDataHandler {
         return dataHandler.getProducts(pc);
     }
     
+    public List<Product> getProducts(){
+        return dataHandler.getProducts();
+    }
+    
     protected ShoppingCart getCart(){
         return this.dataHandler.getShoppingCart();
     }
