@@ -27,6 +27,8 @@ public class IMatModel {
     private final CustomCart cart = CustomCart.getCart();
     private final CreditCard card = handler.getCard();
     private final Customer customer = handler.getCustomer();
+    private final User user = handler.getUser();
+    private boolean loggedIn;
 
     public IMatModel() {
 
@@ -194,8 +196,25 @@ public class IMatModel {
     public void setPostCode(String postcode) {
         customer.setPostCode(postcode);
     }
-
      //end of customer methods
+    
+    // user methods
+    public String getUserName(){
+        return this.user.getUserName();
+    }
+    
+    public String getUserPassword(){
+        return this.user.getPassword();
+    }
+    
+    public void setUserName(String name){
+        this.user.setUserName(name);
+    }
+    
+    public void setPassword(String password){
+        this.user.setPassword(password);
+    }
+    
     public boolean isFavorite(Product p) {
         return this.handler.isFavorite(p);
     }
