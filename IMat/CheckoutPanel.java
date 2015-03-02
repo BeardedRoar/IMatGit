@@ -1,5 +1,7 @@
 package IMat;
 
+import javax.swing.JTextField;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -24,6 +26,8 @@ public class CheckoutPanel extends javax.swing.JPanel {
         initComponents();
         
         adressTextField2.setVisible(false);
+        postalCodeTextField1.setVisible(false);
+        postalAdressTextField1.setVisible(false);
         errorLabel.setVisible(false);
         
         if(!model.getCardNumber().equals("")){ 
@@ -100,9 +104,11 @@ public class CheckoutPanel extends javax.swing.JPanel {
         adressTextField2 = new javax.swing.JTextField();
         postalCodeLabel = new javax.swing.JLabel();
         postalCodeTextField = new javax.swing.JTextField();
-        sendToMailCheckBox = new javax.swing.JCheckBox();
         postalAdressTextField = new javax.swing.JTextField();
         postalAdressLabel = new javax.swing.JLabel();
+        postalCodeTextField1 = new javax.swing.JTextField();
+        postalAdressTextField1 = new javax.swing.JTextField();
+        sendToMailCheckBox = new javax.swing.JCheckBox();
         saveInformationCheckBox = new javax.swing.JCheckBox();
         jPanel4 = new javax.swing.JPanel();
         emailLabel = new javax.swing.JLabel();
@@ -133,6 +139,11 @@ public class CheckoutPanel extends javax.swing.JPanel {
         jPanel2.setOpaque(false);
 
         cvcTextField.setText("123");
+        cvcTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                textFieldFocusGained(evt);
+            }
+        });
         cvcTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cvcTextFieldActionPerformed(evt);
@@ -142,8 +153,18 @@ public class CheckoutPanel extends javax.swing.JPanel {
         cvcLabel.setText("CVC");
 
         monthTextField.setText("02");
+        monthTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                textFieldFocusGained(evt);
+            }
+        });
 
         yearTextField.setText("15");
+        yearTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                textFieldFocusGained(evt);
+            }
+        });
         yearTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 yearTextFieldActionPerformed(evt);
@@ -153,6 +174,11 @@ public class CheckoutPanel extends javax.swing.JPanel {
         dateLabel.setText("Datum");
 
         cardNumberTextField.setToolTipText("");
+        cardNumberTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                textFieldFocusGained(evt);
+            }
+        });
         cardNumberTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cardNumberTextFieldActionPerformed(evt);
@@ -221,8 +247,18 @@ public class CheckoutPanel extends javax.swing.JPanel {
         nameLabel.setText("Namn");
 
         nameTextField.setText("Förnamn");
+        nameTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                textFieldFocusGained(evt);
+            }
+        });
 
         nameTextField2.setText("Efternamn");
+        nameTextField2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                textFieldFocusGained(evt);
+            }
+        });
         nameTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nameTextField2ActionPerformed(evt);
@@ -232,6 +268,11 @@ public class CheckoutPanel extends javax.swing.JPanel {
         adressLabel.setText("Adress");
 
         adressTextField.setText("Tvärvägen 20");
+        adressTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                textFieldFocusGained(evt);
+            }
+        });
 
         sendToOtherAdressCheckBox.setText("Leverera till annan adress");
         sendToOtherAdressCheckBox.setOpaque(false);
@@ -242,17 +283,36 @@ public class CheckoutPanel extends javax.swing.JPanel {
         });
 
         adressTextField2.setText("Tvärvägen 21");
+        adressTextField2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                textFieldFocusGained(evt);
+            }
+        });
 
         postalCodeLabel.setText("Postnummer");
 
         postalCodeTextField.setText("Postnummer");
+        postalCodeTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                textFieldFocusGained(evt);
+            }
+        });
+
+        postalAdressTextField.setText("Postort");
+        postalAdressTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                textFieldFocusGained(evt);
+            }
+        });
+
+        postalAdressLabel.setText("Postort");
+
+        postalCodeTextField1.setText("Postnummer");
+
+        postalAdressTextField1.setText("Postort");
 
         sendToMailCheckBox.setText("Skicka kvitto till min mail");
         sendToMailCheckBox.setOpaque(false);
-
-        postalAdressTextField.setText("Postort");
-
-        postalAdressLabel.setText("Postort");
 
         saveInformationCheckBox.setText("Spara mina uppgifter");
         saveInformationCheckBox.setOpaque(false);
@@ -277,6 +337,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(saveInformationCheckBox)
+                            .addComponent(sendToMailCheckBox)
                             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(jPanel3Layout.createSequentialGroup()
                                     .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -284,13 +345,16 @@ public class CheckoutPanel extends javax.swing.JPanel {
                                     .addComponent(nameTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(nameLabel)
                                 .addComponent(adressLabel)
-                                .addComponent(sendToMailCheckBox)
                                 .addComponent(adressTextField2))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(postalCodeLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(postalAdressLabel))
-                            .addComponent(sendToOtherAdressCheckBox))
+                            .addComponent(sendToOtherAdressCheckBox)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(postalCodeTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(postalAdressTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -318,11 +382,15 @@ public class CheckoutPanel extends javax.swing.JPanel {
                 .addComponent(sendToOtherAdressCheckBox)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(adressTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(postalCodeTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(postalAdressTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(sendToMailCheckBox)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(saveInformationCheckBox)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         jPanel4.setOpaque(false);
@@ -330,10 +398,20 @@ public class CheckoutPanel extends javax.swing.JPanel {
         emailLabel.setText("Email");
 
         emailTextField.setText("example@mail.com");
+        emailTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                textFieldFocusGained(evt);
+            }
+        });
 
         phoneLabel.setText("Telefon");
 
         phoneTextField.setText("070-00000");
+        phoneTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                textFieldFocusGained(evt);
+            }
+        });
         phoneTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 phoneTextFieldActionPerformed(evt);
@@ -343,6 +421,11 @@ public class CheckoutPanel extends javax.swing.JPanel {
         mobilePhoneLabel.setText("Mobiltelefon");
 
         mobilePhoneTextField.setText("070-00001");
+        mobilePhoneTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                textFieldFocusGained(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -351,15 +434,15 @@ public class CheckoutPanel extends javax.swing.JPanel {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(phoneTextField)
+                    .addComponent(mobilePhoneTextField)
+                    .addComponent(emailTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(emailLabel)
                             .addComponent(phoneLabel)
                             .addComponent(mobilePhoneLabel))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(phoneTextField)
-                    .addComponent(mobilePhoneTextField)
-                    .addComponent(emailTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -459,7 +542,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 598, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 660, Short.MAX_VALUE)
             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -491,8 +574,10 @@ public class CheckoutPanel extends javax.swing.JPanel {
 
     private void sendToOtherAdressCheckBoxMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sendToOtherAdressCheckBoxMousePressed
         adressTextField2.setVisible(!sendToOtherAdressCheckBox.isSelected());
-            repaint();
-            revalidate();
+        postalCodeTextField1.setVisible(!sendToOtherAdressCheckBox.isSelected());
+        postalAdressTextField1.setVisible(!sendToOtherAdressCheckBox.isSelected());
+        repaint();
+        revalidate();
     }//GEN-LAST:event_sendToOtherAdressCheckBoxMousePressed
 
     private void buyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buyButtonActionPerformed
@@ -531,6 +616,11 @@ public class CheckoutPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_cvcTextFieldActionPerformed
 
+    private void textFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldFocusGained
+        JTextField field = (JTextField) evt.getSource();
+        field.selectAll();   
+    }//GEN-LAST:event_textFieldFocusGained
+
     
     
     
@@ -567,8 +657,10 @@ public class CheckoutPanel extends javax.swing.JPanel {
     private javax.swing.JTextField phoneTextField;
     private javax.swing.JLabel postalAdressLabel;
     private javax.swing.JTextField postalAdressTextField;
+    private javax.swing.JTextField postalAdressTextField1;
     private javax.swing.JLabel postalCodeLabel;
     private javax.swing.JTextField postalCodeTextField;
+    private javax.swing.JTextField postalCodeTextField1;
     private javax.swing.JCheckBox saveInformationCheckBox;
     private javax.swing.JCheckBox sendToMailCheckBox;
     private javax.swing.JCheckBox sendToOtherAdressCheckBox;

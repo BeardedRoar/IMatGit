@@ -89,6 +89,7 @@ public class StartProductPanel extends javax.swing.JPanel {
         });
 
         cartButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iMat.resources/Productcart.png"))); // NOI18N
+        cartButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cartButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cartButtonActionPerformed(evt);
@@ -96,6 +97,7 @@ public class StartProductPanel extends javax.swing.JPanel {
         });
 
         upButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iMat.resources/ArrowUpImage.png"))); // NOI18N
+        upButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         upButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         upButton.setPreferredSize(new java.awt.Dimension(73, 26));
         upButton.addActionListener(new java.awt.event.ActionListener() {
@@ -105,6 +107,7 @@ public class StartProductPanel extends javax.swing.JPanel {
         });
 
         downButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iMat.resources/ArrowDownImage.png"))); // NOI18N
+        downButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         downButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         downButton.setPreferredSize(new java.awt.Dimension(73, 26));
         downButton.addActionListener(new java.awt.event.ActionListener() {
@@ -141,6 +144,7 @@ public class StartProductPanel extends javax.swing.JPanel {
         );
 
         FavouritePanel.setBackground(new java.awt.Color(255, 255, 255));
+        FavouritePanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         FavouritePanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 FavouritePanelMouseClicked(evt);

@@ -92,11 +92,7 @@ public class ProductPanel extends javax.swing.JPanel {
         });
 
         cartButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iMat.resources/Productcart.png"))); // NOI18N
-        cartButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                cartButtonMouseMoved(evt);
-            }
-        });
+        cartButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cartButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cartButtonActionPerformed(evt);
@@ -104,13 +100,9 @@ public class ProductPanel extends javax.swing.JPanel {
         });
 
         upButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iMat.resources/ArrowUpImage.png"))); // NOI18N
+        upButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         upButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         upButton.setPreferredSize(new java.awt.Dimension(73, 26));
-        upButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                upButtonMouseMoved(evt);
-            }
-        });
         upButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 upButtonActionPerformed(evt);
@@ -118,13 +110,9 @@ public class ProductPanel extends javax.swing.JPanel {
         });
 
         downButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iMat.resources/ArrowDownImage.png"))); // NOI18N
+        downButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         downButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         downButton.setPreferredSize(new java.awt.Dimension(73, 26));
-        downButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                downButtonMouseMoved(evt);
-            }
-        });
         downButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 downButtonActionPerformed(evt);
@@ -160,11 +148,7 @@ public class ProductPanel extends javax.swing.JPanel {
         );
 
         FavouritePanel.setBackground(new java.awt.Color(255, 255, 255));
-        FavouritePanel.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                FavouritePanelMouseMoved(evt);
-            }
-        });
+        FavouritePanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         FavouritePanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 FavouritePanelMouseClicked(evt);
@@ -285,22 +269,6 @@ public class ProductPanel extends javax.swing.JPanel {
     private void nbrOfProductsTextfieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nbrOfProductsTextfieldFocusLost
         currentNbrOfProducts=Integer.parseInt(nbrOfProductsTextfield.getText());
     }//GEN-LAST:event_nbrOfProductsTextfieldFocusLost
-
-    private void FavouritePanelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FavouritePanelMouseMoved
-        FavouritePanel.setCursor(new Cursor(Cursor.HAND_CURSOR));
-    }//GEN-LAST:event_FavouritePanelMouseMoved
-
-    private void cartButtonMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cartButtonMouseMoved
-        cartButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
-    }//GEN-LAST:event_cartButtonMouseMoved
-
-    private void upButtonMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_upButtonMouseMoved
-        upButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
-    }//GEN-LAST:event_upButtonMouseMoved
-
-    private void downButtonMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_downButtonMouseMoved
-        downButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
-    }//GEN-LAST:event_downButtonMouseMoved
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel DisFavouriteLabel;
