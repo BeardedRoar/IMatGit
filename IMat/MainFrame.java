@@ -108,8 +108,8 @@ public class MainFrame extends javax.swing.JFrame {
         featureHeaderPanel = new javax.swing.JPanel();
         categoryPanel = new javax.swing.JPanel();
         featurePanel = new javax.swing.JPanel();
-        historyPanelHolder = new javax.swing.JPanel();
         shoppingCartPanelHolder = new javax.swing.JPanel();
+        historyPanelHolder = new javax.swing.JPanel();
         frontPagePanel = new javax.swing.JPanel();
         resultPanelHolder = new javax.swing.JPanel();
         checkoutPanelHolder = new javax.swing.JPanel();
@@ -183,7 +183,7 @@ public class MainFrame extends javax.swing.JFrame {
             searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(searchPanelLayout.createSequentialGroup()
                 .addGap(2, 2, 2)
-                .addComponent(searchTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
+                .addComponent(searchTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(searchIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -204,25 +204,25 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(203, 203, 203)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(searchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(73, 73, 73)
+                .addComponent(searchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(204, 204, 204)
                 .addComponent(cartLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(58, 58, 58))
         );
         headerPanelLayout.setVerticalGroup(
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(headerPanelLayout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addComponent(searchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(cartLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(headerPanelLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(cartLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerPanelLayout.createSequentialGroup()
+                        .addComponent(searchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(21, 21, 21))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(12, 12, 12))))
         );
 
         browsePanel.setPreferredSize(new java.awt.Dimension(190, 600));
@@ -297,10 +297,11 @@ public class MainFrame extends javax.swing.JFrame {
         featurePanel.setPreferredSize(new java.awt.Dimension(993, 600));
         featurePanel.setLayout(new java.awt.CardLayout());
 
-        historyPanelHolder.setLayout(new java.awt.GridLayout(1, 0));
-        featurePanel.add(historyPanelHolder, "historyCard");
-
         shoppingCartPanelHolder.setLayout(new java.awt.GridLayout(1, 0));
+
+        historyPanelHolder.setLayout(new java.awt.GridLayout(1, 0));
+        shoppingCartPanelHolder.add(historyPanelHolder);
+
         featurePanel.add(shoppingCartPanelHolder, "shoppingCartCard");
 
         frontPagePanel.setLayout(new java.awt.GridLayout(2, 0, 0, 2));
@@ -369,7 +370,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_searchTextFieldFocusLost
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
-        searchPanel.requestFocus();
+        this.requestFocus();
     }//GEN-LAST:event_formMouseClicked
 
     private void searchIconMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchIconMouseMoved
