@@ -339,8 +339,55 @@ public class IMatModel {
             case "mejeri":
             case "mejeriprodukter":
                 return ProductCategory.DAIRIES;
+            case "exotisk":
+            case "exotisk frukt":
+                return ProductCategory.EXOTIC_FRUIT;
+            case "fisk":
+               return ProductCategory.FISH;
+            case "bak":
+            case "bakvaror":
+                return ProductCategory.FLOUR_SUGAR_SALT;
+            case "frukt":
+                return ProductCategory.FRUIT;
+            case "ört":
+            case "örter":
+            case "örtkryddor":
+                return ProductCategory.HERB;
+            case "varma drycker":
+                return ProductCategory.HOT_DRINKS;
+            case "kött":
+            case "mord":
+                return ProductCategory.MEAT;
+            case "melon":
+            case "meloner":
+                return ProductCategory.MELONS;
+            case "frön":
+            case "nötter":
+            case "frön och nötter":
+            case "nötter och frön":
+                return ProductCategory.NUTS_AND_SEEDS;
             case "pasta":
                 return ProductCategory.PASTA;
+            case "baljväxter":
+            case "balj":
+            case "bönor":
+                return ProductCategory.POD;
+            case "potatis":
+            case "ris":
+                return ProductCategory.POTATO_RICE;
+            case "rot":
+            case "rotgrönsak":
+            case "rotgrönsaker":
+                return ProductCategory.ROOT_VEGETABLE;
+            case "söt":
+            case "sötsaker":
+                return ProductCategory.SWEET;
+            case "grönsak":
+            case "grön":
+            case "grönsaker":
+            case "grönsaksfrukt":
+            case "grönsaksfrukter":
+                return ProductCategory.VEGETABLE_FRUIT;
         }
         return null;
     }
