@@ -27,6 +27,10 @@ public class CustomDataHandler {
         return singelton;
     }
     
+    public User getUser(){
+        return this.dataHandler.getUser();
+    }
+    
     public void addFavorite(Product p){
         this.dataHandler.addFavorite(p);
     }
