@@ -23,6 +23,9 @@ public class frontPageFeaturePanel extends javax.swing.JPanel {
      */
     public frontPageFeaturePanel(ProductCategory pc, IMatModel model, String str) {
         initComponents();
+        headerPanel.setBackground(Constants.HEADER_COLOR);
+        containerPanel.setBackground(Constants.BACKGROUND_COLOR);
+        this.setBackground(Constants.BACKGROUND_COLOR);
         this.pc = pc;
         this.model = model;
         List<ProductPanel> products = model.getProductPanels(pc);
@@ -56,7 +59,8 @@ public class frontPageFeaturePanel extends javax.swing.JPanel {
         setRequestFocusEnabled(false);
 
         headerPanel.setBackground(new java.awt.Color(255, 0, 51));
-        headerPanel.setBorder(new javax.swing.border.MatteBorder(null));
+        headerPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        headerPanel.setPreferredSize(new java.awt.Dimension(473, 70));
 
         headerPanelLabel.setBackground(new java.awt.Color(255, 255, 255));
         headerPanelLabel.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N

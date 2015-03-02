@@ -2,6 +2,7 @@ package IMat;
 
 import java.awt.CardLayout;
 import java.awt.Cursor;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import se.chalmers.ait.dat215.project.ProductCategory;
@@ -11,7 +12,6 @@ import se.chalmers.ait.dat215.project.ProductCategory;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Joel
@@ -21,18 +21,19 @@ public class MainFrame extends javax.swing.JFrame {
     private IMatModel model;
     private CardLayout card;
     private MouseListener categoryListener;
+
     /**
      * Creates new form MainFrame
      */
     public MainFrame() {
-        initComponents();      
+        initComponents();
     }
-    
-    public MainFrame(IMatModel model){
+
+    public MainFrame(IMatModel model) {
         this();
         this.model = model;
-        
-        this.categoryListener = new MouseListener(){
+
+        this.categoryListener = new MouseListener() {
 
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -54,34 +55,38 @@ public class MainFrame extends javax.swing.JFrame {
             @Override
             public void mouseExited(MouseEvent e) {
             }
-            
+
         };
-        
+
         this.createCategories();
-        
-        this.card = (CardLayout)this.featurePanel.getLayout();
+
+        this.card = (CardLayout) this.featurePanel.getLayout();
         this.checkoutPanelHolder.add(new CheckoutPanel(model, this));
+        this.frontPagePanel.add(new frontPageFeaturePanel(ProductCategory.FRUIT, model, "Ofta Köpta"));
+        this.frontPagePanel.add(new frontPageFeaturePanel(ProductCategory.FLOUR_SUGAR_SALT, model, "Veckans varor"));
+        this.frontPagePanel.add(new ShoppingListFeaturePanel());
+        this.frontPagePanel.add(new RecipeFeaturePanel());
         card.show(this.featurePanel, "frontPageCard");
         repaint();
         revalidate();
     }
-    
-    private void createCategories(){
+
+    private void createCategories() {
         this.favoritePanel.add(new CategoryPanel("Mina Favoriter", categoryListener));
-        this.favoritePanel.add(new CategoryPanel("Ofta Köpta", categoryListener));      
-        this.featureHeaderPanel.add(new CategoryPanel("Populära Varor", categoryListener));    
+        this.favoritePanel.add(new CategoryPanel("Ofta Köpta", categoryListener));
+        this.featureHeaderPanel.add(new CategoryPanel("Populära Varor", categoryListener));
         this.featureHeaderPanel.add(new CategoryPanel("Inköpslista", categoryListener));
         this.featureHeaderPanel.add(new CategoryPanel("Veckans Varor", categoryListener));
         this.featureHeaderPanel.add(new CategoryPanel("Veckans Recept", categoryListener));
         model.makeCategoryPanel(this.categoryPanel, "Start", categoryListener);
-        
+
     }
-    
-    public IMatModel getModel(){
+
+    public IMatModel getModel() {
         return model;
     }
-    
-    public void setFeatureCard(String cardName){
+
+    public void setFeatureCard(String cardName) {
         card.show(this.featurePanel, cardName);
     }
 
@@ -108,8 +113,8 @@ public class MainFrame extends javax.swing.JFrame {
         featureHeaderPanel = new javax.swing.JPanel();
         categoryPanel = new javax.swing.JPanel();
         featurePanel = new javax.swing.JPanel();
-        shoppingCartPanelHolder = new javax.swing.JPanel();
         historyPanelHolder = new javax.swing.JPanel();
+        shoppingCartPanelHolder = new javax.swing.JPanel();
         frontPagePanel = new javax.swing.JPanel();
         resultPanelHolder = new javax.swing.JPanel();
         checkoutPanelHolder = new javax.swing.JPanel();
@@ -119,13 +124,14 @@ public class MainFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
+        setBackground(new java.awt.Color(255, 255, 255));
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 formMouseClicked(evt);
             }
         });
 
-        headerPanel.setBackground(new java.awt.Color(255, 0, 51));
+        headerPanel.setBackground(Constants.HEADER_COLOR);
         headerPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -165,6 +171,11 @@ public class MainFrame extends javax.swing.JFrame {
                 searchTextFieldFocusLost(evt);
             }
         });
+        searchTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                searchTextFieldKeyPressed(evt);
+            }
+        });
 
         searchIcon.setBackground(new java.awt.Color(255, 255, 255));
         searchIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iMat.resources/magnifier.png"))); // NOI18N
@@ -176,6 +187,11 @@ public class MainFrame extends javax.swing.JFrame {
                 searchIconMouseMoved(evt);
             }
         });
+        searchIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                searchIconMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout searchPanelLayout = new javax.swing.GroupLayout(searchPanel);
         searchPanel.setLayout(searchPanelLayout);
@@ -183,7 +199,7 @@ public class MainFrame extends javax.swing.JFrame {
             searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(searchPanelLayout.createSequentialGroup()
                 .addGap(2, 2, 2)
-                .addComponent(searchTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
+                .addComponent(searchTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(searchIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -204,30 +220,34 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(203, 203, 203)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(searchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(204, 204, 204)
+                .addComponent(searchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(253, 253, 253)
                 .addComponent(cartLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(58, 58, 58))
         );
         headerPanelLayout.setVerticalGroup(
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(headerPanelLayout.createSequentialGroup()
-                .addComponent(cartLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(47, 47, 47)
+                .addComponent(searchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(21, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerPanelLayout.createSequentialGroup()
-                        .addComponent(searchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(21, 21, 21))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(12, 12, 12))))
+                .addContainerGap()
+                .addGroup(headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(cartLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(headerPanelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
 
+        browseScrollPanel.setOpaque(false);
+
+        browsePanel.setBackground(Constants.BACKGROUND_COLOR);
         browsePanel.setPreferredSize(new java.awt.Dimension(190, 600));
         browsePanel.setRequestFocusEnabled(false);
 
+        startTextPanel.setOpaque(false);
         startTextPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 startTextPanelMousePressed(evt);
@@ -254,15 +274,18 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        favoritePanel.setOpaque(false);
         favoritePanel.setPreferredSize(new java.awt.Dimension(150, 0));
         favoritePanel.setRequestFocusEnabled(false);
         favoritePanel.setVerifyInputWhenFocusTarget(false);
         favoritePanel.setLayout(new java.awt.GridLayout(2, 0));
 
+        featureHeaderPanel.setOpaque(false);
         featureHeaderPanel.setPreferredSize(new java.awt.Dimension(150, 0));
         featureHeaderPanel.setRequestFocusEnabled(false);
         featureHeaderPanel.setLayout(new java.awt.GridLayout(4, 0));
 
+        categoryPanel.setOpaque(false);
         categoryPanel.setPreferredSize(new java.awt.Dimension(160, 0));
         categoryPanel.setLayout(new java.awt.GridLayout(11, 0));
 
@@ -293,23 +316,28 @@ public class MainFrame extends javax.swing.JFrame {
 
         browseScrollPanel.setViewportView(browsePanel);
 
+        featurePanel.setBackground(Constants.BACKGROUND_COLOR);
         featurePanel.setMinimumSize(new java.awt.Dimension(1000, 600));
         featurePanel.setPreferredSize(new java.awt.Dimension(993, 600));
         featurePanel.setLayout(new java.awt.CardLayout());
 
-        shoppingCartPanelHolder.setLayout(new java.awt.GridLayout(1, 0));
-
+        historyPanelHolder.setOpaque(false);
         historyPanelHolder.setLayout(new java.awt.GridLayout(1, 0));
-        shoppingCartPanelHolder.add(historyPanelHolder);
+        featurePanel.add(historyPanelHolder, "historyCard");
 
+        shoppingCartPanelHolder.setOpaque(false);
+        shoppingCartPanelHolder.setLayout(new java.awt.GridLayout(1, 0));
         featurePanel.add(shoppingCartPanelHolder, "shoppingCartCard");
 
-        frontPagePanel.setLayout(new java.awt.GridLayout(2, 0, 0, 2));
+        frontPagePanel.setOpaque(false);
+        frontPagePanel.setLayout(new java.awt.GridLayout(2, 2, 5, 5));
         featurePanel.add(frontPagePanel, "frontPageCard");
 
+        resultPanelHolder.setOpaque(false);
         resultPanelHolder.setLayout(new java.awt.GridLayout(1, 0));
         featurePanel.add(resultPanelHolder, "resultCard");
 
+        checkoutPanelHolder.setOpaque(false);
         checkoutPanelHolder.setLayout(new java.awt.GridLayout(1, 0));
         featurePanel.add(checkoutPanelHolder, "checkoutCard");
 
@@ -345,6 +373,9 @@ public class MainFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void startTextPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_startTextPanelMousePressed
+        this.frontPagePanel.removeAll();
+        this.frontPagePanel.add(new frontPageFeaturePanel(ProductCategory.FRUIT, model, "Ofta Köpta"));
+        this.frontPagePanel.add(new frontPageFeaturePanel(ProductCategory.FLOUR_SUGAR_SALT, model, "Veckans varor"));
         card.show(this.featurePanel, "frontPageCard");
     }//GEN-LAST:event_startTextPanelMousePressed
 
@@ -355,22 +386,21 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_cartLabelMouseClicked
 
     private void searchTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchTextFieldFocusGained
-        if(searchTextField.getText().equals("Sök...")){
+        if (searchTextField.getText().equals("Sök...")) {
             searchTextField.setText("");
-        }
-        else{
+        } else {
             searchTextField.selectAll();
         }
     }//GEN-LAST:event_searchTextFieldFocusGained
 
     private void searchTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchTextFieldFocusLost
-        if(searchTextField.getText().equals("")){
+        if (searchTextField.getText().equals("")) {
             searchTextField.setText("Sök...");
         }
     }//GEN-LAST:event_searchTextFieldFocusLost
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
-        this.requestFocus();
+        searchPanel.requestFocus();
     }//GEN-LAST:event_formMouseClicked
 
     private void searchIconMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchIconMouseMoved
@@ -380,7 +410,26 @@ public class MainFrame extends javax.swing.JFrame {
     private void cartLabelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cartLabelMouseMoved
         cartLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
     }//GEN-LAST:event_cartLabelMouseMoved
-   
+
+    private void searchIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchIconMouseClicked
+        this.doSearch();
+    }//GEN-LAST:event_searchIconMouseClicked
+
+    private void searchTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchTextFieldKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER)
+            this.doSearch();
+    }//GEN-LAST:event_searchTextFieldKeyPressed
+
+    private void doSearch(){
+        this.resultPanelHolder.removeAll();
+        if (model.getCategory(this.searchTextField.getText()) != null)
+            this.resultPanelHolder.add(new ResultPanel(model.getCategory(this.searchTextField.getText()), model));
+        else
+            this.resultPanelHolder.add(new ResultPanel(model.getProductPanels(this.searchTextField.getText()), model));
+        card.show(this.featurePanel, "resultCard");
+        repaint();
+        revalidate();
+    }
     /**
      * @param args the command line arguments
      */
@@ -443,7 +492,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void categoryClicked(MouseEvent e) {
         CategoryPanel panel = (CategoryPanel) e.getSource();
-        if (!panel.isSub()){
+        if (!panel.isSub()) {
             model.makeCategoryPanel(this.categoryPanel, panel.getName(), categoryListener);
         }
         if (panel.getCategory() == null) {
@@ -451,14 +500,14 @@ public class MainFrame extends javax.swing.JFrame {
                 this.resultPanelHolder.removeAll();
                 this.resultPanelHolder.add(new ResultPanel(model.getFavoritePanels(), model));
                 card.show(this.featurePanel, "resultCard");
-            } else if (panel.getName().equals("Ofta Köpta")){
+            } else if (panel.getName().equals("Ofta Köpta")) {
                 this.historyPanelHolder.removeAll();
                 this.historyPanelHolder.add(new HistoryPanel(model));
                 card.show(this.featurePanel, "historyCard");
             }
             repaint();
             revalidate();
-        } else{
+        } else {
             this.resultPanelHolder.removeAll();
             this.resultPanelHolder.add(new ResultPanel(panel.getCategory(), model));
             card.show(this.featurePanel, "resultCard");
