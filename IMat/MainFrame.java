@@ -2,6 +2,7 @@ package IMat;
 
 import java.awt.CardLayout;
 import java.awt.Cursor;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import se.chalmers.ait.dat215.project.ProductCategory;
@@ -163,6 +164,11 @@ public class MainFrame extends javax.swing.JFrame {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 searchTextFieldFocusLost(evt);
+            }
+        });
+        searchTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                searchTextFieldKeyPressed(evt);
             }
         });
 
@@ -385,6 +391,15 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_cartLabelMouseMoved
 
     private void searchIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchIconMouseClicked
+        this.doSearch();
+    }//GEN-LAST:event_searchIconMouseClicked
+
+    private void searchTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchTextFieldKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER)
+            this.doSearch();
+    }//GEN-LAST:event_searchTextFieldKeyPressed
+
+    private void doSearch(){
         this.resultPanelHolder.removeAll();
         if (model.getCategory(this.searchTextField.getText()) != null)
             this.resultPanelHolder.add(new ResultPanel(model.getCategory(this.searchTextField.getText()), model));
@@ -393,8 +408,7 @@ public class MainFrame extends javax.swing.JFrame {
         card.show(this.featurePanel, "resultCard");
         repaint();
         revalidate();
-    }//GEN-LAST:event_searchIconMouseClicked
-
+    }
     /**
      * @param args the command line arguments
      */
