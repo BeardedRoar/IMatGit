@@ -16,6 +16,9 @@ public class RecipeFeaturePanel extends javax.swing.JPanel {
      */
     public RecipeFeaturePanel() {
         initComponents();
+        
+        containerPanel.setBackground(Constants.BACKGROUND_COLOR);
+        headerPanel.setBackground(Constants.HEADER_COLOR);
     }
 
     /**
@@ -36,7 +39,9 @@ public class RecipeFeaturePanel extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(475, 275));
 
         headerPanel.setBackground(new java.awt.Color(251, 0, 51));
-        headerPanel.setPreferredSize(new java.awt.Dimension(473, 79));
+        headerPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        headerPanel.setMinimumSize(new java.awt.Dimension(473, 70));
+        headerPanel.setPreferredSize(new java.awt.Dimension(473, 70));
 
         headerLabel.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         headerLabel.setForeground(new java.awt.Color(255, 255, 255));
@@ -49,13 +54,13 @@ public class RecipeFeaturePanel extends javax.swing.JPanel {
             .addGroup(headerPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(headerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(143, Short.MAX_VALUE))
+                .addContainerGap(141, Short.MAX_VALUE))
         );
         headerPanelLayout.setVerticalGroup(
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(headerPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(headerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
+                .addComponent(headerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -67,7 +72,7 @@ public class RecipeFeaturePanel extends javax.swing.JPanel {
         );
         containerPanelLayout.setVerticalGroup(
             containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 194, Short.MAX_VALUE)
+            .addGap(0, 203, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
