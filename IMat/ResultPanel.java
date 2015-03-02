@@ -60,6 +60,12 @@ public class ResultPanel extends javax.swing.JPanel {
         resultScrollPanel = new javax.swing.JScrollPane();
         resultPanel = new javax.swing.JPanel();
 
+        setOpaque(false);
+
+        resultScrollPanel.setOpaque(false);
+
+        resultPanel.setBackground(new java.awt.Color(255, 255, 255));
+
         javax.swing.GroupLayout resultPanelLayout = new javax.swing.GroupLayout(resultPanel);
         resultPanel.setLayout(resultPanelLayout);
         resultPanelLayout.setHorizontalGroup(
@@ -77,11 +83,11 @@ public class ResultPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(resultScrollPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addComponent(resultScrollPanel)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(resultScrollPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+            .addComponent(resultScrollPanel)
         );
     }// </editor-fold>//GEN-END:initComponents
 

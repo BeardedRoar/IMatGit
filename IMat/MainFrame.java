@@ -120,6 +120,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
+        setBackground(new java.awt.Color(255, 255, 255));
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 formMouseClicked(evt);
@@ -236,9 +237,13 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        browseScrollPanel.setOpaque(false);
+
+        browsePanel.setBackground(new java.awt.Color(255, 255, 255));
         browsePanel.setPreferredSize(new java.awt.Dimension(190, 600));
         browsePanel.setRequestFocusEnabled(false);
 
+        startTextPanel.setOpaque(false);
         startTextPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 startTextPanelMousePressed(evt);
@@ -265,15 +270,18 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        favoritePanel.setOpaque(false);
         favoritePanel.setPreferredSize(new java.awt.Dimension(150, 0));
         favoritePanel.setRequestFocusEnabled(false);
         favoritePanel.setVerifyInputWhenFocusTarget(false);
         favoritePanel.setLayout(new java.awt.GridLayout(2, 0));
 
+        featureHeaderPanel.setOpaque(false);
         featureHeaderPanel.setPreferredSize(new java.awt.Dimension(150, 0));
         featureHeaderPanel.setRequestFocusEnabled(false);
         featureHeaderPanel.setLayout(new java.awt.GridLayout(4, 0));
 
+        categoryPanel.setOpaque(false);
         categoryPanel.setPreferredSize(new java.awt.Dimension(160, 0));
         categoryPanel.setLayout(new java.awt.GridLayout(11, 0));
 
@@ -304,22 +312,28 @@ public class MainFrame extends javax.swing.JFrame {
 
         browseScrollPanel.setViewportView(browsePanel);
 
+        featurePanel.setBackground(new java.awt.Color(255, 255, 255));
         featurePanel.setMinimumSize(new java.awt.Dimension(1000, 600));
         featurePanel.setPreferredSize(new java.awt.Dimension(993, 600));
         featurePanel.setLayout(new java.awt.CardLayout());
 
+        historyPanelHolder.setOpaque(false);
         historyPanelHolder.setLayout(new java.awt.GridLayout(1, 0));
         featurePanel.add(historyPanelHolder, "historyCard");
 
+        shoppingCartPanelHolder.setOpaque(false);
         shoppingCartPanelHolder.setLayout(new java.awt.GridLayout(1, 0));
         featurePanel.add(shoppingCartPanelHolder, "shoppingCartCard");
 
+        frontPagePanel.setOpaque(false);
         frontPagePanel.setLayout(new java.awt.GridLayout(2, 0, 0, 2));
         featurePanel.add(frontPagePanel, "frontPageCard");
 
+        resultPanelHolder.setOpaque(false);
         resultPanelHolder.setLayout(new java.awt.GridLayout(1, 0));
         featurePanel.add(resultPanelHolder, "resultCard");
 
+        checkoutPanelHolder.setOpaque(false);
         checkoutPanelHolder.setLayout(new java.awt.GridLayout(1, 0));
         featurePanel.add(checkoutPanelHolder, "checkoutCard");
 

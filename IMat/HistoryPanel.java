@@ -46,6 +46,11 @@ public class HistoryPanel extends javax.swing.JPanel {
         historyPanel = new javax.swing.JPanel();
 
         setMinimumSize(new java.awt.Dimension(1000, 600));
+        setOpaque(false);
+
+        historyScrollPanel.setOpaque(false);
+
+        historyPanel.setOpaque(false);
 
         javax.swing.GroupLayout historyPanelLayout = new javax.swing.GroupLayout(historyPanel);
         historyPanel.setLayout(historyPanelLayout);
@@ -66,14 +71,14 @@ public class HistoryPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(historyScrollPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 976, Short.MAX_VALUE)
+                .addComponent(historyScrollPanel)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(historyScrollPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 574, Short.MAX_VALUE)
+                .addComponent(historyScrollPanel)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents

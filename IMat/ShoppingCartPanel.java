@@ -59,6 +59,11 @@ public class ShoppingCartPanel extends javax.swing.JPanel {
         costLabel = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(993, 600));
+        setOpaque(false);
+
+        itemScrollPanel.setOpaque(false);
+
+        itemPanel.setOpaque(false);
 
         javax.swing.GroupLayout itemPanelLayout = new javax.swing.GroupLayout(itemPanel);
         itemPanel.setLayout(itemPanelLayout);
