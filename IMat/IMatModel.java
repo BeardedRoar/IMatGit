@@ -295,15 +295,22 @@ public class IMatModel {
         loggedIn = false;
     }
     
-    public boolean logIn(String userName, String password){
+    public boolean logIn(String userName, char[] password){
         loggedIn = (this.getUserName()).equals(userName) &&
-                (this.getUserPassword()).equals(password);
+                (this.getUserPassword()).equals(constructPassword(password));
         return loggedIn;
     }
     
-    public void register(String userName, String password){
+    public void register(String userName, char[] password){
         this.setUserName(userName);
-        this.setUserPassword(password);
+        this.setUserPassword(constructPassword(password));
+    }
+    
+    private String constructPassword(char[] pw){
+        StringBuilder sb = new StringBuilder();
+        for (char c : pw)
+            sb.append(c);
+        return sb.toString();
     }
 
     public void makeCategoryPanel(JPanel panel, String string, MouseListener categoryListener) {

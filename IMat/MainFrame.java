@@ -250,6 +250,11 @@ public class MainFrame extends javax.swing.JFrame {
         });
 
         registerButton.setText("Registera");
+        registerButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registerButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout logInPanelLayout = new javax.swing.GroupLayout(logInPanel);
         logInPanel.setLayout(logInPanelLayout);
@@ -510,7 +515,9 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_formMouseClicked
 
     private void logInButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logInButtonActionPerformed
-        logInCard.show(this.accountPanel, "inCard");
+        if (model.logIn(this.userNameTextField.getText(),
+                this.passwordField1.getPassword()))
+            logInCard.show(this.accountPanel, "inCard");
     }//GEN-LAST:event_logInButtonActionPerformed
 
     private void userNameTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_userNameTextFieldFocusGained
@@ -520,6 +527,12 @@ public class MainFrame extends javax.swing.JFrame {
     private void passwordField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordField1FocusGained
         this.passwordField1.selectAll();
     }//GEN-LAST:event_passwordField1FocusGained
+
+    private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
+        model.register(this.userNameTextField.getText(),
+                this.passwordField1.getPassword());
+        logInCard.show(this.accountPanel, "inCard");
+    }//GEN-LAST:event_registerButtonActionPerformed
 
     private void doSearch(){
         this.resultPanelHolder.removeAll();
@@ -531,6 +544,12 @@ public class MainFrame extends javax.swing.JFrame {
         repaint();
         revalidate();
     }
+    
+    public void logOut(){
+        model.logOut();
+        logInCard.show(this.accountPanel, "outCard");
+    }
+    
     /**
      * @param args the command line arguments
      */
