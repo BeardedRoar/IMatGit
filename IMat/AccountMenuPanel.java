@@ -5,12 +5,10 @@
  */
 package IMat;
 
-import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import javax.swing.JApplet;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 
@@ -21,17 +19,25 @@ import javax.swing.JPopupMenu;
 public class AccountMenuPanel extends javax.swing.JPanel {
 
     private JPopupMenu popup = new JPopupMenu();
+    private final MainFrame frame;
 
     /**
      * Creates new form AccountMenuPanel
      */
-    public AccountMenuPanel() {
+    public AccountMenuPanel(MainFrame frame) {
+        this.frame = frame;
         initComponents();
         ActionListener al = new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println(((JMenuItem) e.getSource()).getText());
+                switch (((JMenuItem) e.getSource()).getText()){
+                    case "Historik":
+                        AccountMenuPanel.this.frame.setFeatureCard("historyCard");
+                        break;
+                    case "Logga ut":
+                        break;
+                }
             }
 
         };
