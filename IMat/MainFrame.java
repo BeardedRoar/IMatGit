@@ -131,7 +131,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        headerPanel.setBackground(new java.awt.Color(255, 0, 51));
+        headerPanel.setBackground(Constants.HEADER_COLOR);
         headerPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -243,7 +243,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         browseScrollPanel.setOpaque(false);
 
-        browsePanel.setBackground(new java.awt.Color(255, 255, 255));
+        browsePanel.setBackground(Constants.BACKGROUND_COLOR);
         browsePanel.setPreferredSize(new java.awt.Dimension(190, 600));
         browsePanel.setRequestFocusEnabled(false);
 
@@ -316,7 +316,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         browseScrollPanel.setViewportView(browsePanel);
 
-        featurePanel.setBackground(new java.awt.Color(255, 255, 255));
+        featurePanel.setBackground(Constants.BACKGROUND_COLOR);
         featurePanel.setMinimumSize(new java.awt.Dimension(1000, 600));
         featurePanel.setPreferredSize(new java.awt.Dimension(993, 600));
         featurePanel.setLayout(new java.awt.CardLayout());
