@@ -226,11 +226,28 @@ public class MainFrame extends javax.swing.JFrame {
         accountPanel.setOpaque(false);
         accountPanel.setLayout(new java.awt.CardLayout());
 
+        logInPanel.setOpaque(false);
+
         userNameTextField.setText("AnvändarNamn");
+        userNameTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                userNameTextFieldFocusGained(evt);
+            }
+        });
 
         passwordField1.setText("jPasswordField1");
+        passwordField1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                passwordField1FocusGained(evt);
+            }
+        });
 
         logInButton.setText("Logga in");
+        logInButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logInButtonActionPerformed(evt);
+            }
+        });
 
         registerButton.setText("Registera");
 
@@ -491,6 +508,18 @@ public class MainFrame extends javax.swing.JFrame {
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
         requestFocus();
     }//GEN-LAST:event_formMouseClicked
+
+    private void logInButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logInButtonActionPerformed
+        logInCard.show(this.accountPanel, "inCard");
+    }//GEN-LAST:event_logInButtonActionPerformed
+
+    private void userNameTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_userNameTextFieldFocusGained
+        this.userNameTextField.selectAll();
+    }//GEN-LAST:event_userNameTextFieldFocusGained
+
+    private void passwordField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordField1FocusGained
+        this.passwordField1.selectAll();
+    }//GEN-LAST:event_passwordField1FocusGained
 
     private void doSearch(){
         this.resultPanelHolder.removeAll();
