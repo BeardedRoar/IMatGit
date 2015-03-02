@@ -20,6 +20,7 @@ public class ShoppingListFeaturePanel extends javax.swing.JPanel {
         this.setBackground(Constants.BACKGROUND_COLOR);
         containerPanel.setBackground(Constants.BACKGROUND_COLOR);
         headerPanel.setBackground(Constants.HEADER_COLOR);
+        
     }
 
     /**

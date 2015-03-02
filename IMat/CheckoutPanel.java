@@ -1,5 +1,7 @@
 package IMat;
 
+import javax.swing.JTextField;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -137,6 +139,11 @@ public class CheckoutPanel extends javax.swing.JPanel {
         jPanel2.setOpaque(false);
 
         cvcTextField.setText("123");
+        cvcTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                textFieldFocusGained(evt);
+            }
+        });
         cvcTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cvcTextFieldActionPerformed(evt);
@@ -146,8 +153,18 @@ public class CheckoutPanel extends javax.swing.JPanel {
         cvcLabel.setText("CVC");
 
         monthTextField.setText("02");
+        monthTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                textFieldFocusGained(evt);
+            }
+        });
 
         yearTextField.setText("15");
+        yearTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                textFieldFocusGained(evt);
+            }
+        });
         yearTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 yearTextFieldActionPerformed(evt);
@@ -157,6 +174,11 @@ public class CheckoutPanel extends javax.swing.JPanel {
         dateLabel.setText("Datum");
 
         cardNumberTextField.setToolTipText("");
+        cardNumberTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                textFieldFocusGained(evt);
+            }
+        });
         cardNumberTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cardNumberTextFieldActionPerformed(evt);
@@ -225,8 +247,18 @@ public class CheckoutPanel extends javax.swing.JPanel {
         nameLabel.setText("Namn");
 
         nameTextField.setText("Förnamn");
+        nameTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                textFieldFocusGained(evt);
+            }
+        });
 
         nameTextField2.setText("Efternamn");
+        nameTextField2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                textFieldFocusGained(evt);
+            }
+        });
         nameTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nameTextField2ActionPerformed(evt);
@@ -236,6 +268,11 @@ public class CheckoutPanel extends javax.swing.JPanel {
         adressLabel.setText("Adress");
 
         adressTextField.setText("Tvärvägen 20");
+        adressTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                textFieldFocusGained(evt);
+            }
+        });
 
         sendToOtherAdressCheckBox.setText("Leverera till annan adress");
         sendToOtherAdressCheckBox.setOpaque(false);
@@ -246,12 +283,27 @@ public class CheckoutPanel extends javax.swing.JPanel {
         });
 
         adressTextField2.setText("Tvärvägen 21");
+        adressTextField2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                textFieldFocusGained(evt);
+            }
+        });
 
         postalCodeLabel.setText("Postnummer");
 
         postalCodeTextField.setText("Postnummer");
+        postalCodeTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                textFieldFocusGained(evt);
+            }
+        });
 
         postalAdressTextField.setText("Postort");
+        postalAdressTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                textFieldFocusGained(evt);
+            }
+        });
 
         postalAdressLabel.setText("Postort");
 
@@ -346,10 +398,20 @@ public class CheckoutPanel extends javax.swing.JPanel {
         emailLabel.setText("Email");
 
         emailTextField.setText("example@mail.com");
+        emailTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                textFieldFocusGained(evt);
+            }
+        });
 
         phoneLabel.setText("Telefon");
 
         phoneTextField.setText("070-00000");
+        phoneTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                textFieldFocusGained(evt);
+            }
+        });
         phoneTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 phoneTextFieldActionPerformed(evt);
@@ -359,6 +421,11 @@ public class CheckoutPanel extends javax.swing.JPanel {
         mobilePhoneLabel.setText("Mobiltelefon");
 
         mobilePhoneTextField.setText("070-00001");
+        mobilePhoneTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                textFieldFocusGained(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -548,6 +615,11 @@ public class CheckoutPanel extends javax.swing.JPanel {
     private void cvcTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cvcTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cvcTextFieldActionPerformed
+
+    private void textFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldFocusGained
+        JTextField field = (JTextField) evt.getSource();
+        field.selectAll();   
+    }//GEN-LAST:event_textFieldFocusGained
 
     
     
