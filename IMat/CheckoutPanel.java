@@ -131,7 +131,12 @@ public class CheckoutPanel extends javax.swing.JPanel {
 
         jPanel2.setOpaque(false);
 
-        cvcTextField.setText("***");
+        cvcTextField.setText("123");
+        cvcTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cvcTextFieldActionPerformed(evt);
+            }
+        });
 
         cvcLabel.setText("CVC");
 
@@ -323,7 +328,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
 
         emailLabel.setText("Email");
 
-        emailTextField.setText("Enter Email Here");
+        emailTextField.setText("example@mail.com");
 
         phoneLabel.setText("Telefon");
 
@@ -430,7 +435,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(errorLabel)
-                .addContainerGap(269, Short.MAX_VALUE))
+                .addContainerGap(276, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -448,7 +453,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 540, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(0, 0, 0)
                 .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -517,6 +522,10 @@ public class CheckoutPanel extends javax.swing.JPanel {
         model.setPhoneNumber(phoneTextField.getText());
         model.setMobilePhoneNumber(mobilePhoneTextField.getText());
     }//GEN-LAST:event_saveInformationCheckBoxMousePressed
+
+    private void cvcTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cvcTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cvcTextFieldActionPerformed
 
     
     
