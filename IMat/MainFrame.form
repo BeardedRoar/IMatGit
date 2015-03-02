@@ -88,8 +88,8 @@
                   <EmptySpace min="-2" pref="203" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" pref="117" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="searchPanel" min="-2" pref="158" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
+                  <Component id="searchPanel" min="-2" pref="205" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="253" max="-2" attributes="0"/>
                   <Component id="cartLabel" min="-2" pref="91" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
               </Group>
@@ -165,7 +165,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                      <Component id="searchTextField" pref="125" max="32767" attributes="0"/>
+                      <Component id="searchTextField" pref="172" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="searchIcon" min="-2" pref="24" max="-2" attributes="0"/>
                   </Group>
