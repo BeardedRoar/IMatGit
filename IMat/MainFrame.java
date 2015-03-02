@@ -64,6 +64,8 @@ public class MainFrame extends javax.swing.JFrame {
         this.checkoutPanelHolder.add(new CheckoutPanel(model, this));
         this.frontPagePanel.add(new frontPageFeaturePanel(ProductCategory.FRUIT, model, "Ofta Köpta"));
         this.frontPagePanel.add(new frontPageFeaturePanel(ProductCategory.FLOUR_SUGAR_SALT, model, "Veckans varor"));
+        this.frontPagePanel.add(new ShoppingListFeaturePanel());
+        this.frontPagePanel.add(new RecipeFeaturePanel());
         card.show(this.featurePanel, "frontPageCard");
         repaint();
         revalidate();
@@ -328,7 +330,7 @@ public class MainFrame extends javax.swing.JFrame {
         featurePanel.add(shoppingCartPanelHolder, "shoppingCartCard");
 
         frontPagePanel.setOpaque(false);
-        frontPagePanel.setLayout(new java.awt.GridLayout(1, 2, 5, 5));
+        frontPagePanel.setLayout(new java.awt.GridLayout(2, 2, 5, 5));
         featurePanel.add(frontPagePanel, "frontPageCard");
 
         resultPanelHolder.setOpaque(false);
