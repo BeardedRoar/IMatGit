@@ -255,7 +255,74 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignCardLayout"/>
           <SubComponents>
+            <Container class="javax.swing.JPanel" name="logInPanel">
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+                  <CardConstraints cardName="outCard"/>
+                </Constraint>
+              </Constraints>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="logInButton" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="registerButton" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="passwordField1" alignment="0" max="32767" attributes="0"/>
+                              <Component id="userNameTextField" alignment="0" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="13" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="userNameTextField" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="passwordField1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="11" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="logInButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="registerButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JTextField" name="userNameTextField">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Anv&#xe4;ndarNamn"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JPasswordField" name="passwordField1">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="jPasswordField1"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="logInButton">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Logga in"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="registerButton">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Registera"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
             <Container class="javax.swing.JPanel" name="myPagesHolder">
+              <Properties>
+                <Property name="opaque" type="boolean" value="false"/>
+              </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
                   <CardConstraints cardName="inCard"/>

@@ -110,6 +110,11 @@ public class MainFrame extends javax.swing.JFrame {
         searchTextField = new javax.swing.JTextField();
         searchIcon = new javax.swing.JLabel();
         accountPanel = new javax.swing.JPanel();
+        logInPanel = new javax.swing.JPanel();
+        userNameTextField = new javax.swing.JTextField();
+        passwordField1 = new javax.swing.JPasswordField();
+        logInButton = new javax.swing.JButton();
+        registerButton = new javax.swing.JButton();
         myPagesHolder = new javax.swing.JPanel();
         accountMenuHolderPanel = new javax.swing.JPanel();
         browseScrollPanel = new javax.swing.JScrollPane();
@@ -216,6 +221,46 @@ public class MainFrame extends javax.swing.JFrame {
 
         accountPanel.setOpaque(false);
         accountPanel.setLayout(new java.awt.CardLayout());
+
+        userNameTextField.setText("AnvändarNamn");
+
+        passwordField1.setText("jPasswordField1");
+
+        logInButton.setText("Logga in");
+
+        registerButton.setText("Registera");
+
+        javax.swing.GroupLayout logInPanelLayout = new javax.swing.GroupLayout(logInPanel);
+        logInPanel.setLayout(logInPanelLayout);
+        logInPanelLayout.setHorizontalGroup(
+            logInPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(logInPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(logInPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(logInPanelLayout.createSequentialGroup()
+                        .addComponent(logInButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(registerButton))
+                    .addComponent(passwordField1)
+                    .addComponent(userNameTextField))
+                .addContainerGap(13, Short.MAX_VALUE))
+        );
+        logInPanelLayout.setVerticalGroup(
+            logInPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(logInPanelLayout.createSequentialGroup()
+                .addComponent(userNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(passwordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addGroup(logInPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(logInButton)
+                    .addComponent(registerButton))
+                .addContainerGap())
+        );
+
+        accountPanel.add(logInPanel, "outCard");
+
+        myPagesHolder.setOpaque(false);
 
         accountMenuHolderPanel.setOpaque(false);
         accountMenuHolderPanel.setLayout(new java.awt.GridLayout(1, 0));
@@ -504,9 +549,13 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel historyPanelHolder;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JButton logInButton;
+    private javax.swing.JPanel logInPanel;
     private javax.swing.JLabel logoLabel;
     private javax.swing.JMenuBar menuBarPanel;
     private javax.swing.JPanel myPagesHolder;
+    private javax.swing.JPasswordField passwordField1;
+    private javax.swing.JButton registerButton;
     private javax.swing.JPanel resultPanelHolder;
     private javax.swing.JLabel searchIcon;
     private javax.swing.JPanel searchPanel;
@@ -514,6 +563,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel shoppingCartPanelHolder;
     private javax.swing.JLabel startLabel;
     private javax.swing.JPanel startTextPanel;
+    private javax.swing.JTextField userNameTextField;
     // End of variables declaration//GEN-END:variables
 
     private void categoryClicked(MouseEvent e) {
