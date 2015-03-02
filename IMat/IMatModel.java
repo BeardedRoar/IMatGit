@@ -28,7 +28,7 @@ public class IMatModel {
     private final CreditCard card = handler.getCard();
     private final Customer customer = handler.getCustomer();
     private final User user = handler.getUser();
-    private boolean loggedIn = false;
+    private boolean loggedIn;
 
     public IMatModel() {
 
