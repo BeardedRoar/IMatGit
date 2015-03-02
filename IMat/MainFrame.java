@@ -131,7 +131,7 @@ public class MainFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
         setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new Dimension(Toolkit.getDefaultToolkit().getScreenSize().width-145, Toolkit.getDefaultToolkit().getScreenSize().height-40));
+        setPreferredSize(new Dimension(1225, Toolkit.getDefaultToolkit().getScreenSize().height-40));
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 formMouseClicked(evt);
