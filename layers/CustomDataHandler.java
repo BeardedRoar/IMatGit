@@ -27,6 +27,10 @@ public class CustomDataHandler {
         return singelton;
     }
     
+    public User getUser(){
+        return this.dataHandler.getUser();
+    }
+    
     public void addFavorite(Product p){
         this.dataHandler.addFavorite(p);
     }
@@ -49,6 +53,10 @@ public class CustomDataHandler {
     
     public  List<Product> getProducts(ProductCategory pc){
         return dataHandler.getProducts(pc);
+    }
+    
+    public List<Product> getProducts(){
+        return dataHandler.getProducts();
     }
     
     protected ShoppingCart getCart(){

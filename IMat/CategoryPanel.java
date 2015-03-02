@@ -68,6 +68,7 @@ public class CategoryPanel extends javax.swing.JPanel {
         textLabel = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(100, 20));
+        setOpaque(false);
         setPreferredSize(new java.awt.Dimension(100, 20));
         addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
