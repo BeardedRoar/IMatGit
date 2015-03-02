@@ -17,6 +17,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     private IMatModel model;
     private CardLayout card;
+    private CardLayout logInCard;
     private MouseListener categoryListener;
 
     /**
@@ -57,6 +58,8 @@ public class MainFrame extends javax.swing.JFrame {
         this.createCategories();
 
         this.card = (CardLayout) this.featurePanel.getLayout();
+        this.logInCard = (CardLayout) this.accountPanel.getLayout();
+        
         this.checkoutPanelHolder.add(new CheckoutPanel(model, this));
         this.frontPagePanel.add(new frontPageFeaturePanel(ProductCategory.FRUIT, model, "Ofta Köpta"));
         this.frontPagePanel.add(new frontPageFeaturePanel(ProductCategory.FLOUR_SUGAR_SALT, model, "Veckans varor"));
@@ -64,6 +67,7 @@ public class MainFrame extends javax.swing.JFrame {
         this.frontPagePanel.add(new RecipeFeaturePanel());
         
         card.show(this.featurePanel, "frontPageCard");
+        logInCard.show(this.accountPanel, model.isLoggedIn() ? "inCard" : "outCard");
         
         this.accountMenuHolderPanel.add(new AccountMenuPanel(this));
         
