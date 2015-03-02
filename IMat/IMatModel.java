@@ -273,6 +273,15 @@ public class IMatModel {
         }
         return panels;
     }
+    public List<StartProductPanel> getStartProductPanels(ProductCategory pc) {
+          List<Product> products = handler.getProducts(pc);
+          ArrayList<StartProductPanel> panels = new ArrayList(products.size());
+          Iterator<Product> it = products.iterator();
+          while (it.hasNext()) {
+              panels.add(new StartProductPanel(it.next(), this));
+          }
+          return panels;
+      }
 
     public ImageIcon getImageIcon(Product p, int width, int height) {
         return this.handler.getImageIcon(p, width, height);

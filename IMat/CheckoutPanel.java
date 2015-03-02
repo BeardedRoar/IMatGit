@@ -474,7 +474,10 @@ public class CheckoutPanel extends javax.swing.JPanel {
     private void cardNumberTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cardNumberTextFieldActionPerformed
         if(cardNumberTextField.getText().length() != 16){
             noFault = false;
+        }else{
+            noFault = true;
         }
+        
     }//GEN-LAST:event_cardNumberTextFieldActionPerformed
 
     private void yearTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yearTextFieldActionPerformed
@@ -506,7 +509,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
     private void saveInformationCheckBoxMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveInformationCheckBoxMousePressed
         
         model.setCardNumber(cardNumberTextField.getText());
-        //model.setCardType(cardComboBox.);
+        model.setCardType((String)cardComboBox.getSelectedItem());
         model.setValidMonth(Integer.parseInt(monthTextField.getText()));
         model.setValidYear(Integer.parseInt(yearTextField.getText()));
         model.setVerificationCode(Integer.parseInt(cvcTextField.getText()));

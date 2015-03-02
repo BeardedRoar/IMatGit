@@ -17,6 +17,7 @@ import se.chalmers.ait.dat215.project.ProductCategory;
 public class frontPageFeaturePanel extends javax.swing.JPanel {
     private ProductCategory pc;
     private IMatModel model;
+    private int max = 3;
     /**
      * Creates new form frontPageFeaturePanel
      */
@@ -26,8 +27,10 @@ public class frontPageFeaturePanel extends javax.swing.JPanel {
         this.model = model;
         List<ProductPanel> products = model.getProductPanels(pc);
         Iterator<ProductPanel> it = products.iterator();
-        while(it.hasNext()){
-            this.containerPanel.add(it.next());
+        for (int i = 0 ; i < 3; i++) {
+            if(it.hasNext()){
+                this.containerPanel.add(it.next());
+            }
         }
         headerPanelLabel.setText(str);
     }
@@ -46,12 +49,13 @@ public class frontPageFeaturePanel extends javax.swing.JPanel {
         headerPanelLabel = new javax.swing.JLabel();
         containerPanel = new javax.swing.JPanel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         setMinimumSize(new java.awt.Dimension(475, 275));
         setPreferredSize(new java.awt.Dimension(475, 275));
         setRequestFocusEnabled(false);
 
-        headerPanel.setBackground(new java.awt.Color(255, 0, 0));
+        headerPanel.setBackground(new java.awt.Color(255, 0, 51));
         headerPanel.setBorder(new javax.swing.border.MatteBorder(null));
 
         headerPanelLabel.setBackground(new java.awt.Color(255, 255, 255));
@@ -76,6 +80,7 @@ public class frontPageFeaturePanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
+        containerPanel.setBackground(new java.awt.Color(255, 255, 255));
         containerPanel.setLayout(new java.awt.GridLayout(1, 3));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

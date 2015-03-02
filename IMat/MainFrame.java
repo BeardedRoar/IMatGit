@@ -62,6 +62,8 @@ public class MainFrame extends javax.swing.JFrame {
 
         this.card = (CardLayout) this.featurePanel.getLayout();
         this.checkoutPanelHolder.add(new CheckoutPanel(model, this));
+        this.frontPagePanel.add(new frontPageFeaturePanel(ProductCategory.FRUIT, model, "Ofta Köpta"));
+        this.frontPagePanel.add(new frontPageFeaturePanel(ProductCategory.FLOUR_SUGAR_SALT, model, "Veckans varor"));
         card.show(this.featurePanel, "frontPageCard");
         repaint();
         revalidate();
@@ -326,7 +328,7 @@ public class MainFrame extends javax.swing.JFrame {
         featurePanel.add(shoppingCartPanelHolder, "shoppingCartCard");
 
         frontPagePanel.setOpaque(false);
-        frontPagePanel.setLayout(new java.awt.GridLayout(2, 0, 0, 2));
+        frontPagePanel.setLayout(new java.awt.GridLayout(1, 2, 5, 5));
         featurePanel.add(frontPagePanel, "frontPageCard");
 
         resultPanelHolder.setOpaque(false);
@@ -369,6 +371,9 @@ public class MainFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void startTextPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_startTextPanelMousePressed
+        this.frontPagePanel.removeAll();
+        this.frontPagePanel.add(new frontPageFeaturePanel(ProductCategory.FRUIT, model, "Ofta Köpta"));
+        this.frontPagePanel.add(new frontPageFeaturePanel(ProductCategory.FLOUR_SUGAR_SALT, model, "Veckans varor"));
         card.show(this.featurePanel, "frontPageCard");
     }//GEN-LAST:event_startTextPanelMousePressed
 
