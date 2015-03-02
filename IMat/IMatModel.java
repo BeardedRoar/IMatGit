@@ -203,15 +203,15 @@ public class IMatModel {
         return this.user.getUserName();
     }
     
-    public String getUserPassword(){
+    private String getUserPassword(){
         return this.user.getPassword();
     }
     
-    public void setUserName(String name){
+    private void setUserName(String name){
         this.user.setUserName(name);
     }
     
-    public void setPassword(String password){
+    private void setUserPassword(String password){
         this.user.setPassword(password);
     }
     
@@ -291,8 +291,19 @@ public class IMatModel {
         return loggedIn;
     }
     
-    public void loggOut(){
+    public void logOut(){
         loggedIn = false;
+    }
+    
+    public boolean logIn(String userName, String password){
+        loggedIn = (this.getUserName()).equals(userName) &&
+                (this.getUserPassword()).equals(password);
+        return loggedIn;
+    }
+    
+    public void register(String userName, String password){
+        this.setUserName(userName);
+        this.setUserPassword(password);
     }
 
     public void makeCategoryPanel(JPanel panel, String string, MouseListener categoryListener) {
