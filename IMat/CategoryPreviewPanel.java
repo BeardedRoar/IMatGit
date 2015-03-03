@@ -29,7 +29,7 @@ public class CategoryPreviewPanel extends javax.swing.JPanel implements Category
         this.name = name;
         this.model = m;            
         initComponents();
-        this.addMouseListener(listener);
+        //this.addMouseListener(listener);
         this.isSub = false;
     }
     
@@ -63,7 +63,7 @@ public class CategoryPreviewPanel extends javax.swing.JPanel implements Category
         setPreferredSize(new java.awt.Dimension(180, 240));
 
         nameLabel.setFont(Constants.RESULT_FONT);
-        nameLabel.setText(pc == null ? "Alla" + name : name);
+        nameLabel.setText(pc == null ? "Alla " + name : name);
 
         iconLabel.setIcon(image);
         iconLabel.setMaximumSize(new java.awt.Dimension(138, 111));
