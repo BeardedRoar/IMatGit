@@ -28,21 +28,26 @@ public class CustomCart {
     
     public void addItem(ShoppingItem sci){
         cart.addItem(sci);
+        cart.fireShoppingCartChanged(sci, true);
     }
     
     public void addProduct(Product p){
         cart.addProduct(p);
+        cart.fireShoppingCartChanged(getFromCart(p), true);
     }
     
     public void addProduct(Product p, double d){
-        ShoppingItem existingItem = this.getfromCart(p);
-        if (existingItem == null)
+        ShoppingItem existingItem = this.getFromCart(p);
+        if (existingItem == null){
             cart.addProduct(p, d);
-        else
+            cart.fireShoppingCartChanged(getFromCart(p), true);
+        } else{
             existingItem.setAmount(existingItem.getAmount() + d);
+            cart.fireShoppingCartChanged(existingItem, true);
+        }
     }
     
-    private ShoppingItem getfromCart(Product p){
+    private ShoppingItem getFromCart(Product p){
         Iterator<ShoppingItem> it = this.getItems().iterator();
         ShoppingItem temp;
         while(it.hasNext()){
@@ -71,10 +76,12 @@ public class CustomCart {
     
     public void removeItem(ShoppingItem sci){
         cart.removeItem(sci);
+        cart.fireShoppingCartChanged(sci, false);
     }
     
     public void addCartListener(ShoppingCartListener scl){
         cart.addShoppingCartListener(scl);
+        System.out.println("scl added from customcart");
     }
     
     public void removeCartListener(ShoppingCartListener scl){

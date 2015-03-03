@@ -289,6 +289,7 @@ public class IMatModel {
     
     public void addCartListener(ShoppingCartListener scl){
         this.cart.addCartListener(scl);
+        System.out.println("scl added from model");
     }
     
     public void removeCartListener(ShoppingCartListener scl){
