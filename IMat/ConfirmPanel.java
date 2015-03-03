@@ -112,8 +112,10 @@ public class ConfirmPanel extends javax.swing.JPanel {
         containerPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         containerPanel.setPreferredSize(new java.awt.Dimension(1000, 600));
 
+        cardCustomerPanel.setPreferredSize(new java.awt.Dimension(500, 600));
+
         cardCustomerPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        cardCustomerPanel2.setPreferredSize(new java.awt.Dimension(1000, 600));
+        cardCustomerPanel2.setPreferredSize(new java.awt.Dimension(500, 600));
         cardCustomerPanel2.setRequestFocusEnabled(false);
 
         cardInformationLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -413,16 +415,17 @@ public class ConfirmPanel extends javax.swing.JPanel {
         shoppingCartScrollPane.setPreferredSize(new java.awt.Dimension(500, 550));
 
         shoppingCartPanel.setBackground(Constants.BACKGROUND_COLOR);
+        shoppingCartPanel.setPreferredSize(new java.awt.Dimension(500, 600));
 
         javax.swing.GroupLayout shoppingCartPanelLayout = new javax.swing.GroupLayout(shoppingCartPanel);
         shoppingCartPanel.setLayout(shoppingCartPanelLayout);
         shoppingCartPanelLayout.setHorizontalGroup(
             shoppingCartPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 458, Short.MAX_VALUE)
+            .addGap(0, 500, Short.MAX_VALUE)
         );
         shoppingCartPanelLayout.setVerticalGroup(
             shoppingCartPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 621, Short.MAX_VALUE)
+            .addGap(0, 600, Short.MAX_VALUE)
         );
 
         shoppingCartScrollPane.setViewportView(shoppingCartPanel);
@@ -464,12 +467,12 @@ public class ConfirmPanel extends javax.swing.JPanel {
                 .addComponent(cardCustomerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addGroup(containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(shoppingCartScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 458, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 458, Short.MAX_VALUE)))
+                    .addComponent(shoppingCartScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE)))
         );
         containerPanelLayout.setVerticalGroup(
             containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(cardCustomerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(cardCustomerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 674, Short.MAX_VALUE)
             .addGroup(containerPanelLayout.createSequentialGroup()
                 .addComponent(shoppingCartScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 616, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
