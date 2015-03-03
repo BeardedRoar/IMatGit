@@ -287,6 +287,14 @@ public class IMatModel {
         return this.handler.getImageIcon(p, width, height);
     }
     
+    public void addCartListener(ShoppingCartListener scl){
+        this.cart.addCartListener(scl);
+    }
+    
+    public void removeCartListener(ShoppingCartListener scl){
+        this.cart.removeCartListener(scl);
+    }
+    
     public boolean isLoggedIn(){
         return loggedIn;
     }
