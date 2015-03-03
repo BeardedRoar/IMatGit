@@ -255,7 +255,26 @@ public class IMatModel {
     }
     
     public List<ProductPanel> getProductPanels(String s) {
-        List<Product> products = handler.findProducts(s);
+        List<Product> products = null;
+        if (s == null){
+            
+        } else if(s.equals("Frukt & Grönt")){
+            products = this.getProducts(ProductCategory.BERRY);
+            products.addAll(this.getProducts(ProductCategory.POD));
+            products.addAll(this.getProducts(ProductCategory.CITRUS_FRUIT));
+            products.addAll(this.getProducts(ProductCategory.EXOTIC_FRUIT));
+            products.addAll(this.getProducts(ProductCategory.VEGETABLE_FRUIT));
+            products.addAll(this.getProducts(ProductCategory.CABBAGE));
+            products.addAll(this.getProducts(ProductCategory.MELONS));
+            products.addAll(this.getProducts(ProductCategory.FRUIT));
+        } else if(s.equals("Drycker")){
+            products = this.getProducts(ProductCategory.HOT_DRINKS);
+            products.addAll(this.getProducts(ProductCategory.COLD_DRINKS));
+        } else if (s.equals("Kolhydrater")){
+            products = this.getProducts(ProductCategory.PASTA);
+            products.addAll(this.getProducts(ProductCategory.POTATO_RICE));
+        } else
+            products= handler.findProducts(s);
         ArrayList<ProductPanel> panels = new ArrayList(products.size());
         Iterator<Product> it = products.iterator();
         while (it.hasNext()) {

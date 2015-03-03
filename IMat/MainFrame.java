@@ -163,7 +163,7 @@ public class MainFrame extends javax.swing.JFrame {
         logoLabel.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         logoLabel.setForeground(new java.awt.Color(255, 255, 255));
         logoLabel.setText("iMat");
-        logoLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        logoLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         logoLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 startTextPanelMousePressed(evt);
@@ -171,7 +171,7 @@ public class MainFrame extends javax.swing.JFrame {
         });
 
         cartLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iMat.resources/cart.png"))); // NOI18N
-        cartLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        cartLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cartLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 cartLabelMouseClicked(evt);
@@ -377,7 +377,7 @@ public class MainFrame extends javax.swing.JFrame {
         startLabel.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         startLabel.setForeground(Constants.BACKGROUND_COLOR);
         startLabel.setText("Start");
-        startLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        startLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout startTextPanelLayout = new javax.swing.GroupLayout(startTextPanel);
         startTextPanel.setLayout(startTextPanelLayout);
@@ -660,18 +660,23 @@ public class MainFrame extends javax.swing.JFrame {
             model.makeCategoryPanel(this.categoryPanel, panel.getName(), categoryListener);
         }
         if (panel.getCategory() == null) {
-            if (panel.getName().equals("Mina Favoriter")) {
+            if (panel instanceof CategoryPanel) {
+                if (panel.getName().equals("Mina Favoriter")) {
+                    this.resultPanelHolder.removeAll();
+                    this.resultPanelHolder.add(new ResultPanel(model.getFavoritePanels(), model));
+                    card.show(this.featurePanel, "resultCard");
+                } else if (panel.getName().equals("Ofta Köpta")) {
+                    this.historyPanelHolder.removeAll();
+                    this.historyPanelHolder.add(new HistoryPanel(model));
+                    card.show(this.featurePanel, "historyCard");
+                } else {
+                    this.resultPanelHolder.removeAll();
+                    this.resultPanelHolder.add(new ResultPanel(model.getCategoryPreviewPanels(panel.getName(), model, categoryListener), model));
+                    card.show(this.featurePanel, "resultCard");
+                }
+            } else if (panel instanceof CategoryPreviewPanel){
                 this.resultPanelHolder.removeAll();
-                this.resultPanelHolder.add(new ResultPanel(model.getFavoritePanels(), model));
-                card.show(this.featurePanel, "resultCard");
-            } else if (panel.getName().equals("Ofta Köpta")) {
-                this.historyPanelHolder.removeAll();
-                this.historyPanelHolder.add(new HistoryPanel(model));
-                card.show(this.featurePanel, "historyCard");
-            } else {
-                this.resultPanelHolder.removeAll();
-                this.resultPanelHolder.add(new ResultPanel(model.getCategoryPreviewPanels(panel.getName(), model, categoryListener), model));
-                card.show(this.featurePanel, "resultCard");
+                this.resultPanelHolder.add(new ResultPanel(model.getProductPanels(panel.getName()), model));
             }
             repaint();
             revalidate();
