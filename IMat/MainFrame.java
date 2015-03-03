@@ -655,7 +655,14 @@ public class MainFrame extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void categoryClicked(MouseEvent e) {
-        CategoryPanel panel = (CategoryPanel) e.getSource();
+        CategoryPanel panel = null;
+        CategoryPreviewPanel pPanel = null;
+        if (e.getSource() instanceof CategoryPanel){
+            panel = (CategoryPanel) e.getSource();
+        
+        }else if (e.getSource() instanceof CategoryPreviewPanel){
+            pPanel = (CategoryPreviewPanel) e.getSource();
+        }
         if (!panel.isSub()) {
             model.makeCategoryPanel(this.categoryPanel, panel.getName(), categoryListener);
         }
@@ -668,6 +675,10 @@ public class MainFrame extends javax.swing.JFrame {
                 this.historyPanelHolder.removeAll();
                 this.historyPanelHolder.add(new HistoryPanel(model));
                 card.show(this.featurePanel, "historyCard");
+            } else {
+                this.resultPanelHolder.removeAll();
+                this.resultPanelHolder.add(new ResultPanel(model.getCategoryPreviewPanels(panel.getName(), model, categoryListener), model));
+                card.show(this.featurePanel, "resultCard");
             }
             repaint();
             revalidate();
