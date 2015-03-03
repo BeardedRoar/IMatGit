@@ -19,6 +19,7 @@ public class MainFrame extends javax.swing.JFrame {
     private CardLayout card;
     private CardLayout logInCard;
     private MouseListener categoryListener;
+    private ShoppingListPreview slp;
 
     /**
      * Creates new form MainFrame
@@ -30,6 +31,7 @@ public class MainFrame extends javax.swing.JFrame {
     public MainFrame(IMatModel model) {
         this();
         this.model = model;
+        this.slp = new ShoppingListPreview(cartLabel, model);
         this.categoryListener = new MouseListener() {
 
             @Override
@@ -280,10 +282,11 @@ public class MainFrame extends javax.swing.JFrame {
         logInPanelLayout.setVerticalGroup(
             logInPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(logInPanelLayout.createSequentialGroup()
+                .addGap(6, 6, 6)
                 .addComponent(userNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(logInPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(logInButton)
                     .addComponent(registerButton))
@@ -308,7 +311,7 @@ public class MainFrame extends javax.swing.JFrame {
         myPagePanelLayout.setVerticalGroup(
             myPagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, myPagePanelLayout.createSequentialGroup()
-                .addContainerGap(46, Short.MAX_VALUE)
+                .addContainerGap(48, Short.MAX_VALUE)
                 .addComponent(accountMenuHolderPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22))
         );
