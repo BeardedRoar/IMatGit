@@ -5,22 +5,61 @@
  */
 package IMat;
 
-import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
 
 /**
  *
  * @author Joel
  */
 public class AccountMenuPanel extends javax.swing.JPanel {
-    private boolean out = false;
+
+    private JPopupMenu popup = new JPopupMenu();
+    private final MainFrame frame;
 
     /**
      * Creates new form AccountMenuPanel
      */
-    public AccountMenuPanel() {
+    public AccountMenuPanel(final MainFrame frame) {
+        this.frame = frame;
         initComponents();
+        ActionListener al = new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                switch (((JMenuItem) e.getSource()).getText()){
+                    case "Historik":
+                        AccountMenuPanel.this.frame.setFeatureCard("historyCard");
+                        break;
+                    case "Logga ut":
+                        frame.logOut();
+                        break;
+                }
+            }
+
+        };
+
+        JMenuItem m = new JMenuItem("Historik");
+        m.addActionListener(al);
+        popup.add(m);
+        m = new JMenuItem("Logga ut");
+        m.addActionListener(al);
+        popup.add(m);
+        PopupListener pl = new PopupListener();
+        jButton1.addMouseListener(pl);
     }
 
+    class PopupListener extends MouseAdapter {
+    @Override
+    public void mousePressed(MouseEvent e) {
+        popup.show(AccountMenuPanel.this, 0, 25);
+    }
+  }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,51 +69,16 @@ public class AccountMenuPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
         mainPanel = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
 
-        jButton2.setText("jButton2");
-
-        jButton3.setText("jButton3");
-
-        jButton4.setText("jButton4");
-
-        jButton5.setText("jButton5");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton5))
-        );
-
+        setBackground(Constants.HEADER_COLOR);
         setLayout(new java.awt.BorderLayout());
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
+        mainPanel.setOpaque(false);
+
+        jButton1.setText("Mina Sidor");
+        jButton1.setInheritsPopupMenu(true);
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
@@ -86,36 +90,15 @@ public class AccountMenuPanel extends javax.swing.JPanel {
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addComponent(jButton1)
-                .addGap(0, 1, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         add(mainPanel, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if (out){
-            this.removeAll();
-            setSize(79, 25);
-            this.add(this.jButton1, BorderLayout.NORTH);
-        } else {
-            this.removeAll();
-            setSize(79, 146);
-            this.add(this.jButton1, BorderLayout.NORTH);
-            this.add(this.jPanel1, BorderLayout.SOUTH);
-        }
-        out = !out;
-        repaint();
-        revalidate();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel mainPanel;
     // End of variables declaration//GEN-END:variables
 }
