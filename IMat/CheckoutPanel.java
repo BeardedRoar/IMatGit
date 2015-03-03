@@ -299,13 +299,13 @@ public class CheckoutPanel extends javax.swing.JPanel {
         });
 
         postalAdressTextField.setText("Postort");
-        postalAdressTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+
+        postalAdressLabel.setText("Postort");
+        postalAdressLabel.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 textFieldFocusGained(evt);
             }
         });
-
-        postalAdressLabel.setText("Postort");
 
         postalCodeTextField1.setText("Postnummer");
 
@@ -390,7 +390,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
                 .addComponent(sendToMailCheckBox)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(saveInformationCheckBox)
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel4.setOpaque(false);
@@ -499,7 +499,9 @@ public class CheckoutPanel extends javax.swing.JPanel {
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
         buyButton.setBackground(new java.awt.Color(255, 102, 102));
+        buyButton.setForeground(new java.awt.Color(255, 255, 255));
         buyButton.setText("Köp");
+        buyButton.setPreferredSize(new java.awt.Dimension(50, 25));
         buyButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buyButtonActionPerformed(evt);
@@ -527,7 +529,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
                 .addGap(68, 68, 68)
                 .addComponent(errorLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(buyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(buyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -542,7 +544,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 660, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 614, Short.MAX_VALUE)
             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
