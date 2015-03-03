@@ -24,7 +24,7 @@ public class AccountMenuPanel extends javax.swing.JPanel {
     /**
      * Creates new form AccountMenuPanel
      */
-    public AccountMenuPanel(MainFrame frame) {
+    public AccountMenuPanel(final MainFrame frame) {
         this.frame = frame;
         initComponents();
         ActionListener al = new ActionListener() {
