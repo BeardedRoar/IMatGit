@@ -8,13 +8,14 @@ package IMat;
 import java.awt.GridLayout;
 import java.util.Iterator;
 import java.util.List;
+import javax.swing.JFrame;
 import se.chalmers.ait.dat215.project.ProductCategory;
 
 /**
  *
  * @author axel
  */
-public class ResultPanel extends javax.swing.JPanel {
+public class ResultPanel<T extends JFrame> extends javax.swing.JPanel {
     private IMatModel model;
     private ProductCategory pc;
     
@@ -34,12 +35,12 @@ public class ResultPanel extends javax.swing.JPanel {
         }
     }
     
-    public ResultPanel(List<ProductPanel> products, IMatModel model){
+    public ResultPanel(List<T> products, IMatModel model){
         this.pc = pc;
         this.model = model;
         initComponents();
         
-        Iterator<ProductPanel> it = products.iterator();
+        Iterator<T> it = products.iterator();
         this.resultPanel.setLayout(new GridLayout((products.size() +3)/4, 4));
         while(it.hasNext()){
             this.resultPanel.add(it.next());
