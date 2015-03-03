@@ -660,18 +660,23 @@ public class MainFrame extends javax.swing.JFrame {
             model.makeCategoryPanel(this.categoryPanel, panel.getName(), categoryListener);
         }
         if (panel.getCategory() == null) {
-            if (panel.getName().equals("Mina Favoriter")) {
+            if (panel instanceof CategoryPanel) {
+                if (panel.getName().equals("Mina Favoriter")) {
+                    this.resultPanelHolder.removeAll();
+                    this.resultPanelHolder.add(new ResultPanel(model.getFavoritePanels(), model));
+                    card.show(this.featurePanel, "resultCard");
+                } else if (panel.getName().equals("Ofta Köpta")) {
+                    this.historyPanelHolder.removeAll();
+                    this.historyPanelHolder.add(new HistoryPanel(model));
+                    card.show(this.featurePanel, "historyCard");
+                } else {
+                    this.resultPanelHolder.removeAll();
+                    this.resultPanelHolder.add(new ResultPanel(model.getCategoryPreviewPanels(panel.getName(), model, categoryListener), model));
+                    card.show(this.featurePanel, "resultCard");
+                }
+            } else if (panel instanceof CategoryPreviewPanel){
                 this.resultPanelHolder.removeAll();
-                this.resultPanelHolder.add(new ResultPanel(model.getFavoritePanels(), model));
-                card.show(this.featurePanel, "resultCard");
-            } else if (panel.getName().equals("Ofta Köpta")) {
-                this.historyPanelHolder.removeAll();
-                this.historyPanelHolder.add(new HistoryPanel(model));
-                card.show(this.featurePanel, "historyCard");
-            } else {
-                this.resultPanelHolder.removeAll();
-                this.resultPanelHolder.add(new ResultPanel(model.getCategoryPreviewPanels(panel.getName(), model, categoryListener), model));
-                card.show(this.featurePanel, "resultCard");
+                this.resultPanelHolder.add(new ResultPanel(model.getProductPanels(panel.getName()), model));
             }
             repaint();
             revalidate();

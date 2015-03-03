@@ -29,8 +29,8 @@ public class CategoryPreviewPanel extends javax.swing.JPanel implements Category
         this.name = name;
         this.model = m;            
         initComponents();
-        //this.addMouseListener(listener);
-        this.isSub = false;
+        this.addMouseListener(listener);
+        this.isSub = true;
     }
     
     public CategoryPreviewPanel(String name, ProductCategory pc, IMatModel m,
@@ -100,6 +100,11 @@ public class CategoryPreviewPanel extends javax.swing.JPanel implements Category
     private javax.swing.JLabel nameLabel;
     // End of variables declaration//GEN-END:variables
 
+    @Override
+    public String getName(){
+        return name;
+    }
+    
     @Override
     public ProductCategory getCategory() {
         return pc;
