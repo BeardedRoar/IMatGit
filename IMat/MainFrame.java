@@ -235,7 +235,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         logInPanel.setOpaque(false);
 
-        userNameTextField.setText("AnvändarNamn");
+        userNameTextField.setText("Användarnamn");
         userNameTextField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 userNameTextFieldFocusGained(evt);

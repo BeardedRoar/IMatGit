@@ -297,7 +297,7 @@
               <SubComponents>
                 <Component class="javax.swing.JTextField" name="userNameTextField">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Anv&#xe4;ndarNamn"/>
+                    <Property name="text" type="java.lang.String" value="Anv&#xe4;ndarnamn"/>
                   </Properties>
                   <Events>
                     <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="userNameTextFieldFocusGained"/>
