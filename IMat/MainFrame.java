@@ -63,6 +63,7 @@ public class MainFrame extends javax.swing.JFrame {
         this.logInCard = (CardLayout) this.accountPanel.getLayout();
         
         this.checkoutPanelHolder.add(new CheckoutPanel(model, this));
+        this.confirmPanelHolder.add(new ConfirmPanel(model));
         this.frontPagePanel.add(new frontPageFeaturePanel(ProductCategory.FRUIT, model, "Ofta Köpta"));
         this.frontPagePanel.add(new frontPageFeaturePanel(ProductCategory.FLOUR_SUGAR_SALT, model, "Veckans varor"));
         this.frontPagePanel.add(new ShoppingListFeaturePanel());
@@ -136,6 +137,7 @@ public class MainFrame extends javax.swing.JFrame {
         frontPagePanel = new javax.swing.JPanel();
         resultPanelHolder = new javax.swing.JPanel();
         checkoutPanelHolder = new javax.swing.JPanel();
+        confirmPanelHolder = new javax.swing.JPanel();
         menuBarPanel = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -455,6 +457,19 @@ public class MainFrame extends javax.swing.JFrame {
         checkoutPanelHolder.setLayout(new java.awt.GridLayout(1, 0));
         featurePanel.add(checkoutPanelHolder, "checkoutCard");
 
+        javax.swing.GroupLayout confirmPanelHolderLayout = new javax.swing.GroupLayout(confirmPanelHolder);
+        confirmPanelHolder.setLayout(confirmPanelHolderLayout);
+        confirmPanelHolderLayout.setHorizontalGroup(
+            confirmPanelHolderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1000, Short.MAX_VALUE)
+        );
+        confirmPanelHolderLayout.setVerticalGroup(
+            confirmPanelHolderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 675, Short.MAX_VALUE)
+        );
+
+        featurePanel.add(confirmPanelHolder, "confirmPanelCard");
+
         jMenu1.setText("File");
         menuBarPanel.add(jMenu1);
 
@@ -616,6 +631,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel cartLabel;
     private javax.swing.JPanel categoryPanel;
     private javax.swing.JPanel checkoutPanelHolder;
+    private javax.swing.JPanel confirmPanelHolder;
     private javax.swing.JPanel favoritePanel;
     private javax.swing.JPanel featureHeaderPanel;
     private javax.swing.JPanel featurePanel;

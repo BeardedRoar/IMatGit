@@ -16,10 +16,13 @@ import se.chalmers.ait.dat215.project.ShoppingItem;
  */
 public class ConfirmPanel extends javax.swing.JPanel {
 
+    private IMatModel model;
+    private MainFrame frame;
     /**
      * Creates new form ConfirmPanel
      */
     public ConfirmPanel(IMatModel model) {
+        this.model = model;
         initComponents();
         
         List<ShoppingItem> items = model.getItems();
@@ -42,6 +45,11 @@ public class ConfirmPanel extends javax.swing.JPanel {
         emailTextField.setText(model.getEmail());
         phoneTextField.setText(model.getPhoneNumber());
         mobilePhoneTextField.setText(model.getMobilePhoneNumber());
+    }
+    
+    public ConfirmPanel(IMatModel model, MainFrame frame){
+        this(model);
+        this.frame = frame;
     }
 
     /**
@@ -515,7 +523,10 @@ public class ConfirmPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_yearTextFieldActionPerformed
 
     private void confirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmButtonActionPerformed
-        
+        model.placeOrder(true);
+        if(frame != null){
+            frame.setFeatureCard("confirmPanelCard");
+            }
     }//GEN-LAST:event_confirmButtonActionPerformed
 
 
