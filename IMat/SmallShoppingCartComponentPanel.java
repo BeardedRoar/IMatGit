@@ -9,7 +9,7 @@ import se.chalmers.ait.dat215.project.ShoppingItem;
 
 /**
  *
- * @author axel
+ * @author auren
  */
 public class SmallShoppingCartComponentPanel extends javax.swing.JPanel {
 
@@ -35,8 +35,9 @@ public class SmallShoppingCartComponentPanel extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         accualProductLabel = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        priceLabel = new javax.swing.JLabel();
         accualPriceLabel = new javax.swing.JLabel();
+        priceLabel = new javax.swing.JLabel();
+        accualPriceLabel1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         accualTotalPriceLabel = new javax.swing.JLabel();
         totalPriceLabel = new javax.swing.JLabel();
@@ -51,11 +52,11 @@ public class SmallShoppingCartComponentPanel extends javax.swing.JPanel {
                 formMouseClicked(evt);
             }
         });
-        setLayout(new java.awt.GridLayout(1, 4));
 
-        jPanel1.setMinimumSize(new java.awt.Dimension(150, 55));
+        jPanel1.setMinimumSize(new java.awt.Dimension(100, 55));
+        jPanel1.setName(""); // NOI18N
         jPanel1.setOpaque(false);
-        jPanel1.setPreferredSize(new java.awt.Dimension(150, 55));
+        jPanel1.setPreferredSize(new java.awt.Dimension(100, 55));
 
         accualProductLabel.setBackground(new java.awt.Color(0, 0, 0));
         accualProductLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -66,9 +67,9 @@ public class SmallShoppingCartComponentPanel extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(0, 0, 0)
                 .addComponent(accualProductLabel)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -78,38 +79,43 @@ public class SmallShoppingCartComponentPanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        add(jPanel1);
-
         jPanel2.setOpaque(false);
+
+        accualPriceLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        accualPriceLabel.setText(this.shoppingItem.getProduct().getPrice()+" "+this.shoppingItem.getProduct().getUnit());
 
         priceLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         priceLabel.setText("Pris");
 
-        accualPriceLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        accualPriceLabel.setText(this.shoppingItem.getProduct().getPrice()+" "+this.shoppingItem.getProduct().getUnit());
+        accualPriceLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        accualPriceLabel1.setText("Antal: " + Integer.toString((int) this.shoppingItem.getAmount()));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(1, 1, 1)
-                .addComponent(priceLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(accualPriceLabel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(14, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(accualPriceLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(priceLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(accualPriceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(23, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(priceLabel)
                     .addComponent(accualPriceLabel))
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(accualPriceLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        add(jPanel2);
 
         jPanel4.setOpaque(false);
 
@@ -124,7 +130,6 @@ public class SmallShoppingCartComponentPanel extends javax.swing.JPanel {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(7, 7, 7)
                 .addComponent(totalPriceLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(accualTotalPriceLabel)
@@ -133,14 +138,34 @@ public class SmallShoppingCartComponentPanel extends javax.swing.JPanel {
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(23, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(totalPriceLabel)
                     .addComponent(accualTotalPriceLabel))
                 .addContainerGap())
         );
 
-        add(jPanel4);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(1, 1, 1)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(6, 6, 6))
+        );
     }// </editor-fold>//GEN-END:initComponents
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
@@ -150,6 +175,7 @@ public class SmallShoppingCartComponentPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel accualPriceLabel;
+    private javax.swing.JLabel accualPriceLabel1;
     private javax.swing.JLabel accualProductLabel;
     private javax.swing.JLabel accualTotalPriceLabel;
     private javax.swing.JPanel jPanel1;
