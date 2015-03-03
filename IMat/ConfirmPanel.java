@@ -107,6 +107,11 @@ public class ConfirmPanel extends javax.swing.JPanel {
 
         yearTextField.setText("15");
         yearTextField.setEnabled(false);
+        yearTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                yearTextFieldActionPerformed(evt);
+            }
+        });
 
         dateLabel.setText("Datum");
 
@@ -116,6 +121,7 @@ public class ConfirmPanel extends javax.swing.JPanel {
         cardNumberLabel.setText("Kortnummer");
 
         cardComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Visa", "Mastercard" }));
+        cardComboBox.setEnabled(false);
         cardComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cardComboBoxActionPerformed(evt);
@@ -465,6 +471,10 @@ public class ConfirmPanel extends javax.swing.JPanel {
     private void phoneTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phoneTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_phoneTextFieldActionPerformed
+
+    private void yearTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yearTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_yearTextFieldActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
