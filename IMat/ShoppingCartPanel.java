@@ -25,7 +25,7 @@ public class ShoppingCartPanel extends javax.swing.JPanel implements ShoppingCar
     /**
      * Creates new form ShoppingCartPanel
      */
-    public ShoppingCartPanel(IMatModel model){
+    public ShoppingCartPanel(IMatModel model, ShoppingCartComponentListener sccl){
         this.model = model;
         initComponents();
         
@@ -37,13 +37,14 @@ public class ShoppingCartPanel extends javax.swing.JPanel implements ShoppingCar
             tempPanel = new ShoppingCartComponentPanel(it.next());
             this.itemPanel.add(tempPanel);
             tempPanel.addShoppingCartComponentListener(this);
+            tempPanel.addShoppingCartComponentListener(sccl);
         }
         
         this.costLabel.setText(model.getTotalCost() + " kr");
     }
     
-    public ShoppingCartPanel(IMatModel model, MainFrame frame) {
-        this(model);
+    public ShoppingCartPanel(IMatModel model, ShoppingCartComponentListener sccl, MainFrame frame) {
+        this(model, sccl);
         this.frame = frame;
     }
 

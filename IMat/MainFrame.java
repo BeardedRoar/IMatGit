@@ -503,7 +503,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void cartLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cartLabelMouseClicked
         this.shoppingCartPanelHolder.removeAll();
-        this.shoppingCartPanelHolder.add(new ShoppingCartPanel(model, this));
+        this.shoppingCartPanelHolder.add(new ShoppingCartPanel(model, slp, this));
         card.show(this.featurePanel, "shoppingCartCard");
     }//GEN-LAST:event_cartLabelMouseClicked
 
