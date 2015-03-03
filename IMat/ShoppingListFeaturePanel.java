@@ -42,7 +42,7 @@ public class ShoppingListFeaturePanel extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(475, 275));
 
         headerPanel.setBackground(new java.awt.Color(251, 0, 51));
-        headerPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        headerPanel.setBorder(new javax.swing.border.MatteBorder(null));
         headerPanel.setMinimumSize(new java.awt.Dimension(473, 70));
         headerPanel.setPreferredSize(new java.awt.Dimension(473, 70));
 
