@@ -72,4 +72,12 @@ public class CustomCart {
     public void removeItem(ShoppingItem sci){
         cart.removeItem(sci);
     }
+    
+    public void addCartListener(ShoppingCartListener scl){
+        cart.addShoppingCartListener(scl);
+    }
+    
+    public void removeCartListener(ShoppingCartListener scl){
+        cart.removeShoppingCartListener(scl);
+    }
 }
