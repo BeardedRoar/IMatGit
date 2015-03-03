@@ -353,7 +353,6 @@ public class IMatModel {
     }
     
     public void addCartListener(ShoppingCartListener scl){
-        System.out.println("scl added in model");
         this.cart.addCartListener(scl);
     }
     

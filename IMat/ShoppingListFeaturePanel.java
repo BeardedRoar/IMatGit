@@ -8,15 +8,11 @@ package IMat;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import se.chalmers.ait.dat215.project.Product;
 
 /**
@@ -28,7 +24,6 @@ public class ShoppingListFeaturePanel extends javax.swing.JPanel {
     private BufferedImage img;
     private JPanel textFieldPanel;
     private IMatModel model;
-    private int nbrOfTextFields;
     private ArrayList<ShoppingListTextFieldPanel> textFields;
 
     /**
@@ -78,8 +73,8 @@ public class ShoppingListFeaturePanel extends javax.swing.JPanel {
     
     private void reMakeTextFields(){
         textFieldPanel.removeAll();
-        textFieldPanel.setLayout(new GridLayout(Math.max(nbrOfTextFields, 9), 1));
         textFields.add(new ShoppingListTextFieldPanel(this));        
+        textFieldPanel.setLayout(new GridLayout(Math.max(9, textFields.size()), 1));
         for(ShoppingListTextFieldPanel field : textFields){
             textFieldPanel.add(field);
         }
@@ -100,6 +95,7 @@ public class ShoppingListFeaturePanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         headerPanel = new javax.swing.JPanel();
         headerLabel = new javax.swing.JLabel();
+        containerScrollPane = new javax.swing.JScrollPane();
         containerPanel = new javax.swing.JPanel();
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iMat.resources/block.jpg"))); // NOI18N
@@ -129,7 +125,7 @@ public class ShoppingListFeaturePanel extends javax.swing.JPanel {
             .addGroup(headerPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(headerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(156, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         headerPanelLayout.setVerticalGroup(
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -140,26 +136,28 @@ public class ShoppingListFeaturePanel extends javax.swing.JPanel {
         );
 
         containerPanel.setLayout(new java.awt.GridLayout());
+        containerScrollPane.setViewportView(containerPanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(headerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(containerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(containerScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 473, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(headerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(containerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(containerScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel containerPanel;
+    private javax.swing.JScrollPane containerScrollPane;
     private javax.swing.JLabel headerLabel;
     private javax.swing.JPanel headerPanel;
     private javax.swing.JLabel jLabel1;
