@@ -81,7 +81,6 @@ public class CustomCart {
     
     public void addCartListener(ShoppingCartListener scl){
         cart.addShoppingCartListener(scl);
-        System.out.println("scl added from customcart");
     }
     
     public void removeCartListener(ShoppingCartListener scl){
