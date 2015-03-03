@@ -14,6 +14,7 @@ import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import se.chalmers.ait.dat215.project.Product;
+import se.chalmers.ait.dat215.project.ShoppingItem;
 
 /**
  *
@@ -62,8 +63,9 @@ public class ShoppingListFeaturePanel extends javax.swing.JPanel {
         List<Product> hits = model.findProducts(text);
         if (hits.size() > 0){
             Product hit = hits.get(0);
-            model.addProduct(hit);
-            sltfp.setText(hit.getName());
+            model.addProduct(hit, 1.0);
+            sltfp.setProduct(hit);
+            textFields.add(new ShoppingListTextFieldPanel(this));
             reMakeTextFields();
         } else {
             sltfp.unnableToFind();
@@ -73,7 +75,6 @@ public class ShoppingListFeaturePanel extends javax.swing.JPanel {
     
     private void reMakeTextFields(){
         textFieldPanel.removeAll();
-        textFields.add(new ShoppingListTextFieldPanel(this));        
         textFieldPanel.setLayout(new GridLayout(Math.max(9, textFields.size()), 1));
         for(ShoppingListTextFieldPanel field : textFields){
             textFieldPanel.add(field);
@@ -162,4 +163,10 @@ public class ShoppingListFeaturePanel extends javax.swing.JPanel {
     private javax.swing.JPanel headerPanel;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
+
+    void removeProduct(Product product, ShoppingListTextFieldPanel sltfp) {
+        model.removeProductFromCart(product);
+        textFields.remove(sltfp);
+        reMakeTextFields();
+    }
 }

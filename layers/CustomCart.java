@@ -86,6 +86,10 @@ public class CustomCart {
         cart.fireShoppingCartChanged(sci, false);
     }
     
+    public void removeProduct(Product p){
+        this.removeItem(this.getFromCart(p));
+    }
+    
     public void addCartListener(ShoppingCartListener scl){
         cart.addShoppingCartListener(scl);
     }

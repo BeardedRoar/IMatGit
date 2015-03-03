@@ -72,6 +72,10 @@ public class IMatModel {
         cart.removeItem(sci);
 
     }
+    
+    public void removeProductFromCart(Product p){
+        cart.removeProduct(p);
+    }
 
     // Order and history
     public Order placeOrder() {

@@ -6,6 +6,8 @@
 package IMat;
 
 import java.awt.event.KeyEvent;
+import se.chalmers.ait.dat215.project.Product;
+import se.chalmers.ait.dat215.project.ShoppingItem;
 
 /**
  *
@@ -13,6 +15,7 @@ import java.awt.event.KeyEvent;
  */
 public class ShoppingListTextFieldPanel extends javax.swing.JPanel {
     private final ShoppingListFeaturePanel slfp;
+    private Product product;
 
     /**
      * Creates new form ShoppingListTextFieldPanel
@@ -33,6 +36,7 @@ public class ShoppingListTextFieldPanel extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         textField = new javax.swing.JTextField();
+        deleteButton = new javax.swing.JButton();
 
         setMinimumSize(new java.awt.Dimension(473, 22));
         setOpaque(false);
@@ -65,21 +69,33 @@ public class ShoppingListTextFieldPanel extends javax.swing.JPanel {
             }
         });
 
+        deleteButton.setText("X");
+        deleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textField, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(19, 19, 19)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(textField, javax.swing.GroupLayout.DEFAULT_SIZE, 425, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(deleteButton))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(textField, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textField, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -94,8 +110,13 @@ public class ShoppingListTextFieldPanel extends javax.swing.JPanel {
         textField.selectAll();
     }//GEN-LAST:event_textFieldFocusGained
 
+    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+        if (product != null)
+            this.slfp.removeProduct(product, this);
+    }//GEN-LAST:event_deleteButtonActionPerformed
+
     public void setText(String text){
-        textField.setText(text);
+        
     }
     
     public void giveFocus(){
@@ -105,8 +126,14 @@ public class ShoppingListTextFieldPanel extends javax.swing.JPanel {
     public void unnableToFind(){
         textField.selectAll();
     }
+    
+    public void setProduct(Product product){
+        this.product = product;
+        textField.setText(product.getName());        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton deleteButton;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField textField;
     // End of variables declaration//GEN-END:variables
