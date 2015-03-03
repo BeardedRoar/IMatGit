@@ -203,15 +203,15 @@ public class IMatModel {
         return this.user.getUserName();
     }
     
-    public String getUserPassword(){
+    private String getUserPassword(){
         return this.user.getPassword();
     }
     
-    public void setUserName(String name){
+    private void setUserName(String name){
         this.user.setUserName(name);
     }
     
-    public void setPassword(String password){
+    private void setUserPassword(String password){
         this.user.setPassword(password);
     }
     
@@ -285,6 +285,32 @@ public class IMatModel {
 
     public ImageIcon getImageIcon(Product p, int width, int height) {
         return this.handler.getImageIcon(p, width, height);
+    }
+    
+    public boolean isLoggedIn(){
+        return loggedIn;
+    }
+    
+    public void logOut(){
+        loggedIn = false;
+    }
+    
+    public boolean logIn(String userName, char[] password){
+        loggedIn = (this.getUserName()).equals(userName) &&
+                (this.getUserPassword()).equals(constructPassword(password));
+        return loggedIn;
+    }
+    
+    public void register(String userName, char[] password){
+        this.setUserName(userName);
+        this.setUserPassword(constructPassword(password));
+    }
+    
+    private String constructPassword(char[] pw){
+        StringBuilder sb = new StringBuilder();
+        for (char c : pw)
+            sb.append(c);
+        return sb.toString();
     }
 
     public void makeCategoryPanel(JPanel panel, String string, MouseListener categoryListener) {

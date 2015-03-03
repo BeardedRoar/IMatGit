@@ -36,6 +36,7 @@ public class AccountMenuPanel extends javax.swing.JPanel {
                         AccountMenuPanel.this.frame.setFeatureCard("historyCard");
                         break;
                     case "Logga ut":
+                        frame.logOut();
                         break;
                 }
             }
