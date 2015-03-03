@@ -13,13 +13,14 @@ import se.chalmers.ait.dat215.project.ProductCategory;
  *
  * @author Joel
  */
-public class CategoryPreviewPanel extends javax.swing.JPanel {
+public class CategoryPreviewPanel extends javax.swing.JPanel implements CategoryHolder{
 
     private final String name;
     private final IMatModel model;
     private ProductCategory pc;
     private ImageIcon image;
     private final MouseListener listener;
+    private final boolean isSub;
     /**
      * Creates new form CategoryPreviewPanel
      */
@@ -28,7 +29,8 @@ public class CategoryPreviewPanel extends javax.swing.JPanel {
         this.name = name;
         this.model = m;            
         initComponents();
-        this.addMouseListener(listener);
+        //this.addMouseListener(listener);
+        this.isSub = false;
     }
     
     public CategoryPreviewPanel(String name, ProductCategory pc, IMatModel m,
@@ -40,6 +42,7 @@ public class CategoryPreviewPanel extends javax.swing.JPanel {
         image = model.getImageIcon(model.getProducts(pc).get(0), 138, 111);
         initComponents();
         this.addMouseListener(listener);
+        this.isSub = true;
     }
 
     /**
@@ -60,7 +63,7 @@ public class CategoryPreviewPanel extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(180, 240));
 
         nameLabel.setFont(Constants.RESULT_FONT);
-        nameLabel.setText(pc == null ? "Alla" + name : name);
+        nameLabel.setText(pc == null ? "Alla " + name : name);
 
         iconLabel.setIcon(image);
         iconLabel.setMaximumSize(new java.awt.Dimension(138, 111));
@@ -96,4 +99,14 @@ public class CategoryPreviewPanel extends javax.swing.JPanel {
     private javax.swing.JLabel iconLabel;
     private javax.swing.JLabel nameLabel;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public ProductCategory getCategory() {
+        return pc;
+    }
+
+    @Override
+    public boolean isSub() {
+        return isSub;
+    }
 }

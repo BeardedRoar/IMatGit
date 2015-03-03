@@ -273,6 +273,48 @@ public class IMatModel {
         }
         return panels;
     }
+    
+    public List<CategoryPreviewPanel> getCategoryPreviewPanels(String name, 
+            IMatModel m, MouseListener listener){
+        ArrayList<CategoryPreviewPanel> list = new ArrayList();
+        switch (name){
+            case ("Frukt & Grönt"):
+                list.add(new CategoryPreviewPanel("Frukt & Grönt", m, listener));
+                list.add(new CategoryPreviewPanel("Bär", ProductCategory.BERRY, 
+                        m, listener));
+                list.add(new CategoryPreviewPanel("Baljväxter", ProductCategory.POD, 
+                        m, listener));
+                list.add(new CategoryPreviewPanel("CitrusFrukter", ProductCategory.CITRUS_FRUIT, 
+                        m, listener));
+                list.add(new CategoryPreviewPanel("Exotiska Frukter", ProductCategory.EXOTIC_FRUIT, 
+                        m, listener));
+                list.add(new CategoryPreviewPanel("Grönsaker", ProductCategory.VEGETABLE_FRUIT, 
+                        m, listener));
+                list.add(new CategoryPreviewPanel("Kål", ProductCategory.CABBAGE, 
+                        m, listener));
+                list.add(new CategoryPreviewPanel("Meloner", ProductCategory.MELONS, 
+                        m, listener));
+                list.add(new CategoryPreviewPanel("Stenfrukter", ProductCategory.FRUIT, 
+                        m, listener));
+                break;
+            case ("Kolhydrater"):
+                list.add(new CategoryPreviewPanel("Kolhydrater", m, listener));
+                list.add(new CategoryPreviewPanel("Pasta", ProductCategory.PASTA, 
+                        m, listener));
+                list.add(new CategoryPreviewPanel("Potatis, ris", ProductCategory.POTATO_RICE, 
+                        m, listener));
+                break;
+            case ("Drycker"):
+                list.add(new CategoryPreviewPanel("Drycker", m, listener));
+                list.add(new CategoryPreviewPanel("Drycker Kalla", ProductCategory.COLD_DRINKS, 
+                        m, listener));
+                list.add(new CategoryPreviewPanel("Drycker Varma", ProductCategory.HOT_DRINKS, 
+                        m, listener));
+                break;
+        }
+        return list;
+    }
+    
     public List<StartProductPanel> getStartProductPanels(ProductCategory pc) {
           List<Product> products = handler.getProducts(pc);
           ArrayList<StartProductPanel> panels = new ArrayList(products.size());

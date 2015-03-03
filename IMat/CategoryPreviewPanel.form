@@ -62,7 +62,7 @@
           <Connection code="Constants.RESULT_FONT" type="code"/>
         </Property>
         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="pc == null ? &quot;Alla&quot; + name : name" type="code"/>
+          <Connection code="pc == null ? &quot;Alla &quot; + name : name" type="code"/>
         </Property>
       </Properties>
     </Component>
