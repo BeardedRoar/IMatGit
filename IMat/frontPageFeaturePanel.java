@@ -59,7 +59,7 @@ public class frontPageFeaturePanel extends javax.swing.JPanel {
         setRequestFocusEnabled(false);
 
         headerPanel.setBackground(new java.awt.Color(255, 0, 51));
-        headerPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        headerPanel.setBorder(new javax.swing.border.MatteBorder(null));
         headerPanel.setPreferredSize(new java.awt.Dimension(473, 70));
 
         headerPanelLabel.setBackground(new java.awt.Color(255, 255, 255));

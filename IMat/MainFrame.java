@@ -365,7 +365,9 @@ public class MainFrame extends javax.swing.JFrame {
         browsePanel.setPreferredSize(new java.awt.Dimension(190, 600));
         browsePanel.setRequestFocusEnabled(false);
 
-        startTextPanel.setOpaque(false);
+        startTextPanel.setBackground(Constants.HEADER_COLOR);
+        startTextPanel.setBorder(new javax.swing.border.MatteBorder(null));
+        startTextPanel.setPreferredSize(new java.awt.Dimension(125, 70));
         startTextPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 startTextPanelMousePressed(evt);
@@ -373,6 +375,7 @@ public class MainFrame extends javax.swing.JFrame {
         });
 
         startLabel.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
+        startLabel.setForeground(Constants.BACKGROUND_COLOR);
         startLabel.setText("Start");
         startLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
@@ -381,16 +384,13 @@ public class MainFrame extends javax.swing.JFrame {
         startTextPanelLayout.setHorizontalGroup(
             startTextPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(startTextPanelLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addContainerGap()
                 .addComponent(startLabel)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         startTextPanelLayout.setVerticalGroup(
             startTextPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(startTextPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(startLabel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(startLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
         );
 
         favoritePanel.setOpaque(false);
@@ -412,7 +412,7 @@ public class MainFrame extends javax.swing.JFrame {
         browsePanel.setLayout(browsePanelLayout);
         browsePanelLayout.setHorizontalGroup(
             browsePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(startTextPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(startTextPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
             .addGroup(browsePanelLayout.createSequentialGroup()
                 .addGroup(browsePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(categoryPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -424,12 +424,12 @@ public class MainFrame extends javax.swing.JFrame {
             browsePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(browsePanelLayout.createSequentialGroup()
                 .addComponent(startTextPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(favoritePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 12, Short.MAX_VALUE)
                 .addGap(18, 30, Short.MAX_VALUE)
                 .addComponent(featureHeaderPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 12, Short.MAX_VALUE)
                 .addGap(29, 29, 29)
-                .addComponent(categoryPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(categoryPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 7, Short.MAX_VALUE)
                 .addGap(0, 495, Short.MAX_VALUE))
         );
 
@@ -460,10 +460,10 @@ public class MainFrame extends javax.swing.JFrame {
         checkoutPanelHolder.setLayout(new java.awt.GridLayout(1, 0));
         featurePanel.add(checkoutPanelHolder, "checkoutCard");
 
-        confirmPanelHolder.setLayout(new java.awt.GridLayout());
+        confirmPanelHolder.setLayout(new java.awt.GridLayout(1, 0));
         featurePanel.add(confirmPanelHolder, "confirmPanelCard");
 
-        endingPanelHolder.setLayout(new java.awt.GridLayout());
+        endingPanelHolder.setLayout(new java.awt.GridLayout(1, 0));
         featurePanel.add(endingPanelHolder, "endingPanelCard");
 
         jMenu1.setText("File");
