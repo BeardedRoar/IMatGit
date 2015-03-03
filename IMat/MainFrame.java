@@ -655,14 +655,7 @@ public class MainFrame extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void categoryClicked(MouseEvent e) {
-        CategoryPanel panel = null;
-        CategoryPreviewPanel pPanel = null;
-        if (e.getSource() instanceof CategoryPanel){
-            panel = (CategoryPanel) e.getSource();
-        
-        }else if (e.getSource() instanceof CategoryPreviewPanel){
-            pPanel = (CategoryPreviewPanel) e.getSource();
-        }
+        CategoryHolder panel = (CategoryHolder) e.getSource();
         if (!panel.isSub()) {
             model.makeCategoryPanel(this.categoryPanel, panel.getName(), categoryListener);
         }
