@@ -29,7 +29,7 @@ public class ConfirmPanel extends javax.swing.JPanel {
         this.shoppingCartPanel.setLayout(new GridLayout(items.size(), 1));
         Iterator<ShoppingItem> it = items.iterator();
         while (it.hasNext()){
-            this.shoppingCartScrollPane.add(new ShoppingCartComponentPanel(it.next()));
+            this.shoppingCartScrollPane.add(new SmallShoppingCartComponentPanel(it.next()));
         }
         
         cardComboBox.setSelectedItem(model.getCardType());
