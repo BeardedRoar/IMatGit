@@ -51,7 +51,6 @@ public class ShoppingListPreview implements ShoppingCartListener {
 
     @Override
     public void shoppingCartChanged(CartEvent ce) {
-        System.out.println("hej");
         createList();
     }
 

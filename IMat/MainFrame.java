@@ -163,7 +163,7 @@ public class MainFrame extends javax.swing.JFrame {
         logoLabel.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         logoLabel.setForeground(new java.awt.Color(255, 255, 255));
         logoLabel.setText("iMat");
-        logoLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        logoLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         logoLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 startTextPanelMousePressed(evt);
@@ -171,7 +171,7 @@ public class MainFrame extends javax.swing.JFrame {
         });
 
         cartLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iMat.resources/cart.png"))); // NOI18N
-        cartLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        cartLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cartLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 cartLabelMouseClicked(evt);
@@ -365,7 +365,9 @@ public class MainFrame extends javax.swing.JFrame {
         browsePanel.setPreferredSize(new java.awt.Dimension(190, 600));
         browsePanel.setRequestFocusEnabled(false);
 
-        startTextPanel.setOpaque(false);
+        startTextPanel.setBackground(Constants.HEADER_COLOR);
+        startTextPanel.setBorder(new javax.swing.border.MatteBorder(null));
+        startTextPanel.setPreferredSize(new java.awt.Dimension(125, 70));
         startTextPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 startTextPanelMousePressed(evt);
@@ -373,24 +375,22 @@ public class MainFrame extends javax.swing.JFrame {
         });
 
         startLabel.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
+        startLabel.setForeground(Constants.BACKGROUND_COLOR);
         startLabel.setText("Start");
-        startLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        startLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout startTextPanelLayout = new javax.swing.GroupLayout(startTextPanel);
         startTextPanel.setLayout(startTextPanelLayout);
         startTextPanelLayout.setHorizontalGroup(
             startTextPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(startTextPanelLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addContainerGap()
                 .addComponent(startLabel)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         startTextPanelLayout.setVerticalGroup(
             startTextPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(startTextPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(startLabel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(startLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
         );
 
         favoritePanel.setOpaque(false);
@@ -412,7 +412,7 @@ public class MainFrame extends javax.swing.JFrame {
         browsePanel.setLayout(browsePanelLayout);
         browsePanelLayout.setHorizontalGroup(
             browsePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(startTextPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(startTextPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
             .addGroup(browsePanelLayout.createSequentialGroup()
                 .addGroup(browsePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(categoryPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -424,12 +424,12 @@ public class MainFrame extends javax.swing.JFrame {
             browsePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(browsePanelLayout.createSequentialGroup()
                 .addComponent(startTextPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(favoritePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 12, Short.MAX_VALUE)
                 .addGap(18, 30, Short.MAX_VALUE)
                 .addComponent(featureHeaderPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 12, Short.MAX_VALUE)
                 .addGap(29, 29, 29)
-                .addComponent(categoryPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(categoryPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 7, Short.MAX_VALUE)
                 .addGap(0, 495, Short.MAX_VALUE))
         );
 
@@ -460,10 +460,10 @@ public class MainFrame extends javax.swing.JFrame {
         checkoutPanelHolder.setLayout(new java.awt.GridLayout(1, 0));
         featurePanel.add(checkoutPanelHolder, "checkoutCard");
 
-        confirmPanelHolder.setLayout(new java.awt.GridLayout());
+        confirmPanelHolder.setLayout(new java.awt.GridLayout(1, 0));
         featurePanel.add(confirmPanelHolder, "confirmPanelCard");
 
-        endingPanelHolder.setLayout(new java.awt.GridLayout());
+        endingPanelHolder.setLayout(new java.awt.GridLayout(1, 0));
         featurePanel.add(endingPanelHolder, "endingPanelCard");
 
         jMenu1.setText("File");
@@ -655,19 +655,28 @@ public class MainFrame extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void categoryClicked(MouseEvent e) {
-        CategoryPanel panel = (CategoryPanel) e.getSource();
+        CategoryHolder panel = (CategoryHolder) e.getSource();
         if (!panel.isSub()) {
             model.makeCategoryPanel(this.categoryPanel, panel.getName(), categoryListener);
         }
         if (panel.getCategory() == null) {
-            if (panel.getName().equals("Mina Favoriter")) {
+            if (panel instanceof CategoryPanel) {
+                if (panel.getName().equals("Mina Favoriter")) {
+                    this.resultPanelHolder.removeAll();
+                    this.resultPanelHolder.add(new ResultPanel(model.getFavoritePanels(), model));
+                    card.show(this.featurePanel, "resultCard");
+                } else if (panel.getName().equals("Ofta Köpta")) {
+                    this.historyPanelHolder.removeAll();
+                    this.historyPanelHolder.add(new HistoryPanel(model));
+                    card.show(this.featurePanel, "historyCard");
+                } else {
+                    this.resultPanelHolder.removeAll();
+                    this.resultPanelHolder.add(new ResultPanel(model.getCategoryPreviewPanels(panel.getName(), model, categoryListener), model));
+                    card.show(this.featurePanel, "resultCard");
+                }
+            } else if (panel instanceof CategoryPreviewPanel){
                 this.resultPanelHolder.removeAll();
-                this.resultPanelHolder.add(new ResultPanel(model.getFavoritePanels(), model));
-                card.show(this.featurePanel, "resultCard");
-            } else if (panel.getName().equals("Ofta Köpta")) {
-                this.historyPanelHolder.removeAll();
-                this.historyPanelHolder.add(new HistoryPanel(model));
-                card.show(this.featurePanel, "historyCard");
+                this.resultPanelHolder.add(new ResultPanel(model.getProductPanels(panel.getName()), model));
             }
             repaint();
             revalidate();

@@ -299,6 +299,11 @@ public class CheckoutPanel extends javax.swing.JPanel {
         });
 
         postalAdressTextField.setText("Postort");
+        postalAdressTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                textFieldFocusGained(evt);
+            }
+        });
 
         postalAdressLabel.setText("Postort");
         postalAdressLabel.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -601,7 +606,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
         model.setVerificationCode(Integer.parseInt(cvcTextField.getText()));
         
         model.setFirstName(nameTextField.getText());
-        model.setLastName(nameTextField.getText());
+        model.setLastName(nameTextField2.getText());
         model.setAddress(adressTextField.getText());
         
         model.setPostCode(postalCodeLabel.getText());
@@ -618,7 +623,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
 
     private void textFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldFocusGained
         JTextField field = (JTextField) evt.getSource();
-        field.selectAll();   
+        field.selectAll();
     }//GEN-LAST:event_textFieldFocusGained
 
     

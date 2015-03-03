@@ -255,7 +255,26 @@ public class IMatModel {
     }
     
     public List<ProductPanel> getProductPanels(String s) {
-        List<Product> products = handler.findProducts(s);
+        List<Product> products = null;
+        if (s == null){
+            
+        } else if(s.equals("Frukt & Grönt")){
+            products = this.getProducts(ProductCategory.BERRY);
+            products.addAll(this.getProducts(ProductCategory.POD));
+            products.addAll(this.getProducts(ProductCategory.CITRUS_FRUIT));
+            products.addAll(this.getProducts(ProductCategory.EXOTIC_FRUIT));
+            products.addAll(this.getProducts(ProductCategory.VEGETABLE_FRUIT));
+            products.addAll(this.getProducts(ProductCategory.CABBAGE));
+            products.addAll(this.getProducts(ProductCategory.MELONS));
+            products.addAll(this.getProducts(ProductCategory.FRUIT));
+        } else if(s.equals("Drycker")){
+            products = this.getProducts(ProductCategory.HOT_DRINKS);
+            products.addAll(this.getProducts(ProductCategory.COLD_DRINKS));
+        } else if (s.equals("Kolhydrater")){
+            products = this.getProducts(ProductCategory.PASTA);
+            products.addAll(this.getProducts(ProductCategory.POTATO_RICE));
+        } else
+            products= handler.findProducts(s);
         ArrayList<ProductPanel> panels = new ArrayList(products.size());
         Iterator<Product> it = products.iterator();
         while (it.hasNext()) {
@@ -273,6 +292,48 @@ public class IMatModel {
         }
         return panels;
     }
+    
+    public List<CategoryPreviewPanel> getCategoryPreviewPanels(String name, 
+            IMatModel m, MouseListener listener){
+        ArrayList<CategoryPreviewPanel> list = new ArrayList();
+        switch (name){
+            case ("Frukt & Grönt"):
+                list.add(new CategoryPreviewPanel("Frukt & Grönt", m, listener));
+                list.add(new CategoryPreviewPanel("Bär", ProductCategory.BERRY, 
+                        m, listener));
+                list.add(new CategoryPreviewPanel("Baljväxter", ProductCategory.POD, 
+                        m, listener));
+                list.add(new CategoryPreviewPanel("CitrusFrukter", ProductCategory.CITRUS_FRUIT, 
+                        m, listener));
+                list.add(new CategoryPreviewPanel("Exotiska Frukter", ProductCategory.EXOTIC_FRUIT, 
+                        m, listener));
+                list.add(new CategoryPreviewPanel("Grönsaker", ProductCategory.VEGETABLE_FRUIT, 
+                        m, listener));
+                list.add(new CategoryPreviewPanel("Kål", ProductCategory.CABBAGE, 
+                        m, listener));
+                list.add(new CategoryPreviewPanel("Meloner", ProductCategory.MELONS, 
+                        m, listener));
+                list.add(new CategoryPreviewPanel("Stenfrukter", ProductCategory.FRUIT, 
+                        m, listener));
+                break;
+            case ("Kolhydrater"):
+                list.add(new CategoryPreviewPanel("Kolhydrater", m, listener));
+                list.add(new CategoryPreviewPanel("Pasta", ProductCategory.PASTA, 
+                        m, listener));
+                list.add(new CategoryPreviewPanel("Potatis, ris", ProductCategory.POTATO_RICE, 
+                        m, listener));
+                break;
+            case ("Drycker"):
+                list.add(new CategoryPreviewPanel("Drycker", m, listener));
+                list.add(new CategoryPreviewPanel("Drycker Kalla", ProductCategory.COLD_DRINKS, 
+                        m, listener));
+                list.add(new CategoryPreviewPanel("Drycker Varma", ProductCategory.HOT_DRINKS, 
+                        m, listener));
+                break;
+        }
+        return list;
+    }
+    
     public List<StartProductPanel> getStartProductPanels(ProductCategory pc) {
           List<Product> products = handler.getProducts(pc);
           ArrayList<StartProductPanel> panels = new ArrayList(products.size());
@@ -289,7 +350,6 @@ public class IMatModel {
     
     public void addCartListener(ShoppingCartListener scl){
         this.cart.addCartListener(scl);
-        System.out.println("scl added from model");
     }
     
     public void removeCartListener(ShoppingCartListener scl){
