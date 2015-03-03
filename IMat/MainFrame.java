@@ -63,8 +63,8 @@ public class MainFrame extends javax.swing.JFrame {
         this.logInCard = (CardLayout) this.accountPanel.getLayout();
         
         this.checkoutPanelHolder.add(new CheckoutPanel(model, this));
-        this.confirmPanelHolder.add(new ConfirmPanel(model));
-        this.endingPanelHolder.add(new EndingPanel(model));
+        this.confirmPanelHolder.add(new ConfirmPanel(model, this));
+        this.endingPanelHolder.add(new EndingPanel(model, this));
         
         this.frontPagePanel.add(new frontPageFeaturePanel(ProductCategory.FRUIT, model, "Ofta Köpta"));
         this.frontPagePanel.add(new frontPageFeaturePanel(ProductCategory.FLOUR_SUGAR_SALT, model, "Veckans varor"));
