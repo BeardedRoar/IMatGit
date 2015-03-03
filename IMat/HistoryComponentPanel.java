@@ -18,6 +18,7 @@ public class HistoryComponentPanel extends javax.swing.JPanel {
     
     private Order order;
     private Dimension panel3Dim;
+    private IMatModel model;
 
     /**
      * Creates new form HistoryComponentPanel
@@ -27,7 +28,8 @@ public class HistoryComponentPanel extends javax.swing.JPanel {
         initComponents();
     }
     
-    public HistoryComponentPanel(Order order){
+    public HistoryComponentPanel(Order order, IMatModel model){
+        this.model = model;
         this.order = order;
         panel3Dim = new Dimension(100,55);
         initComponents();
@@ -94,6 +96,11 @@ public class HistoryComponentPanel extends javax.swing.JPanel {
 
         addButton.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         addButton.setText("AddToCart");
+        addButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -211,10 +218,14 @@ public class HistoryComponentPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 55, Short.MAX_VALUE))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
+        model.addOrderToCart(order);
+    }//GEN-LAST:event_addButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

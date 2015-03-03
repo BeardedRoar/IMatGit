@@ -29,7 +29,7 @@ public class HistoryPanel extends javax.swing.JPanel {
         Iterator<Order> it = orders.iterator();
         
         while (it.hasNext()){
-            historyPanel.add(new HistoryComponentPanel(it.next()));
+            historyPanel.add(new HistoryComponentPanel(it.next(), model));
         }
     }
 
