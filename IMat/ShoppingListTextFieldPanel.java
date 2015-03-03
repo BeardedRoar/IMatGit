@@ -52,7 +52,7 @@ public class ShoppingListTextFieldPanel extends javax.swing.JPanel {
             .addGap(0, 22, Short.MAX_VALUE)
         );
 
-        textField.setText("jTextField1");
+        textField.setText("Skriv produkt här för att lägga till i kundvagnen");
         textField.setOpaque(false);
         textField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
