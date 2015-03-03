@@ -63,7 +63,6 @@ public class MainFrame extends javax.swing.JFrame {
         this.logInCard = (CardLayout) this.accountPanel.getLayout();
         
         this.checkoutPanelHolder.add(new CheckoutPanel(model, this));
-        this.confirmPanelHolder.add(new ConfirmPanel(model, this));
         this.endingPanelHolder.add(new EndingPanel(model, this));
         
         this.frontPagePanel.add(new frontPageFeaturePanel(ProductCategory.FRUIT, model, "Ofta Köpta"));
@@ -505,6 +504,8 @@ public class MainFrame extends javax.swing.JFrame {
         this.shoppingCartPanelHolder.removeAll();
         this.shoppingCartPanelHolder.add(new ShoppingCartPanel(model, slp, this));
         card.show(this.featurePanel, "shoppingCartCard");
+        this.confirmPanelHolder.removeAll();
+        this.confirmPanelHolder.add(new ConfirmPanel(model, this));
     }//GEN-LAST:event_cartLabelMouseClicked
 
     private void searchTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchTextFieldFocusGained
