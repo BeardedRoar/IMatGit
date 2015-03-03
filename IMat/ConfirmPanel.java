@@ -24,7 +24,7 @@ public class ConfirmPanel extends javax.swing.JPanel {
     public ConfirmPanel(IMatModel model) {
         this.model = model;
         initComponents();
-        
+        this.setBackground(Constants.BACKGROUND_COLOR);        
         List<ShoppingItem> items = model.getItems();
         this.shoppingCartPanel.setLayout(new GridLayout(items.size(), 1));
         Iterator<ShoppingItem> it = items.iterator();
@@ -525,8 +525,8 @@ public class ConfirmPanel extends javax.swing.JPanel {
     private void confirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmButtonActionPerformed
         model.placeOrder(true);
         if(frame != null){
-            frame.setFeatureCard("confirmPanelCard");
-            }
+            frame.setFeatureCard("endingPanelCard");
+        }
     }//GEN-LAST:event_confirmButtonActionPerformed
 
 

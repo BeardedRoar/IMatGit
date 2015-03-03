@@ -64,6 +64,8 @@ public class MainFrame extends javax.swing.JFrame {
         
         this.checkoutPanelHolder.add(new CheckoutPanel(model, this));
         this.confirmPanelHolder.add(new ConfirmPanel(model));
+        this.endingPanelHolder.add(new EndingPanel(model));
+        
         this.frontPagePanel.add(new frontPageFeaturePanel(ProductCategory.FRUIT, model, "Ofta Köpta"));
         this.frontPagePanel.add(new frontPageFeaturePanel(ProductCategory.FLOUR_SUGAR_SALT, model, "Veckans varor"));
         this.frontPagePanel.add(new ShoppingListFeaturePanel());
@@ -138,6 +140,7 @@ public class MainFrame extends javax.swing.JFrame {
         resultPanelHolder = new javax.swing.JPanel();
         checkoutPanelHolder = new javax.swing.JPanel();
         confirmPanelHolder = new javax.swing.JPanel();
+        endingPanelHolder = new javax.swing.JPanel();
         menuBarPanel = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -160,7 +163,7 @@ public class MainFrame extends javax.swing.JFrame {
         logoLabel.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         logoLabel.setForeground(new java.awt.Color(255, 255, 255));
         logoLabel.setText("iMat");
-        logoLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        logoLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         logoLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 startTextPanelMousePressed(evt);
@@ -168,7 +171,7 @@ public class MainFrame extends javax.swing.JFrame {
         });
 
         cartLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iMat.resources/cart.png"))); // NOI18N
-        cartLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cartLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         cartLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 cartLabelMouseClicked(evt);
@@ -198,7 +201,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         searchIcon.setBackground(new java.awt.Color(255, 255, 255));
         searchIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iMat.resources/magnifier.png"))); // NOI18N
-        searchIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        searchIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         searchIcon.setMaximumSize(new java.awt.Dimension(30, 30));
         searchIcon.setMinimumSize(new java.awt.Dimension(30, 30));
         searchIcon.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -371,7 +374,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         startLabel.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         startLabel.setText("Start");
-        startLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        startLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         javax.swing.GroupLayout startTextPanelLayout = new javax.swing.GroupLayout(startTextPanel);
         startTextPanel.setLayout(startTextPanelLayout);
@@ -457,18 +460,11 @@ public class MainFrame extends javax.swing.JFrame {
         checkoutPanelHolder.setLayout(new java.awt.GridLayout(1, 0));
         featurePanel.add(checkoutPanelHolder, "checkoutCard");
 
-        javax.swing.GroupLayout confirmPanelHolderLayout = new javax.swing.GroupLayout(confirmPanelHolder);
-        confirmPanelHolder.setLayout(confirmPanelHolderLayout);
-        confirmPanelHolderLayout.setHorizontalGroup(
-            confirmPanelHolderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1000, Short.MAX_VALUE)
-        );
-        confirmPanelHolderLayout.setVerticalGroup(
-            confirmPanelHolderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 675, Short.MAX_VALUE)
-        );
-
+        confirmPanelHolder.setLayout(new java.awt.GridLayout());
         featurePanel.add(confirmPanelHolder, "confirmPanelCard");
+
+        endingPanelHolder.setLayout(new java.awt.GridLayout());
+        featurePanel.add(endingPanelHolder, "endingPanelCard");
 
         jMenu1.setText("File");
         menuBarPanel.add(jMenu1);
@@ -632,6 +628,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel categoryPanel;
     private javax.swing.JPanel checkoutPanelHolder;
     private javax.swing.JPanel confirmPanelHolder;
+    private javax.swing.JPanel endingPanelHolder;
     private javax.swing.JPanel favoritePanel;
     private javax.swing.JPanel featureHeaderPanel;
     private javax.swing.JPanel featurePanel;

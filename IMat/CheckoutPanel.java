@@ -583,9 +583,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_sendToOtherAdressCheckBoxMousePressed
 
     private void buyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buyButtonActionPerformed
-        
-        if(noFault){
-            
+        if(noFault){      
             if(frame != null){
             frame.setFeatureCard("confirmPanelCard");
             }
