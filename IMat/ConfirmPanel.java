@@ -22,14 +22,16 @@ public class ConfirmPanel extends javax.swing.JPanel {
      * Creates new form ConfirmPanel
      */
     public ConfirmPanel(IMatModel model) {
+        
         this.model = model;
-        initComponents();
-        this.setBackground(Constants.BACKGROUND_COLOR);        
+        initComponents();    
+        this.setBackground(Constants.BACKGROUND_COLOR);
+        
         List<ShoppingItem> items = model.getItems();
         this.shoppingCartPanel.setLayout(new GridLayout(items.size(), 1));
         Iterator<ShoppingItem> it = items.iterator();
         while (it.hasNext()){
-            this.shoppingCartScrollPane.add(new ShoppingCartComponentPanel(it.next()));
+            this.shoppingCartPanel.add(new ShoppingCartComponentPanel(it.next()));
         }
         
         cardComboBox.setSelectedItem(model.getCardType());
@@ -107,6 +109,7 @@ public class ConfirmPanel extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(1000, 600));
 
         containerPanel.setBackground(Constants.BACKGROUND_COLOR);
+        containerPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         containerPanel.setPreferredSize(new java.awt.Dimension(1000, 600));
 
         cardCustomerPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -131,11 +134,6 @@ public class ConfirmPanel extends javax.swing.JPanel {
 
         yearTextField.setText("15");
         yearTextField.setEnabled(false);
-        yearTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                yearTextFieldActionPerformed(evt);
-            }
-        });
 
         dateLabel.setText("Datum");
 
@@ -146,11 +144,6 @@ public class ConfirmPanel extends javax.swing.JPanel {
 
         cardComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Visa", "Mastercard" }));
         cardComboBox.setEnabled(false);
-        cardComboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cardComboBoxActionPerformed(evt);
-            }
-        });
 
         cardLabel.setText("Kort");
 
@@ -209,11 +202,6 @@ public class ConfirmPanel extends javax.swing.JPanel {
 
         nameTextField2.setText("Efternamn");
         nameTextField2.setEnabled(false);
-        nameTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nameTextField2ActionPerformed(evt);
-            }
-        });
 
         adressLabel.setText("Adress");
 
@@ -333,11 +321,6 @@ public class ConfirmPanel extends javax.swing.JPanel {
 
         phoneTextField.setText("070-00000");
         phoneTextField.setEnabled(false);
-        phoneTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                phoneTextFieldActionPerformed(evt);
-            }
-        });
 
         mobilePhoneLabel.setText("Mobiltelefon");
 
@@ -481,8 +464,8 @@ public class ConfirmPanel extends javax.swing.JPanel {
                 .addComponent(cardCustomerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addGroup(containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(shoppingCartScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE)))
+                    .addComponent(shoppingCartScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 458, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 458, Short.MAX_VALUE)))
         );
         containerPanelLayout.setVerticalGroup(
             containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -502,25 +485,9 @@ public class ConfirmPanel extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(containerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 674, Short.MAX_VALUE)
+            .addComponent(containerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 676, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void cardComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cardComboBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cardComboBoxActionPerformed
-
-    private void nameTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameTextField2ActionPerformed
-
-    }//GEN-LAST:event_nameTextField2ActionPerformed
-
-    private void phoneTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phoneTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_phoneTextFieldActionPerformed
-
-    private void yearTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yearTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_yearTextFieldActionPerformed
 
     private void confirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmButtonActionPerformed
         model.placeOrder(true);
