@@ -5,6 +5,7 @@
  */
 package IMat;
 
+import java.util.ArrayList;
 import se.chalmers.ait.dat215.project.ShoppingItem;
 
 /**
@@ -13,7 +14,8 @@ import se.chalmers.ait.dat215.project.ShoppingItem;
  */
 public class ShoppingCartComponentPanel extends javax.swing.JPanel {
 
-    ShoppingItem shoppingItem;
+    private final ShoppingItem shoppingItem;
+    private ArrayList<ShoppingCartComponentListener> listenerList = new ArrayList();
     /**
      * Creates new form shoppingCartComponentPanel
      */
@@ -269,6 +271,7 @@ public class ShoppingCartComponentPanel extends javax.swing.JPanel {
             this.shoppingItem.setAmount(this.shoppingItem.getAmount()+1);
             nbrOfProductsTextfield.setText(Integer.toString((int) this.shoppingItem.getAmount()));
             accualTotalPriceLabel.setText("" + this.shoppingItem.getTotal() + " kr");
+            this.fireComponentChange(shoppingItem, true);
         }
     }//GEN-LAST:event_upButtonActionPerformed
 
@@ -277,6 +280,7 @@ public class ShoppingCartComponentPanel extends javax.swing.JPanel {
            this.shoppingItem.setAmount(this.shoppingItem.getAmount()-1);
            nbrOfProductsTextfield.setText(Integer.toString((int) this.shoppingItem.getAmount()));
            accualTotalPriceLabel.setText("" + this.shoppingItem.getTotal() + " kr");
+           this.fireComponentChange(shoppingItem, false);
         }
     }//GEN-LAST:event_downButtonActionPerformed
 
@@ -284,6 +288,19 @@ public class ShoppingCartComponentPanel extends javax.swing.JPanel {
         this.requestFocus();
     }//GEN-LAST:event_formMouseClicked
 
+    public void addShoppingCartComponentListener(ShoppingCartComponentListener sccl){
+       this.listenerList.add(sccl); 
+    }
+    
+    public void removeShoppingCartComponentListener(ShoppingCartComponentListener sccl){
+       this.listenerList.remove(sccl); 
+    }
+    
+    private void fireComponentChange(ShoppingItem item, boolean itemAdded){
+        for (ShoppingCartComponentListener sccl : listenerList){
+            sccl.shoppingCartComponentChanged(item, itemAdded);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel accualPriceLabel;

@@ -58,6 +58,13 @@ public class CustomCart {
         return null;
     }
     
+    public void addOrderToCart(Order order){
+        Iterator<ShoppingItem> it = order.getItems().iterator();
+        while (it.hasNext()){
+            this.addItem(it.next());
+        }
+    }
+    
     public void clear(){
         cart.clear();
     }

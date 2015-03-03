@@ -9,13 +9,15 @@ import java.awt.GridLayout;
 import java.util.Iterator;
 import java.util.List;
 import javax.swing.JPanel;
+import se.chalmers.ait.dat215.project.CartEvent;
+import se.chalmers.ait.dat215.project.ShoppingCartListener;
 import se.chalmers.ait.dat215.project.ShoppingItem;
 
 /**
  *
  * @author Joel
  */
-public class ShoppingCartPanel extends javax.swing.JPanel {
+public class ShoppingCartPanel extends javax.swing.JPanel implements ShoppingCartComponentListener {
     
     private final IMatModel model;
     private MainFrame frame;
@@ -23,22 +25,26 @@ public class ShoppingCartPanel extends javax.swing.JPanel {
     /**
      * Creates new form ShoppingCartPanel
      */
-    public ShoppingCartPanel(IMatModel model) {
+    public ShoppingCartPanel(IMatModel model, ShoppingCartComponentListener sccl){
         this.model = model;
         initComponents();
         
         List<ShoppingItem> items = model.getItems();
         this.itemPanel.setLayout(new GridLayout(items.size(), 1));
         Iterator<ShoppingItem> it = items.iterator();
+        ShoppingCartComponentPanel tempPanel;
         while (it.hasNext()){
-            this.itemPanel.add(new ShoppingCartComponentPanel(it.next()));
+            tempPanel = new ShoppingCartComponentPanel(it.next());
+            this.itemPanel.add(tempPanel);
+            tempPanel.addShoppingCartComponentListener(this);
+            tempPanel.addShoppingCartComponentListener(sccl);
         }
         
         this.costLabel.setText(model.getTotalCost() + " kr");
     }
     
-    public ShoppingCartPanel(IMatModel model, MainFrame frame) {
-        this(model);
+    public ShoppingCartPanel(IMatModel model, ShoppingCartComponentListener sccl, MainFrame frame) {
+        this(model, sccl);
         this.frame = frame;
     }
 
@@ -77,6 +83,8 @@ public class ShoppingCartPanel extends javax.swing.JPanel {
         );
 
         itemScrollPanel.setViewportView(itemPanel);
+
+        infoPanel.setOpaque(false);
 
         nextButton.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         nextButton.setText("Next");
@@ -152,4 +160,9 @@ public class ShoppingCartPanel extends javax.swing.JPanel {
     private javax.swing.JButton nextButton;
     private javax.swing.JLabel totLabel;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void shoppingCartComponentChanged(ShoppingItem item, boolean itemAdded) {
+        this.costLabel.setText(model.getTotalCost() + " kr");
+    }
 }

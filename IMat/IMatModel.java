@@ -50,6 +50,10 @@ public class IMatModel {
     public void clearCart() {
         cart.clear();
     }
+    
+    public void addOrderToCart(Order order){
+        cart.addOrderToCart(order);
+    }
 
     // This should return a list of created visual items instead when they are made
     public List<ShoppingItem> getItems() {
@@ -349,6 +353,7 @@ public class IMatModel {
     }
     
     public void addCartListener(ShoppingCartListener scl){
+        System.out.println("scl added in model");
         this.cart.addCartListener(scl);
     }
     
