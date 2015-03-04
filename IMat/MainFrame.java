@@ -65,8 +65,8 @@ public class MainFrame extends javax.swing.JFrame {
         this.checkoutPanelHolder.add(new CheckoutPanel(model, this));
         this.endingPanelHolder.add(new EndingPanel(model, this));
         
-        this.frontPagePanel.add(new frontPageFeaturePanel(ProductCategory.FRUIT, model, "Ofta Köpta"));
-        this.frontPagePanel.add(new frontPageFeaturePanel(ProductCategory.FLOUR_SUGAR_SALT, model, "Veckans varor"));
+        this.frontPagePanel.add(new FrontPageFeaturePanel(ProductCategory.FRUIT, model, "Ofta Köpta"));
+        this.frontPagePanel.add(new FrontPageFeaturePanel(ProductCategory.FLOUR_SUGAR_SALT, model, "Veckans varor"));
         this.frontPagePanel.add(new ShoppingListFeaturePanel(model));
         this.frontPagePanel.add(new RecipeFeaturePanel());
         
