@@ -19,7 +19,6 @@ public class MainFrame extends javax.swing.JFrame {
     private CardLayout card;
     private CardLayout logInCard;
     private MouseListener categoryListener;
-    private ShoppingListPreview slp;
 
     /**
      * Creates new form MainFrame
@@ -31,7 +30,10 @@ public class MainFrame extends javax.swing.JFrame {
     public MainFrame(IMatModel model) {
         this();
         this.model = model;
-        this.slp = new ShoppingListPreview(cartLabel, model);
+        //this.slp = new ShoppingListPreview(cartLabel, model);
+        CartIconPanel iconPanel = new CartIconPanel((model));
+        this.cartIconPanelHolder.add(iconPanel);
+        model.addCartListener(iconPanel);
         this.categoryListener = new MouseListener() {
 
             @Override
@@ -113,7 +115,6 @@ public class MainFrame extends javax.swing.JFrame {
 
         headerPanel = new javax.swing.JPanel();
         logoLabel = new javax.swing.JLabel();
-        cartLabel = new javax.swing.JLabel();
         searchPanel = new javax.swing.JPanel();
         searchTextField = new javax.swing.JTextField();
         searchIcon = new javax.swing.JLabel();
@@ -125,6 +126,7 @@ public class MainFrame extends javax.swing.JFrame {
         registerButton = new javax.swing.JButton();
         myPagePanel = new javax.swing.JPanel();
         accountMenuHolderPanel = new javax.swing.JPanel();
+        cartIconPanelHolder = new javax.swing.JPanel();
         browseScrollPanel = new javax.swing.JScrollPane();
         browsePanel = new javax.swing.JPanel();
         startTextPanel = new javax.swing.JPanel();
@@ -166,14 +168,6 @@ public class MainFrame extends javax.swing.JFrame {
         logoLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 startTextPanelMousePressed(evt);
-            }
-        });
-
-        cartLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iMat.resources/cart.png"))); // NOI18N
-        cartLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cartLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cartLabelMouseClicked(evt);
             }
         });
 
@@ -322,6 +316,11 @@ public class MainFrame extends javax.swing.JFrame {
 
         accountPanel.add(myPagePanel, "inCard");
 
+        cartIconPanelHolder.setMinimumSize(new java.awt.Dimension(300, 89));
+        cartIconPanelHolder.setOpaque(false);
+        cartIconPanelHolder.setPreferredSize(new java.awt.Dimension(300, 89));
+        cartIconPanelHolder.setLayout(new java.awt.GridLayout());
+
         javax.swing.GroupLayout headerPanelLayout = new javax.swing.GroupLayout(headerPanel);
         headerPanel.setLayout(headerPanelLayout);
         headerPanelLayout.setHorizontalGroup(
@@ -334,20 +333,15 @@ public class MainFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(accountPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cartLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58))
+                .addComponent(cartIconPanelHolder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         headerPanelLayout.setVerticalGroup(
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(headerPanelLayout.createSequentialGroup()
                 .addGroup(headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(cartLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(headerPanelLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(logoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(logoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(headerPanelLayout.createSequentialGroup()
                         .addGap(47, 47, 47)
                         .addComponent(searchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -355,7 +349,11 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerPanelLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(accountPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(accountPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(headerPanelLayout.createSequentialGroup()
+                        .addComponent(cartIconPanelHolder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
 
         browseScrollPanel.setOpaque(false);
@@ -500,14 +498,6 @@ public class MainFrame extends javax.swing.JFrame {
         card.show(this.featurePanel, "frontPageCard");
     }//GEN-LAST:event_startTextPanelMousePressed
 
-    private void cartLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cartLabelMouseClicked
-        this.shoppingCartPanelHolder.removeAll();
-        this.shoppingCartPanelHolder.add(new ShoppingCartPanel(model, slp, this));
-        card.show(this.featurePanel, "shoppingCartCard");
-        this.confirmPanelHolder.removeAll();
-        this.confirmPanelHolder.add(new ConfirmPanel(model, this));
-    }//GEN-LAST:event_cartLabelMouseClicked
-
     private void searchTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchTextFieldFocusGained
         if (searchTextField.getText().equals("Sök...")) {
             searchTextField.setText("");
@@ -625,7 +615,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel accountPanel;
     private javax.swing.JPanel browsePanel;
     private javax.swing.JScrollPane browseScrollPanel;
-    private javax.swing.JLabel cartLabel;
+    private javax.swing.JPanel cartIconPanelHolder;
     private javax.swing.JPanel categoryPanel;
     private javax.swing.JPanel checkoutPanelHolder;
     private javax.swing.JPanel confirmPanelHolder;
