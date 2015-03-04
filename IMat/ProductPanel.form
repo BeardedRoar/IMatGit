@@ -157,7 +157,7 @@
               <Image iconType="3" name="/iMat.resources/Productcart.png"/>
             </Property>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Handmark&#xf6;r"/>
+              <Color id="Standardmark&#xf6;r"/>
             </Property>
           </Properties>
           <Events>
@@ -170,7 +170,7 @@
               <Image iconType="3" name="/iMat.resources/ArrowUpImage.png"/>
             </Property>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Handmark&#xf6;r"/>
+              <Color id="Standardmark&#xf6;r"/>
             </Property>
             <Property name="horizontalTextPosition" type="int" value="0"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -187,7 +187,7 @@
               <Image iconType="3" name="/iMat.resources/ArrowDownImage.png"/>
             </Property>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Handmark&#xf6;r"/>
+              <Color id="Standardmark&#xf6;r"/>
             </Property>
             <Property name="horizontalTextPosition" type="int" value="0"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
