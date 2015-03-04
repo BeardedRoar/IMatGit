@@ -41,7 +41,7 @@ public class AccountMenuPanel extends javax.swing.JPanel {
                         frame.logOut();
                         break;
                     case "Mina Favoriter":
-                        AccountMenuPanel.this.frame.setFeatureCard("resultCard");
+                        AccountMenuPanel.this.frame.setEndingCard("register");
                         break;
                 }
             }

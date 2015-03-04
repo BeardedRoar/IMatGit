@@ -23,9 +23,14 @@ public class EndingPanel extends javax.swing.JPanel {
         this.setBackground(Constants.BACKGROUND_COLOR);
     }
     
-    public EndingPanel(IMatModel model, MainFrame frame) {
+    public EndingPanel(IMatModel model, MainFrame frame, String s) {
         this(model);
         this.frame = frame;
+        if (s.equals("buy")){
+            endingTextLabel.setText("Tack för ditt köp!");
+        }else if(s.equals("register")){
+            endingTextLabel.setText("Tack för din registering!");
+        }
     }
 
     /**

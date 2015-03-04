@@ -284,7 +284,7 @@ public class LogInPanel extends javax.swing.JPanel {
     private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
         if(model.constructPassword(jPasswordField2.getPassword()).equals(model.constructPassword(jPasswordField3.getPassword()))){
             model.register(userNameTextField1.getText(), jPasswordField2.getPassword());
-            frame.setFeatureCard("frontPageCard");
+            frame.setEndingCard("register");
         }
     }//GEN-LAST:event_registerButtonActionPerformed
 
