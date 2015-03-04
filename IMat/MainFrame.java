@@ -17,7 +17,6 @@ public class MainFrame extends javax.swing.JFrame {
 
     private IMatModel model;
     private CardLayout card;
-    private CardLayout logInCard;
     private CartIconPanel iconPanel;
     private MouseListener categoryListener;
 
@@ -62,7 +61,6 @@ public class MainFrame extends javax.swing.JFrame {
         this.createCategories();
 
         this.card = (CardLayout) this.featurePanel.getLayout();
-        this.logInCard = (CardLayout) this.accountPanel.getLayout();
         
         this.checkoutPanelHolder.add(new CheckoutPanel(model, this));
         this.confirmPanelHolder.add(new ConfirmPanel(model,this));
@@ -74,9 +72,8 @@ public class MainFrame extends javax.swing.JFrame {
         this.frontPagePanel.add(new RecipeFeaturePanel());
         
         card.show(this.featurePanel, "frontPageCard");
-        logInCard.show(this.accountPanel, model.isLoggedIn() ? "inCard" : "outCard");
         
-        this.accountMenuHolderPanel.add(new AccountMenuPanel(this));
+        this.accountMenuHolderPanel.add(new AccountMenuPanel(this, model));
         
         repaint();
         revalidate();
@@ -126,11 +123,6 @@ public class MainFrame extends javax.swing.JFrame {
         searchTextField = new javax.swing.JTextField();
         searchIcon = new javax.swing.JLabel();
         accountPanel = new javax.swing.JPanel();
-        logInPanel = new javax.swing.JPanel();
-        userNameTextField = new javax.swing.JTextField();
-        passwordField = new javax.swing.JPasswordField();
-        logInButton = new javax.swing.JButton();
-        registerButton = new javax.swing.JButton();
         myPagePanel = new javax.swing.JPanel();
         accountMenuHolderPanel = new javax.swing.JPanel();
         cartIconPanelHolder = new javax.swing.JPanel();
@@ -149,6 +141,7 @@ public class MainFrame extends javax.swing.JFrame {
         checkoutPanelHolder = new javax.swing.JPanel();
         confirmPanelHolder = new javax.swing.JPanel();
         endingPanelHolder = new javax.swing.JPanel();
+        logInPanelHolder = new javax.swing.JPanel();
         menuBarPanel = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -231,74 +224,7 @@ public class MainFrame extends javax.swing.JFrame {
         );
 
         accountPanel.setOpaque(false);
-        accountPanel.setLayout(new java.awt.CardLayout());
-
-        logInPanel.setOpaque(false);
-
-        userNameTextField.setText("Användarnamn");
-        userNameTextField.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                userNameTextFieldFocusGained(evt);
-            }
-        });
-        userNameTextField.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                userNameTextFieldKeyPressed(evt);
-            }
-        });
-
-        passwordField.setText("jPasswordField1");
-        passwordField.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                passwordFieldFocusGained(evt);
-            }
-        });
-        passwordField.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                passwordFieldKeyPressed(evt);
-            }
-        });
-
-        logInButton.setText("Logga in");
-        logInButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                logInButtonActionPerformed(evt);
-            }
-        });
-
-        registerButton.setText("Registrera");
-        registerButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                registerButtonActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout logInPanelLayout = new javax.swing.GroupLayout(logInPanel);
-        logInPanel.setLayout(logInPanelLayout);
-        logInPanelLayout.setHorizontalGroup(
-            logInPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(logInPanelLayout.createSequentialGroup()
-                .addComponent(logInButton, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(registerButton, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
-            .addComponent(userNameTextField)
-            .addComponent(passwordField, javax.swing.GroupLayout.Alignment.TRAILING)
-        );
-        logInPanelLayout.setVerticalGroup(
-            logInPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(logInPanelLayout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(userNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(logInPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(logInButton)
-                    .addComponent(registerButton))
-                .addContainerGap())
-        );
-
-        accountPanel.add(logInPanel, "outCard");
+        accountPanel.setLayout(new java.awt.GridLayout());
 
         myPagePanel.setOpaque(false);
 
@@ -321,12 +247,12 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(22, 22, 22))
         );
 
-        accountPanel.add(myPagePanel, "inCard");
+        accountPanel.add(myPagePanel);
 
         cartIconPanelHolder.setMinimumSize(new java.awt.Dimension(300, 89));
         cartIconPanelHolder.setOpaque(false);
         cartIconPanelHolder.setPreferredSize(new java.awt.Dimension(300, 89));
-        cartIconPanelHolder.setLayout(new java.awt.GridLayout());
+        cartIconPanelHolder.setLayout(new java.awt.GridLayout(1, 0));
 
         javax.swing.GroupLayout headerPanelLayout = new javax.swing.GroupLayout(headerPanel);
         headerPanel.setLayout(headerPanelLayout);
@@ -470,6 +396,9 @@ public class MainFrame extends javax.swing.JFrame {
         endingPanelHolder.setLayout(new java.awt.GridLayout(1, 0));
         featurePanel.add(endingPanelHolder, "endingPanelCard");
 
+        logInPanelHolder.setLayout(new java.awt.GridLayout());
+        featurePanel.add(logInPanelHolder, "logInCard");
+
         jMenu1.setText("File");
         menuBarPanel.add(jMenu1);
 
@@ -532,43 +461,15 @@ public class MainFrame extends javax.swing.JFrame {
         requestFocus();
     }//GEN-LAST:event_formMouseClicked
 
-    private void userNameTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_userNameTextFieldFocusGained
-        this.userNameTextField.selectAll();
-    }//GEN-LAST:event_userNameTextFieldFocusGained
-
-    private void passwordFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordFieldFocusGained
-        this.passwordField.selectAll();
-    }//GEN-LAST:event_passwordFieldFocusGained
-
-    private void logInButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logInButtonActionPerformed
-        logIn();
-    }//GEN-LAST:event_logInButtonActionPerformed
-
-    private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
-        this.model.register(this.userNameTextField.getText(),
-                this.passwordField.getPassword());
-        logInCard.show(this.accountPanel, "inCard");
-    }//GEN-LAST:event_registerButtonActionPerformed
-
-    private void passwordFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordFieldKeyPressed
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER)
-            logIn();
-    }//GEN-LAST:event_passwordFieldKeyPressed
-
-    private void userNameTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_userNameTextFieldKeyPressed
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER)
-            this.passwordField.requestFocus();
-    }//GEN-LAST:event_userNameTextFieldKeyPressed
-
     private void logIn(){
-        if(this.model.logIn(this.userNameTextField.getText(),
+        /*if(this.model.logIn(this.userNameTextField.getText(),
                 this.passwordField.getPassword()))
             logInCard.show(this.accountPanel, "inCard");
+        */
     }
     
     public void logOut(){
         model.logOut();
-        logInCard.show(this.accountPanel, "outCard");
     }
     
     private void doSearch(){
@@ -635,13 +536,10 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel historyPanelHolder;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JButton logInButton;
-    private javax.swing.JPanel logInPanel;
+    private javax.swing.JPanel logInPanelHolder;
     private javax.swing.JLabel logoLabel;
     private javax.swing.JMenuBar menuBarPanel;
     private javax.swing.JPanel myPagePanel;
-    private javax.swing.JPasswordField passwordField;
-    private javax.swing.JButton registerButton;
     private javax.swing.JPanel resultPanelHolder;
     private javax.swing.JLabel searchIcon;
     private javax.swing.JPanel searchPanel;
@@ -649,7 +547,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel shoppingCartPanelHolder;
     private javax.swing.JLabel startLabel;
     private javax.swing.JPanel startTextPanel;
-    private javax.swing.JTextField userNameTextField;
     // End of variables declaration//GEN-END:variables
 
     private void categoryClicked(MouseEvent e) {
