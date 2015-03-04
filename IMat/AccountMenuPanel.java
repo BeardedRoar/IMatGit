@@ -40,12 +40,18 @@ public class AccountMenuPanel extends javax.swing.JPanel {
                     case "Logga ut":
                         frame.logOut();
                         break;
+                    case "Mina Favoriter":
+                        AccountMenuPanel.this.frame.setFeatureCard("favoriteResultCard");
+                        break;
                 }
             }
 
         };
        
         JMenuItem m = new JMenuItem("Historik");
+        m.addActionListener(al);
+        popup.add(m);
+        m = new JMenuItem("Mina Favoriter");
         m.addActionListener(al);
         popup.add(m);
         m = new JMenuItem("Logga ut");
