@@ -87,7 +87,8 @@ public class ShoppingCartPanel extends javax.swing.JPanel implements ShoppingCar
         infoPanel.setOpaque(false);
 
         nextButton.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        nextButton.setText("Next");
+        nextButton.setText("Gå vidare");
+        nextButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         nextButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nextButtonActionPerformed(evt);

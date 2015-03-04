@@ -23,9 +23,14 @@ public class EndingPanel extends javax.swing.JPanel {
         this.setBackground(Constants.BACKGROUND_COLOR);
     }
     
-    public EndingPanel(IMatModel model, MainFrame frame) {
+    public EndingPanel(IMatModel model, MainFrame frame, String type) {
         this(model);
         this.frame = frame;
+        if (type.equals("buy")){
+            endingTextLabel.setText("Tack för ditt köp!");
+        }else if (type.equals("register")){
+            endingTextLabel.setText("Tack för din registrering!");
+        }
     }
 
     /**
@@ -53,6 +58,7 @@ public class EndingPanel extends javax.swing.JPanel {
         endingTextLabel.setRequestFocusEnabled(false);
 
         endingButton.setText("Tillbaka till Start!");
+        endingButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         endingButton.setMaximumSize(new java.awt.Dimension(100, 75));
         endingButton.setMinimumSize(new java.awt.Dimension(100, 75));
         endingButton.setPreferredSize(new java.awt.Dimension(150, 75));

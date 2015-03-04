@@ -452,6 +452,7 @@ public class ConfirmPanel extends javax.swing.JPanel {
         confirmButton.setBackground(Constants.HEADER_COLOR);
         confirmButton.setForeground(new java.awt.Color(255, 255, 255));
         confirmButton.setText("Bekräfta");
+        confirmButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         confirmButton.setPreferredSize(new java.awt.Dimension(50, 25));
         confirmButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -478,6 +479,7 @@ public class ConfirmPanel extends javax.swing.JPanel {
         backButton.setBackground(Constants.HEADER_COLOR);
         backButton.setForeground(new java.awt.Color(255, 255, 255));
         backButton.setText("Bakåt");
+        backButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         backButton.setPreferredSize(new java.awt.Dimension(50, 25));
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -527,7 +529,7 @@ public class ConfirmPanel extends javax.swing.JPanel {
         model.placeOrder(true);
         if(frame != null){
             this.shoppingCartPanel.removeAll();
-            frame.setFeatureCard("endingPanelCard");
+            frame.setEndingCard("buy");
         }
     }//GEN-LAST:event_confirmButtonActionPerformed
 

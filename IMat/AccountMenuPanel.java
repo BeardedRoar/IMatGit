@@ -85,6 +85,7 @@ public class AccountMenuPanel extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
 
         setBackground(Constants.HEADER_COLOR);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         setLayout(new java.awt.BorderLayout());
 
         mainPanel.setOpaque(false);
