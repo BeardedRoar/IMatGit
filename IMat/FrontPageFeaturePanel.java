@@ -14,14 +14,14 @@ import se.chalmers.ait.dat215.project.ProductCategory;
  *
  * @author Marcus
  */
-public class frontPageFeaturePanel extends javax.swing.JPanel {
+public class FrontPageFeaturePanel extends javax.swing.JPanel {
     private ProductCategory pc;
     private IMatModel model;
     private int max = 3;
     /**
      * Creates new form frontPageFeaturePanel
      */
-    public frontPageFeaturePanel(ProductCategory pc, IMatModel model, String str) {
+    public FrontPageFeaturePanel(ProductCategory pc, IMatModel model, String str) {
         initComponents();
         headerPanel.setBackground(Constants.HEADER_COLOR);
         containerPanel.setBackground(Constants.BACKGROUND_COLOR);
