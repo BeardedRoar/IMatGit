@@ -74,6 +74,7 @@ public class CategoryPanel extends javax.swing.JPanel implements CategoryHolder 
 
         textLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         textLabel.setText(labelText);
+        textLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
