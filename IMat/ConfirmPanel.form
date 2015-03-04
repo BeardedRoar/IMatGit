@@ -261,7 +261,11 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="14" style="0"/>
                         </Property>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="96" green="96" red="96" type="rgb"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Kortnumret"/>
+                        <Property name="opaque" type="boolean" value="true"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="yearTextLabel">
@@ -315,9 +319,9 @@
                                           <Component id="nameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="adressLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Group type="102" alignment="0" attributes="0">
-                                              <Component id="postalCodeLabel" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="postalAdressLabel" min="-2" max="-2" attributes="0"/>
+                                              <Component id="postalCodeLabel" min="-2" pref="80" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="postalAdressLabel" min="-2" pref="70" max="-2" attributes="0"/>
                                           </Group>
                                           <Component id="sendToOtherAdressCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="adressTextLabel2" alignment="0" min="-2" pref="130" max="-2" attributes="0"/>
@@ -371,7 +375,7 @@
                               <Component id="sendToMailCheckBox" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="saveInformationCheckBox" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="57" max="32767" attributes="0"/>
+                              <EmptySpace pref="55" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -397,11 +401,22 @@
                     <Component class="javax.swing.JLabel" name="postalCodeLabel">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Postnummer"/>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                            <EmptyBorder/>
+                          </Border>
+                        </Property>
+                        <Property name="opaque" type="boolean" value="true"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="postalAdressLabel">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Postort"/>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                            <LineBorder/>
+                          </Border>
+                        </Property>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="sendToMailCheckBox">
@@ -421,11 +436,18 @@
                     <Component class="javax.swing.JLabel" name="nameTextLabel">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="F&#xf6;rnamn"/>
+                        <Property name="opaque" type="boolean" value="true"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="nameTextLabel2">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Efternamn"/>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                            <LineBorder/>
+                          </Border>
+                        </Property>
+                        <Property name="opaque" type="boolean" value="true"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="adressTextLabel">
