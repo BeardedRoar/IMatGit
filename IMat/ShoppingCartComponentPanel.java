@@ -232,6 +232,7 @@ public class ShoppingCartComponentPanel extends javax.swing.JPanel {
 
         deleteLabel.setBackground(Constants.BACKGROUND_COLOR);
         deleteLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iMat.resources/x-2x.png"))); // NOI18N
+        deleteLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         deleteLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 deleteLabelMouseClicked(evt);

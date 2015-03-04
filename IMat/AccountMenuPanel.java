@@ -40,12 +40,18 @@ public class AccountMenuPanel extends javax.swing.JPanel {
                     case "Logga ut":
                         frame.logOut();
                         break;
+                    case "Mina Favoriter":
+                        AccountMenuPanel.this.frame.setFeatureCard("resultCard");
+                        break;
                 }
             }
 
         };
        
         JMenuItem m = new JMenuItem("Historik");
+        m.addActionListener(al);
+        popup.add(m);
+        m = new JMenuItem("Mina Favoriter");
         m.addActionListener(al);
         popup.add(m);
         m = new JMenuItem("Logga ut");
@@ -83,7 +89,9 @@ public class AccountMenuPanel extends javax.swing.JPanel {
 
         mainPanel.setOpaque(false);
 
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Mina Sidor");
+        jButton1.setFocusPainted(false);
         jButton1.setInheritsPopupMenu(true);
         jButton1.setMaximumSize(new java.awt.Dimension(103, 25));
         jButton1.setMinimumSize(new java.awt.Dimension(103, 25));
