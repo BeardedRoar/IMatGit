@@ -503,9 +503,10 @@ public class CheckoutPanel extends javax.swing.JPanel {
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
-        buyButton.setBackground(new java.awt.Color(255, 102, 102));
-        buyButton.setForeground(new java.awt.Color(255, 255, 255));
+        buyButton.setBackground(Constants.HEADER_COLOR);
+        buyButton.setForeground(Constants.BACKGROUND_COLOR);
         buyButton.setText("Köp");
+        buyButton.setMinimumSize(new java.awt.Dimension(50, 25));
         buyButton.setPreferredSize(new java.awt.Dimension(50, 25));
         buyButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
