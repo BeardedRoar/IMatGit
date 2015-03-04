@@ -64,7 +64,7 @@ public class MainFrame extends javax.swing.JFrame {
         
         this.checkoutPanelHolder.add(new CheckoutPanel(model, this));
         this.confirmPanelHolder.add(new ConfirmPanel(model,this));
-        this.endingPanelHolder.add(new EndingPanel(model, this, "buy"));
+        //this.endingPanelHolder.add(new EndingPanel(model, this, "buy"));
         this.logInPanelHolder.add(new LogInPanel(model, this));
         
         this.frontPagePanel.add(new FrontPageFeaturePanel(ProductCategory.FRUIT, model, "Ofta Köpta"));
@@ -114,7 +114,8 @@ public class MainFrame extends javax.swing.JFrame {
     public void setEndingCard(String type){
         card.show(this.featurePanel, "endingPanelCard");
          this.endingPanelHolder.removeAll();
-         this.endingPanelHolder.add(new EndingPanel(model, this, type));
+         
+         //this.endingPanelHolder.add(new EndingPanel(model, this, type));
     }
 
     /**
