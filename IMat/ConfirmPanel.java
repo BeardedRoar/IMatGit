@@ -527,7 +527,7 @@ public class ConfirmPanel extends javax.swing.JPanel {
         model.placeOrder(true);
         if(frame != null){
             this.shoppingCartPanel.removeAll();
-            frame.setEndingCard("buy");
+            frame.setFeatureCard("endingPanelCard");
         }
     }//GEN-LAST:event_confirmButtonActionPerformed
 
