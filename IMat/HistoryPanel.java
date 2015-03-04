@@ -48,6 +48,7 @@ public class HistoryPanel extends javax.swing.JPanel {
         dateLabel = new javax.swing.JLabel();
         orderNumberLabel = new javax.swing.JLabel();
         totalPriceLabel = new javax.swing.JLabel();
+        orderNumberLabel1 = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(1000, 600));
         setOpaque(false);
@@ -69,13 +70,14 @@ public class HistoryPanel extends javax.swing.JPanel {
 
         historyScrollPanel.setViewportView(historyPanel);
 
+        jPanel1.setBackground(Constants.BACKGROUND_COLOR);
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         dateLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        dateLabel.setText("Date:");
+        dateLabel.setText("Datum:");
 
         orderNumberLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        orderNumberLabel.setText("ID:");
+        orderNumberLabel.setText("Antal:");
 
         totalPriceLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         totalPriceLabel.setText("Pris:");
@@ -83,18 +85,23 @@ public class HistoryPanel extends javax.swing.JPanel {
         totalPriceLabel.setMinimumSize(new java.awt.Dimension(134, 29));
         totalPriceLabel.setPreferredSize(new java.awt.Dimension(134, 29));
 
+        orderNumberLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        orderNumberLabel1.setText("ID:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(dateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(266, 266, 266)
+                .addComponent(dateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(272, 272, 272)
+                .addComponent(orderNumberLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(orderNumberLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(92, 92, 92)
+                .addGap(62, 62, 62)
                 .addComponent(totalPriceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(420, 420, 420))
+                .addGap(362, 362, 362))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,7 +110,8 @@ public class HistoryPanel extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(dateLabel)
                     .addComponent(orderNumberLabel)
-                    .addComponent(totalPriceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(totalPriceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(orderNumberLabel1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -135,6 +143,7 @@ public class HistoryPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane historyScrollPanel;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel orderNumberLabel;
+    private javax.swing.JLabel orderNumberLabel1;
     private javax.swing.JLabel totalPriceLabel;
     // End of variables declaration//GEN-END:variables
 }

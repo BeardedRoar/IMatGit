@@ -67,11 +67,12 @@ public class CategoryPanel extends javax.swing.JPanel implements CategoryHolder 
 
         textLabel = new javax.swing.JLabel();
 
-        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setMinimumSize(new java.awt.Dimension(100, 20));
         setOpaque(false);
         setPreferredSize(new java.awt.Dimension(100, 20));
 
+        textLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         textLabel.setText(labelText);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -87,7 +88,7 @@ public class CategoryPanel extends javax.swing.JPanel implements CategoryHolder 
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(textLabel)
-                .addGap(0, 13, Short.MAX_VALUE))
+                .addGap(0, 3, Short.MAX_VALUE))
         );
 
         getAccessibleContext().setAccessibleName("default");
