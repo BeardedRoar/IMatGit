@@ -18,6 +18,7 @@ public class MainFrame extends javax.swing.JFrame {
     private IMatModel model;
     private CardLayout card;
     private CardLayout logInCard;
+    private CartIconPanel iconPanel;
     private MouseListener categoryListener;
 
     /**
@@ -30,8 +31,7 @@ public class MainFrame extends javax.swing.JFrame {
     public MainFrame(IMatModel model) {
         this();
         this.model = model;
-        //this.slp = new ShoppingListPreview(cartLabel, model);
-        CartIconPanel iconPanel = new CartIconPanel((model));
+        iconPanel = new CartIconPanel(model, this);
         this.cartIconPanelHolder.add(iconPanel);
         model.addCartListener(iconPanel);
         this.categoryListener = new MouseListener() {
@@ -101,6 +101,9 @@ public class MainFrame extends javax.swing.JFrame {
         if ("historyCard".equals(cardName)){
             this.historyPanelHolder.removeAll();
             this.historyPanelHolder.add(new HistoryPanel(model));
+        } else if("shoppingCartCard".equals(cardName)){
+            this.shoppingCartPanelHolder.removeAll();
+            this.shoppingCartPanelHolder.add(new ShoppingCartPanel(model, iconPanel, this));
         }
     }
 

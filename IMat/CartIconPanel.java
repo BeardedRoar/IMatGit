@@ -7,23 +7,29 @@ package IMat;
 
 import se.chalmers.ait.dat215.project.CartEvent;
 import se.chalmers.ait.dat215.project.ShoppingCartListener;
+import se.chalmers.ait.dat215.project.ShoppingItem;
 
 /**
  *
  * @author Joel
  */
-public class CartIconPanel extends javax.swing.JPanel implements ShoppingCartListener{
+public class CartIconPanel extends javax.swing.JPanel 
+implements ShoppingCartListener, ShoppingCartComponentListener{
     private final IMatModel model;
     private ShoppingListPreview slp;
+    private final MainFrame frame;
 
     /**
      * Creates new form CartIconPanel
      */
-    public CartIconPanel(IMatModel model) {
+    public CartIconPanel(IMatModel model, MainFrame frame) {
         this.model = model;
+        this.frame = frame;
         initComponents();
         this.numberLabel.setText("Antal produkter: " + model.getItems().size());
         this.totCostLabel.setText("Kostnad: " + model.getTotalCost());
+        this.slp = new ShoppingListPreview(iconPanel, model);
+        this.model.addCartListener(slp);
     }
 
     /**
@@ -47,6 +53,11 @@ public class CartIconPanel extends javax.swing.JPanel implements ShoppingCartLis
         iconPanel.setOpaque(false);
 
         iconLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iMat.resources/cart.png"))); // NOI18N
+        iconLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                iconLabelMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout iconPanelLayout = new javax.swing.GroupLayout(iconPanel);
         iconPanel.setLayout(iconPanelLayout);
@@ -87,6 +98,10 @@ public class CartIconPanel extends javax.swing.JPanel implements ShoppingCartLis
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void iconLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconLabelMouseClicked
+        frame.setFeatureCard("shoppingCartCard");
+    }//GEN-LAST:event_iconLabelMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel iconLabel;
@@ -97,6 +112,12 @@ public class CartIconPanel extends javax.swing.JPanel implements ShoppingCartLis
 
     @Override
     public void shoppingCartChanged(CartEvent ce) {
+        this.numberLabel.setText("Antal produkter: " + model.getItems().size());
+        this.totCostLabel.setText("Kostnad: " + model.getTotalCost());
+    }
+
+    @Override
+    public void shoppingCartComponentChanged(ShoppingItem item, boolean itemAdded) {
         this.numberLabel.setText("Antal produkter: " + model.getItems().size());
         this.totCostLabel.setText("Kostnad: " + model.getTotalCost());
     }
