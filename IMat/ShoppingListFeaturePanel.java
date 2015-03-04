@@ -5,24 +5,85 @@
  */
 package IMat;
 
+import java.awt.Graphics;
+import java.awt.GridLayout;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import javax.imageio.ImageIO;
+import javax.swing.JPanel;
+import se.chalmers.ait.dat215.project.Product;
+import se.chalmers.ait.dat215.project.ShoppingItem;
+
 /**
  *
  * @author axel
  */
 public class ShoppingListFeaturePanel extends javax.swing.JPanel {
+    
+    private BufferedImage img;
+    private JPanel textFieldPanel;
+    private IMatModel model;
+    private ArrayList<ShoppingListTextFieldPanel> textFields;
 
     /**
      * Creates new form ShoppingListFeaturePanel
      */
-    public ShoppingListFeaturePanel() {
+    public ShoppingListFeaturePanel(IMatModel model) {
+        this.model = model;
         initComponents();
         
         this.setBackground(Constants.BACKGROUND_COLOR);
         containerPanel.setBackground(Constants.BACKGROUND_COLOR);
         headerPanel.setBackground(Constants.HEADER_COLOR);
+        try {
+            img = ImageIO.read(getClass().getResource("/iMat.resources/block.jpg"));
+        } catch (IOException ex) {
+            System.out.println("Background for ShoppingListPanel not found");
+        }
         
+        textFieldPanel = new JPanel(){
+          
+            protected void paintComponent(Graphics g){
+                super.paintComponent(g);
+                g.drawImage(img, 0, 0, null);
+            }
+        };
+        textFields = new ArrayList();
+        textFieldPanel.setLayout(new GridLayout(9, 1));
+        ShoppingListTextFieldPanel textField = new ShoppingListTextFieldPanel(this);
+        textFieldPanel.add(textField);
+        textFields.add(textField);
+        
+        this.containerPanel.add(textFieldPanel);
     }
 
+    public void textFieldDone(ShoppingListTextFieldPanel sltfp, String text){
+        List<Product> hits = model.findProducts(text);
+        if (hits.size() > 0){
+            Product hit = hits.get(0);
+            model.addProduct(hit, 1.0);
+            sltfp.setProduct(hit);
+            textFields.add(new ShoppingListTextFieldPanel(this));
+            reMakeTextFields();
+        } else {
+            sltfp.unnableToFind();
+        }
+
+    }
+    
+    private void reMakeTextFields(){
+        textFieldPanel.removeAll();
+        textFieldPanel.setLayout(new GridLayout(Math.max(9, textFields.size()), 1));
+        for(ShoppingListTextFieldPanel field : textFields){
+            textFieldPanel.add(field);
+        }
+        repaint();
+        revalidate();
+        textFields.get(textFields.size()-1).giveFocus();
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -32,10 +93,13 @@ public class ShoppingListFeaturePanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
         headerPanel = new javax.swing.JPanel();
         headerLabel = new javax.swing.JLabel();
+        containerScrollPane = new javax.swing.JScrollPane();
         containerPanel = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iMat.resources/block.jpg"))); // NOI18N
 
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         setMinimumSize(new java.awt.Dimension(475, 275));
@@ -62,7 +126,7 @@ public class ShoppingListFeaturePanel extends javax.swing.JPanel {
             .addGroup(headerPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(headerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(158, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         headerPanelLayout.setVerticalGroup(
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -72,40 +136,37 @@ public class ShoppingListFeaturePanel extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iMat.resources/block.jpg"))); // NOI18N
-
-        javax.swing.GroupLayout containerPanelLayout = new javax.swing.GroupLayout(containerPanel);
-        containerPanel.setLayout(containerPanelLayout);
-        containerPanelLayout.setHorizontalGroup(
-            containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        containerPanelLayout.setVerticalGroup(
-            containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        containerPanel.setLayout(new java.awt.GridLayout());
+        containerScrollPane.setViewportView(containerPanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(headerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 475, Short.MAX_VALUE)
-            .addComponent(containerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(headerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(containerScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 473, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(headerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(containerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(containerScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel containerPanel;
+    private javax.swing.JScrollPane containerScrollPane;
     private javax.swing.JLabel headerLabel;
     private javax.swing.JPanel headerPanel;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
+
+    void removeProduct(Product product, ShoppingListTextFieldPanel sltfp) {
+        model.removeProductFromCart(product);
+        textFields.remove(sltfp);
+        reMakeTextFields();
+    }
 }
