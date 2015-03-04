@@ -12,11 +12,13 @@ package IMat;
 public class LogInPanel extends javax.swing.JPanel {
     
     private final IMatModel model;
+    private MainFrame frame;
     /**
      * Creates new form logInPanel
      */
-    public LogInPanel(IMatModel model) {
+    public LogInPanel(IMatModel model, MainFrame frame) {
         this.model = model;
+        this.frame = frame;
         initComponents();
     }
 
@@ -54,6 +56,7 @@ public class LogInPanel extends javax.swing.JPanel {
         jPanel5.setBorder(new javax.swing.border.MatteBorder(null));
         jPanel5.setPreferredSize(new java.awt.Dimension(480, 300));
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("Befintlig Kund");
 
         userNameTextField.setText("Användarnamn");
@@ -69,7 +72,14 @@ public class LogInPanel extends javax.swing.JPanel {
             }
         });
 
+        logInButton.setBackground(Constants.HEADER_COLOR);
+        logInButton.setForeground(Constants.BACKGROUND_COLOR);
         logInButton.setText("Logga In");
+        logInButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logInButtonActionPerformed(evt);
+            }
+        });
 
         jPasswordField1.setText("jPasswordField1");
         jPasswordField1.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -84,7 +94,7 @@ public class LogInPanel extends javax.swing.JPanel {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(logInButton)
+                .addComponent(logInButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(87, 87, 87)
@@ -103,8 +113,8 @@ public class LogInPanel extends javax.swing.JPanel {
                 .addComponent(userNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
-                .addComponent(logInButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
+                .addComponent(logInButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -130,6 +140,7 @@ public class LogInPanel extends javax.swing.JPanel {
         jPanel6.setBorder(new javax.swing.border.MatteBorder(null));
         jPanel6.setPreferredSize(new java.awt.Dimension(480, 300));
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel2.setText("Registrera");
 
         userNameTextField1.setText("Användarnamn");
@@ -140,7 +151,14 @@ public class LogInPanel extends javax.swing.JPanel {
             }
         });
 
+        registerButton.setBackground(Constants.HEADER_COLOR);
+        registerButton.setForeground(Constants.BACKGROUND_COLOR);
         registerButton.setText("Registrera");
+        registerButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registerButtonActionPerformed(evt);
+            }
+        });
 
         jPasswordField2.setText("jPasswordField1");
 
@@ -154,7 +172,7 @@ public class LogInPanel extends javax.swing.JPanel {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(registerButton))
+                        .addComponent(registerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(86, 86, 86)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -178,8 +196,8 @@ public class LogInPanel extends javax.swing.JPanel {
                 .addComponent(jPasswordField3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
-                .addComponent(registerButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addComponent(registerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -246,6 +264,19 @@ public class LogInPanel extends javax.swing.JPanel {
     private void userNameTextFieldMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userNameTextFieldMousePressed
         
     }//GEN-LAST:event_userNameTextFieldMousePressed
+
+    private void logInButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logInButtonActionPerformed
+        if(model.logIn(userNameTextField.getText(), jPasswordField1.getPassword())){
+            frame.setFeatureCard("frontPageCard");
+        }
+    }//GEN-LAST:event_logInButtonActionPerformed
+
+    private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
+        if(model.constructPassword(jPasswordField2.getPassword()).equals(model.constructPassword(jPasswordField3.getPassword()))){
+            model.register(userNameTextField1.getText(), jPasswordField2.getPassword());
+            frame.setFeatureCard("frontPageCard");
+        }
+    }//GEN-LAST:event_registerButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

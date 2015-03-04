@@ -383,7 +383,7 @@ public class IMatModel {
         this.setUserPassword(constructPassword(password));
     }
     
-    private String constructPassword(char[] pw){
+    public String constructPassword(char[] pw){
         StringBuilder sb = new StringBuilder();
         for (char c : pw)
             sb.append(c);
