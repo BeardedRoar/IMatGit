@@ -28,7 +28,7 @@ implements ShoppingCartListener, ShoppingCartComponentListener{
         initComponents();
         this.numberLabel.setText("Antal produkter: " + model.getItems().size());
         this.totCostLabel.setText("Kostnad: " + model.getTotalCost());
-        this.slp = new ShoppingListPreview(iconPanel, model);
+        this.slp = new ShoppingListPreview(iconLabel, model);
         this.model.addCartListener(slp);
     }
 
