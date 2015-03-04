@@ -292,6 +292,7 @@ public class ShoppingCartComponentPanel extends javax.swing.JPanel {
             }
             this.shoppingItem.setAmount(Integer.parseInt(nbrOfProductsTextfield.getText()));
             accualTotalPriceLabel.setText("" + this.shoppingItem.getTotal() + " kr");
+            this.fireComponentChange(shoppingItem, false);
         }
         catch(NumberFormatException e){
             nbrOfProductsTextfield.setText(Integer.toString((int) this.shoppingItem.getAmount()));
