@@ -29,6 +29,7 @@ public class IMatModel {
     private final Customer customer = handler.getCustomer();
     private final User user = handler.getUser();
     private boolean loggedIn;
+    private String lastCategory;
 
     public IMatModel() {
 
@@ -283,11 +284,12 @@ public class IMatModel {
             products.addAll(this.getProducts(ProductCategory.POTATO_RICE));
         } else
             products= handler.findProducts(s);
-        ArrayList<ProductPanel> panels = new ArrayList(products.size());
-        Iterator<Product> it = products.iterator();
+            ArrayList<ProductPanel> panels = new ArrayList(products.size());
+            Iterator<Product> it = products.iterator();
         while (it.hasNext()) {
             panels.add(new ProductPanel(it.next(), this));
         }
+        lastCategory = s;
         return panels;
     }
 
@@ -383,16 +385,16 @@ public class IMatModel {
         this.setUserPassword(constructPassword(password));
     }
     
-    private String constructPassword(char[] pw){
+    public String constructPassword(char[] pw){
         StringBuilder sb = new StringBuilder();
         for (char c : pw)
             sb.append(c);
         return sb.toString();
     }
 
-    public void makeCategoryPanel(JPanel panel, String string, MouseListener categoryListener) {
+    public void makeCategoryPanel(JPanel panel, String s, MouseListener categoryListener) {
         panel.removeAll();
-        if (string.equals("Frukt & Grönt")) {
+        if (s.equals("Frukt & Grönt") && !lastCategory.equals(s)) {
             panel.setLayout(new GridLayout(19, 0));
             panel.add(new CategoryPanel("Bakvaror", ProductCategory.FLOUR_SUGAR_SALT, categoryListener));
             panel.add(new CategoryPanel("Bröd", ProductCategory.BREAD, categoryListener));
@@ -413,7 +415,8 @@ public class IMatModel {
             panel.add(new CategoryPanel("Nötter & Frön", ProductCategory.NUTS_AND_SEEDS, categoryListener));
             panel.add(new CategoryPanel("Sötsaker", ProductCategory.SWEET, categoryListener));
             panel.add(new CategoryPanel("Örtkryddor", ProductCategory.HERB, categoryListener));
-        } else if (string.equals("Drycker")) {
+            lastCategory = s;
+        } else if (s.equals("Drycker") && !lastCategory.equals(s)) {
             panel.setLayout(new GridLayout(13, 0));
             panel.add(new CategoryPanel("Bakvaror", ProductCategory.FLOUR_SUGAR_SALT, categoryListener));
             panel.add(new CategoryPanel("Bröd", ProductCategory.BREAD, categoryListener));
@@ -428,7 +431,8 @@ public class IMatModel {
             panel.add(new CategoryPanel("Nötter & Frön", ProductCategory.NUTS_AND_SEEDS, categoryListener));
             panel.add(new CategoryPanel("Sötsaker", ProductCategory.SWEET, categoryListener));
             panel.add(new CategoryPanel("Örtkryddor", ProductCategory.HERB, categoryListener));
-        } else if (string.equals("Kolhydrater")) {
+            lastCategory = s;
+        } else if (s.equals("Kolhydrater") && !lastCategory.equals(s)) {
             panel.setLayout(new GridLayout(13, 0));
             panel.add(new CategoryPanel("Bakvaror", ProductCategory.FLOUR_SUGAR_SALT, categoryListener));
             panel.add(new CategoryPanel("Bröd", ProductCategory.BREAD, categoryListener));
@@ -443,6 +447,7 @@ public class IMatModel {
             panel.add(new CategoryPanel("Nötter & Frön", ProductCategory.NUTS_AND_SEEDS, categoryListener));
             panel.add(new CategoryPanel("Sötsaker", ProductCategory.SWEET, categoryListener));
             panel.add(new CategoryPanel("Örtkryddor", ProductCategory.HERB, categoryListener));
+            lastCategory = s;
         } else {
             panel.add(new CategoryPanel("Bakvaror", ProductCategory.FLOUR_SUGAR_SALT, categoryListener));
             panel.add(new CategoryPanel("Bröd", ProductCategory.BREAD, categoryListener));
@@ -455,6 +460,7 @@ public class IMatModel {
             panel.add(new CategoryPanel("Nötter & Frön", ProductCategory.NUTS_AND_SEEDS, categoryListener));
             panel.add(new CategoryPanel("Sötsaker", ProductCategory.SWEET, categoryListener));
             panel.add(new CategoryPanel("Örtkryddor", ProductCategory.HERB, categoryListener));
+            lastCategory = "";
         }
     }
     
