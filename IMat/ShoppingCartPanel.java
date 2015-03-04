@@ -30,7 +30,7 @@ public class ShoppingCartPanel extends javax.swing.JPanel implements ShoppingCar
         initComponents();
         
         List<ShoppingItem> items = model.getItems();
-        this.itemPanel.setLayout(new GridLayout(items.size(), 1));
+        this.itemPanel.setLayout(new GridLayout(Math.max(6,items.size()), 1));
         Iterator<ShoppingItem> it = items.iterator();
         ShoppingCartComponentPanel tempPanel;
         while (it.hasNext()){

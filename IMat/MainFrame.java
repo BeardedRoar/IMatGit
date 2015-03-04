@@ -106,6 +106,9 @@ public class MainFrame extends javax.swing.JFrame {
         } else if("shoppingCartCard".equals(cardName)){
             this.shoppingCartPanelHolder.removeAll();
             this.shoppingCartPanelHolder.add(new ShoppingCartPanel(model, iconPanel, this));
+        } else if("confirmPanelCard".equals(cardName)){
+            this.confirmPanelHolder.removeAll();
+            this.confirmPanelHolder.add(new ConfirmPanel(model, this));
         }
     }
 
