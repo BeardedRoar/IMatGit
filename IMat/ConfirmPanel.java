@@ -28,7 +28,7 @@ public class ConfirmPanel extends javax.swing.JPanel {
         this.setBackground(Constants.BACKGROUND_COLOR);
         
         List<ShoppingItem> items = model.getItems();
-        this.shoppingCartPanel.setLayout(new GridLayout(items.size(), 1));
+        this.shoppingCartPanel.setLayout(new GridLayout(Math.max(9,items.size()), 1));
         Iterator<ShoppingItem> it = items.iterator();
         while (it.hasNext()){
             this.shoppingCartPanel.add(new SmallShoppingCartComponentPanel(it.next()));
