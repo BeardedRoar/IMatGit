@@ -140,7 +140,9 @@ public class ConfirmPanel extends javax.swing.JPanel {
         cardLabel.setText("Kort");
 
         cardNumberTextLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cardNumberTextLabel.setForeground(new java.awt.Color(150, 150, 150));
         cardNumberTextLabel.setText("Kortnumret");
+        cardNumberTextLabel.setOpaque(true);
 
         yearTextLabel.setText("jLabel1");
 
@@ -211,8 +213,11 @@ public class ConfirmPanel extends javax.swing.JPanel {
         sendToOtherAdressCheckBox.setOpaque(false);
 
         postalCodeLabel.setText("Postnummer");
+        postalCodeLabel.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        postalCodeLabel.setOpaque(true);
 
         postalAdressLabel.setText("Postort");
+        postalAdressLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         sendToMailCheckBox.setText("Skicka kvitto till min mail");
         sendToMailCheckBox.setEnabled(false);
@@ -223,8 +228,11 @@ public class ConfirmPanel extends javax.swing.JPanel {
         saveInformationCheckBox.setOpaque(false);
 
         nameTextLabel.setText("Förnamn");
+        nameTextLabel.setOpaque(true);
 
         nameTextLabel2.setText("Efternamn");
+        nameTextLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        nameTextLabel2.setOpaque(true);
 
         adressTextLabel.setText("Tvärvägen 20");
 
@@ -261,9 +269,9 @@ public class ConfirmPanel extends javax.swing.JPanel {
                             .addComponent(nameLabel)
                             .addComponent(adressLabel)
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(postalCodeLabel)
-                                .addGap(18, 18, 18)
-                                .addComponent(postalAdressLabel))
+                                .addComponent(postalCodeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(postalAdressLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(sendToOtherAdressCheckBox)
                             .addComponent(adressTextLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel4Layout.createSequentialGroup()
@@ -306,7 +314,7 @@ public class ConfirmPanel extends javax.swing.JPanel {
                 .addComponent(sendToMailCheckBox)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(saveInformationCheckBox)
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         jPanel5.setOpaque(false);

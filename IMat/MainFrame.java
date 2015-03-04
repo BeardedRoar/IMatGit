@@ -97,7 +97,6 @@ public class MainFrame extends javax.swing.JFrame {
 
     public void setFeatureCard(String cardName) {
         card.show(this.featurePanel, cardName);
-        System.out.println(cardName);
         if ("historyCard".equals(cardName)){
             this.historyPanelHolder.removeAll();
             this.historyPanelHolder.add(new HistoryPanel(model));
