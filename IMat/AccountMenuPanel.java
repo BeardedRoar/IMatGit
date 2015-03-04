@@ -20,12 +20,14 @@ public class AccountMenuPanel extends javax.swing.JPanel {
 
     private JPopupMenu popup = new JPopupMenu();
     private final MainFrame frame;
+    private final IMatModel model;
 
     /**
      * Creates new form AccountMenuPanel
      */
-    public AccountMenuPanel(final MainFrame frame) {
+    public AccountMenuPanel(final MainFrame frame, final IMatModel model) {
         this.frame = frame;
+        this.model = model;
         initComponents();
         ActionListener al = new ActionListener() {
 
@@ -42,7 +44,7 @@ public class AccountMenuPanel extends javax.swing.JPanel {
             }
 
         };
-
+       
         JMenuItem m = new JMenuItem("Historik");
         m.addActionListener(al);
         popup.add(m);
@@ -56,7 +58,11 @@ public class AccountMenuPanel extends javax.swing.JPanel {
     class PopupListener extends MouseAdapter {
     @Override
     public void mousePressed(MouseEvent e) {
+        if(model.isLoggedIn()){
         popup.show(AccountMenuPanel.this, 0, 25);
+        }else{
+            frame.setFeatureCard("logInCard");
+        }            
     }
   }
     
