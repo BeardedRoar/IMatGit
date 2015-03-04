@@ -64,7 +64,7 @@ public class MainFrame extends javax.swing.JFrame {
         
         this.checkoutPanelHolder.add(new CheckoutPanel(model, this));
         this.confirmPanelHolder.add(new ConfirmPanel(model,this));
-        this.endingPanelHolder.add(new EndingPanel(model, this));
+        this.endingPanelHolder.add(new EndingPanel(model, this, "buy"));
         this.logInPanelHolder.add(new LogInPanel(model, this));
         
         this.frontPagePanel.add(new FrontPageFeaturePanel(ProductCategory.FRUIT, model, "Ofta Köpta"));
@@ -110,6 +110,11 @@ public class MainFrame extends javax.swing.JFrame {
             this.resultPanelHolder.removeAll();
             this.resultPanelHolder.add(new ResultPanel(model.getFavoritePanels(), model));
         }
+    }
+    public void setEndingCard(String type){
+        card.show(this.featurePanel, "endingPanelCard");
+         this.endingPanelHolder.removeAll();
+         this.endingPanelHolder.add(new EndingPanel(model, this, type));
     }
 
     /**
@@ -168,7 +173,7 @@ public class MainFrame extends javax.swing.JFrame {
         logoLabel.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         logoLabel.setForeground(new java.awt.Color(255, 255, 255));
         logoLabel.setText("iMat");
-        logoLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        logoLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         logoLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 startTextPanelMousePressed(evt);
@@ -198,7 +203,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         searchIcon.setBackground(new java.awt.Color(255, 255, 255));
         searchIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iMat.resources/magnifier.png"))); // NOI18N
-        searchIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        searchIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         searchIcon.setMaximumSize(new java.awt.Dimension(30, 30));
         searchIcon.setMinimumSize(new java.awt.Dimension(30, 30));
         searchIcon.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -308,10 +313,10 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        startLabel.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
+        startLabel.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         startLabel.setForeground(Constants.BACKGROUND_COLOR);
         startLabel.setText("Start");
-        startLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        startLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout startTextPanelLayout = new javax.swing.GroupLayout(startTextPanel);
         startTextPanel.setLayout(startTextPanelLayout);
