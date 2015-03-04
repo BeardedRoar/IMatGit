@@ -30,11 +30,11 @@ public class ShoppingCartPanel extends javax.swing.JPanel implements ShoppingCar
         initComponents();
         
         List<ShoppingItem> items = model.getItems();
-        this.itemPanel.setLayout(new GridLayout(items.size(), 1));
+        this.itemPanel.setLayout(new GridLayout(Math.max(6,items.size()), 1));
         Iterator<ShoppingItem> it = items.iterator();
         ShoppingCartComponentPanel tempPanel;
         while (it.hasNext()){
-            tempPanel = new ShoppingCartComponentPanel(it.next());
+            tempPanel = new ShoppingCartComponentPanel(it.next(), this);
             this.itemPanel.add(tempPanel);
             tempPanel.addShoppingCartComponentListener(this);
             tempPanel.addShoppingCartComponentListener(sccl);
@@ -145,7 +145,12 @@ public class ShoppingCartPanel extends javax.swing.JPanel implements ShoppingCar
                 .addComponent(infoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    public void removeCartComponentPanel(ShoppingCartComponentPanel s){
+        this.itemPanel.remove(s);
+        model.removeItemFromCart(s.getShoppingItem());
+        this.itemPanel.repaint();
+    }
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
         if (frame != null)
             frame.setFeatureCard("checkoutCard");

@@ -63,6 +63,7 @@ public class MainFrame extends javax.swing.JFrame {
         this.card = (CardLayout) this.featurePanel.getLayout();
         
         this.checkoutPanelHolder.add(new CheckoutPanel(model, this));
+        this.confirmPanelHolder.add(new ConfirmPanel(model,this));
         this.endingPanelHolder.add(new EndingPanel(model, this));
         
         this.frontPagePanel.add(new FrontPageFeaturePanel(ProductCategory.FRUIT, model, "Ofta Köpta"));
@@ -95,12 +96,16 @@ public class MainFrame extends javax.swing.JFrame {
 
     public void setFeatureCard(String cardName) {
         card.show(this.featurePanel, cardName);
+        System.out.println(cardName);
         if ("historyCard".equals(cardName)){
             this.historyPanelHolder.removeAll();
             this.historyPanelHolder.add(new HistoryPanel(model));
         } else if("shoppingCartCard".equals(cardName)){
             this.shoppingCartPanelHolder.removeAll();
             this.shoppingCartPanelHolder.add(new ShoppingCartPanel(model, iconPanel, this));
+        } else if("confirmPanelCard".equals(cardName)){
+            this.confirmPanelHolder.removeAll();
+            this.confirmPanelHolder.add(new ConfirmPanel(model, this));
         }
     }
 

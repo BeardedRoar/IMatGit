@@ -16,13 +16,18 @@ import se.chalmers.ait.dat215.project.ShoppingItem;
 public class ShoppingCartComponentPanel extends javax.swing.JPanel {
 
     private final ShoppingItem shoppingItem;
+
+    public ShoppingItem getShoppingItem() {
+        return shoppingItem;
+    }
     private ArrayList<ShoppingCartComponentListener> listenerList = new ArrayList();
+    private ShoppingCartPanel shoppingCartPanel;
     /**
      * Creates new form shoppingCartComponentPanel
      */
-    public ShoppingCartComponentPanel(ShoppingItem shoppingItem) {
+    public ShoppingCartComponentPanel(ShoppingItem shoppingItem, ShoppingCartPanel shoppingCartPanel) {
         this.shoppingItem = shoppingItem;
-        
+        this.shoppingCartPanel=shoppingCartPanel;
         initComponents();
     }
 
@@ -228,6 +233,9 @@ public class ShoppingCartComponentPanel extends javax.swing.JPanel {
         deleteLabel.setBackground(Constants.BACKGROUND_COLOR);
         deleteLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iMat.resources/x-2x.png"))); // NOI18N
         deleteLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deleteLabelMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 deleteLabelMouseEntered(evt);
             }
@@ -292,6 +300,7 @@ public class ShoppingCartComponentPanel extends javax.swing.JPanel {
             }
             this.shoppingItem.setAmount(Integer.parseInt(nbrOfProductsTextfield.getText()));
             accualTotalPriceLabel.setText("" + this.shoppingItem.getTotal() + " kr");
+            this.fireComponentChange(shoppingItem, false);
         }
         catch(NumberFormatException e){
             nbrOfProductsTextfield.setText(Integer.toString((int) this.shoppingItem.getAmount()));
@@ -327,6 +336,10 @@ public class ShoppingCartComponentPanel extends javax.swing.JPanel {
     private void deleteLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteLabelMouseExited
         deleteLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iMat.resources/x-2x.png")));
     }//GEN-LAST:event_deleteLabelMouseExited
+
+    private void deleteLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteLabelMouseClicked
+        shoppingCartPanel.removeCartComponentPanel(this);
+    }//GEN-LAST:event_deleteLabelMouseClicked
 
     public void addShoppingCartComponentListener(ShoppingCartComponentListener sccl){
        this.listenerList.add(sccl); 
