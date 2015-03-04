@@ -168,7 +168,7 @@ public class MainFrame extends javax.swing.JFrame {
         logoLabel.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         logoLabel.setForeground(new java.awt.Color(255, 255, 255));
         logoLabel.setText("iMat");
-        logoLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        logoLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         logoLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 startTextPanelMousePressed(evt);
@@ -214,7 +214,7 @@ public class MainFrame extends javax.swing.JFrame {
             searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(searchPanelLayout.createSequentialGroup()
                 .addGap(2, 2, 2)
-                .addComponent(searchTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
+                .addComponent(searchTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(searchIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -228,7 +228,8 @@ public class MainFrame extends javax.swing.JFrame {
         );
 
         accountPanel.setOpaque(false);
-        accountPanel.setLayout(new java.awt.GridLayout());
+        accountPanel.setPreferredSize(new java.awt.Dimension(184, 102));
+        accountPanel.setLayout(new java.awt.GridLayout(1, 0));
 
         myPagePanel.setOpaque(false);
 
@@ -240,15 +241,16 @@ public class MainFrame extends javax.swing.JFrame {
         myPagePanelLayout.setHorizontalGroup(
             myPagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(myPagePanelLayout.createSequentialGroup()
+                .addGap(2, 2, 2)
                 .addComponent(accountMenuHolderPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 95, Short.MAX_VALUE))
+                .addContainerGap(93, Short.MAX_VALUE))
         );
         myPagePanelLayout.setVerticalGroup(
             myPagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, myPagePanelLayout.createSequentialGroup()
-                .addContainerGap(48, Short.MAX_VALUE)
+                .addContainerGap(47, Short.MAX_VALUE)
                 .addComponent(accountMenuHolderPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22))
+                .addGap(23, 23, 23))
         );
 
         accountPanel.add(myPagePanel);
@@ -265,12 +267,12 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(headerPanelLayout.createSequentialGroup()
                 .addGap(203, 203, 203)
                 .addComponent(logoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 179, Short.MAX_VALUE)
                 .addComponent(searchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(3, 3, 3)
                 .addComponent(accountPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cartIconPanelHolder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(cartIconPanelHolder, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         headerPanelLayout.setVerticalGroup(
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -287,10 +289,8 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerPanelLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(accountPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(headerPanelLayout.createSequentialGroup()
-                        .addComponent(cartIconPanelHolder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                    .addComponent(accountPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cartIconPanelHolder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         browseScrollPanel.setOpaque(false);
@@ -311,7 +311,7 @@ public class MainFrame extends javax.swing.JFrame {
         startLabel.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         startLabel.setForeground(Constants.BACKGROUND_COLOR);
         startLabel.setText("Start");
-        startLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        startLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         javax.swing.GroupLayout startTextPanelLayout = new javax.swing.GroupLayout(startTextPanel);
         startTextPanel.setLayout(startTextPanelLayout);
@@ -400,7 +400,7 @@ public class MainFrame extends javax.swing.JFrame {
         endingPanelHolder.setLayout(new java.awt.GridLayout(1, 0));
         featurePanel.add(endingPanelHolder, "endingPanelCard");
 
-        logInPanelHolder.setLayout(new java.awt.GridLayout());
+        logInPanelHolder.setLayout(new java.awt.GridLayout(1, 0));
         featurePanel.add(logInPanelHolder, "logInCard");
 
         jMenu1.setText("File");

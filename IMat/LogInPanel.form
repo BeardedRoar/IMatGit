@@ -302,11 +302,17 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="jPasswordField1"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jPasswordField2FocusGained"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JPasswordField" name="jPasswordField3">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="jPasswordField1"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jPasswordField3FocusGained"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

@@ -161,8 +161,18 @@ public class LogInPanel extends javax.swing.JPanel {
         });
 
         jPasswordField2.setText("jPasswordField1");
+        jPasswordField2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jPasswordField2FocusGained(evt);
+            }
+        });
 
         jPasswordField3.setText("jPasswordField1");
+        jPasswordField3.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jPasswordField3FocusGained(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -252,7 +262,7 @@ public class LogInPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_userNameTextFieldFocusGained
 
     private void jPasswordField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPasswordField1FocusGained
-               
+        jPasswordField1.selectAll();
     }//GEN-LAST:event_jPasswordField1FocusGained
 
     private void userNameTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_userNameTextField1FocusGained
@@ -277,6 +287,14 @@ public class LogInPanel extends javax.swing.JPanel {
             frame.setFeatureCard("frontPageCard");
         }
     }//GEN-LAST:event_registerButtonActionPerformed
+
+    private void jPasswordField3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPasswordField3FocusGained
+        jPasswordField3.selectAll();
+    }//GEN-LAST:event_jPasswordField3FocusGained
+
+    private void jPasswordField2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPasswordField2FocusGained
+        jPasswordField2.selectAll();
+    }//GEN-LAST:event_jPasswordField2FocusGained
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
