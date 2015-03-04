@@ -86,7 +86,6 @@ public class ConfirmPanel extends javax.swing.JPanel {
         nameLabel = new javax.swing.JLabel();
         adressLabel = new javax.swing.JLabel();
         sendToOtherAdressCheckBox = new javax.swing.JCheckBox();
-        postalCodeLabel = new javax.swing.JLabel();
         postalAdressLabel = new javax.swing.JLabel();
         sendToMailCheckBox = new javax.swing.JCheckBox();
         saveInformationCheckBox = new javax.swing.JCheckBox();
@@ -94,10 +93,11 @@ public class ConfirmPanel extends javax.swing.JPanel {
         nameTextLabel2 = new javax.swing.JLabel();
         adressTextLabel = new javax.swing.JLabel();
         postalCodeTextLabel = new javax.swing.JLabel();
-        postalAdressTextLabel = new javax.swing.JLabel();
         adressTextLabel2 = new javax.swing.JLabel();
         postalCodeTextLabel2 = new javax.swing.JLabel();
         postalAdressTextLabel2 = new javax.swing.JLabel();
+        postalAdressTextLabel = new javax.swing.JLabel();
+        postalCodeLabel = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         emailLabel = new javax.swing.JLabel();
         phoneLabel = new javax.swing.JLabel();
@@ -109,6 +109,7 @@ public class ConfirmPanel extends javax.swing.JPanel {
         shoppingCartPanel = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         confirmButton = new javax.swing.JButton();
+        backButton = new javax.swing.JButton();
 
         setMinimumSize(new java.awt.Dimension(1000, 600));
 
@@ -143,12 +144,19 @@ public class ConfirmPanel extends javax.swing.JPanel {
         cardNumberTextLabel.setForeground(new java.awt.Color(150, 150, 150));
         cardNumberTextLabel.setText("Kortnumret");
         cardNumberTextLabel.setOpaque(true);
+        cardNumberTextLabel.setPreferredSize(new java.awt.Dimension(100, 17));
 
-        yearTextLabel.setText("jLabel1");
+        yearTextLabel.setForeground(new java.awt.Color(150, 150, 150));
+        yearTextLabel.setText("År");
+        yearTextLabel.setOpaque(true);
 
-        monthTextLabel.setText("jLabel1");
+        monthTextLabel.setForeground(new java.awt.Color(150, 150, 150));
+        monthTextLabel.setText("Månad");
+        monthTextLabel.setOpaque(true);
 
+        cvcTextLabel.setForeground(new java.awt.Color(150, 150, 150));
         cvcTextLabel.setText("jLabel1");
+        cvcTextLabel.setOpaque(true);
 
         dateLabel1.setText("Månad");
 
@@ -159,7 +167,6 @@ public class ConfirmPanel extends javax.swing.JPanel {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cardNumberTextLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(cardComboBox, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -175,7 +182,8 @@ public class ConfirmPanel extends javax.swing.JPanel {
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(monthTextLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(dateLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 42, Short.MAX_VALUE))
+                    .addComponent(cardNumberTextLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -187,7 +195,7 @@ public class ConfirmPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cardNumberLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cardNumberTextLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cardNumberTextLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(dateLabel)
@@ -212,12 +220,7 @@ public class ConfirmPanel extends javax.swing.JPanel {
         sendToOtherAdressCheckBox.setEnabled(false);
         sendToOtherAdressCheckBox.setOpaque(false);
 
-        postalCodeLabel.setText("Postnummer");
-        postalCodeLabel.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        postalCodeLabel.setOpaque(true);
-
         postalAdressLabel.setText("Postort");
-        postalAdressLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         sendToMailCheckBox.setText("Skicka kvitto till min mail");
         sendToMailCheckBox.setEnabled(false);
@@ -227,24 +230,35 @@ public class ConfirmPanel extends javax.swing.JPanel {
         saveInformationCheckBox.setEnabled(false);
         saveInformationCheckBox.setOpaque(false);
 
+        nameTextLabel.setForeground(new java.awt.Color(150, 150, 150));
         nameTextLabel.setText("Förnamn");
         nameTextLabel.setOpaque(true);
 
+        nameTextLabel2.setForeground(new java.awt.Color(150, 150, 150));
         nameTextLabel2.setText("Efternamn");
-        nameTextLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         nameTextLabel2.setOpaque(true);
 
+        adressTextLabel.setForeground(new java.awt.Color(150, 150, 150));
         adressTextLabel.setText("Tvärvägen 20");
+        adressTextLabel.setOpaque(true);
 
+        postalCodeTextLabel.setForeground(new java.awt.Color(150, 150, 150));
         postalCodeTextLabel.setText("Postnummer");
+        postalCodeTextLabel.setOpaque(true);
 
-        postalAdressTextLabel.setText("Postort");
-
+        adressTextLabel2.setForeground(new java.awt.Color(150, 150, 150));
         adressTextLabel2.setText("Tvärvägen 21");
+        adressTextLabel2.setOpaque(true);
 
         postalCodeTextLabel2.setText("Postnummer");
 
         postalAdressTextLabel2.setText("Postort");
+
+        postalAdressTextLabel.setForeground(new java.awt.Color(150, 150, 150));
+        postalAdressTextLabel.setText("Postort");
+        postalAdressTextLabel.setOpaque(true);
+
+        postalCodeLabel.setText("Postnummer");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -253,33 +267,32 @@ public class ConfirmPanel extends javax.swing.JPanel {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(adressTextLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(adressTextLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(postalCodeTextLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(postalAdressTextLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(saveInformationCheckBox)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(nameTextLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(nameTextLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(nameLabel)
                             .addComponent(adressLabel)
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(postalCodeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(postalCodeLabel)
+                                .addGap(10, 10, 10)
                                 .addComponent(postalAdressLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(sendToOtherAdressCheckBox)
-                            .addComponent(adressTextLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(postalCodeTextLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(postalAdressTextLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(sendToMailCheckBox))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(postalCodeTextLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(postalAdressTextLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(nameTextLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(nameTextLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -288,20 +301,20 @@ public class ConfirmPanel extends javax.swing.JPanel {
                 .addComponent(nameLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nameTextLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nameTextLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nameTextLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nameTextLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(adressLabel)
                 .addGap(5, 5, 5)
                 .addComponent(adressTextLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(postalCodeLabel)
-                    .addComponent(postalAdressLabel))
+                    .addComponent(postalAdressLabel)
+                    .addComponent(postalCodeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(postalCodeTextLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(postalAdressTextLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(postalAdressTextLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(postalCodeTextLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(sendToOtherAdressCheckBox)
                 .addGap(1, 1, 1)
@@ -314,7 +327,7 @@ public class ConfirmPanel extends javax.swing.JPanel {
                 .addComponent(sendToMailCheckBox)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(saveInformationCheckBox)
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         jPanel5.setOpaque(false);
@@ -325,11 +338,17 @@ public class ConfirmPanel extends javax.swing.JPanel {
 
         mobilePhoneLabel.setText("Mobiltelefon");
 
+        emailTextLabel.setForeground(new java.awt.Color(150, 150, 150));
         emailTextLabel.setText("example@mail.com");
+        emailTextLabel.setOpaque(true);
 
+        phoneTextLabel.setForeground(new java.awt.Color(150, 150, 150));
         phoneTextLabel.setText("070-00000");
+        phoneTextLabel.setOpaque(true);
 
+        mobilePhoneTextLabel.setForeground(new java.awt.Color(150, 150, 150));
         mobilePhoneTextLabel.setText("070-00000");
+        mobilePhoneTextLabel.setOpaque(true);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -445,16 +464,26 @@ public class ConfirmPanel extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(388, Short.MAX_VALUE)
+                .addContainerGap(363, Short.MAX_VALUE)
                 .addComponent(confirmButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(confirmButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 16, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 16, Short.MAX_VALUE)
+                .addComponent(confirmButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
+
+        backButton.setBackground(Constants.HEADER_COLOR);
+        backButton.setForeground(new java.awt.Color(255, 255, 255));
+        backButton.setText("Bakåt");
+        backButton.setPreferredSize(new java.awt.Dimension(50, 25));
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout containerPanelLayout = new javax.swing.GroupLayout(containerPanel);
         containerPanel.setLayout(containerPanelLayout);
@@ -462,13 +491,13 @@ public class ConfirmPanel extends javax.swing.JPanel {
             containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(containerPanelLayout.createSequentialGroup()
                 .addComponent(cardCustomerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(containerPanelLayout.createSequentialGroup()
-                        .addGap(91, 91, 91)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE))
-                    .addGroup(containerPanelLayout.createSequentialGroup()
+                        .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(shoppingCartScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 582, Short.MAX_VALUE))))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 475, Short.MAX_VALUE))
+                    .addComponent(shoppingCartScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 582, Short.MAX_VALUE)))
         );
         containerPanelLayout.setVerticalGroup(
             containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -476,7 +505,9 @@ public class ConfirmPanel extends javax.swing.JPanel {
             .addGroup(containerPanelLayout.createSequentialGroup()
                 .addComponent(shoppingCartScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -500,11 +531,16 @@ public class ConfirmPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_confirmButtonActionPerformed
 
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        frame.setFeatureCard("checkoutCard");
+    }//GEN-LAST:event_backButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel adressLabel;
     private javax.swing.JLabel adressTextLabel;
     private javax.swing.JLabel adressTextLabel2;
+    private javax.swing.JButton backButton;
     private javax.swing.JComboBox cardComboBox;
     private javax.swing.JPanel cardCustomerPanel;
     private javax.swing.JPanel cardCustomerPanel2;

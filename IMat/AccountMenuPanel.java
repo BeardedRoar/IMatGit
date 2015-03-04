@@ -89,7 +89,9 @@ public class AccountMenuPanel extends javax.swing.JPanel {
 
         mainPanel.setOpaque(false);
 
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Mina Sidor");
+        jButton1.setFocusPainted(false);
         jButton1.setInheritsPopupMenu(true);
         jButton1.setMaximumSize(new java.awt.Dimension(103, 25));
         jButton1.setMinimumSize(new java.awt.Dimension(103, 25));
