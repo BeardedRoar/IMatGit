@@ -64,7 +64,7 @@ public class MainFrame extends javax.swing.JFrame {
         
         this.checkoutPanelHolder.add(new CheckoutPanel(model, this));
         this.confirmPanelHolder.add(new ConfirmPanel(model,this));
-        //this.endingPanelHolder.add(new EndingPanel(model, this, "buy"));
+        this.endingPanelHolder.add(new EndingPanel(model, this, "buy"));
         this.logInPanelHolder.add(new LogInPanel(model, this));
         
         this.frontPagePanel.add(new FrontPageFeaturePanel(ProductCategory.FRUIT, model, "Ofta Köpta"));
@@ -114,8 +114,7 @@ public class MainFrame extends javax.swing.JFrame {
     public void setEndingCard(String type){
         card.show(this.featurePanel, "endingPanelCard");
          this.endingPanelHolder.removeAll();
-         
-         //this.endingPanelHolder.add(new EndingPanel(model, this, type));
+         this.endingPanelHolder.add(new EndingPanel(model, this, type));
     }
 
     /**
@@ -204,7 +203,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         searchIcon.setBackground(new java.awt.Color(255, 255, 255));
         searchIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iMat.resources/magnifier.png"))); // NOI18N
-        searchIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        searchIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         searchIcon.setMaximumSize(new java.awt.Dimension(30, 30));
         searchIcon.setMinimumSize(new java.awt.Dimension(30, 30));
         searchIcon.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -220,7 +219,7 @@ public class MainFrame extends javax.swing.JFrame {
             searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(searchPanelLayout.createSequentialGroup()
                 .addGap(2, 2, 2)
-                .addComponent(searchTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
+                .addComponent(searchTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(searchIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -239,7 +238,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         myPagePanel.setOpaque(false);
 
-        accountMenuHolderPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        accountMenuHolderPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         accountMenuHolderPanel.setOpaque(false);
         accountMenuHolderPanel.setLayout(new java.awt.GridLayout(1, 0));
 
@@ -308,6 +307,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         startTextPanel.setBackground(Constants.HEADER_COLOR);
         startTextPanel.setBorder(new javax.swing.border.MatteBorder(null));
+        startTextPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         startTextPanel.setPreferredSize(new java.awt.Dimension(125, 70));
         startTextPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
