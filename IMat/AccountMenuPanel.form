@@ -6,7 +6,7 @@
       <Connection code="Constants.HEADER_COLOR" type="code"/>
     </Property>
     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-      <Color id="Standardmark&#xf6;r"/>
+      <Color id="Hand Cursor"/>
     </Property>
   </Properties>
   <AuxValues>
@@ -57,7 +57,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Mina Sidor"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Standardmark&#xf6;r"/>
+              <Color id="Hand Cursor"/>
             </Property>
             <Property name="focusPainted" type="boolean" value="false"/>
             <Property name="inheritsPopupMenu" type="boolean" value="true"/>
