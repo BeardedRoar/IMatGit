@@ -47,12 +47,12 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jScrollPane1" alignment="1" pref="1231" max="32767" attributes="0"/>
+          <Component id="jScrollPane1" alignment="1" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jScrollPane1" alignment="1" pref="781" max="32767" attributes="0"/>
+          <Component id="jScrollPane1" alignment="1" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -66,31 +66,23 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="headerPanel" pref="1229" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
+                      <Component id="browseScrollPanel" min="-2" pref="200" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="headerPanel" pref="1207" max="32767" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="browseScrollPanel" min="-2" pref="200" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="featurePanel" min="-2" pref="1000" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="featurePanel" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
                       <Component id="headerPanel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="featurePanel" pref="649" max="32767" attributes="0"/>
-                          <Component id="browseScrollPanel" pref="649" max="32767" attributes="0"/>
+                          <Component id="featurePanel" pref="673" max="32767" attributes="0"/>
+                          <Component id="browseScrollPanel" pref="673" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -120,7 +112,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="203" max="-2" attributes="0"/>
                           <Component id="logoLabel" min="-2" pref="117" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="200" max="32767" attributes="0"/>
                           <Component id="searchPanel" min="-2" pref="205" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
                           <Component id="accountPanel" min="-2" pref="206" max="-2" attributes="0"/>
@@ -169,7 +161,7 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="iMat"/>
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                      <Color id="Standardmark&#xf6;r"/>
+                      <Color id="Handmark&#xf6;r"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -369,12 +361,12 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="startTextPanel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="favoritePanel" pref="7" max="32767" attributes="0"/>
-                              <EmptySpace type="separate" pref="25" max="32767" attributes="0"/>
-                              <Component id="featureHeaderPanel" pref="7" max="32767" attributes="0"/>
+                              <Component id="favoritePanel" pref="11" max="32767" attributes="0"/>
+                              <EmptySpace type="separate" pref="29" max="32767" attributes="0"/>
+                              <Component id="featureHeaderPanel" pref="11" max="32767" attributes="0"/>
                               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                              <Component id="categoryPanel" pref="2" max="32767" attributes="0"/>
-                              <EmptySpace min="0" pref="489" max="32767" attributes="0"/>
+                              <Component id="categoryPanel" pref="10" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="493" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -425,7 +417,7 @@
                             </Property>
                             <Property name="text" type="java.lang.String" value="Start"/>
                             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                              <Color id="Standardmark&#xf6;r"/>
+                              <Color id="Handmark&#xf6;r"/>
                             </Property>
                           </Properties>
                         </Component>
@@ -495,21 +487,6 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.DesignCardLayout"/>
               <SubComponents>
-                <Container class="javax.swing.JPanel" name="historyPanelHolder">
-                  <Properties>
-                    <Property name="opaque" type="boolean" value="false"/>
-                  </Properties>
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
-                      <CardConstraints cardName="historyCard"/>
-                    </Constraint>
-                  </Constraints>
-
-                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
-                    <Property name="columns" type="int" value="0"/>
-                    <Property name="rows" type="int" value="1"/>
-                  </Layout>
-                </Container>
                 <Container class="javax.swing.JPanel" name="shoppingCartPanelHolder">
                   <Properties>
                     <Property name="opaque" type="boolean" value="false"/>
@@ -600,6 +577,21 @@
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
                       <CardConstraints cardName="logInCard"/>
+                    </Constraint>
+                  </Constraints>
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
+                    <Property name="columns" type="int" value="0"/>
+                    <Property name="rows" type="int" value="1"/>
+                  </Layout>
+                </Container>
+                <Container class="javax.swing.JPanel" name="historyPanelHolder">
+                  <Properties>
+                    <Property name="opaque" type="boolean" value="false"/>
+                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+                      <CardConstraints cardName="historyCard"/>
                     </Constraint>
                   </Constraints>
 
