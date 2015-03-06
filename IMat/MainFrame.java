@@ -126,6 +126,8 @@ public class MainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jPanel1 = new javax.swing.JPanel();
         headerPanel = new javax.swing.JPanel();
         logoLabel = new javax.swing.JLabel();
         searchPanel = new javax.swing.JPanel();
@@ -143,7 +145,6 @@ public class MainFrame extends javax.swing.JFrame {
         featureHeaderPanel = new javax.swing.JPanel();
         categoryPanel = new javax.swing.JPanel();
         featurePanel = new javax.swing.JPanel();
-        historyPanelHolder = new javax.swing.JPanel();
         shoppingCartPanelHolder = new javax.swing.JPanel();
         frontPagePanel = new javax.swing.JPanel();
         resultPanelHolder = new javax.swing.JPanel();
@@ -151,6 +152,7 @@ public class MainFrame extends javax.swing.JFrame {
         confirmPanelHolder = new javax.swing.JPanel();
         endingPanelHolder = new javax.swing.JPanel();
         logInPanelHolder = new javax.swing.JPanel();
+        historyPanelHolder = new javax.swing.JPanel();
         menuBarPanel = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -238,7 +240,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         myPagePanel.setOpaque(false);
 
-        accountMenuHolderPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        accountMenuHolderPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         accountMenuHolderPanel.setOpaque(false);
         accountMenuHolderPanel.setLayout(new java.awt.GridLayout(1, 0));
 
@@ -273,7 +275,7 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(headerPanelLayout.createSequentialGroup()
                 .addGap(203, 203, 203)
                 .addComponent(logoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 200, Short.MAX_VALUE)
                 .addComponent(searchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(3, 3, 3)
                 .addComponent(accountPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -366,12 +368,12 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(browsePanelLayout.createSequentialGroup()
                 .addComponent(startTextPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(favoritePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 12, Short.MAX_VALUE)
-                .addGap(18, 30, Short.MAX_VALUE)
-                .addComponent(featureHeaderPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 12, Short.MAX_VALUE)
+                .addComponent(favoritePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 11, Short.MAX_VALUE)
+                .addGap(18, 29, Short.MAX_VALUE)
+                .addComponent(featureHeaderPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 11, Short.MAX_VALUE)
                 .addGap(29, 29, 29)
-                .addComponent(categoryPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 7, Short.MAX_VALUE)
-                .addGap(0, 495, Short.MAX_VALUE))
+                .addComponent(categoryPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 10, Short.MAX_VALUE)
+                .addGap(0, 493, Short.MAX_VALUE))
         );
 
         browseScrollPanel.setViewportView(browsePanel);
@@ -380,10 +382,6 @@ public class MainFrame extends javax.swing.JFrame {
         featurePanel.setMinimumSize(new java.awt.Dimension(1000, 600));
         featurePanel.setPreferredSize(new java.awt.Dimension(993, 600));
         featurePanel.setLayout(new java.awt.CardLayout());
-
-        historyPanelHolder.setOpaque(false);
-        historyPanelHolder.setLayout(new java.awt.GridLayout(1, 0));
-        featurePanel.add(historyPanelHolder, "historyCard");
 
         shoppingCartPanelHolder.setOpaque(false);
         shoppingCartPanelHolder.setLayout(new java.awt.GridLayout(1, 0));
@@ -410,6 +408,32 @@ public class MainFrame extends javax.swing.JFrame {
         logInPanelHolder.setLayout(new java.awt.GridLayout(1, 0));
         featurePanel.add(logInPanelHolder, "logInCard");
 
+        historyPanelHolder.setOpaque(false);
+        historyPanelHolder.setLayout(new java.awt.GridLayout(1, 0));
+        featurePanel.add(historyPanelHolder, "historyCard");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(headerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1229, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(browseScrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(featurePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(headerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(featurePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 673, Short.MAX_VALUE)
+                    .addComponent(browseScrollPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 673, Short.MAX_VALUE)))
+        );
+
+        jScrollPane1.setViewportView(jPanel1);
+
         jMenu1.setText("File");
         menuBarPanel.add(jMenu1);
 
@@ -422,20 +446,11 @@ public class MainFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(headerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1207, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(browseScrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(featurePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 1000, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(headerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(featurePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 675, Short.MAX_VALUE)
-                    .addComponent(browseScrollPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 675, Short.MAX_VALUE)))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         pack();
@@ -547,6 +562,8 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel historyPanelHolder;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel logInPanelHolder;
     private javax.swing.JLabel logoLabel;
     private javax.swing.JMenuBar menuBarPanel;

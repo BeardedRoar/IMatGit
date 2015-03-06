@@ -25,7 +25,7 @@ public class HistoryPanel extends javax.swing.JPanel {
         this.model = model;
         List<Order> orders = model.getOrders();
         
-        historyPanel.setLayout(new GridLayout(orders.size(), 1));
+        historyPanel.setLayout(new GridLayout(Math.max(9,orders.size()), 1));
         Iterator<Order> it = orders.iterator();
         
         while (it.hasNext()){
