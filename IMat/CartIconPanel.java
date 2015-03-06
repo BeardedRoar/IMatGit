@@ -37,7 +37,7 @@ implements ShoppingCartListener, ShoppingCartComponentListener{
         initComponents();
         this.numberLabel.setText("Antal produkter: " + model.getItems().size());
         this.totCostLabel.setText("Kostnad: " + model.getTotalCost());
-        this.slp = new ShoppingListPreview(iconLabel, model);
+        this.slp = new ShoppingListPreview(imagePanel, model);
         this.model.addCartListener(slp);
         try {
             this.mouseOffImage = ImageIO.read(getClass().getResource("/iMat.resources/whiteCart.png"));
@@ -126,6 +126,9 @@ implements ShoppingCartListener, ShoppingCartComponentListener{
         imagePanel.setOpaque(false);
         imagePanel.setPreferredSize(new java.awt.Dimension(100, 72));
         imagePanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                imagePanelMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 imagePanelMouseEntered(evt);
             }
@@ -164,7 +167,7 @@ implements ShoppingCartListener, ShoppingCartComponentListener{
     }//GEN-LAST:event_iconLabelMouseEntered
 
     private void iconLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconLabelMouseClicked
-        frame.setFeatureCard("shoppingCartCard");
+        
     }//GEN-LAST:event_iconLabelMouseClicked
 
     private void imagePanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imagePanelMouseEntered
@@ -178,6 +181,10 @@ implements ShoppingCartListener, ShoppingCartComponentListener{
         repaint();
         revalidate();
     }//GEN-LAST:event_imagePanelMouseExited
+
+    private void imagePanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imagePanelMouseClicked
+        frame.setFeatureCard("shoppingCartCard");
+    }//GEN-LAST:event_imagePanelMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
