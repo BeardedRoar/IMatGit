@@ -52,11 +52,17 @@ implements ShoppingCartListener, ShoppingCartComponentListener{
 
         iconPanel.setOpaque(false);
 
-        iconLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iMat.resources/cart.png"))); // NOI18N
-        iconLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        iconLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iMat.resources/whiteCart.png"))); // NOI18N
+        iconLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         iconLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 iconLabelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                iconLabelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                iconLabelMouseExited(evt);
             }
         });
 
@@ -64,15 +70,20 @@ implements ShoppingCartListener, ShoppingCartComponentListener{
         iconPanel.setLayout(iconPanelLayout);
         iconPanelLayout.setHorizontalGroup(
             iconPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(iconLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, iconPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(iconLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         iconPanelLayout.setVerticalGroup(
             iconPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(iconLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        numberLabel.setForeground(new java.awt.Color(255, 255, 255));
         numberLabel.setText("jLabel1");
 
+        totCostLabel.setForeground(new java.awt.Color(255, 255, 255));
         totCostLabel.setText("jLabel2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -80,11 +91,11 @@ implements ShoppingCartListener, ShoppingCartComponentListener{
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(56, Short.MAX_VALUE)
+                .addContainerGap(46, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(numberLabel, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(totCostLabel, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(iconPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
@@ -94,7 +105,7 @@ implements ShoppingCartListener, ShoppingCartComponentListener{
                 .addComponent(numberLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(totCostLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(8, 8, 8))
+                .addContainerGap())
             .addComponent(iconPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -102,6 +113,14 @@ implements ShoppingCartListener, ShoppingCartComponentListener{
     private void iconLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconLabelMouseClicked
         frame.setFeatureCard("shoppingCartCard");
     }//GEN-LAST:event_iconLabelMouseClicked
+
+    private void iconLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconLabelMouseEntered
+        iconLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iMat.resources/whiteCartGlow.png")));
+    }//GEN-LAST:event_iconLabelMouseEntered
+
+    private void iconLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconLabelMouseExited
+        iconLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iMat.resources/whiteCart.png")));
+    }//GEN-LAST:event_iconLabelMouseExited
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
