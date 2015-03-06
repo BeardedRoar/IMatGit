@@ -122,6 +122,7 @@ implements ShoppingCartListener, ShoppingCartComponentListener{
         totCostLabel.setForeground(new java.awt.Color(255, 255, 255));
         totCostLabel.setText("jLabel2");
 
+        imagePanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         imagePanel.setMinimumSize(new java.awt.Dimension(100, 72));
         imagePanel.setOpaque(false);
         imagePanel.setPreferredSize(new java.awt.Dimension(100, 72));
@@ -136,7 +137,7 @@ implements ShoppingCartListener, ShoppingCartComponentListener{
                 imagePanelMouseExited(evt);
             }
         });
-        imagePanel.setLayout(new java.awt.GridLayout());
+        imagePanel.setLayout(new java.awt.GridLayout(1, 0));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

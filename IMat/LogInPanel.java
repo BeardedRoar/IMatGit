@@ -81,7 +81,9 @@ public class LogInPanel extends javax.swing.JPanel {
 
         logInButton.setBackground(Constants.HEADER_COLOR);
         logInButton.setForeground(Constants.BACKGROUND_COLOR);
+        logInButton.setMnemonic(KeyEvent.VK_ENTER);
         logInButton.setText("Logga In");
+        logInButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         logInButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logInButtonActionPerformed(evt);
@@ -171,6 +173,7 @@ public class LogInPanel extends javax.swing.JPanel {
         registerButton.setBackground(Constants.HEADER_COLOR);
         registerButton.setForeground(Constants.BACKGROUND_COLOR);
         registerButton.setText("Registrera");
+        registerButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         registerButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 registerButtonActionPerformed(evt);

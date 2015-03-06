@@ -96,6 +96,7 @@ public class HistoryComponentPanel extends javax.swing.JPanel {
 
         addButton.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         addButton.setText("AddToCart");
+        addButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         addButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addButtonActionPerformed(evt);

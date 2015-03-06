@@ -205,7 +205,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         searchIcon.setBackground(new java.awt.Color(255, 255, 255));
         searchIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iMat.resources/magnifier.png"))); // NOI18N
-        searchIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        searchIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         searchIcon.setMaximumSize(new java.awt.Dimension(30, 30));
         searchIcon.setMinimumSize(new java.awt.Dimension(30, 30));
         searchIcon.setPreferredSize(new java.awt.Dimension(30, 30));
