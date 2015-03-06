@@ -6,6 +6,7 @@
 package IMat;
 
 import java.awt.event.KeyEvent;
+import java.util.List;
 import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ShoppingItem;
 
@@ -14,14 +15,20 @@ import se.chalmers.ait.dat215.project.ShoppingItem;
  * @author Joel
  */
 public class ShoppingListTextFieldPanel extends javax.swing.JPanel {
-    private final ShoppingListFeaturePanel slfp;
-    private Product product;
+    private final IMatModel model;
+    private ShoppingItem item;
 
     /**
      * Creates new form ShoppingListTextFieldPanel
      */
-    public ShoppingListTextFieldPanel(ShoppingListFeaturePanel slfp) {
-        this.slfp = slfp;
+    public ShoppingListTextFieldPanel(IMatModel model) {
+        this.model = model;
+        initComponents();
+    }
+    
+    public ShoppingListTextFieldPanel(IMatModel model, ShoppingItem item) {
+        this.model = model;
+        this.item = item;
         initComponents();
     }
 
@@ -37,6 +44,7 @@ public class ShoppingListTextFieldPanel extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         textField = new javax.swing.JTextField();
         deleteButton = new javax.swing.JButton();
+        numbertextField = new javax.swing.JTextField();
 
         setMinimumSize(new java.awt.Dimension(473, 22));
         setOpaque(false);
@@ -76,6 +84,9 @@ public class ShoppingListTextFieldPanel extends javax.swing.JPanel {
             }
         });
 
+        numbertextField.setText("#");
+        numbertextField.setOpaque(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -83,9 +94,11 @@ public class ShoppingListTextFieldPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(258, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addComponent(textField, javax.swing.GroupLayout.DEFAULT_SIZE, 425, Short.MAX_VALUE)
+                .addComponent(numbertextField, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(textField)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(deleteButton))
         );
@@ -94,7 +107,8 @@ public class ShoppingListTextFieldPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textField, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textField, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(numbertextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -103,7 +117,7 @@ public class ShoppingListTextFieldPanel extends javax.swing.JPanel {
 
     private void textFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textFieldKeyPressed
         if(evt.getKeyCode() == KeyEvent.VK_ENTER)
-            slfp.textFieldDone(this, textField.getText());
+            this.addProduct();
     }//GEN-LAST:event_textFieldKeyPressed
 
     private void textFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldFocusGained
@@ -111,8 +125,8 @@ public class ShoppingListTextFieldPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_textFieldFocusGained
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
-        if (product != null)
-            this.slfp.removeProduct(product, this);
+        if (item != null)
+            this.model.removeItemFromCart(item);
     }//GEN-LAST:event_deleteButtonActionPerformed
 
     public void setText(String text){
@@ -127,14 +141,30 @@ public class ShoppingListTextFieldPanel extends javax.swing.JPanel {
         textField.selectAll();
     }
     
+    /*
     public void setProduct(Product product){
         this.product = product;
         textField.setText(product.getName());        
     }
+    */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton deleteButton;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField numbertextField;
     private javax.swing.JTextField textField;
     // End of variables declaration//GEN-END:variables
+
+    private void addProduct() {
+        List<Product> products = model.findProducts(this.textField.getText());
+        double number;
+        try{
+            number = Double.parseDouble(this.numbertextField.getText());
+        } catch (Exception e) {
+            number = 1.0;
+        }
+        if (!products.isEmpty()){
+            this.model.addProduct(products.get(0), number);
+        }
+    }
 }

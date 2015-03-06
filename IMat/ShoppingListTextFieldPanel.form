@@ -28,10 +28,12 @@
           <Group type="102" attributes="0">
               <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="258" max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
-              <Component id="textField" pref="425" max="32767" attributes="0"/>
+              <Component id="numbertextField" min="-2" pref="45" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="textField" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="deleteButton" min="-2" max="-2" attributes="0"/>
           </Group>
@@ -43,6 +45,7 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="deleteButton" alignment="3" min="-2" pref="19" max="-2" attributes="0"/>
                   <Component id="textField" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                  <Component id="numbertextField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="32767" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
@@ -90,6 +93,12 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteButtonActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="numbertextField">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="#"/>
+        <Property name="opaque" type="boolean" value="false"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>
