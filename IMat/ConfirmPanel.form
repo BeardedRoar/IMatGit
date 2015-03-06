@@ -228,17 +228,12 @@
                                   <Component id="nameTextLabel2" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
                                   <Component id="postalCodeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                                      <Component id="postalAdressLabel" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="postalCodeTextLabel" min="-2" pref="26" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
                               <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="postalCodeTextLabel" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                                  <Component id="postalAdressLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="adressTextLabel" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
                                   <Component id="adressLabel" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -258,7 +253,7 @@
                                   <Component id="mobilePhoneTextLabel" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
                                   <Component id="mobilePhoneLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="281" max="32767" attributes="0"/>
+                              <EmptySpace pref="285" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
