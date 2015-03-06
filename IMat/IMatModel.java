@@ -1,10 +1,12 @@
 package IMat;
 
+import Utility.PopularCounter;
 import java.awt.GridLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -28,11 +30,12 @@ public class IMatModel {
     private final CreditCard card = handler.getCard();
     private final Customer customer = handler.getCustomer();
     private final User user = handler.getUser();
+    private final PopularCounter popCounter;
     private boolean loggedIn;
     private String lastCategory;
 
     public IMatModel() {
-
+        this.popCounter = new PopularCounter(this);
     }
 
     //cart methods
@@ -306,6 +309,20 @@ public class IMatModel {
         }
         return panels;
     }
+    
+    public List<ProductPanel> getOfthenBought(){
+        List<Product> mostBought = popCounter.getMostBought(1, 10);
+        LinkedList<ProductPanel> panels = new LinkedList();
+        Iterator<Product> it = mostBought.iterator();
+
+        while (it.hasNext()){
+            Product tempProd = it.next();
+            panels.add(new ProductPanel(tempProd, this));
+        }
+        
+        return panels;
+    }
+    
     
     public List<CategoryPreviewPanel> getCategoryPreviewPanels(String name, 
             IMatModel m, MouseListener listener){
