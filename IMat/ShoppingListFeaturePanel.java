@@ -57,6 +57,7 @@ public class ShoppingListFeaturePanel extends javax.swing.JPanel implements Shop
         reMakeTextFields();
         
         this.containerPanel.add(textFieldPanel);
+        this.model.addCartListener(this);
     }
     
     private void reMakeTextFields(){
