@@ -97,4 +97,10 @@ public class CustomCart {
     public void removeCartListener(ShoppingCartListener scl){
         cart.removeShoppingCartListener(scl);
     }
+
+    public void setItemAmount(ShoppingItem sci, double newAmount) {
+        double oldAmount = sci.getAmount();
+        sci.setAmount(newAmount);
+        cart.fireShoppingCartChanged(sci, newAmount > oldAmount);
+    }
 }
