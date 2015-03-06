@@ -67,6 +67,7 @@ public class CategoryPanel extends javax.swing.JPanel implements CategoryHolder 
 
         textLabel = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 0, 0));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setMinimumSize(new java.awt.Dimension(100, 20));
         setOpaque(false);
