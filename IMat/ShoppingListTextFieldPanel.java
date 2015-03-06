@@ -142,8 +142,14 @@ public class ShoppingListTextFieldPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_deleteButtonActionPerformed
 
     private void numberTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_numberTextFieldKeyPressed
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER)
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            try{
+                model.setItemAmount(item, Double.parseDouble(numberTextField.getText()));
+            } catch (Exception e){
+                
+            }
             textField.requestFocus();
+        }
     }//GEN-LAST:event_numberTextFieldKeyPressed
 
     private void numberTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_numberTextFieldFocusGained

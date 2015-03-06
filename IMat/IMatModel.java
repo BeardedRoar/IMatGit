@@ -52,6 +52,10 @@ public class IMatModel {
         cart.clear();
     }
     
+    public void setItemAmount(ShoppingItem sci, double newAmount){
+        cart.setItemAmount(sci, newAmount);
+    }
+    
     public void addOrderToCart(Order order){
         cart.addOrderToCart(order);
     }
