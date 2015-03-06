@@ -46,6 +46,7 @@ public class PopularCounter {
         for (int i = 0; i < products.size(); i++){
             mostBought.add(pQ.poll());
         }
+        System.out.println("Most ofthen bought counted");
     }
     
     public List<Product> getMostBought(){
@@ -60,7 +61,7 @@ public class PopularCounter {
         LinkedList retList = new LinkedList ();
         Iterator<ProductPurchase> it = mostBought.iterator();
         int amount = boughtAtLeast;
-        while(it.hasNext() && amount < boughtAtLeast && 
+        while(it.hasNext() && amount >= boughtAtLeast && 
                 retList.size() < numberOfProducts){
             ProductPurchase tempProduct = it.next();
             amount = tempProduct.amount;

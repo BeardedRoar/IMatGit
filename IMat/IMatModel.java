@@ -310,8 +310,8 @@ public class IMatModel {
         return panels;
     }
     
-    public List<ProductPanel> getOfthenBought(){
-        List<Product> mostBought = popCounter.getMostBought(1, 10);
+    public List<ProductPanel> getOfthenBought(int leastTimesBought, int amountOfProducts){
+        List<Product> mostBought = popCounter.getMostBought(leastTimesBought, amountOfProducts);
         LinkedList<ProductPanel> panels = new LinkedList();
         Iterator<Product> it = mostBought.iterator();
 
@@ -319,7 +319,6 @@ public class IMatModel {
             Product tempProd = it.next();
             panels.add(new ProductPanel(tempProd, this));
         }
-        
         return panels;
     }
     
