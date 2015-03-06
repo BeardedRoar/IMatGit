@@ -23,7 +23,7 @@ import se.chalmers.ait.dat215.project.ShoppingItem;
  */
 public class CartIconPanel extends javax.swing.JPanel 
 implements ShoppingCartListener, ShoppingCartComponentListener{
-    private final IMatModel model;
+    private final IMatModel mod;
     private ShoppingListPreview slp;
     private final MainFrame frame;
     private BufferedImage selectedImage, mouseOnImage, mouseOffImage;
@@ -32,13 +32,13 @@ implements ShoppingCartListener, ShoppingCartComponentListener{
      * Creates new form CartIconPanel
      */
     public CartIconPanel(IMatModel model, MainFrame frame) {
-        this.model = model;
+        this.mod = model;
         this.frame = frame;
         initComponents();
-        this.numberLabel.setText("Antal produkter: " + model.getItems().size());
+        this.numberLabel.setText("Antal produkter: " + mod.getItems().size());
         this.totCostLabel.setText("Kostnad: " + model.getTotalCost());
         this.slp = new ShoppingListPreview(imagePanel, model);
-        this.model.addCartListener(slp);
+        this.mod.addCartListener(slp);
         try {
             this.mouseOffImage = ImageIO.read(getClass().getResource("/iMat.resources/whiteCart.png"));
             this.mouseOnImage  = ImageIO.read(getClass().getResource("/iMat.resources/whiteCartGlow.png"));
@@ -54,12 +54,12 @@ implements ShoppingCartListener, ShoppingCartComponentListener{
                 g.drawImage(selectedImage, 0, 0, null);
                 g.setFont(new Font("Tahoma", Font.PLAIN, 18));
                 g.setColor(Constants.BACKGROUND_COLOR);
-                if (model.getItems().size() < 10)
-                    g.drawString("" + (int)model.getItems().size(), 10, 27);
-                else if (model.getItems().size() < 100)
-                    g.drawString("" + (int)model.getItems().size(), 6, 27);
+                if (mod.getItems().size() < 10)
+                    g.drawString("" + (int)mod.getItems().size(), 10, 27);
+                else if (mod.getItems().size() < 100)
+                    g.drawString("" + (int)mod.getItems().size(), 5, 27);
                 else
-                    g.drawString("" + (int)model.getItems().size(), 2, 27);
+                    g.drawString("" + (int)mod.getItems().size(), 2, 27);
             }
              
         };
@@ -197,16 +197,16 @@ implements ShoppingCartListener, ShoppingCartComponentListener{
 
     @Override
     public void shoppingCartChanged(CartEvent ce) {
-        this.numberLabel.setText("Antal produkter: " + model.getItems().size());
-        this.totCostLabel.setText("Kostnad: " + model.getTotalCost());
+        this.numberLabel.setText("Antal produkter: " + mod.getItems().size());
+        this.totCostLabel.setText("Kostnad: " + mod.getTotalCost());
         repaint();
         revalidate();
     }
 
     @Override
     public void shoppingCartComponentChanged(ShoppingItem item, boolean itemAdded) {
-        this.numberLabel.setText("Antal produkter: " + model.getItems().size());
-        this.totCostLabel.setText("Kostnad: " + model.getTotalCost());
+        this.numberLabel.setText("Antal produkter: " + mod.getItems().size());
+        this.totCostLabel.setText("Kostnad: " + mod.getTotalCost());
         repaint();
         revalidate();
     }
