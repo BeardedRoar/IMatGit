@@ -114,8 +114,7 @@ public class MainFrame extends javax.swing.JFrame {
     public void setEndingCard(String type){
         card.show(this.featurePanel, "endingPanelCard");
          this.endingPanelHolder.removeAll();
-         
-         //this.endingPanelHolder.add(new EndingPanel(model, this, type));
+         this.endingPanelHolder.add(new EndingPanel(model, this, type));
     }
 
     /**
