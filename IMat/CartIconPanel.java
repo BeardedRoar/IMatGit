@@ -5,12 +5,14 @@
  */
 package IMat;
 
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import javax.swing.JPanel;
 import se.chalmers.ait.dat215.project.CartEvent;
 import se.chalmers.ait.dat215.project.ShoppingCartListener;
 import se.chalmers.ait.dat215.project.ShoppingItem;
@@ -44,6 +46,25 @@ implements ShoppingCartListener, ShoppingCartComponentListener{
             System.out.println("CartIcon image not found");
         }
         selectedImage = mouseOffImage;
+        JPanel tempPanel = new JPanel() {
+            
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                g.drawImage(selectedImage, 0, 0, null);
+                g.setFont(new Font("Tahoma", Font.PLAIN, 18));
+                g.setColor(Constants.BACKGROUND_COLOR);
+                if (model.getItems().size() < 10)
+                    g.drawString("" + (int)model.getItems().size(), 10, 27);
+                else if (model.getItems().size() < 100)
+                    g.drawString("" + (int)model.getItems().size(), 6, 27);
+                else
+                    g.drawString("" + (int)model.getItems().size(), 2, 27);
+            }
+             
+        };
+        tempPanel.setOpaque(false);
+        this.imagePanel.add(tempPanel);
     }
 
     /**
@@ -59,6 +80,7 @@ implements ShoppingCartListener, ShoppingCartComponentListener{
         iconLabel = new javax.swing.JLabel();
         numberLabel = new javax.swing.JLabel();
         totCostLabel = new javax.swing.JLabel();
+        imagePanel = new javax.swing.JPanel();
 
         iconPanel.setOpaque(false);
 
@@ -93,30 +115,43 @@ implements ShoppingCartListener, ShoppingCartComponentListener{
         numberLabel.setForeground(new java.awt.Color(255, 255, 255));
         numberLabel.setText("jLabel1");
 
-        totCostLabel.setForeground(new java.awt.Color(255, 255, 255));
-        totCostLabel.setText("jLabel2");
-
         setMinimumSize(new java.awt.Dimension(200, 70));
         setOpaque(false);
         setPreferredSize(new java.awt.Dimension(200, 70));
-        addMouseListener(new java.awt.event.MouseAdapter() {
+
+        totCostLabel.setForeground(new java.awt.Color(255, 255, 255));
+        totCostLabel.setText("jLabel2");
+
+        imagePanel.setMinimumSize(new java.awt.Dimension(100, 72));
+        imagePanel.setOpaque(false);
+        imagePanel.setPreferredSize(new java.awt.Dimension(100, 72));
+        imagePanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                formMouseEntered(evt);
+                imagePanelMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                formMouseExited(evt);
+                imagePanelMouseExited(evt);
             }
         });
+        imagePanel.setLayout(new java.awt.GridLayout());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 200, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(totCostLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addComponent(imagePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 70, Short.MAX_VALUE)
+            .addComponent(imagePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(totCostLabel)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -132,22 +167,23 @@ implements ShoppingCartListener, ShoppingCartComponentListener{
         frame.setFeatureCard("shoppingCartCard");
     }//GEN-LAST:event_iconLabelMouseClicked
 
-    private void formMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseEntered
+    private void imagePanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imagePanelMouseEntered
         selectedImage = mouseOnImage;
         repaint();
         revalidate();
-    }//GEN-LAST:event_formMouseEntered
+    }//GEN-LAST:event_imagePanelMouseEntered
 
-    private void formMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseExited
+    private void imagePanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imagePanelMouseExited
         selectedImage = mouseOffImage;
         repaint();
         revalidate();
-    }//GEN-LAST:event_formMouseExited
+    }//GEN-LAST:event_imagePanelMouseExited
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel iconLabel;
     private javax.swing.JPanel iconPanel;
+    private javax.swing.JPanel imagePanel;
     private javax.swing.JLabel numberLabel;
     private javax.swing.JLabel totCostLabel;
     // End of variables declaration//GEN-END:variables
@@ -156,17 +192,16 @@ implements ShoppingCartListener, ShoppingCartComponentListener{
     public void shoppingCartChanged(CartEvent ce) {
         this.numberLabel.setText("Antal produkter: " + model.getItems().size());
         this.totCostLabel.setText("Kostnad: " + model.getTotalCost());
+        repaint();
+        revalidate();
     }
 
     @Override
     public void shoppingCartComponentChanged(ShoppingItem item, boolean itemAdded) {
         this.numberLabel.setText("Antal produkter: " + model.getItems().size());
         this.totCostLabel.setText("Kostnad: " + model.getTotalCost());
+        repaint();
+        revalidate();
     }
-    
-    @Override
-    protected void paintComponent(Graphics g){
-        super.paintComponent(g);
-        g.drawImage(selectedImage, 0, 0, null);
-    }
+  
 }
