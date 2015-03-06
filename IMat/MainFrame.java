@@ -333,6 +333,7 @@ public class MainFrame extends javax.swing.JFrame {
             .addComponent(startLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
         );
 
+        favoritePanel.setBackground(new java.awt.Color(1, 1, 1));
         favoritePanel.setOpaque(false);
         favoritePanel.setPreferredSize(new java.awt.Dimension(150, 0));
         favoritePanel.setRequestFocusEnabled(false);

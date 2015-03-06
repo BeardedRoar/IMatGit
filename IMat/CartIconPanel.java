@@ -53,7 +53,7 @@ implements ShoppingCartListener, ShoppingCartComponentListener{
         iconPanel.setOpaque(false);
 
         iconLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iMat.resources/whiteCart.png"))); // NOI18N
-        iconLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        iconLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         iconLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 iconLabelMouseClicked(evt);
