@@ -5,6 +5,12 @@
  */
 package IMat;
 
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import se.chalmers.ait.dat215.project.CartEvent;
 import se.chalmers.ait.dat215.project.ShoppingCartListener;
 import se.chalmers.ait.dat215.project.ShoppingItem;
@@ -18,6 +24,7 @@ implements ShoppingCartListener, ShoppingCartComponentListener{
     private final IMatModel model;
     private ShoppingListPreview slp;
     private final MainFrame frame;
+    private BufferedImage selectedImage, mouseOnImage, mouseOffImage;
 
     /**
      * Creates new form CartIconPanel
@@ -30,6 +37,13 @@ implements ShoppingCartListener, ShoppingCartComponentListener{
         this.totCostLabel.setText("Kostnad: " + model.getTotalCost());
         this.slp = new ShoppingListPreview(iconLabel, model);
         this.model.addCartListener(slp);
+        try {
+            this.mouseOffImage = ImageIO.read(getClass().getResource("/iMat.resources/whiteCart.png"));
+            this.mouseOnImage  = ImageIO.read(getClass().getResource("/iMat.resources/whiteCartGlow.png"));
+        } catch (IOException ex) {
+            System.out.println("CartIcon image not found");
+        }
+        selectedImage = mouseOffImage;
     }
 
     /**
@@ -46,14 +60,10 @@ implements ShoppingCartListener, ShoppingCartComponentListener{
         numberLabel = new javax.swing.JLabel();
         totCostLabel = new javax.swing.JLabel();
 
-        setMinimumSize(new java.awt.Dimension(200, 70));
-        setOpaque(false);
-        setPreferredSize(new java.awt.Dimension(200, 70));
-
         iconPanel.setOpaque(false);
 
         iconLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iMat.resources/whiteCart.png"))); // NOI18N
-        iconLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        iconLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         iconLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 iconLabelMouseClicked(evt);
@@ -86,41 +96,53 @@ implements ShoppingCartListener, ShoppingCartComponentListener{
         totCostLabel.setForeground(new java.awt.Color(255, 255, 255));
         totCostLabel.setText("jLabel2");
 
+        setMinimumSize(new java.awt.Dimension(200, 70));
+        setOpaque(false);
+        setPreferredSize(new java.awt.Dimension(200, 70));
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                formMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                formMouseExited(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(46, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(numberLabel, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(totCostLabel, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(iconPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGap(0, 200, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(numberLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(totCostLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addComponent(iconPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 70, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void iconLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconLabelMouseExited
+        
+    }//GEN-LAST:event_iconLabelMouseExited
+
+    private void iconLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconLabelMouseEntered
+
+    }//GEN-LAST:event_iconLabelMouseEntered
 
     private void iconLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconLabelMouseClicked
         frame.setFeatureCard("shoppingCartCard");
     }//GEN-LAST:event_iconLabelMouseClicked
 
-    private void iconLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconLabelMouseEntered
-        iconLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iMat.resources/whiteCartGlow.png")));
-    }//GEN-LAST:event_iconLabelMouseEntered
+    private void formMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseEntered
+        selectedImage = mouseOnImage;
+        repaint();
+        revalidate();
+    }//GEN-LAST:event_formMouseEntered
 
-    private void iconLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconLabelMouseExited
-        iconLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iMat.resources/whiteCart.png")));
-    }//GEN-LAST:event_iconLabelMouseExited
+    private void formMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseExited
+        selectedImage = mouseOffImage;
+        repaint();
+        revalidate();
+    }//GEN-LAST:event_formMouseExited
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -140,5 +162,11 @@ implements ShoppingCartListener, ShoppingCartComponentListener{
     public void shoppingCartComponentChanged(ShoppingItem item, boolean itemAdded) {
         this.numberLabel.setText("Antal produkter: " + model.getItems().size());
         this.totCostLabel.setText("Kostnad: " + model.getTotalCost());
+    }
+    
+    @Override
+    protected void paintComponent(Graphics g){
+        super.paintComponent(g);
+        g.drawImage(selectedImage, 0, 0, null);
     }
 }
