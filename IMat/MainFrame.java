@@ -70,7 +70,7 @@ public class MainFrame extends javax.swing.JFrame {
         this.frontPagePanel.add(new FrontPageFeaturePanel(model.getOfthenBought(-1, 3), model, "Ofta Köpta"));
         this.frontPagePanel.add(new FrontPageFeaturePanel(model.getWeeklyProducts(), model, "Veckans varor"));
         this.frontPagePanel.add(new ShoppingListFeaturePanel(model));
-        this.frontPagePanel.add(new RecipeFeaturePanel());
+        this.frontPagePanel.add(new RecipeFeaturePanel(model));
         
         card.show(this.featurePanel, "frontPageCard");
         
