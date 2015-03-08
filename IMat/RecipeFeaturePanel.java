@@ -19,12 +19,14 @@ import se.chalmers.ait.dat215.project.ShoppingItem;
 public class RecipeFeaturePanel extends javax.swing.JPanel {
     private ArrayList<ShoppingItem> items;
     private final IMatModel model;
+    private final MainFrame frame;
 
     /**
      * Creates new form RecepeFeaturePanel
      */
-    public RecipeFeaturePanel(IMatModel model) {
+    public RecipeFeaturePanel(IMatModel model, MainFrame frame) {
         this.model = model;
+        this.frame = frame;
         
         initComponents();
         
@@ -82,6 +84,7 @@ public class RecipeFeaturePanel extends javax.swing.JPanel {
         buyButton = new javax.swing.JButton();
         ingredientsPanel = new javax.swing.JPanel();
         ingredientsLabel = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         jLabel1.setText("jLabel1");
 
@@ -163,6 +166,13 @@ public class RecipeFeaturePanel extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jButton1.setText("Gå till instruktioner");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout descriptionPanelLayout = new javax.swing.GroupLayout(descriptionPanel);
         descriptionPanel.setLayout(descriptionPanelLayout);
         descriptionPanelLayout.setHorizontalGroup(
@@ -172,7 +182,8 @@ public class RecipeFeaturePanel extends javax.swing.JPanel {
                 .addGroup(descriptionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ingredientsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, descriptionPanelLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(buyButton))
                     .addGroup(descriptionPanelLayout.createSequentialGroup()
                         .addComponent(titelLabel)
@@ -187,7 +198,9 @@ public class RecipeFeaturePanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ingredientsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buyButton)
+                .addGroup(descriptionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(buyButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -228,6 +241,10 @@ public class RecipeFeaturePanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_buyButtonActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        frame.setFeatureCard("recipeCard");
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buyButton;
@@ -238,6 +255,7 @@ public class RecipeFeaturePanel extends javax.swing.JPanel {
     private javax.swing.JPanel imagePanel;
     private javax.swing.JLabel ingredientsLabel;
     private javax.swing.JPanel ingredientsPanel;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel titelLabel;
     // End of variables declaration//GEN-END:variables
