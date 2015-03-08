@@ -66,6 +66,7 @@ public class ShoppingListTextFieldPanel extends javax.swing.JPanel {
             .addGap(0, 22, Short.MAX_VALUE)
         );
 
+        textField.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         textField.setText("Skriv produkt här för att lägga till i kundvagnen");
         textField.setOpaque(false);
         textField.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -79,6 +80,7 @@ public class ShoppingListTextFieldPanel extends javax.swing.JPanel {
             }
         });
 
+        deleteButton.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         deleteButton.setText("X");
         deleteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -86,6 +88,7 @@ public class ShoppingListTextFieldPanel extends javax.swing.JPanel {
             }
         });
 
+        numberTextField.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         numberTextField.setText("#");
         numberTextField.setOpaque(false);
         numberTextField.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -106,7 +109,7 @@ public class ShoppingListTextFieldPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(258, Short.MAX_VALUE))
+                .addContainerGap(275, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addComponent(numberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -118,12 +121,11 @@ public class ShoppingListTextFieldPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(textField, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(numberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(numberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
