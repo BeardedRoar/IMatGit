@@ -15,21 +15,20 @@ import se.chalmers.ait.dat215.project.ProductCategory;
  * @author Marcus
  */
 public class FrontPageFeaturePanel extends javax.swing.JPanel {
-    private ProductCategory pc;
     private IMatModel model;
     private int max = 3;
+    private final List<ProductPanel> panels;
     /**
      * Creates new form frontPageFeaturePanel
      */
-    public FrontPageFeaturePanel(ProductCategory pc, IMatModel model, String str) {
+    public FrontPageFeaturePanel(List<ProductPanel> panels, IMatModel model, String str) {
         initComponents();
         headerPanel.setBackground(Constants.HEADER_COLOR);
         containerPanel.setBackground(Constants.BACKGROUND_COLOR);
         this.setBackground(Constants.BACKGROUND_COLOR);
-        this.pc = pc;
         this.model = model;
-        List<ProductPanel> products = model.getProductPanels(pc);
-        Iterator<ProductPanel> it = products.iterator();
+        this.panels = panels;
+        Iterator<ProductPanel> it = panels.iterator();
         for (int i = 0 ; i < 3; i++) {
             if(it.hasNext()){
                 this.containerPanel.add(it.next());

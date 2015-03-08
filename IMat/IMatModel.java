@@ -270,6 +270,23 @@ public class IMatModel {
         return panels;
     }
     
+    public List<ProductPanel> getWeeklyProducts() {
+        ArrayList<ProductPanel> panels = new ArrayList(3);
+        
+        panels.add(new ProductPanel(findCorespondingProduct("lasagne"), this));
+        panels.add(new ProductPanel(findCorespondingProduct("köttfärs"), this));
+        panels.add(new ProductPanel(findCorespondingProduct("vete"), this));
+        
+        return panels;
+    }
+    
+    public Product findCorespondingProduct(String name){
+        if(!handler.findProducts(name).isEmpty())
+            return handler.findProducts(name).get(0);
+        else 
+            return null;
+    }
+    
     public List<ProductPanel> getProductPanels(String s) {
         List<Product> products = null;
         if (s == null){
