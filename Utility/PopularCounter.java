@@ -7,6 +7,7 @@ package Utility;
 
 import IMat.IMatModel;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -25,28 +26,26 @@ public class PopularCounter {
     private final ArrayList<ProductPurchase> mostBought;
 
     public PopularCounter(IMatModel model){
+        
+        System.out.println("counting most ofthen bought...");
         this.model = model;
         
         List<Order> orders = model.getOrders();
         List<Product> products = model.getProducts();
-        int[] purchases = new int[products.size()];
+        mostBought = new ArrayList(products.size());
+        
+        for (int i = 0; i < products.size(); i++){
+            mostBought.add(new ProductPurchase(products.get(i), 0));
+        }
         
         for (Order order : orders){
             for (ShoppingItem item : order.getItems()){
-                purchases[item.getProduct().getProductId()] += item.getAmount();
+                mostBought.get(item.getProduct().getProductId()-1).amount =+ 
+                        (int)item.getAmount();
             }
         }
         
-        PriorityQueue<ProductPurchase> pQ = new PriorityQueue(products.size());
-        for (int i = 0; i < products.size(); i++){
-            pQ.add(new ProductPurchase(products.get(i), purchases[i]));
-        }
-        
-        mostBought = new ArrayList(products.size());
-        for (int i = 0; i < products.size(); i++){
-            mostBought.add(pQ.poll());
-        }
-        System.out.println("Most ofthen bought counted");
+        Collections.sort(mostBought, Collections.reverseOrder());
     }
     
     public List<Product> getMostBought(){
@@ -60,19 +59,22 @@ public class PopularCounter {
     public List<Product> getMostBought(int boughtAtLeast, int numberOfProducts){
         LinkedList retList = new LinkedList ();
         Iterator<ProductPurchase> it = mostBought.iterator();
-        int amount = boughtAtLeast;
-        while(it.hasNext() && amount >= boughtAtLeast && 
-                retList.size() < numberOfProducts){
+        if (it.hasNext()) {
             ProductPurchase tempProduct = it.next();
-            amount = tempProduct.amount;
-            retList.add(tempProduct.product);
+            int amount = tempProduct.amount;
+            while (it.hasNext() && amount >= boughtAtLeast
+                    && retList.size() <= numberOfProducts) {
+                retList.add(tempProduct.product);
+                tempProduct = it.next();
+                amount = tempProduct.amount;
+            }
         }
         return retList;
     }
     
     private class ProductPurchase implements Comparable<ProductPurchase>{
         private final Product product;
-        private final int amount;
+        private int amount;
 
         public ProductPurchase(Product p, int amount) {
             this.product = p;
@@ -81,11 +83,7 @@ public class PopularCounter {
 
         @Override
         public int compareTo(ProductPurchase pp) {
-            if (this.amount == pp.amount){
-                return 0;
-            } else {
-                return (this.amount < pp.amount ? 1 : -1);
-            }
+            return (this.amount - pp.amount);
         }
 
         
