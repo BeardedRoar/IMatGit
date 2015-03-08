@@ -31,7 +31,7 @@ public class CustomCart {
         cart.fireShoppingCartChanged(sci, true);
         ShoppingItem existingItem = this.getFromCart(sci.getProduct());
         if (existingItem == null){
-            cart.addItem(sci);
+            cart.addItem(new ShoppingItem(sci.getProduct(), sci.getAmount()));
             cart.fireShoppingCartChanged(sci, true);
         } else{
             existingItem.setAmount(existingItem.getAmount() + sci.getAmount());
