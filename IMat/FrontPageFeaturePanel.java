@@ -17,18 +17,18 @@ import se.chalmers.ait.dat215.project.ProductCategory;
 public class FrontPageFeaturePanel extends javax.swing.JPanel {
     private IMatModel model;
     private int max = 3;
-    private final List<ProductPanel> panels;
+    private final List<StartProductPanel> panels;
     /**
      * Creates new form frontPageFeaturePanel
      */
-    public FrontPageFeaturePanel(List<ProductPanel> panels, IMatModel model, String str) {
+    public FrontPageFeaturePanel(List<StartProductPanel> panels, IMatModel model, String str) {
         initComponents();
         headerPanel.setBackground(Constants.HEADER_COLOR);
         containerPanel.setBackground(Constants.BACKGROUND_COLOR);
         this.setBackground(Constants.BACKGROUND_COLOR);
         this.model = model;
         this.panels = panels;
-        Iterator<ProductPanel> it = panels.iterator();
+        Iterator<StartProductPanel> it = panels.iterator();
         for (int i = 0 ; i < 3; i++) {
             if(it.hasNext()){
                 this.containerPanel.add(it.next());
@@ -51,19 +51,19 @@ public class FrontPageFeaturePanel extends javax.swing.JPanel {
         headerPanelLabel = new javax.swing.JLabel();
         containerPanel = new javax.swing.JPanel();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(Constants.BACKGROUND_COLOR);
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         setMinimumSize(new java.awt.Dimension(475, 275));
         setPreferredSize(new java.awt.Dimension(475, 275));
         setRequestFocusEnabled(false);
 
-        headerPanel.setBackground(new java.awt.Color(255, 0, 51));
+        headerPanel.setBackground(Constants.HEADER_COLOR);
         headerPanel.setBorder(new javax.swing.border.MatteBorder(null));
         headerPanel.setPreferredSize(new java.awt.Dimension(473, 70));
 
         headerPanelLabel.setBackground(new java.awt.Color(255, 255, 255));
-        headerPanelLabel.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        headerPanelLabel.setForeground(new java.awt.Color(255, 255, 255));
+        headerPanelLabel.setFont(Constants.FRONT_HEADER_FONT);
+        headerPanelLabel.setForeground(Constants.BACKGROUND_COLOR);
         headerPanelLabel.setText("Ofta Köpta");
 
         javax.swing.GroupLayout headerPanelLayout = new javax.swing.GroupLayout(headerPanel);
@@ -79,7 +79,7 @@ public class FrontPageFeaturePanel extends javax.swing.JPanel {
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(headerPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(headerPanelLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(headerPanelLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
                 .addContainerGap())
         );
 

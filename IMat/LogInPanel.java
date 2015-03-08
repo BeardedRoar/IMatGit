@@ -61,6 +61,7 @@ public class LogInPanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("Befintlig Kund");
 
+        userNameTextField.setFont(Constants.INPUT_FONT);
         userNameTextField.setText("Användarnamn");
         userNameTextField.setPreferredSize(new java.awt.Dimension(270, 30));
         userNameTextField.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -80,16 +81,18 @@ public class LogInPanel extends javax.swing.JPanel {
         });
 
         logInButton.setBackground(Constants.HEADER_COLOR);
+        logInButton.setFont(Constants.BUTTON_FONT);
         logInButton.setForeground(Constants.BACKGROUND_COLOR);
         logInButton.setMnemonic(KeyEvent.VK_ENTER);
         logInButton.setText("Logga In");
-        logInButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        logInButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         logInButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logInButtonActionPerformed(evt);
             }
         });
 
+        jPasswordField1.setFont(Constants.INPUT_FONT);
         jPasswordField1.setText("jPasswordField1");
         jPasswordField1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -157,6 +160,7 @@ public class LogInPanel extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel2.setText("Registrera");
 
+        userNameTextField1.setFont(Constants.INPUT_FONT);
         userNameTextField1.setText("Användarnamn");
         userNameTextField1.setPreferredSize(new java.awt.Dimension(270, 30));
         userNameTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -171,15 +175,17 @@ public class LogInPanel extends javax.swing.JPanel {
         });
 
         registerButton.setBackground(Constants.HEADER_COLOR);
+        registerButton.setFont(Constants.BUTTON_FONT);
         registerButton.setForeground(Constants.BACKGROUND_COLOR);
         registerButton.setText("Registrera");
-        registerButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        registerButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         registerButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 registerButtonActionPerformed(evt);
             }
         });
 
+        jPasswordField2.setFont(Constants.INPUT_FONT);
         jPasswordField2.setText("jPasswordField1");
         jPasswordField2.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -192,6 +198,7 @@ public class LogInPanel extends javax.swing.JPanel {
             }
         });
 
+        jPasswordField3.setFont(Constants.INPUT_FONT);
         jPasswordField3.setText("jPasswordField1");
         jPasswordField3.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {

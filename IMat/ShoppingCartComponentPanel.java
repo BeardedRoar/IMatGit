@@ -57,7 +57,7 @@ public class ShoppingCartComponentPanel extends javax.swing.JPanel {
         jPanel5 = new javax.swing.JPanel();
         deleteLabel = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(Constants.BACKGROUND_COLOR);
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         setMaximumSize(new java.awt.Dimension(900, 64));
         setMinimumSize(new java.awt.Dimension(900, 64));
@@ -72,7 +72,7 @@ public class ShoppingCartComponentPanel extends javax.swing.JPanel {
         jPanel1.setOpaque(false);
 
         accualProductLabel.setBackground(new java.awt.Color(0, 0, 0));
-        accualProductLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        accualProductLabel.setFont(Constants.RESULT_FONT);
         accualProductLabel.setText(this.shoppingItem.getProduct().getName());
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -80,7 +80,7 @@ public class ShoppingCartComponentPanel extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(211, Short.MAX_VALUE)
+                .addContainerGap(276, Short.MAX_VALUE)
                 .addComponent(accualProductLabel)
                 .addContainerGap())
         );
@@ -96,10 +96,10 @@ public class ShoppingCartComponentPanel extends javax.swing.JPanel {
 
         jPanel2.setOpaque(false);
 
-        priceLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        priceLabel.setFont(Constants.RESULT_FONT);
         priceLabel.setText("Pris");
 
-        accualPriceLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        accualPriceLabel.setFont(Constants.RESULT_FONT);
         accualPriceLabel.setText(this.shoppingItem.getProduct().getPrice()+" "+this.shoppingItem.getProduct().getUnit());
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -111,7 +111,7 @@ public class ShoppingCartComponentPanel extends javax.swing.JPanel {
                 .addComponent(priceLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(accualPriceLabel)
-                .addContainerGap(167, Short.MAX_VALUE))
+                .addContainerGap(248, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -222,10 +222,10 @@ public class ShoppingCartComponentPanel extends javax.swing.JPanel {
 
         jPanel4.setOpaque(false);
 
-        totalPriceLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        totalPriceLabel.setFont(Constants.RESULT_FONT);
         totalPriceLabel.setText("Totalpris");
 
-        accualTotalPriceLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        accualTotalPriceLabel.setFont(Constants.RESULT_FONT);
         accualTotalPriceLabel.setText(""+this.shoppingItem.getTotal() + " kr");
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
@@ -268,7 +268,7 @@ public class ShoppingCartComponentPanel extends javax.swing.JPanel {
                 .addComponent(totalPriceLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(accualTotalPriceLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 199, Short.MAX_VALUE)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(4, 4, 4))
         );
@@ -279,7 +279,7 @@ public class ShoppingCartComponentPanel extends javax.swing.JPanel {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(totalPriceLabel)
                     .addComponent(accualTotalPriceLabel))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 

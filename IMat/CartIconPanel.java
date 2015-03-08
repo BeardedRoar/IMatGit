@@ -119,10 +119,10 @@ implements ShoppingCartListener, ShoppingCartComponentListener{
         setOpaque(false);
         setPreferredSize(new java.awt.Dimension(200, 70));
 
-        totCostLabel.setForeground(new java.awt.Color(255, 255, 255));
+        totCostLabel.setForeground(Constants.BACKGROUND_COLOR);
         totCostLabel.setText("jLabel2");
 
-        imagePanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        imagePanel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         imagePanel.setMinimumSize(new java.awt.Dimension(100, 72));
         imagePanel.setOpaque(false);
         imagePanel.setPreferredSize(new java.awt.Dimension(100, 72));

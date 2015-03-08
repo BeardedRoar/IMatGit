@@ -42,7 +42,7 @@ public class SmallShoppingCartComponentPanel extends javax.swing.JPanel {
         accualTotalPriceLabel = new javax.swing.JLabel();
         totalPriceLabel = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(Constants.BACKGROUND_COLOR);
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         setMaximumSize(new java.awt.Dimension(475, 60));
         setMinimumSize(new java.awt.Dimension(475, 60));
@@ -163,7 +163,7 @@ public class SmallShoppingCartComponentPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 58, Short.MAX_VALUE))
                 .addGap(6, 6, 6))
         );
     }// </editor-fold>//GEN-END:initComponents

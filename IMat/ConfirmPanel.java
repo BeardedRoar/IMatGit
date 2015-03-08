@@ -115,75 +115,98 @@ public class ConfirmPanel extends javax.swing.JPanel {
 
         jPanel3.setOpaque(false);
 
+        cvcLabel.setFont(Constants.INPUT_FONT);
         cvcLabel.setText("CVC");
 
+        dateLabel.setFont(Constants.INPUT_FONT);
         dateLabel.setText("År");
 
+        cardNumberLabel.setFont(Constants.INPUT_FONT);
         cardNumberLabel.setText("Kortnummer");
 
+        cardComboBox.setFont(Constants.INPUT_FONT);
         cardComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Visa", "Mastercard" }));
         cardComboBox.setEnabled(false);
 
+        cardLabel.setFont(Constants.INPUT_FONT);
         cardLabel.setText("Kort");
 
-        cardNumberTextLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cardNumberTextLabel.setFont(Constants.INPUT_FONT);
         cardNumberTextLabel.setForeground(new java.awt.Color(150, 150, 150));
         cardNumberTextLabel.setText("Kortnumret");
         cardNumberTextLabel.setOpaque(true);
         cardNumberTextLabel.setPreferredSize(new java.awt.Dimension(100, 17));
 
+        yearTextLabel.setFont(Constants.INPUT_FONT);
         yearTextLabel.setForeground(new java.awt.Color(150, 150, 150));
         yearTextLabel.setText("År");
         yearTextLabel.setOpaque(true);
 
+        monthTextLabel.setFont(Constants.INPUT_FONT);
         monthTextLabel.setForeground(new java.awt.Color(150, 150, 150));
         monthTextLabel.setText("Månad");
         monthTextLabel.setOpaque(true);
 
+        cvcTextLabel.setFont(Constants.INPUT_FONT);
         cvcTextLabel.setForeground(new java.awt.Color(150, 150, 150));
         cvcTextLabel.setText("jLabel1");
         cvcTextLabel.setOpaque(true);
 
+        dateLabel1.setFont(Constants.INPUT_FONT);
         dateLabel1.setText("Månad");
 
+        nameLabel.setFont(Constants.INPUT_FONT);
         nameLabel.setText("Namn");
 
+        adressLabel.setFont(Constants.INPUT_FONT);
         adressLabel.setText("Adress");
 
+        postalCodeLabel.setFont(Constants.INPUT_FONT);
         postalCodeLabel.setText("Postnummer");
 
+        postalAdressLabel.setFont(Constants.INPUT_FONT);
         postalAdressLabel.setText("Postort");
 
+        nameTextLabel.setFont(Constants.INPUT_FONT);
         nameTextLabel.setForeground(new java.awt.Color(150, 150, 150));
         nameTextLabel.setText("Förnamn");
         nameTextLabel.setOpaque(true);
 
+        nameTextLabel2.setFont(Constants.INPUT_FONT);
         nameTextLabel2.setForeground(new java.awt.Color(150, 150, 150));
         nameTextLabel2.setText("Efternamn");
         nameTextLabel2.setOpaque(true);
 
+        postalCodeTextLabel.setFont(Constants.INPUT_FONT);
         postalCodeTextLabel.setForeground(new java.awt.Color(150, 150, 150));
         postalCodeTextLabel.setText("Postnummer");
         postalCodeTextLabel.setOpaque(true);
 
+        adressTextLabel.setFont(Constants.INPUT_FONT);
         adressTextLabel.setForeground(new java.awt.Color(150, 150, 150));
         adressTextLabel.setText("Tvärvägen 20");
         adressTextLabel.setOpaque(true);
 
+        emailLabel.setFont(Constants.INPUT_FONT);
         emailLabel.setText("Email");
 
+        phoneLabel.setFont(Constants.INPUT_FONT);
         phoneLabel.setText("Telefon");
 
+        mobilePhoneLabel.setFont(Constants.INPUT_FONT);
         mobilePhoneLabel.setText("Mobiltelefon");
 
+        phoneTextLabel.setFont(Constants.INPUT_FONT);
         phoneTextLabel.setForeground(new java.awt.Color(150, 150, 150));
         phoneTextLabel.setText("070-00000");
         phoneTextLabel.setOpaque(true);
 
+        mobilePhoneTextLabel.setFont(Constants.INPUT_FONT);
         mobilePhoneTextLabel.setForeground(new java.awt.Color(150, 150, 150));
         mobilePhoneTextLabel.setText("070-00000");
         mobilePhoneTextLabel.setOpaque(true);
 
+        emailTextLabel.setFont(Constants.INPUT_FONT);
         emailTextLabel.setForeground(new java.awt.Color(150, 150, 150));
         emailTextLabel.setText("example@mail.com");
         emailTextLabel.setOpaque(true);
@@ -336,9 +359,10 @@ public class ConfirmPanel extends javax.swing.JPanel {
         jPanel1.setPreferredSize(new java.awt.Dimension(500, 50));
 
         confirmButton.setBackground(Constants.HEADER_COLOR);
+        confirmButton.setFont(Constants.BUTTON_FONT);
         confirmButton.setForeground(new java.awt.Color(255, 255, 255));
         confirmButton.setText("Bekräfta");
-        confirmButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        confirmButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         confirmButton.setPreferredSize(new java.awt.Dimension(50, 25));
         confirmButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -363,9 +387,10 @@ public class ConfirmPanel extends javax.swing.JPanel {
         );
 
         backButton.setBackground(Constants.HEADER_COLOR);
+        backButton.setFont(Constants.BUTTON_FONT);
         backButton.setForeground(new java.awt.Color(255, 255, 255));
         backButton.setText("Bakåt");
-        backButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        backButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         backButton.setPreferredSize(new java.awt.Dimension(50, 25));
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

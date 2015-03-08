@@ -14,11 +14,16 @@ import java.awt.Font;
  */
 public enum Constants {
     ;
-    public static Color HEADER_COLOR = new Color(255,0,51);
-    public static Color BACKGROUND_COLOR = new Color(255,255,255);
-    public static Color SECONDARY_COLOR = new Color(255, 130, 41);
+    public static Color HEADER_COLOR     = new Color(255,   0,  51);
+    public static Color BACKGROUND_COLOR = new Color(255, 255, 255);
+    public static Color SECONDARY_COLOR  = new Color(255, 130,  41);
     
     
-    public static Font RESULT_FONT = new Font("Tahmoma", Font.PLAIN, 24);
+    public static Font RESULT_FONT       = new Font("Tahmoma", Font.PLAIN, 24);
+    public static Font FRONT_RESULT_FONT = new Font("Tahmoma", Font.PLAIN, 12);
+    public static Font INPUT_FONT        = new Font("Tahmoma", Font.PLAIN, 15);
+    public static Font BUTTON_FONT       = new Font("Tahmoma", Font.PLAIN, 15);
+    public static Font FRONT_HEADER_FONT = new Font("Tahmoma", Font.PLAIN, 36);
+    public static Font CATEGORY_FONT     = new Font("Tahmoma", Font.PLAIN, 15);
     
 }

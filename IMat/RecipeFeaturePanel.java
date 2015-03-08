@@ -98,8 +98,8 @@ public class RecipeFeaturePanel extends javax.swing.JPanel {
         headerPanel.setMinimumSize(new java.awt.Dimension(473, 70));
         headerPanel.setPreferredSize(new java.awt.Dimension(473, 70));
 
-        headerLabel.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        headerLabel.setForeground(new java.awt.Color(255, 255, 255));
+        headerLabel.setFont(Constants.FRONT_HEADER_FONT);
+        headerLabel.setForeground(Constants.BACKGROUND_COLOR);
         headerLabel.setText("Veckans Recept");
 
         javax.swing.GroupLayout headerPanelLayout = new javax.swing.GroupLayout(headerPanel);
@@ -115,7 +115,7 @@ public class RecipeFeaturePanel extends javax.swing.JPanel {
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(headerPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(headerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(headerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
                 .addContainerGap())
         );
 

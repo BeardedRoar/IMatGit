@@ -68,7 +68,7 @@ public class MainFrame extends javax.swing.JFrame {
         this.logInPanelHolder.add(new LogInPanel(model, this));
         this.recipeViewHolder.add(new RecipeView(model, this));
         
-        this.frontPagePanel.add(new FrontPageFeaturePanel(model.getOfthenBought(-1, 3), model, "Ofta Köpta"));
+        this.frontPagePanel.add(new FrontPageFeaturePanel(model.getOfthenBoughtStart(-1, 3), model, "Ofta Köpta"));
         this.frontPagePanel.add(new FrontPageFeaturePanel(model.getWeeklyProducts(), model, "Veckans varor"));
         this.frontPagePanel.add(new ShoppingListFeaturePanel(model));
         this.frontPagePanel.add(new RecipeFeaturePanel(model, this));
@@ -173,6 +173,8 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        jScrollPane1.setOpaque(false);
+
         jPanel1.setBackground(Constants.BACKGROUND_COLOR);
 
         headerPanel.setBackground(Constants.HEADER_COLOR);
@@ -195,6 +197,7 @@ public class MainFrame extends javax.swing.JFrame {
         searchPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         searchPanel.setPreferredSize(new java.awt.Dimension(162, 30));
 
+        searchTextField.setFont(Constants.INPUT_FONT);
         searchTextField.setText("Sök...");
         searchTextField.setBorder(null);
         searchTextField.setPreferredSize(new java.awt.Dimension(124, 29));
@@ -253,6 +256,7 @@ public class MainFrame extends javax.swing.JFrame {
         accountMenuHolderPanel.setOpaque(false);
         accountMenuHolderPanel.setLayout(new java.awt.GridLayout(1, 0));
 
+        userNameLabel.setForeground(Constants.BACKGROUND_COLOR);
         userNameLabel.setText("(Ej Inloggad)");
 
         javax.swing.GroupLayout myPagePanelLayout = new javax.swing.GroupLayout(myPagePanel);
@@ -291,9 +295,9 @@ public class MainFrame extends javax.swing.JFrame {
         headerPanelLayout.setHorizontalGroup(
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(headerPanelLayout.createSequentialGroup()
-                .addGap(203, 203, 203)
+                .addContainerGap()
                 .addComponent(logoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 200, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(searchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(3, 3, 3)
                 .addComponent(accountPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -442,7 +446,7 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(browseScrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(featurePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(featurePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1022, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

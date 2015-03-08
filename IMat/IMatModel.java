@@ -270,12 +270,12 @@ public class IMatModel {
         return panels;
     }
     
-    public List<ProductPanel> getWeeklyProducts() {
-        ArrayList<ProductPanel> panels = new ArrayList(3);
+    public List<StartProductPanel> getWeeklyProducts() {
+        ArrayList<StartProductPanel> panels = new ArrayList(3);
         
-        panels.add(new ProductPanel(findCorespondingProduct("lasagne"), this));
-        panels.add(new ProductPanel(findCorespondingProduct("köttfärs"), this));
-        panels.add(new ProductPanel(findCorespondingProduct("vete"), this));
+        panels.add(new StartProductPanel(findCorespondingProduct("lasagne"), this));
+        panels.add(new StartProductPanel(findCorespondingProduct("köttfärs"), this));
+        panels.add(new StartProductPanel(findCorespondingProduct("vete"), this));
         
         return panels;
     }
@@ -335,6 +335,18 @@ public class IMatModel {
         while (it.hasNext()){
             Product tempProd = it.next();
             panels.add(new ProductPanel(tempProd, this));
+        }
+        return panels;
+    }
+    
+    public List<StartProductPanel> getOfthenBoughtStart(int leastTimesBought, int amountOfProducts){
+        List<Product> mostBought = popCounter.getMostBought(leastTimesBought, amountOfProducts);
+        LinkedList<StartProductPanel> panels = new LinkedList();
+        Iterator<Product> it = mostBought.iterator();
+
+        while (it.hasNext()){
+            Product tempProd = it.next();
+            panels.add(new StartProductPanel(tempProd, this));
         }
         return panels;
     }

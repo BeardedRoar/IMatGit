@@ -95,13 +95,13 @@ public class ShoppingListFeaturePanel extends javax.swing.JPanel implements Shop
         setMinimumSize(new java.awt.Dimension(475, 275));
         setPreferredSize(new java.awt.Dimension(475, 275));
 
-        headerPanel.setBackground(new java.awt.Color(251, 0, 51));
+        headerPanel.setBackground(Constants.HEADER_COLOR);
         headerPanel.setBorder(new javax.swing.border.MatteBorder(null));
         headerPanel.setMinimumSize(new java.awt.Dimension(473, 70));
         headerPanel.setPreferredSize(new java.awt.Dimension(473, 70));
 
-        headerLabel.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        headerLabel.setForeground(new java.awt.Color(255, 255, 255));
+        headerLabel.setFont(Constants.FRONT_HEADER_FONT);
+        headerLabel.setForeground(Constants.BACKGROUND_COLOR);
         headerLabel.setText("Inköpslista");
         headerLabel.setMaximumSize(new java.awt.Dimension(32767, 32767));
         headerLabel.setMinimumSize(new java.awt.Dimension(0, 0));
@@ -126,7 +126,7 @@ public class ShoppingListFeaturePanel extends javax.swing.JPanel implements Shop
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        containerPanel.setLayout(new java.awt.GridLayout());
+        containerPanel.setLayout(new java.awt.GridLayout(1, 0));
         containerScrollPane.setViewportView(containerPanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

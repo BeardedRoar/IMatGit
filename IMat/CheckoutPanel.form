@@ -188,6 +188,9 @@
           <SubComponents>
             <Component class="javax.swing.JTextField" name="cvcTextField">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="Constants.INPUT_FONT" type="code"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="123"/>
               </Properties>
               <Events>
@@ -197,11 +200,17 @@
             </Component>
             <Component class="javax.swing.JLabel" name="cvcLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="Constants.INPUT_FONT" type="code"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="CVC"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="monthTextField">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="Constants.INPUT_FONT" type="code"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="02"/>
               </Properties>
               <Events>
@@ -210,6 +219,9 @@
             </Component>
             <Component class="javax.swing.JTextField" name="yearTextField">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="Constants.INPUT_FONT" type="code"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="15"/>
               </Properties>
               <Events>
@@ -219,11 +231,17 @@
             </Component>
             <Component class="javax.swing.JLabel" name="dateLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="Constants.INPUT_FONT" type="code"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Datum"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="cardNumberTextField">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="Constants.INPUT_FONT" type="code"/>
+                </Property>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
               <Events>
@@ -233,11 +251,17 @@
             </Component>
             <Component class="javax.swing.JLabel" name="cardNumberLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="Constants.INPUT_FONT" type="code"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Kortnummer"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JComboBox" name="cardComboBox">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="Constants.INPUT_FONT" type="code"/>
+                </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="2">
                     <StringItem index="0" value="Visa"/>
@@ -251,6 +275,9 @@
             </Component>
             <Component class="javax.swing.JLabel" name="cardLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="Constants.INPUT_FONT" type="code"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Kort"/>
               </Properties>
             </Component>
@@ -350,11 +377,17 @@
           <SubComponents>
             <Component class="javax.swing.JLabel" name="nameLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="Constants.INPUT_FONT" type="code"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Namn"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="nameTextField">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="Constants.INPUT_FONT" type="code"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="F&#xf6;rnamn"/>
               </Properties>
               <Events>
@@ -363,6 +396,9 @@
             </Component>
             <Component class="javax.swing.JTextField" name="nameTextField2">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="Constants.INPUT_FONT" type="code"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Efternamn"/>
               </Properties>
               <Events>
@@ -372,11 +408,17 @@
             </Component>
             <Component class="javax.swing.JLabel" name="adressLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="Constants.INPUT_FONT" type="code"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Adress"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="adressTextField">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="Constants.INPUT_FONT" type="code"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Tv&#xe4;rv&#xe4;gen 20"/>
               </Properties>
               <Events>
@@ -385,6 +427,9 @@
             </Component>
             <Component class="javax.swing.JCheckBox" name="sendToOtherAdressCheckBox">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="Constants.INPUT_FONT" type="code"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Leverera till annan adress"/>
                 <Property name="opaque" type="boolean" value="false"/>
               </Properties>
@@ -394,6 +439,9 @@
             </Component>
             <Component class="javax.swing.JTextField" name="adressTextField2">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="Constants.INPUT_FONT" type="code"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Tv&#xe4;rv&#xe4;gen 21"/>
               </Properties>
               <Events>
@@ -402,11 +450,17 @@
             </Component>
             <Component class="javax.swing.JLabel" name="postalCodeLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="Constants.INPUT_FONT" type="code"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Postnummer"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="postalCodeTextField">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="Constants.INPUT_FONT" type="code"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Postnummer"/>
               </Properties>
               <Events>
@@ -415,6 +469,9 @@
             </Component>
             <Component class="javax.swing.JTextField" name="postalAdressTextField">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="Constants.INPUT_FONT" type="code"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Postort"/>
               </Properties>
               <Events>
@@ -423,6 +480,9 @@
             </Component>
             <Component class="javax.swing.JLabel" name="postalAdressLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="Constants.INPUT_FONT" type="code"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Postort"/>
               </Properties>
               <Events>
@@ -431,22 +491,34 @@
             </Component>
             <Component class="javax.swing.JTextField" name="postalCodeTextField1">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="Constants.INPUT_FONT" type="code"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Postnummer"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="postalAdressTextField1">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="Constants.INPUT_FONT" type="code"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Postort"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JCheckBox" name="sendToMailCheckBox">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="Constants.INPUT_FONT" type="code"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Skicka kvitto till min mail"/>
                 <Property name="opaque" type="boolean" value="false"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JCheckBox" name="saveInformationCheckBox">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="Constants.INPUT_FONT" type="code"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Spara mina uppgifter"/>
                 <Property name="opaque" type="boolean" value="false"/>
               </Properties>
@@ -505,11 +577,17 @@
           <SubComponents>
             <Component class="javax.swing.JLabel" name="emailLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="Constants.INPUT_FONT" type="code"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Email"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="emailTextField">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="Constants.INPUT_FONT" type="code"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="example@mail.com"/>
               </Properties>
               <Events>
@@ -518,11 +596,17 @@
             </Component>
             <Component class="javax.swing.JLabel" name="phoneLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="Constants.INPUT_FONT" type="code"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Telefon"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="phoneTextField">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="Constants.INPUT_FONT" type="code"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="070-00000"/>
               </Properties>
               <Events>
@@ -532,11 +616,17 @@
             </Component>
             <Component class="javax.swing.JLabel" name="mobilePhoneLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="Constants.INPUT_FONT" type="code"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Mobiltelefon"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="mobilePhoneTextField">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="Constants.INPUT_FONT" type="code"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="070-00001"/>
               </Properties>
               <Events>
@@ -587,12 +677,15 @@
             <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="Constants.HEADER_COLOR" type="code"/>
             </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="Constants.BUTTON_FONT" type="code"/>
+            </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="Constants.BACKGROUND_COLOR" type="code"/>
             </Property>
             <Property name="text" type="java.lang.String" value="K&#xf6;p"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Hand Cursor"/>
+              <Color id="Standardmark&#xf6;r"/>
             </Property>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[50, 25]"/>

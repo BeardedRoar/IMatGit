@@ -130,18 +130,17 @@ public class RecipeView extends javax.swing.JPanel {
         leftPanel.setOpaque(false);
         leftPanel.setPreferredSize(new java.awt.Dimension(204, 525));
 
-        nameLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        nameLabel.setFont(Constants.FRONT_HEADER_FONT);
         nameLabel.setText("Name");
         nameLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         nameLabel.setPreferredSize(new java.awt.Dimension(204, 204));
 
-        ingredientLabel.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        ingredientLabel.setFont(Constants.RESULT_FONT);
         ingredientLabel.setText("Ingredienser");
         ingredientLabel.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         ingredientLabel.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
 
         iconLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iMat.resources/VeckansRecept.jpg"))); // NOI18N
-        iconLabel.setPreferredSize(new java.awt.Dimension(204, 204));
 
         buyButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iMat.resources/Productcart.png"))); // NOI18N
         buyButton.setToolTipText("Lägg till i kundvagn");

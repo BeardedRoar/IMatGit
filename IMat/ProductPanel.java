@@ -64,11 +64,12 @@ public class ProductPanel extends javax.swing.JPanel {
 
         productIcon.setIcon(model.getImageIcon(product, 143, 111)
         );
-        productIcon.setText("productIcon");
         productIcon.setPreferredSize(new java.awt.Dimension(180, 111));
 
+        productNameLabel.setFont(Constants.RESULT_FONT);
         productNameLabel.setText(product.getName());
 
+        productPriceLabel.setFont(Constants.RESULT_FONT);
         productPriceLabel.setText(product.getPrice() + " " + product.getUnit());
 
         cartPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)));
@@ -178,7 +179,7 @@ public class ProductPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(productIcon, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(productIcon, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(cartPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(17, 17, 17)

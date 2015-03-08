@@ -73,7 +73,7 @@ public class CategoryPanel extends javax.swing.JPanel implements CategoryHolder 
         setOpaque(false);
         setPreferredSize(new java.awt.Dimension(100, 20));
 
-        textLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        textLabel.setFont(Constants.CATEGORY_FONT);
         textLabel.setText(labelText);
         textLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
@@ -90,7 +90,7 @@ public class CategoryPanel extends javax.swing.JPanel implements CategoryHolder 
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(textLabel)
-                .addGap(0, 3, Short.MAX_VALUE))
+                .addGap(0, 4, Short.MAX_VALUE))
         );
 
         getAccessibleContext().setAccessibleName("default");
