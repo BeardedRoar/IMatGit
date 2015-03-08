@@ -101,9 +101,11 @@ public class MainFrame extends javax.swing.JFrame {
         if ("historyCard".equals(cardName)){
             this.historyPanelHolder.removeAll();
             this.historyPanelHolder.add(new HistoryPanel(model));
+            this.setTitle("Historik - IMat");
         } else if("shoppingCartCard".equals(cardName)){
             this.shoppingCartPanelHolder.removeAll();
             this.shoppingCartPanelHolder.add(new ShoppingCartPanel(model, iconPanel, this));
+            this.setTitle("Kundvagn - IMat");
         } else if("confirmPanelCard".equals(cardName)){
             this.confirmPanelHolder.removeAll();
             this.confirmPanelHolder.add(new ConfirmPanel(model, this));
@@ -112,10 +114,11 @@ public class MainFrame extends javax.swing.JFrame {
             this.resultPanelHolder.add(new ResultPanel(model.getFavoritePanels(), model));
         }
     }
+    
     public void setEndingCard(String type){
         card.show(this.featurePanel, "endingPanelCard");
-         this.endingPanelHolder.removeAll();
-         this.endingPanelHolder.add(new EndingPanel(model, this, type));
+        this.endingPanelHolder.removeAll();
+        this.endingPanelHolder.add(new EndingPanel(model, this, type));
     }
 
     /**
@@ -160,6 +163,7 @@ public class MainFrame extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Start - IMat");
         setAutoRequestFocus(false);
         setBackground(new java.awt.Color(255, 255, 255));
         addMouseListener(new java.awt.event.MouseAdapter() {
@@ -467,6 +471,7 @@ public class MainFrame extends javax.swing.JFrame {
     private void startTextPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_startTextPanelMousePressed
         card.show(this.featurePanel, "frontPageCard");
         model.reSetLastCategory();
+        this.setTitle("Start - IMat");
     }//GEN-LAST:event_startTextPanelMousePressed
 
     private void searchTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchTextFieldFocusGained
@@ -514,44 +519,11 @@ public class MainFrame extends javax.swing.JFrame {
         else
             this.resultPanelHolder.add(new ResultPanel(model.getProductPanels(this.searchTextField.getText()), model));
         card.show(this.featurePanel, "resultCard");
+        this.setTitle(this.searchTextField.getText() + " - IMat");
         repaint();
         revalidate();
     }
     
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MainFrame().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel accountMenuHolderPanel;
@@ -600,18 +572,22 @@ public class MainFrame extends javax.swing.JFrame {
                     this.resultPanelHolder.removeAll();
                     this.resultPanelHolder.add(new ResultPanel(model.getFavoritePanels(), model));
                     card.show(this.featurePanel, "resultCard");
+                    this.setTitle("Mina Favoriter - IMat");
                 } else if (panel.getName().equals("Ofta Köpta")) {
                     this.resultPanelHolder.removeAll();
                     this.resultPanelHolder.add(new ResultPanel(model.getOfthenBought(1, 12), model));
                     card.show(this.featurePanel, "resultCard");
+                    this.setTitle("Ofta Köpta - IMat");
                 } else {
                     this.resultPanelHolder.removeAll();
                     this.resultPanelHolder.add(new ResultPanel(model.getCategoryPreviewPanels(panel.getName(), model, categoryListener), model));
                     card.show(this.featurePanel, "resultCard");
+                    this.setTitle(panel.getName() + " - IMat");
                 }
             } else if (panel instanceof CategoryPreviewPanel){
                 this.resultPanelHolder.removeAll();
                 this.resultPanelHolder.add(new ResultPanel(model.getProductPanels(panel.getName()), model));
+                this.setTitle(panel.getName() + " - IMat");
             }
             repaint();
             revalidate();
@@ -619,6 +595,7 @@ public class MainFrame extends javax.swing.JFrame {
             this.resultPanelHolder.removeAll();
             this.resultPanelHolder.add(new ResultPanel(panel.getCategory(), model));
             card.show(this.featurePanel, "resultCard");
+            this.setTitle(panel.getName() + " - IMat");
             repaint();
             revalidate();
         }
