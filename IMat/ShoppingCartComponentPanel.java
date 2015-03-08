@@ -340,6 +340,7 @@ public class ShoppingCartComponentPanel extends javax.swing.JPanel {
 
     private void deleteLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteLabelMouseClicked
         shoppingCartPanel.removeCartComponentPanel(this);
+        this.fireComponentChange(shoppingItem, false);
     }//GEN-LAST:event_deleteLabelMouseClicked
 
     public void addShoppingCartComponentListener(ShoppingCartComponentListener sccl){
