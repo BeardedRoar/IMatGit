@@ -168,6 +168,8 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        jPanel1.setBackground(Constants.BACKGROUND_COLOR);
+
         headerPanel.setBackground(Constants.HEADER_COLOR);
         headerPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         headerPanel.setMinimumSize(new java.awt.Dimension(932, 99));

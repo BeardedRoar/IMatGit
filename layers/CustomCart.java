@@ -27,8 +27,16 @@ public class CustomCart {
     }
     
     public void addItem(ShoppingItem sci){
-        cart.addItem(sci);
+        
         cart.fireShoppingCartChanged(sci, true);
+        ShoppingItem existingItem = this.getFromCart(sci.getProduct());
+        if (existingItem == null){
+            cart.addItem(sci);
+            cart.fireShoppingCartChanged(sci, true);
+        } else{
+            existingItem.setAmount(existingItem.getAmount() + sci.getAmount());
+            cart.fireShoppingCartChanged(existingItem, true);
+        }
     }
     
     public void addProduct(Product p){
