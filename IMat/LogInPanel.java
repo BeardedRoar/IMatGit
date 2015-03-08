@@ -349,6 +349,7 @@ public class LogInPanel extends javax.swing.JPanel {
         if (model.logIn(userNameTextField.getText(), jPasswordField1.getPassword())) {
             frame.setFeatureCard("frontPageCard");
         }
+        frame.logIn();
     }
     
     private void register(){
@@ -356,6 +357,7 @@ public class LogInPanel extends javax.swing.JPanel {
             model.register(userNameTextField1.getText(), jPasswordField2.getPassword());
             frame.setEndingCard("register");
         }
+        frame.logOut();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

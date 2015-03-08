@@ -140,6 +140,7 @@ public class MainFrame extends javax.swing.JFrame {
         accountPanel = new javax.swing.JPanel();
         myPagePanel = new javax.swing.JPanel();
         accountMenuHolderPanel = new javax.swing.JPanel();
+        userNameLabel = new javax.swing.JLabel();
         cartIconPanelHolder = new javax.swing.JPanel();
         browseScrollPanel = new javax.swing.JScrollPane();
         browsePanel = new javax.swing.JPanel();
@@ -252,19 +253,28 @@ public class MainFrame extends javax.swing.JFrame {
         accountMenuHolderPanel.setOpaque(false);
         accountMenuHolderPanel.setLayout(new java.awt.GridLayout(1, 0));
 
+        userNameLabel.setText("(Ej Inloggad)");
+
         javax.swing.GroupLayout myPagePanelLayout = new javax.swing.GroupLayout(myPagePanel);
         myPagePanel.setLayout(myPagePanelLayout);
         myPagePanelLayout.setHorizontalGroup(
             myPagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(myPagePanelLayout.createSequentialGroup()
-                .addGap(2, 2, 2)
-                .addComponent(accountMenuHolderPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(myPagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(myPagePanelLayout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(accountMenuHolderPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(myPagePanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(userNameLabel)))
                 .addContainerGap(93, Short.MAX_VALUE))
         );
         myPagePanelLayout.setVerticalGroup(
             myPagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, myPagePanelLayout.createSequentialGroup()
-                .addContainerGap(47, Short.MAX_VALUE)
+                .addContainerGap(18, Short.MAX_VALUE)
+                .addComponent(userNameLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(accountMenuHolderPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23))
         );
@@ -501,15 +511,13 @@ public class MainFrame extends javax.swing.JFrame {
         requestFocus();
     }//GEN-LAST:event_formMouseClicked
 
-    private void logIn(){
-        /*if(this.model.logIn(this.userNameTextField.getText(),
-                this.passwordField.getPassword()))
-            logInCard.show(this.accountPanel, "inCard");
-        */
+    public void logIn(){
+        this.userNameLabel.setText(model.getUserName());
     }
     
     public void logOut(){
         model.logOut();
+        this.userNameLabel.setText("(Ej Inloggad)");
     }
     
     private void doSearch(){
@@ -557,6 +565,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel shoppingCartPanelHolder;
     private javax.swing.JLabel startLabel;
     private javax.swing.JPanel startTextPanel;
+    private javax.swing.JLabel userNameLabel;
     // End of variables declaration//GEN-END:variables
 
     private void categoryClicked(MouseEvent e) {
