@@ -31,7 +31,7 @@ public class RecipeView extends javax.swing.JPanel {
         initComponents();
         
         try {
-            FileReader fr = new FileReader(("IMatGit/iMat.resources/VeckansRecept.txt"));
+            FileReader fr = new FileReader("IMatGit/iMat.resources/VeckansRecept.txt");
             BufferedReader br = new BufferedReader(fr);
             ArrayList<Integer> volume = new ArrayList(10);
             ArrayList<Product> products = new ArrayList(10);
@@ -62,6 +62,20 @@ public class RecipeView extends javax.swing.JPanel {
             
         } catch (IOException e){
             System.out.println("Veckans Recept ej funnet");
+        }
+        
+        try {
+            FileReader fr = new FileReader("IMatGit/iMat.resources/VeckansReceptBeskrivning.txt");
+            BufferedReader br = new BufferedReader(fr);
+            
+            StringBuilder sb = new StringBuilder();
+            String str;
+            while ((str = br.readLine()) != null){
+                sb.append(str);
+            }
+            descriptionTextPane.setText(sb.toString());
+        } catch (IOException e){
+            System.out.println("Beskrivning för veckans recept ej funnet");
         }
     }
 
@@ -126,6 +140,7 @@ public class RecipeView extends javax.swing.JPanel {
         ingredientLabel.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         ingredientLabel.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
 
+        iconLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iMat.resources/VeckansRecept.jpg"))); // NOI18N
         iconLabel.setPreferredSize(new java.awt.Dimension(204, 204));
 
         buyButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iMat.resources/Productcart.png"))); // NOI18N
@@ -140,16 +155,18 @@ public class RecipeView extends javax.swing.JPanel {
         leftPanel.setLayout(leftPanelLayout);
         leftPanelLayout.setHorizontalGroup(
             leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(iconLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(leftPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(nameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ingredientLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, leftPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(buyButton)
-                .addContainerGap())
+                    .addComponent(ingredientLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(leftPanelLayout.createSequentialGroup()
+                        .addGroup(leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, leftPanelLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(buyButton))
+                            .addComponent(iconLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())))
         );
         leftPanelLayout.setVerticalGroup(
             leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

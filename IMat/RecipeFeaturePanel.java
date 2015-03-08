@@ -79,6 +79,7 @@ public class RecipeFeaturePanel extends javax.swing.JPanel {
         headerLabel = new javax.swing.JLabel();
         containerPanel = new javax.swing.JPanel();
         imagePanel = new javax.swing.JPanel();
+        imageLabel = new javax.swing.JLabel();
         descriptionPanel = new javax.swing.JPanel();
         titelLabel = new javax.swing.JLabel();
         buyButton = new javax.swing.JButton();
@@ -125,15 +126,17 @@ public class RecipeFeaturePanel extends javax.swing.JPanel {
         imagePanel.setOpaque(false);
         imagePanel.setPreferredSize(new java.awt.Dimension(203, 203));
 
+        imageLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iMat.resources/VeckansRecept.jpg"))); // NOI18N
+
         javax.swing.GroupLayout imagePanelLayout = new javax.swing.GroupLayout(imagePanel);
         imagePanel.setLayout(imagePanelLayout);
         imagePanelLayout.setHorizontalGroup(
             imagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 203, Short.MAX_VALUE)
+            .addComponent(imageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         imagePanelLayout.setVerticalGroup(
             imagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 203, Short.MAX_VALUE)
+            .addComponent(imageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         descriptionPanel.setOpaque(false);
@@ -252,6 +255,7 @@ public class RecipeFeaturePanel extends javax.swing.JPanel {
     private javax.swing.JPanel descriptionPanel;
     private javax.swing.JLabel headerLabel;
     private javax.swing.JPanel headerPanel;
+    private javax.swing.JLabel imageLabel;
     private javax.swing.JPanel imagePanel;
     private javax.swing.JLabel ingredientsLabel;
     private javax.swing.JPanel ingredientsPanel;
