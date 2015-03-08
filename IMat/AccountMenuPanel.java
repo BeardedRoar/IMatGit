@@ -64,10 +64,11 @@ public class AccountMenuPanel extends javax.swing.JPanel {
     class PopupListener extends MouseAdapter {
     @Override
     public void mousePressed(MouseEvent e) {
-        if(model.isLoggedIn()){
-        popup.show(AccountMenuPanel.this, 0, 25);
-        }else{
+        if (model.isLoggedIn()){
+            popup.show(AccountMenuPanel.this, 0, 25);
+        } else {
             frame.setFeatureCard("logInCard");
+            AccountMenuPanel.this.model.reSetLastCategory();
         }            
     }
   }

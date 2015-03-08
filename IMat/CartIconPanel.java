@@ -185,6 +185,7 @@ implements ShoppingCartListener, ShoppingCartComponentListener{
 
     private void imagePanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imagePanelMouseClicked
         frame.setFeatureCard("shoppingCartCard");
+        this.mod.reSetLastCategory();
     }//GEN-LAST:event_imagePanelMouseClicked
 
 

@@ -501,6 +501,13 @@ public class IMatModel {
         }
     }
     
+    public void setLastCategory(String s){
+        lastCategory = s;
+    }
+    
+    public void reSetLastCategory(){
+        lastCategory = "";
+    }
     public ProductCategory getCategory(String name){
         String trim = name.trim();
         String lowerCase = trim.toLowerCase();

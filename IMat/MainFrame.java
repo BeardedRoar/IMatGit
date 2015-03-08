@@ -466,6 +466,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void startTextPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_startTextPanelMousePressed
         card.show(this.featurePanel, "frontPageCard");
+        model.reSetLastCategory();
     }//GEN-LAST:event_startTextPanelMousePressed
 
     private void searchTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchTextFieldFocusGained
@@ -590,6 +591,8 @@ public class MainFrame extends javax.swing.JFrame {
         CategoryHolder panel = (CategoryHolder) e.getSource();
         if (!panel.isSub()) {
             model.makeCategoryPanel(this.categoryPanel, panel.getName(), categoryListener);
+        } else {
+            model.setLastCategory(panel.getName());
         }
         if (panel.getCategory() == null) {
             if (panel instanceof CategoryPanel) {
