@@ -5,8 +5,13 @@
  */
 package IMat;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.util.Iterator;
 import java.util.List;
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
 import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ShoppingItem;
 
@@ -17,6 +22,7 @@ import se.chalmers.ait.dat215.project.ShoppingItem;
 public class ShoppingListTextFieldPanel extends javax.swing.JPanel {
     private final IMatModel model;
     private ShoppingItem item;
+    private JPopupMenu popup = new JPopupMenu();
 
     /**
      * Creates new form ShoppingListTextFieldPanel
@@ -120,18 +126,21 @@ public class ShoppingListTextFieldPanel extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textField, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(numberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(numberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(textField, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void textFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textFieldKeyPressed
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER)
-            this.addProduct();
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            //this.addProduct();
+            createPopup();
+        }
     }//GEN-LAST:event_textFieldKeyPressed
 
     private void textFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldFocusGained
@@ -165,13 +174,6 @@ public class ShoppingListTextFieldPanel extends javax.swing.JPanel {
     public void unnableToFind(){
         textField.selectAll();
     }
-    
-    /*
-    public void setProduct(Product product){
-        this.product = product;
-        textField.setText(product.getName());        
-    }
-    */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton deleteButton;
@@ -180,18 +182,52 @@ public class ShoppingListTextFieldPanel extends javax.swing.JPanel {
     private javax.swing.JTextField textField;
     // End of variables declaration//GEN-END:variables
 
-    private void addProduct() {
-        List<Product> products = model.findProducts(this.textField.getText());
+    private void addProduct(Product p) {
         double number;
         try{
             number = Double.parseDouble(this.numberTextField.getText());
         } catch (Exception e) {
             number = 1.0;
         }
-        if (!products.isEmpty()){
-            this.model.addProduct(products.get(0), number);
-        } else {
-            unnableToFind();
+            this.model.addProduct(p, number);
+    }
+    
+    private void createPopup(){
+        List<Product> products = model.findProducts(this.textField.getText());
+        if (products.size() == 1){
+            this.addProduct(products.get(0));
+        } else if (products.size() > 1){
+        popup.removeAll();
+        
+        Iterator<Product> it = products.iterator();
+        ProductMenuItem m;
+        Product tempItem;
+        while (it.hasNext()){
+            tempItem = it.next();
+            m = new ProductMenuItem(tempItem);
+            popup.add(m);
+
+        }
+        popup.show(this, this.getWidth(), 0);
+        } else if (products.size() == 0){
+            this.unnableToFind();
+        }
+    
+    }
+    
+    private class ProductMenuItem extends JMenuItem implements ActionListener{
+        private final Product product;
+        
+        public ProductMenuItem(Product product){
+            super(product.getName());
+            this.product = product;
+            super.addActionListener(this);
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            ShoppingListTextFieldPanel.this.addProduct(product);
+            System.out.println(product.getName());
         }
     }
 }

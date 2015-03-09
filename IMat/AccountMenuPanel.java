@@ -48,7 +48,10 @@ public class AccountMenuPanel extends javax.swing.JPanel {
 
         };
        
-        JMenuItem m = new JMenuItem("Historik");
+        JMenuItem m = new JMenuItem("Min Information");
+        m.addActionListener(al);
+        popup.add(m);
+        m = new JMenuItem("Historik");
         m.addActionListener(al);
         popup.add(m);
         m = new JMenuItem("Mina Favoriter");
