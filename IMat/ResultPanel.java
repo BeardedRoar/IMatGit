@@ -61,27 +61,21 @@ public class ResultPanel<T extends JFrame> extends javax.swing.JPanel {
         resultScrollPanel = new javax.swing.JScrollPane();
         resultPanel = new javax.swing.JPanel();
 
-        setMinimumSize(new java.awt.Dimension(993, 600));
         setOpaque(false);
-        setPreferredSize(new java.awt.Dimension(993, 600));
 
-        resultScrollPanel.setMinimumSize(new java.awt.Dimension(993, 600));
         resultScrollPanel.setOpaque(false);
-        resultScrollPanel.setPreferredSize(new java.awt.Dimension(993, 600));
 
         resultPanel.setBackground(new java.awt.Color(255, 255, 255));
-        resultPanel.setMinimumSize(new java.awt.Dimension(993, 600));
-        resultPanel.setPreferredSize(new java.awt.Dimension(993, 600));
 
         javax.swing.GroupLayout resultPanelLayout = new javax.swing.GroupLayout(resultPanel);
         resultPanel.setLayout(resultPanelLayout);
         resultPanelLayout.setHorizontalGroup(
             resultPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 993, Short.MAX_VALUE)
+            .addGap(0, 398, Short.MAX_VALUE)
         );
         resultPanelLayout.setVerticalGroup(
             resultPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGap(0, 298, Short.MAX_VALUE)
         );
 
         resultScrollPanel.setViewportView(resultPanel);
@@ -90,11 +84,11 @@ public class ResultPanel<T extends JFrame> extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(resultScrollPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(resultScrollPanel)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(resultScrollPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(resultScrollPanel)
         );
     }// </editor-fold>//GEN-END:initComponents
 
