@@ -157,7 +157,7 @@ public class ShoppingCartPanel extends javax.swing.JPanel implements ShoppingCar
         this.itemPanel.repaint();
     }
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
-        if (frame != null)
+        if (frame != null && (!model.getItems().isEmpty()))
             frame.setFeatureCard("checkoutCard");
     }//GEN-LAST:event_nextButtonActionPerformed
 
