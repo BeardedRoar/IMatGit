@@ -5,7 +5,7 @@
  */
 package IMat;
 
-import java.awt.GridLayout;
+import java.awt.*;
 import java.util.Iterator;
 import java.util.List;
 import javax.swing.JPanel;
@@ -41,6 +41,7 @@ public class ShoppingCartPanel extends javax.swing.JPanel implements ShoppingCar
         }
         
         this.costLabel.setText(model.getTotalCost() + " kr");
+        this.DisableNextButtonIfCartIsEmpty();
     }
     
     public ShoppingCartPanel(IMatModel model, ShoppingCartComponentListener sccl, MainFrame frame) {
@@ -63,6 +64,7 @@ public class ShoppingCartPanel extends javax.swing.JPanel implements ShoppingCar
         nextButton = new javax.swing.JButton();
         totLabel = new javax.swing.JLabel();
         costLabel = new javax.swing.JLabel();
+        warningLabel = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(993, 600));
         setOpaque(false);
@@ -75,7 +77,7 @@ public class ShoppingCartPanel extends javax.swing.JPanel implements ShoppingCar
         itemPanel.setLayout(itemPanelLayout);
         itemPanelLayout.setHorizontalGroup(
             itemPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 967, Short.MAX_VALUE)
+            .addGap(0, 971, Short.MAX_VALUE)
         );
         itemPanelLayout.setVerticalGroup(
             itemPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -93,6 +95,11 @@ public class ShoppingCartPanel extends javax.swing.JPanel implements ShoppingCar
         nextButton.setForeground(Constants.BACKGROUND_COLOR);
         nextButton.setText("Gå vidare");
         nextButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        nextButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                nextButtonMouseClicked(evt);
+            }
+        });
         nextButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nextButtonActionPerformed(evt);
@@ -131,22 +138,30 @@ public class ShoppingCartPanel extends javax.swing.JPanel implements ShoppingCar
                 .addContainerGap())
         );
 
+        warningLabel.setForeground(Constants.HEADER_COLOR);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(infoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(itemScrollPanel)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(itemScrollPanel)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(warningLabel)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addComponent(infoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(itemScrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(warningLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addComponent(infoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -156,10 +171,32 @@ public class ShoppingCartPanel extends javax.swing.JPanel implements ShoppingCar
         model.removeItemFromCart(s.getShoppingItem());
         this.itemPanel.repaint();
     }
+    
+    public boolean CartIsEmpty(){
+        return model.getItems().isEmpty();
+    }
+    
+    public void DisableNextButtonIfCartIsEmpty(){
+        if(CartIsEmpty()){
+          nextButton.setEnabled(false);
+          nextButton.setBackground(Constants.DISABLED_COLOR);
+        }
+        else{
+            nextButton.setEnabled(true);
+            nextButton.setBackground(Constants.HEADER_COLOR);
+        }
+    }
+    
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
         if (frame != null)
             frame.setFeatureCard("checkoutCard");
     }//GEN-LAST:event_nextButtonActionPerformed
+
+    private void nextButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nextButtonMouseClicked
+       if((!nextButton.isEnabled())){
+           warningLabel.setText("* Din kundvagn är tom!");
+       }
+    }//GEN-LAST:event_nextButtonMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -167,8 +204,9 @@ public class ShoppingCartPanel extends javax.swing.JPanel implements ShoppingCar
     private javax.swing.JPanel infoPanel;
     private javax.swing.JPanel itemPanel;
     private javax.swing.JScrollPane itemScrollPanel;
-    private javax.swing.JButton nextButton;
+    private transient javax.swing.JButton nextButton;
     private javax.swing.JLabel totLabel;
+    private javax.swing.JLabel warningLabel;
     // End of variables declaration//GEN-END:variables
 
     @Override

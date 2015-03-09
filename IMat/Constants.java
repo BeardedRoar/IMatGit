@@ -17,6 +17,7 @@ public enum Constants {
     public static Color HEADER_COLOR     = new Color(255,   0,  51);
     public static Color BACKGROUND_COLOR = new Color(255, 255, 255);
     public static Color SECONDARY_COLOR  = new Color(255, 130,  41);
+    public static Color DISABLED_COLOR = new Color(221,221,221);
     
     
     public static Font RESULT_FONT       = new Font("Tahmoma", Font.PLAIN, 24);
