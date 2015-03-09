@@ -376,12 +376,15 @@ public class MainFrame extends javax.swing.JFrame {
         browsePanelLayout.setHorizontalGroup(
             browsePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(startTextPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
-            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(browsePanelLayout.createSequentialGroup()
                 .addGroup(browsePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(favoritePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(categoryPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 37, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, browsePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jSeparator1)
+                .addContainerGap())
         );
         browsePanelLayout.setVerticalGroup(
             browsePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -448,7 +451,7 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(browseScrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(featurePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1023, Short.MAX_VALUE))
+                .addComponent(featurePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1024, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
