@@ -43,6 +43,8 @@ public class AccountMenuPanel extends javax.swing.JPanel {
                     case "Mina Favoriter":
                         AccountMenuPanel.this.frame.setFeatureCard("resultCard");
                         break;
+                    case "Min Information":
+                        AccountMenuPanel.this.frame.setFeatureCard("accountInfoCard");
                 }
             }
 
