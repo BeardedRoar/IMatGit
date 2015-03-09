@@ -109,7 +109,6 @@ public class AccountInfoPanel extends javax.swing.JPanel {
         postalCodeTextField1 = new javax.swing.JTextField();
         postalAdressTextField1 = new javax.swing.JTextField();
         sendToMailCheckBox = new javax.swing.JCheckBox();
-        saveInformationCheckBox = new javax.swing.JCheckBox();
         doneButton = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         emailLabel = new javax.swing.JLabel();
@@ -320,19 +319,10 @@ public class AccountInfoPanel extends javax.swing.JPanel {
         sendToMailCheckBox.setText("Skicka kvitto till min mail");
         sendToMailCheckBox.setOpaque(false);
 
-        saveInformationCheckBox.setFont(Constants.INPUT_FONT);
-        saveInformationCheckBox.setText("Spara mina uppgifter");
-        saveInformationCheckBox.setOpaque(false);
-        saveInformationCheckBox.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                saveInformationCheckBoxMousePressed(evt);
-            }
-        });
-
         doneButton.setBackground(Constants.HEADER_COLOR);
         doneButton.setFont(Constants.BUTTON_FONT);
         doneButton.setForeground(new java.awt.Color(255, 255, 255));
-        doneButton.setText("Klar");
+        doneButton.setText("Spara");
         doneButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         doneButton.setPreferredSize(new java.awt.Dimension(50, 25));
         doneButton.addActionListener(new java.awt.event.ActionListener() {
@@ -358,7 +348,6 @@ public class AccountInfoPanel extends javax.swing.JPanel {
                                 .addComponent(postalAdressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(saveInformationCheckBox)
                                     .addComponent(sendToMailCheckBox)
                                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addGroup(jPanel3Layout.createSequentialGroup()
@@ -410,11 +399,9 @@ public class AccountInfoPanel extends javax.swing.JPanel {
                     .addComponent(postalAdressTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(sendToMailCheckBox)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(saveInformationCheckBox)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(doneButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel4.setOpaque(false);
@@ -566,8 +553,12 @@ public class AccountInfoPanel extends javax.swing.JPanel {
         revalidate();
     }//GEN-LAST:event_sendToOtherAdressCheckBoxMousePressed
 
-    private void saveInformationCheckBoxMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveInformationCheckBoxMousePressed
-        
+    private void textFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldFocusGained
+        JTextField field = (JTextField) evt.getSource();
+        field.selectAll();
+    }//GEN-LAST:event_textFieldFocusGained
+
+    private void doneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doneButtonActionPerformed
         model.setCardNumber(cardNumberTextField.getText());
         model.setCardType((String)cardComboBox.getSelectedItem());
         model.setValidMonth(Integer.parseInt(monthTextField.getText()));
@@ -584,14 +575,7 @@ public class AccountInfoPanel extends javax.swing.JPanel {
         model.setEmail(emailTextField.getText());
         model.setPhoneNumber(phoneTextField.getText());
         model.setMobilePhoneNumber(mobilePhoneTextField.getText());
-    }//GEN-LAST:event_saveInformationCheckBoxMousePressed
-
-    private void textFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldFocusGained
-        JTextField field = (JTextField) evt.getSource();
-        field.selectAll();
-    }//GEN-LAST:event_textFieldFocusGained
-
-    private void doneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doneButtonActionPerformed
+        
         frame.setFeatureCard("frontPageCard");
     }//GEN-LAST:event_doneButtonActionPerformed
 
@@ -635,7 +619,6 @@ public class AccountInfoPanel extends javax.swing.JPanel {
     private javax.swing.JLabel postalCodeLabel;
     private javax.swing.JTextField postalCodeTextField;
     private javax.swing.JTextField postalCodeTextField1;
-    private javax.swing.JCheckBox saveInformationCheckBox;
     private javax.swing.JCheckBox sendToMailCheckBox;
     private javax.swing.JCheckBox sendToOtherAdressCheckBox;
     private javax.swing.JTextField yearTextField;
