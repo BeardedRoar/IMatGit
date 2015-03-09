@@ -14,7 +14,7 @@ import se.chalmers.ait.dat215.project.*;
 public class StartProductPanel extends javax.swing.JPanel {
     private Product product;
     private IMatModel model;
-    int currentNbrOfProducts=1;
+    double currentNbrOfProducts = 1;
     /**
      * Creates new form StartProductPanel
      */
@@ -232,34 +232,37 @@ public class StartProductPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_nbrOfProductsTextfieldFocusGained
 
     private void nbrOfProductsTextfieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nbrOfProductsTextfieldFocusLost
-        currentNbrOfProducts=Integer.parseInt(nbrOfProductsTextfield.getText());
+        currentNbrOfProducts = getAmount();
     }//GEN-LAST:event_nbrOfProductsTextfieldFocusLost
 
     private void nbrOfProductsTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nbrOfProductsTextfieldActionPerformed
         try{
-            if(Integer.parseInt(nbrOfProductsTextfield.getText())<1){
-                nbrOfProductsTextfield.setText(Integer.toString(currentNbrOfProducts));
+            if(Double.parseDouble(nbrOfProductsTextfield.getText())<=0){
+                nbrOfProductsTextfield.setText(Double.toString(currentNbrOfProducts));
+            } else {
+                currentNbrOfProducts = getAmount();
+                nbrOfProductsTextfield.setText(Double.toString(currentNbrOfProducts));
             }
-            currentNbrOfProducts=Integer.parseInt(nbrOfProductsTextfield.getText());
         }
         catch(NumberFormatException e){
-            nbrOfProductsTextfield.setText(Integer.toString(currentNbrOfProducts));
+            nbrOfProductsTextfield.setText(Double.toString(currentNbrOfProducts));
         }
     }//GEN-LAST:event_nbrOfProductsTextfieldActionPerformed
 
     private void cartButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cartButtonActionPerformed
-        model.addProduct(product, Integer.parseInt(nbrOfProductsTextfield.getText()));
+        
+        model.addProduct(product, getAmount());
     }//GEN-LAST:event_cartButtonActionPerformed
 
     private void upButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_upButtonActionPerformed
         currentNbrOfProducts++;
-        nbrOfProductsTextfield.setText(Integer.toString(currentNbrOfProducts));
+        nbrOfProductsTextfield.setText(Double.toString(currentNbrOfProducts));
     }//GEN-LAST:event_upButtonActionPerformed
 
     private void downButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_downButtonActionPerformed
         if(currentNbrOfProducts>1){
             currentNbrOfProducts--;
-            nbrOfProductsTextfield.setText(Integer.toString(currentNbrOfProducts));
+            nbrOfProductsTextfield.setText(Double.toString(currentNbrOfProducts));
         }
     }//GEN-LAST:event_downButtonActionPerformed
 
@@ -293,7 +296,14 @@ public class StartProductPanel extends javax.swing.JPanel {
         this.requestFocus();
     }//GEN-LAST:event_formMouseClicked
 
-
+    private double getAmount(){
+        if ("kg".equals(this.product.getUnitSuffix())) {
+            return Double.parseDouble(nbrOfProductsTextfield.getText());
+        } else {
+            return (int)Double.parseDouble(nbrOfProductsTextfield.getText());
+        }
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel DisFavouriteLabel;
     private javax.swing.JLabel EnbFavouriteLabel;
