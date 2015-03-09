@@ -270,7 +270,9 @@ public class ProductPanel extends javax.swing.JPanel {
     private void nbrOfProductsTextfieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nbrOfProductsTextfieldFocusLost
         currentNbrOfProducts=Integer.parseInt(nbrOfProductsTextfield.getText());
     }//GEN-LAST:event_nbrOfProductsTextfieldFocusLost
-
+    public Product getProduct(){
+        return product;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel DisFavouriteLabel;
     private javax.swing.JLabel EnbFavouriteLabel;

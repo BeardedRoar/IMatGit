@@ -122,7 +122,7 @@ implements ShoppingCartListener, ShoppingCartComponentListener{
         totCostLabel.setForeground(Constants.BACKGROUND_COLOR);
         totCostLabel.setText("jLabel2");
 
-        imagePanel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        imagePanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         imagePanel.setMinimumSize(new java.awt.Dimension(100, 72));
         imagePanel.setOpaque(false);
         imagePanel.setPreferredSize(new java.awt.Dimension(100, 72));
@@ -144,18 +144,20 @@ implements ShoppingCartListener, ShoppingCartComponentListener{
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(45, Short.MAX_VALUE)
+                .addContainerGap(54, Short.MAX_VALUE)
                 .addComponent(totCostLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(imagePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(imagePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(33, Short.MAX_VALUE)
                 .addComponent(totCostLabel)
                 .addGap(25, 25, 25))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(imagePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
