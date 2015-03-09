@@ -9,13 +9,14 @@ import java.awt.GridLayout;
 import java.util.Iterator;
 import java.util.List;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import se.chalmers.ait.dat215.project.ProductCategory;
 
 /**
  *
  * @author axel
  */
-public class ResultPanel<T extends JFrame> extends javax.swing.JPanel {
+public class ResultPanel<T extends JPanel> extends javax.swing.JPanel {
     private IMatModel model;
     private ProductCategory pc;
     
@@ -65,7 +66,7 @@ public class ResultPanel<T extends JFrame> extends javax.swing.JPanel {
 
         resultScrollPanel.setOpaque(false);
 
-        resultPanel.setBackground(new java.awt.Color(255, 255, 255));
+        resultPanel.setBackground(Constants.BACKGROUND_COLOR);
 
         javax.swing.GroupLayout resultPanelLayout = new javax.swing.GroupLayout(resultPanel);
         resultPanel.setLayout(resultPanelLayout);
