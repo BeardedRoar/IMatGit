@@ -364,7 +364,7 @@ public class LogInPanel extends javax.swing.JPanel {
             model.register(userNameTextField1.getText(), jPasswordField2.getPassword());
             frame.setEndingCard("register");
         }
-        frame.logOut();
+        frame.logIn();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

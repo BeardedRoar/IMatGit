@@ -432,6 +432,7 @@ public class IMatModel {
     public void register(String userName, char[] password){
         this.setUserName(userName);
         this.setUserPassword(constructPassword(password));
+        loggedIn = true;
     }
     
     public String constructPassword(char[] pw){
