@@ -8,6 +8,7 @@ package IMat;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.Iterator;
 import java.util.List;
 import javax.swing.JMenuItem;
@@ -49,28 +50,13 @@ public class ShoppingListTextFieldPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
         textField = new javax.swing.JTextField();
         deleteButton = new javax.swing.JButton();
         numberTextField = new javax.swing.JTextField();
 
-        setMinimumSize(new java.awt.Dimension(473, 22));
+        setMinimumSize(new java.awt.Dimension(473, 30));
         setOpaque(false);
-        setPreferredSize(new java.awt.Dimension(473, 22));
-
-        jPanel1.setOpaque(false);
-        jPanel1.setPreferredSize(new java.awt.Dimension(196, 22));
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 196, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 22, Short.MAX_VALUE)
-        );
+        setPreferredSize(new java.awt.Dimension(473, 30));
 
         textField.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         textField.setText("Skriv produkt här för att lägga till i kundvagnen");
@@ -86,7 +72,8 @@ public class ShoppingListTextFieldPanel extends javax.swing.JPanel {
             }
         });
 
-        deleteButton.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        deleteButton.setBackground(Constants.BACKGROUND_COLOR);
+        deleteButton.setFont(new java.awt.Font("Tahoma", 1, 19)); // NOI18N
         deleteButton.setText("X");
         deleteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,26 +100,21 @@ public class ShoppingListTextFieldPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(275, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(numberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textField)
+                .addComponent(numberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(2, 2, 2)
+                .addComponent(textField, javax.swing.GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(deleteButton))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(numberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(numberTextField)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(textField, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(textField)
+                        .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                .addGap(35, 35, 35))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -177,7 +159,6 @@ public class ShoppingListTextFieldPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton deleteButton;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField numberTextField;
     private javax.swing.JTextField textField;
     // End of variables declaration//GEN-END:variables
@@ -201,15 +182,14 @@ public class ShoppingListTextFieldPanel extends javax.swing.JPanel {
         
         Iterator<Product> it = products.iterator();
         ProductMenuItem m;
-        Product tempItem;
+        Product tempItem = it.next();
         while (it.hasNext()){
             tempItem = it.next();
             m = new ProductMenuItem(tempItem);
             popup.add(m);
-
         }
-        popup.show(this, this.getWidth(), 0);
-        } else if (products.size() == 0){
+        popup.show(this, this.textField.getWidth(), 0);
+        } else if (products.isEmpty()){
             this.unnableToFind();
         }
     
@@ -218,7 +198,7 @@ public class ShoppingListTextFieldPanel extends javax.swing.JPanel {
     private class ProductMenuItem extends JMenuItem implements ActionListener{
         private final Product product;
         
-        public ProductMenuItem(Product product){
+        public ProductMenuItem(Product product){ //, ProductMenuItem next){
             super(product.getName());
             this.product = product;
             super.addActionListener(this);
