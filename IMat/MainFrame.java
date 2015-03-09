@@ -67,6 +67,7 @@ public class MainFrame extends javax.swing.JFrame {
         //this.endingPanelHolder.add(new EndingPanel(model, this, "buy"));
         this.logInPanelHolder.add(new LogInPanel(model, this));
         this.recipeViewHolder.add(new RecipeView(model, this));
+        this.accountInfoHolder.add(new AccountInfoPanel(model, this));
         
         this.frontPagePanel.add(new FrontPageFeaturePanel(model.getOfthenBoughtStart(-1, 3), model, "Ofta Köpta"));
         this.frontPagePanel.add(new FrontPageFeaturePanel(model.getWeeklyProducts(), model, "Veckans varor"));
@@ -84,10 +85,7 @@ public class MainFrame extends javax.swing.JFrame {
     private void createCategories() {
         this.favoritePanel.add(new CategoryPanel("Mina Favoriter", categoryListener));
         this.favoritePanel.add(new CategoryPanel("Ofta Köpta", categoryListener));
-        this.featureHeaderPanel.add(new CategoryPanel("Populära Varor", categoryListener));
-        this.featureHeaderPanel.add(new CategoryPanel("Inköpslista", categoryListener));
-        this.featureHeaderPanel.add(new CategoryPanel("Veckans Varor", categoryListener));
-        this.featureHeaderPanel.add(new CategoryPanel("Veckans Recept", categoryListener));
+        this.favoritePanel.add(new CategoryPanel("Veckans Recept", categoryListener));
         model.makeCategoryPanel(this.categoryPanel, "Start", categoryListener);
 
     }
@@ -147,8 +145,8 @@ public class MainFrame extends javax.swing.JFrame {
         startTextPanel = new javax.swing.JPanel();
         startLabel = new javax.swing.JLabel();
         favoritePanel = new javax.swing.JPanel();
-        featureHeaderPanel = new javax.swing.JPanel();
         categoryPanel = new javax.swing.JPanel();
+        jSeparator1 = new javax.swing.JSeparator();
         featurePanel = new javax.swing.JPanel();
         frontPagePanel = new javax.swing.JPanel();
         shoppingCartPanelHolder = new javax.swing.JPanel();
@@ -159,6 +157,7 @@ public class MainFrame extends javax.swing.JFrame {
         historyPanelHolder = new javax.swing.JPanel();
         resultPanelHolder = new javax.swing.JPanel();
         recipeViewHolder = new javax.swing.JPanel();
+        accountInfoHolder = new javax.swing.JPanel();
         menuBarPanel = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -186,7 +185,7 @@ public class MainFrame extends javax.swing.JFrame {
         logoLabel.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         logoLabel.setForeground(new java.awt.Color(255, 255, 255));
         logoLabel.setText("iMat");
-        logoLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        logoLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         logoLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 startTextPanelMousePressed(evt);
@@ -220,7 +219,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         searchIcon.setBackground(new java.awt.Color(255, 255, 255));
         searchIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iMat.resources/magnifier.png"))); // NOI18N
-        searchIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        searchIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         searchIcon.setMaximumSize(new java.awt.Dimension(30, 30));
         searchIcon.setMinimumSize(new java.awt.Dimension(30, 30));
         searchIcon.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -236,7 +235,7 @@ public class MainFrame extends javax.swing.JFrame {
             searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(searchPanelLayout.createSequentialGroup()
                 .addGap(2, 2, 2)
-                .addComponent(searchTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+                .addComponent(searchTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(searchIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -339,10 +338,10 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        startLabel.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
+        startLabel.setFont(Constants.FRONT_HEADER_FONT);
         startLabel.setForeground(Constants.BACKGROUND_COLOR);
         startLabel.setText("Start");
-        startLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        startLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         javax.swing.GroupLayout startTextPanelLayout = new javax.swing.GroupLayout(startTextPanel);
         startTextPanel.setLayout(startTextPanelLayout);
@@ -363,27 +362,25 @@ public class MainFrame extends javax.swing.JFrame {
         favoritePanel.setPreferredSize(new java.awt.Dimension(150, 0));
         favoritePanel.setRequestFocusEnabled(false);
         favoritePanel.setVerifyInputWhenFocusTarget(false);
-        favoritePanel.setLayout(new java.awt.GridLayout(2, 0));
-
-        featureHeaderPanel.setOpaque(false);
-        featureHeaderPanel.setPreferredSize(new java.awt.Dimension(150, 0));
-        featureHeaderPanel.setRequestFocusEnabled(false);
-        featureHeaderPanel.setLayout(new java.awt.GridLayout(4, 0));
+        favoritePanel.setLayout(new java.awt.GridLayout(3, 0));
 
         categoryPanel.setOpaque(false);
         categoryPanel.setPreferredSize(new java.awt.Dimension(160, 0));
         categoryPanel.setLayout(new java.awt.GridLayout(11, 0));
+
+        jSeparator1.setBackground(Constants.BACKGROUND_COLOR);
+        jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
 
         javax.swing.GroupLayout browsePanelLayout = new javax.swing.GroupLayout(browsePanel);
         browsePanel.setLayout(browsePanelLayout);
         browsePanelLayout.setHorizontalGroup(
             browsePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(startTextPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
+            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(browsePanelLayout.createSequentialGroup()
-                .addGroup(browsePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(categoryPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(favoritePanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(featureHeaderPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(browsePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(favoritePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(categoryPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 38, Short.MAX_VALUE))
         );
         browsePanelLayout.setVerticalGroup(
@@ -392,11 +389,11 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(startTextPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(favoritePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 11, Short.MAX_VALUE)
-                .addGap(18, 29, Short.MAX_VALUE)
-                .addComponent(featureHeaderPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 11, Short.MAX_VALUE)
-                .addGap(29, 29, 29)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(categoryPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 10, Short.MAX_VALUE)
-                .addGap(0, 493, Short.MAX_VALUE))
+                .addGap(532, 532, 532))
         );
 
         browseScrollPanel.setViewportView(browsePanel);
@@ -439,11 +436,15 @@ public class MainFrame extends javax.swing.JFrame {
         recipeViewHolder.setLayout(new java.awt.GridLayout(1, 0));
         featurePanel.add(recipeViewHolder, "recipeCard");
 
+        accountInfoHolder.setOpaque(false);
+        accountInfoHolder.setLayout(new java.awt.GridLayout(1, 0, 5, 5));
+        featurePanel.add(accountInfoHolder, "accountInfoCard");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(headerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1229, Short.MAX_VALUE)
+            .addComponent(headerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1230, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(browseScrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -539,6 +540,7 @@ public class MainFrame extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel accountInfoHolder;
     private javax.swing.JPanel accountMenuHolderPanel;
     private javax.swing.JPanel accountPanel;
     private javax.swing.JPanel browsePanel;
@@ -549,7 +551,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel confirmPanelHolder;
     private javax.swing.JPanel endingPanelHolder;
     private javax.swing.JPanel favoritePanel;
-    private javax.swing.JPanel featureHeaderPanel;
     private javax.swing.JPanel featurePanel;
     private javax.swing.JPanel frontPagePanel;
     private javax.swing.JPanel headerPanel;
@@ -558,6 +559,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPanel logInPanelHolder;
     private javax.swing.JLabel logoLabel;
     private javax.swing.JMenuBar menuBarPanel;

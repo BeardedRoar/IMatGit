@@ -27,7 +27,7 @@ public class PopularCounter {
 
     public PopularCounter(IMatModel model){
         
-        System.out.println("counting most ofthen bought...");
+        System.out.println("counting most often bought...");
         this.model = model;
         
         List<Order> orders = model.getOrders();
