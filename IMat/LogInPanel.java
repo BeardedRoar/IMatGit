@@ -355,8 +355,8 @@ public class LogInPanel extends javax.swing.JPanel {
     private void logIn(){
         if (model.logIn(userNameTextField.getText(), jPasswordField1.getPassword())) {
             frame.setFeatureCard("frontPageCard");
+            frame.logIn();
         }
-        frame.logIn();
     }
     
     private void register(){
