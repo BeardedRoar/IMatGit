@@ -27,7 +27,12 @@ public class CategoryPreviewPanel extends javax.swing.JPanel implements Category
     public CategoryPreviewPanel(String name, IMatModel m, MouseListener listener) {
         this.listener = listener;
         this.name = name;
-        this.model = m;            
+        this.model = m;
+        if ("Frukt & Grönt".equals(name)){
+            image = new ImageIcon(getClass().getResource("/iMat.resources/fruktogront.jpg"));
+        } else {
+            image = new ImageIcon(getClass().getResource("/iMat.resources/" + name + ".jpg"));
+        }
         initComponents();
         this.addMouseListener(listener);
         this.isSub = true;

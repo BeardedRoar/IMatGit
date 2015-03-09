@@ -1,10 +1,12 @@
 package IMat;
 
+import Utility.PopularCounter;
 import java.awt.GridLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -28,11 +30,12 @@ public class IMatModel {
     private final CreditCard card = handler.getCard();
     private final Customer customer = handler.getCustomer();
     private final User user = handler.getUser();
+    private final PopularCounter popCounter;
     private boolean loggedIn;
     private String lastCategory;
 
     public IMatModel() {
-
+        this.popCounter = new PopularCounter(this);
     }
 
     //cart methods
@@ -50,6 +53,10 @@ public class IMatModel {
 
     public void clearCart() {
         cart.clear();
+    }
+    
+    public void setItemAmount(ShoppingItem sci, double newAmount){
+        cart.setItemAmount(sci, newAmount);
     }
     
     public void addOrderToCart(Order order){
@@ -263,6 +270,23 @@ public class IMatModel {
         return panels;
     }
     
+    public List<StartProductPanel> getWeeklyProducts() {
+        ArrayList<StartProductPanel> panels = new ArrayList(3);
+        
+        panels.add(new StartProductPanel(findCorespondingProduct("lasagne"), this));
+        panels.add(new StartProductPanel(findCorespondingProduct("köttfärs"), this));
+        panels.add(new StartProductPanel(findCorespondingProduct("vete"), this));
+        
+        return panels;
+    }
+    
+    public Product findCorespondingProduct(String name){
+        if(!handler.findProducts(name).isEmpty())
+            return handler.findProducts(name).get(0);
+        else 
+            return null;
+    }
+    
     public List<ProductPanel> getProductPanels(String s) {
         List<Product> products = null;
         if (s == null){
@@ -302,6 +326,31 @@ public class IMatModel {
         }
         return panels;
     }
+    
+    public List<ProductPanel> getOfthenBought(int leastTimesBought, int amountOfProducts){
+        List<Product> mostBought = popCounter.getMostBought(leastTimesBought, amountOfProducts);
+        LinkedList<ProductPanel> panels = new LinkedList();
+        Iterator<Product> it = mostBought.iterator();
+
+        while (it.hasNext()){
+            Product tempProd = it.next();
+            panels.add(new ProductPanel(tempProd, this));
+        }
+        return panels;
+    }
+    
+    public List<StartProductPanel> getOfthenBoughtStart(int leastTimesBought, int amountOfProducts){
+        List<Product> mostBought = popCounter.getMostBought(leastTimesBought, amountOfProducts);
+        LinkedList<StartProductPanel> panels = new LinkedList();
+        Iterator<Product> it = mostBought.iterator();
+
+        while (it.hasNext()){
+            Product tempProd = it.next();
+            panels.add(new StartProductPanel(tempProd, this));
+        }
+        return panels;
+    }
+    
     
     public List<CategoryPreviewPanel> getCategoryPreviewPanels(String name, 
             IMatModel m, MouseListener listener){
@@ -464,6 +513,13 @@ public class IMatModel {
         }
     }
     
+    public void setLastCategory(String s){
+        lastCategory = s;
+    }
+    
+    public void reSetLastCategory(){
+        lastCategory = "";
+    }
     public ProductCategory getCategory(String name){
         String trim = name.trim();
         String lowerCase = trim.toLowerCase();

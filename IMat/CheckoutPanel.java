@@ -132,12 +132,16 @@ public class CheckoutPanel extends javax.swing.JPanel {
 
         cardInformationLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         cardInformationLabel.setText("Kortuppgifter");
+        cardInformationLabel.setMaximumSize(new java.awt.Dimension(140, 30));
+        cardInformationLabel.setMinimumSize(new java.awt.Dimension(140, 30));
+        cardInformationLabel.setPreferredSize(new java.awt.Dimension(140, 30));
 
         deliveryInformationLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         deliveryInformationLabel.setText("Leveransuppgifter");
 
         jPanel2.setOpaque(false);
 
+        cvcTextField.setFont(Constants.INPUT_FONT);
         cvcTextField.setText("123");
         cvcTextField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -150,8 +154,10 @@ public class CheckoutPanel extends javax.swing.JPanel {
             }
         });
 
+        cvcLabel.setFont(Constants.INPUT_FONT);
         cvcLabel.setText("CVC");
 
+        monthTextField.setFont(Constants.INPUT_FONT);
         monthTextField.setText("02");
         monthTextField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -159,6 +165,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
             }
         });
 
+        yearTextField.setFont(Constants.INPUT_FONT);
         yearTextField.setText("15");
         yearTextField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -171,8 +178,10 @@ public class CheckoutPanel extends javax.swing.JPanel {
             }
         });
 
+        dateLabel.setFont(Constants.INPUT_FONT);
         dateLabel.setText("Datum");
 
+        cardNumberTextField.setFont(Constants.INPUT_FONT);
         cardNumberTextField.setToolTipText("");
         cardNumberTextField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -185,8 +194,10 @@ public class CheckoutPanel extends javax.swing.JPanel {
             }
         });
 
+        cardNumberLabel.setFont(Constants.INPUT_FONT);
         cardNumberLabel.setText("Kortnummer");
 
+        cardComboBox.setFont(Constants.INPUT_FONT);
         cardComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Visa", "Mastercard" }));
         cardComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -194,6 +205,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
             }
         });
 
+        cardLabel.setFont(Constants.INPUT_FONT);
         cardLabel.setText("Kort");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -244,8 +256,10 @@ public class CheckoutPanel extends javax.swing.JPanel {
 
         jPanel3.setOpaque(false);
 
+        nameLabel.setFont(Constants.INPUT_FONT);
         nameLabel.setText("Namn");
 
+        nameTextField.setFont(Constants.INPUT_FONT);
         nameTextField.setText("Förnamn");
         nameTextField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -253,6 +267,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
             }
         });
 
+        nameTextField2.setFont(Constants.INPUT_FONT);
         nameTextField2.setText("Efternamn");
         nameTextField2.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -265,8 +280,10 @@ public class CheckoutPanel extends javax.swing.JPanel {
             }
         });
 
+        adressLabel.setFont(Constants.INPUT_FONT);
         adressLabel.setText("Adress");
 
+        adressTextField.setFont(Constants.INPUT_FONT);
         adressTextField.setText("Tvärvägen 20");
         adressTextField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -274,6 +291,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
             }
         });
 
+        sendToOtherAdressCheckBox.setFont(Constants.INPUT_FONT);
         sendToOtherAdressCheckBox.setText("Leverera till annan adress");
         sendToOtherAdressCheckBox.setOpaque(false);
         sendToOtherAdressCheckBox.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -282,6 +300,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
             }
         });
 
+        adressTextField2.setFont(Constants.INPUT_FONT);
         adressTextField2.setText("Tvärvägen 21");
         adressTextField2.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -289,8 +308,10 @@ public class CheckoutPanel extends javax.swing.JPanel {
             }
         });
 
+        postalCodeLabel.setFont(Constants.INPUT_FONT);
         postalCodeLabel.setText("Postnummer");
 
+        postalCodeTextField.setFont(Constants.INPUT_FONT);
         postalCodeTextField.setText("Postnummer");
         postalCodeTextField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -298,6 +319,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
             }
         });
 
+        postalAdressTextField.setFont(Constants.INPUT_FONT);
         postalAdressTextField.setText("Postort");
         postalAdressTextField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -305,6 +327,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
             }
         });
 
+        postalAdressLabel.setFont(Constants.INPUT_FONT);
         postalAdressLabel.setText("Postort");
         postalAdressLabel.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -312,13 +335,17 @@ public class CheckoutPanel extends javax.swing.JPanel {
             }
         });
 
+        postalCodeTextField1.setFont(Constants.INPUT_FONT);
         postalCodeTextField1.setText("Postnummer");
 
+        postalAdressTextField1.setFont(Constants.INPUT_FONT);
         postalAdressTextField1.setText("Postort");
 
+        sendToMailCheckBox.setFont(Constants.INPUT_FONT);
         sendToMailCheckBox.setText("Skicka kvitto till min mail");
         sendToMailCheckBox.setOpaque(false);
 
+        saveInformationCheckBox.setFont(Constants.INPUT_FONT);
         saveInformationCheckBox.setText("Spara mina uppgifter");
         saveInformationCheckBox.setOpaque(false);
         saveInformationCheckBox.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -400,8 +427,10 @@ public class CheckoutPanel extends javax.swing.JPanel {
 
         jPanel4.setOpaque(false);
 
+        emailLabel.setFont(Constants.INPUT_FONT);
         emailLabel.setText("Email");
 
+        emailTextField.setFont(Constants.INPUT_FONT);
         emailTextField.setText("example@mail.com");
         emailTextField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -409,8 +438,10 @@ public class CheckoutPanel extends javax.swing.JPanel {
             }
         });
 
+        phoneLabel.setFont(Constants.INPUT_FONT);
         phoneLabel.setText("Telefon");
 
+        phoneTextField.setFont(Constants.INPUT_FONT);
         phoneTextField.setText("070-00000");
         phoneTextField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -423,8 +454,10 @@ public class CheckoutPanel extends javax.swing.JPanel {
             }
         });
 
+        mobilePhoneLabel.setFont(Constants.INPUT_FONT);
         mobilePhoneLabel.setText("Mobiltelefon");
 
+        mobilePhoneTextField.setFont(Constants.INPUT_FONT);
         mobilePhoneTextField.setText("070-00001");
         mobilePhoneTextField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -482,7 +515,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cardInformationLabel)
+                            .addComponent(cardInformationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(deliveryInformationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(131, Short.MAX_VALUE))
         );
@@ -490,7 +523,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(11, 11, 11)
-                .addComponent(cardInformationLabel)
+                .addComponent(cardInformationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -504,8 +537,10 @@ public class CheckoutPanel extends javax.swing.JPanel {
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
         buyButton.setBackground(Constants.HEADER_COLOR);
+        buyButton.setFont(Constants.BUTTON_FONT);
         buyButton.setForeground(Constants.BACKGROUND_COLOR);
         buyButton.setText("Köp");
+        buyButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         buyButton.setMinimumSize(new java.awt.Dimension(50, 25));
         buyButton.setPreferredSize(new java.awt.Dimension(50, 25));
         buyButton.addActionListener(new java.awt.event.ActionListener() {
@@ -550,7 +585,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 614, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 615, Short.MAX_VALUE)
             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents

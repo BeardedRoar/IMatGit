@@ -27,8 +27,16 @@ public class CustomCart {
     }
     
     public void addItem(ShoppingItem sci){
-        cart.addItem(sci);
+        
         cart.fireShoppingCartChanged(sci, true);
+        ShoppingItem existingItem = this.getFromCart(sci.getProduct());
+        if (existingItem == null){
+            cart.addItem(new ShoppingItem(sci.getProduct(), sci.getAmount()));
+            cart.fireShoppingCartChanged(sci, true);
+        } else{
+            existingItem.setAmount(existingItem.getAmount() + sci.getAmount());
+            cart.fireShoppingCartChanged(existingItem, true);
+        }
     }
     
     public void addProduct(Product p){
@@ -96,5 +104,11 @@ public class CustomCart {
     
     public void removeCartListener(ShoppingCartListener scl){
         cart.removeShoppingCartListener(scl);
+    }
+
+    public void setItemAmount(ShoppingItem sci, double newAmount) {
+        double oldAmount = sci.getAmount();
+        sci.setAmount(newAmount);
+        cart.fireShoppingCartChanged(sci, newAmount > oldAmount);
     }
 }

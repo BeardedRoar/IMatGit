@@ -64,10 +64,11 @@ public class AccountMenuPanel extends javax.swing.JPanel {
     class PopupListener extends MouseAdapter {
     @Override
     public void mousePressed(MouseEvent e) {
-        if(model.isLoggedIn()){
-        popup.show(AccountMenuPanel.this, 0, 25);
-        }else{
+        if (model.isLoggedIn()){
+            popup.show(AccountMenuPanel.this, 0, 25);
+        } else {
             frame.setFeatureCard("logInCard");
+            AccountMenuPanel.this.model.reSetLastCategory();
         }            
     }
   }
@@ -91,6 +92,7 @@ public class AccountMenuPanel extends javax.swing.JPanel {
         mainPanel.setOpaque(false);
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1.setFont(Constants.BUTTON_FONT);
         jButton1.setText("Mina Sidor");
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton1.setFocusPainted(false);

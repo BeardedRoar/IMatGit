@@ -57,7 +57,10 @@ public class EndingPanel extends javax.swing.JPanel {
         endingTextLabel.setPreferredSize(new java.awt.Dimension(600, 100));
         endingTextLabel.setRequestFocusEnabled(false);
 
+        endingButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         endingButton.setText("Tillbaka till Start!");
+        endingButton.setBackground(Constants.HEADER_COLOR);
+        endingButton.setForeground(Constants.BACKGROUND_COLOR);
         endingButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         endingButton.setMaximumSize(new java.awt.Dimension(100, 75));
         endingButton.setMinimumSize(new java.awt.Dimension(100, 75));

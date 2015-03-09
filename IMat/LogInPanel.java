@@ -5,6 +5,8 @@
  */
 package IMat;
 
+import java.awt.event.KeyEvent;
+
 /**
  *
  * @author axel
@@ -59,6 +61,7 @@ public class LogInPanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("Befintlig Kund");
 
+        userNameTextField.setFont(Constants.INPUT_FONT);
         userNameTextField.setText("Användarnamn");
         userNameTextField.setPreferredSize(new java.awt.Dimension(270, 30));
         userNameTextField.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -71,20 +74,34 @@ public class LogInPanel extends javax.swing.JPanel {
                 userNameTextFieldMousePressed(evt);
             }
         });
+        userNameTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                userNameTextFieldKeyPressed(evt);
+            }
+        });
 
         logInButton.setBackground(Constants.HEADER_COLOR);
+        logInButton.setFont(Constants.BUTTON_FONT);
         logInButton.setForeground(Constants.BACKGROUND_COLOR);
+        logInButton.setMnemonic(KeyEvent.VK_ENTER);
         logInButton.setText("Logga In");
+        logInButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         logInButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logInButtonActionPerformed(evt);
             }
         });
 
+        jPasswordField1.setFont(Constants.INPUT_FONT);
         jPasswordField1.setText("jPasswordField1");
         jPasswordField1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jPasswordField1FocusGained(evt);
+            }
+        });
+        jPasswordField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jPasswordField1KeyPressed(evt);
             }
         });
 
@@ -143,6 +160,7 @@ public class LogInPanel extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel2.setText("Registrera");
 
+        userNameTextField1.setFont(Constants.INPUT_FONT);
         userNameTextField1.setText("Användarnamn");
         userNameTextField1.setPreferredSize(new java.awt.Dimension(270, 30));
         userNameTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -150,27 +168,46 @@ public class LogInPanel extends javax.swing.JPanel {
                 userNameTextField1FocusGained(evt);
             }
         });
+        userNameTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                userNameTextField1KeyPressed(evt);
+            }
+        });
 
         registerButton.setBackground(Constants.HEADER_COLOR);
+        registerButton.setFont(Constants.BUTTON_FONT);
         registerButton.setForeground(Constants.BACKGROUND_COLOR);
         registerButton.setText("Registrera");
+        registerButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         registerButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 registerButtonActionPerformed(evt);
             }
         });
 
+        jPasswordField2.setFont(Constants.INPUT_FONT);
         jPasswordField2.setText("jPasswordField1");
         jPasswordField2.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jPasswordField2FocusGained(evt);
             }
         });
+        jPasswordField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jPasswordField2KeyPressed(evt);
+            }
+        });
 
+        jPasswordField3.setFont(Constants.INPUT_FONT);
         jPasswordField3.setText("jPasswordField1");
         jPasswordField3.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jPasswordField3FocusGained(evt);
+            }
+        });
+        jPasswordField3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jPasswordField3KeyPressed(evt);
             }
         });
 
@@ -276,16 +313,11 @@ public class LogInPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_userNameTextFieldMousePressed
 
     private void logInButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logInButtonActionPerformed
-        if(model.logIn(userNameTextField.getText(), jPasswordField1.getPassword())){
-            frame.setFeatureCard("frontPageCard");
-        }
+        this.logIn();
     }//GEN-LAST:event_logInButtonActionPerformed
 
     private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
-        if(model.constructPassword(jPasswordField2.getPassword()).equals(model.constructPassword(jPasswordField3.getPassword()))){
-            model.register(userNameTextField1.getText(), jPasswordField2.getPassword());
-            frame.setEndingCard("register");
-        }
+        this.register();
     }//GEN-LAST:event_registerButtonActionPerformed
 
     private void jPasswordField3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPasswordField3FocusGained
@@ -296,6 +328,44 @@ public class LogInPanel extends javax.swing.JPanel {
         jPasswordField2.selectAll();
     }//GEN-LAST:event_jPasswordField2FocusGained
 
+    private void userNameTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_userNameTextFieldKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER)
+            this.jPasswordField1.requestFocus();
+    }//GEN-LAST:event_userNameTextFieldKeyPressed
+
+    private void userNameTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_userNameTextField1KeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER)
+            this.jPasswordField3.requestFocus();
+    }//GEN-LAST:event_userNameTextField1KeyPressed
+
+    private void jPasswordField3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordField3KeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER)
+            this.jPasswordField2.requestFocus();
+    }//GEN-LAST:event_jPasswordField3KeyPressed
+
+    private void jPasswordField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordField1KeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER)
+            this.logIn();
+    }//GEN-LAST:event_jPasswordField1KeyPressed
+
+    private void jPasswordField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordField2KeyPressed
+        this.register();
+    }//GEN-LAST:event_jPasswordField2KeyPressed
+
+    private void logIn(){
+        if (model.logIn(userNameTextField.getText(), jPasswordField1.getPassword())) {
+            frame.setFeatureCard("frontPageCard");
+        }
+        frame.logIn();
+    }
+    
+    private void register(){
+        if(model.constructPassword(jPasswordField2.getPassword()).equals(model.constructPassword(jPasswordField3.getPassword()))){
+            model.register(userNameTextField1.getText(), jPasswordField2.getPassword());
+            frame.setEndingCard("register");
+        }
+        frame.logOut();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

@@ -72,7 +72,7 @@ public class HistoryComponentPanel extends javax.swing.JPanel {
 
         jPanel1.setOpaque(false);
 
-        dateLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        dateLabel.setFont(Constants.RESULT_FONT);
         dateLabel.setText("Date:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -94,8 +94,11 @@ public class HistoryComponentPanel extends javax.swing.JPanel {
 
         jPanel5.setOpaque(false);
 
-        addButton.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        addButton.setBackground(Constants.HEADER_COLOR);
+        addButton.setFont(Constants.RESULT_FONT);
+        addButton.setForeground(Constants.BACKGROUND_COLOR);
         addButton.setText("AddToCart");
+        addButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         addButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addButtonActionPerformed(evt);
@@ -123,7 +126,7 @@ public class HistoryComponentPanel extends javax.swing.JPanel {
         jPanel2.setMinimumSize(new java.awt.Dimension(58, 55));
         jPanel2.setOpaque(false);
 
-        orderNumberLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        orderNumberLabel.setFont(Constants.RESULT_FONT);
         orderNumberLabel.setText("ID:");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -172,7 +175,7 @@ public class HistoryComponentPanel extends javax.swing.JPanel {
         jPanel4.setMinimumSize(new java.awt.Dimension(198, 55));
         jPanel4.setOpaque(false);
 
-        totalPriceLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        totalPriceLabel.setFont(Constants.RESULT_FONT);
         totalPriceLabel.setText("Pris:");
         totalPriceLabel.setMaximumSize(new java.awt.Dimension(134, 29));
         totalPriceLabel.setMinimumSize(new java.awt.Dimension(134, 29));
@@ -207,7 +210,7 @@ public class HistoryComponentPanel extends javax.swing.JPanel {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 276, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 481, Short.MAX_VALUE)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(

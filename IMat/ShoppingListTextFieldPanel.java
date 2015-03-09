@@ -6,6 +6,7 @@
 package IMat;
 
 import java.awt.event.KeyEvent;
+import java.util.List;
 import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ShoppingItem;
 
@@ -14,15 +15,23 @@ import se.chalmers.ait.dat215.project.ShoppingItem;
  * @author Joel
  */
 public class ShoppingListTextFieldPanel extends javax.swing.JPanel {
-    private final ShoppingListFeaturePanel slfp;
-    private Product product;
+    private final IMatModel model;
+    private ShoppingItem item;
 
     /**
      * Creates new form ShoppingListTextFieldPanel
      */
-    public ShoppingListTextFieldPanel(ShoppingListFeaturePanel slfp) {
-        this.slfp = slfp;
+    public ShoppingListTextFieldPanel(IMatModel model) {
+        this.model = model;
         initComponents();
+    }
+    
+    public ShoppingListTextFieldPanel(IMatModel model, ShoppingItem item) {
+        this.model = model;
+        this.item = item;
+        initComponents();
+        this.textField.setText(item.getProduct().getName());
+        this.numberTextField.setText("" + item.getAmount());
     }
 
     /**
@@ -37,6 +46,7 @@ public class ShoppingListTextFieldPanel extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         textField = new javax.swing.JTextField();
         deleteButton = new javax.swing.JButton();
+        numberTextField = new javax.swing.JTextField();
 
         setMinimumSize(new java.awt.Dimension(473, 22));
         setOpaque(false);
@@ -56,6 +66,7 @@ public class ShoppingListTextFieldPanel extends javax.swing.JPanel {
             .addGap(0, 22, Short.MAX_VALUE)
         );
 
+        textField.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         textField.setText("Skriv produkt här för att lägga till i kundvagnen");
         textField.setOpaque(false);
         textField.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -69,10 +80,25 @@ public class ShoppingListTextFieldPanel extends javax.swing.JPanel {
             }
         });
 
+        deleteButton.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         deleteButton.setText("X");
         deleteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteButtonActionPerformed(evt);
+            }
+        });
+
+        numberTextField.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        numberTextField.setText("#");
+        numberTextField.setOpaque(false);
+        numberTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                numberTextFieldFocusGained(evt);
+            }
+        });
+        numberTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                numberTextFieldKeyPressed(evt);
             }
         });
 
@@ -83,9 +109,11 @@ public class ShoppingListTextFieldPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(275, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addComponent(textField, javax.swing.GroupLayout.DEFAULT_SIZE, 425, Short.MAX_VALUE)
+                .addComponent(numberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(textField)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(deleteButton))
         );
@@ -93,17 +121,17 @@ public class ShoppingListTextFieldPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textField, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textField, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(numberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void textFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textFieldKeyPressed
         if(evt.getKeyCode() == KeyEvent.VK_ENTER)
-            slfp.textFieldDone(this, textField.getText());
+            this.addProduct();
     }//GEN-LAST:event_textFieldKeyPressed
 
     private void textFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldFocusGained
@@ -111,30 +139,59 @@ public class ShoppingListTextFieldPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_textFieldFocusGained
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
-        if (product != null)
-            this.slfp.removeProduct(product, this);
+        if (item != null)
+            this.model.removeItemFromCart(item);
     }//GEN-LAST:event_deleteButtonActionPerformed
 
-    public void setText(String text){
-        
-    }
+    private void numberTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_numberTextFieldKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            try{
+                model.setItemAmount(item, Double.parseDouble(numberTextField.getText()));
+            } catch (Exception e){
+                
+            }
+            textField.requestFocus();
+        }
+    }//GEN-LAST:event_numberTextFieldKeyPressed
+
+    private void numberTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_numberTextFieldFocusGained
+        numberTextField.selectAll();
+    }//GEN-LAST:event_numberTextFieldFocusGained
     
     public void giveFocus(){
-        textField.requestFocus();
+        numberTextField.requestFocus();
     }
     
     public void unnableToFind(){
         textField.selectAll();
     }
     
+    /*
     public void setProduct(Product product){
         this.product = product;
         textField.setText(product.getName());        
     }
+    */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton deleteButton;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField numberTextField;
     private javax.swing.JTextField textField;
     // End of variables declaration//GEN-END:variables
+
+    private void addProduct() {
+        List<Product> products = model.findProducts(this.textField.getText());
+        double number;
+        try{
+            number = Double.parseDouble(this.numberTextField.getText());
+        } catch (Exception e) {
+            number = 1.0;
+        }
+        if (!products.isEmpty()){
+            this.model.addProduct(products.get(0), number);
+        } else {
+            unnableToFind();
+        }
+    }
 }

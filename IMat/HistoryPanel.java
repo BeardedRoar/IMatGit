@@ -25,7 +25,7 @@ public class HistoryPanel extends javax.swing.JPanel {
         this.model = model;
         List<Order> orders = model.getOrders();
         
-        historyPanel.setLayout(new GridLayout(orders.size(), 1));
+        historyPanel.setLayout(new GridLayout(Math.max(9,orders.size()), 1));
         Iterator<Order> it = orders.iterator();
         
         while (it.hasNext()){
@@ -73,19 +73,19 @@ public class HistoryPanel extends javax.swing.JPanel {
         jPanel1.setBackground(Constants.BACKGROUND_COLOR);
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        dateLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        dateLabel.setFont(Constants.RESULT_FONT);
         dateLabel.setText("Datum:");
 
-        orderNumberLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        orderNumberLabel.setFont(Constants.RESULT_FONT);
         orderNumberLabel.setText("Antal:");
 
-        totalPriceLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        totalPriceLabel.setFont(Constants.RESULT_FONT);
         totalPriceLabel.setText("Pris:");
         totalPriceLabel.setMaximumSize(new java.awt.Dimension(134, 29));
         totalPriceLabel.setMinimumSize(new java.awt.Dimension(134, 29));
         totalPriceLabel.setPreferredSize(new java.awt.Dimension(134, 29));
 
-        orderNumberLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        orderNumberLabel1.setFont(Constants.RESULT_FONT);
         orderNumberLabel1.setText("ID:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

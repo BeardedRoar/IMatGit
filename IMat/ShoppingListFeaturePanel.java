@@ -13,14 +13,16 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
+import se.chalmers.ait.dat215.project.CartEvent;
 import se.chalmers.ait.dat215.project.Product;
+import se.chalmers.ait.dat215.project.ShoppingCartListener;
 import se.chalmers.ait.dat215.project.ShoppingItem;
 
 /**
  *
  * @author axel
  */
-public class ShoppingListFeaturePanel extends javax.swing.JPanel {
+public class ShoppingListFeaturePanel extends javax.swing.JPanel implements ShoppingCartListener {
     
     private BufferedImage img;
     private JPanel textFieldPanel;
@@ -30,7 +32,7 @@ public class ShoppingListFeaturePanel extends javax.swing.JPanel {
     /**
      * Creates new form ShoppingListFeaturePanel
      */
-    public ShoppingListFeaturePanel(IMatModel model) {
+    public ShoppingListFeaturePanel(IMatModel model){
         this.model = model;
         initComponents();
         
@@ -52,36 +54,24 @@ public class ShoppingListFeaturePanel extends javax.swing.JPanel {
         };
         textFields = new ArrayList();
         textFieldPanel.setLayout(new GridLayout(9, 1));
-        ShoppingListTextFieldPanel textField = new ShoppingListTextFieldPanel(this);
-        textFieldPanel.add(textField);
-        textFields.add(textField);
+        reMakeTextFields();
         
         this.containerPanel.add(textFieldPanel);
-    }
-
-    public void textFieldDone(ShoppingListTextFieldPanel sltfp, String text){
-        List<Product> hits = model.findProducts(text);
-        if (hits.size() > 0){
-            Product hit = hits.get(0);
-            model.addProduct(hit, 1.0);
-            sltfp.setProduct(hit);
-            textFields.add(new ShoppingListTextFieldPanel(this));
-            reMakeTextFields();
-        } else {
-            sltfp.unnableToFind();
-        }
-
+        this.model.addCartListener(this);
     }
     
     private void reMakeTextFields(){
         textFieldPanel.removeAll();
-        textFieldPanel.setLayout(new GridLayout(Math.max(9, textFields.size()), 1));
-        for(ShoppingListTextFieldPanel field : textFields){
-            textFieldPanel.add(field);
+        List<ShoppingItem> items = model.getItems();
+        textFieldPanel.setLayout(new GridLayout(Math.max(9, items.size()), 1));
+        for(ShoppingItem item : items){
+            textFieldPanel.add(new ShoppingListTextFieldPanel(model, item));
         }
+        ShoppingListTextFieldPanel shoppingItem = new ShoppingListTextFieldPanel(model);
+        textFieldPanel.add(shoppingItem);
+        shoppingItem.giveFocus();
         repaint();
         revalidate();
-        textFields.get(textFields.size()-1).giveFocus();
     }
     
     /**
@@ -105,13 +95,13 @@ public class ShoppingListFeaturePanel extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(475, 275));
         setPreferredSize(new java.awt.Dimension(475, 275));
 
-        headerPanel.setBackground(new java.awt.Color(251, 0, 51));
+        headerPanel.setBackground(Constants.HEADER_COLOR);
         headerPanel.setBorder(new javax.swing.border.MatteBorder(null));
         headerPanel.setMinimumSize(new java.awt.Dimension(473, 70));
         headerPanel.setPreferredSize(new java.awt.Dimension(473, 70));
 
-        headerLabel.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        headerLabel.setForeground(new java.awt.Color(255, 255, 255));
+        headerLabel.setFont(Constants.FRONT_HEADER_FONT);
+        headerLabel.setForeground(Constants.BACKGROUND_COLOR);
         headerLabel.setText("Inköpslista");
         headerLabel.setMaximumSize(new java.awt.Dimension(32767, 32767));
         headerLabel.setMinimumSize(new java.awt.Dimension(0, 0));
@@ -136,7 +126,7 @@ public class ShoppingListFeaturePanel extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        containerPanel.setLayout(new java.awt.GridLayout());
+        containerPanel.setLayout(new java.awt.GridLayout(1, 0));
         containerScrollPane.setViewportView(containerPanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -164,9 +154,9 @@ public class ShoppingListFeaturePanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 
-    void removeProduct(Product product, ShoppingListTextFieldPanel sltfp) {
-        model.removeProductFromCart(product);
-        textFields.remove(sltfp);
+
+    @Override
+    public void shoppingCartChanged(CartEvent ce) {
         reMakeTextFields();
     }
 }

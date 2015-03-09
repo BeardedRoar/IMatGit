@@ -64,11 +64,12 @@ public class ProductPanel extends javax.swing.JPanel {
 
         productIcon.setIcon(model.getImageIcon(product, 143, 111)
         );
-        productIcon.setText("productIcon");
         productIcon.setPreferredSize(new java.awt.Dimension(180, 111));
 
+        productNameLabel.setFont(Constants.RESULT_FONT);
         productNameLabel.setText(product.getName());
 
+        productPriceLabel.setFont(Constants.RESULT_FONT);
         productPriceLabel.setText(product.getPrice() + " " + product.getUnit());
 
         cartPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)));
@@ -92,7 +93,7 @@ public class ProductPanel extends javax.swing.JPanel {
         });
 
         cartButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iMat.resources/Productcart.png"))); // NOI18N
-        cartButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        cartButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cartButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cartButtonActionPerformed(evt);
@@ -100,7 +101,7 @@ public class ProductPanel extends javax.swing.JPanel {
         });
 
         upButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iMat.resources/ArrowUpImage.png"))); // NOI18N
-        upButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        upButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         upButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         upButton.setPreferredSize(new java.awt.Dimension(73, 26));
         upButton.addActionListener(new java.awt.event.ActionListener() {
@@ -110,7 +111,7 @@ public class ProductPanel extends javax.swing.JPanel {
         });
 
         downButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iMat.resources/ArrowDownImage.png"))); // NOI18N
-        downButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        downButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         downButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         downButton.setPreferredSize(new java.awt.Dimension(73, 26));
         downButton.addActionListener(new java.awt.event.ActionListener() {
@@ -178,7 +179,7 @@ public class ProductPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(productIcon, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(productIcon, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(cartPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(17, 17, 17)

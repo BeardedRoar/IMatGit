@@ -86,19 +86,23 @@ public class ShoppingCartPanel extends javax.swing.JPanel implements ShoppingCar
 
         infoPanel.setOpaque(false);
 
-        nextButton.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        nextButton.setBackground(Constants.HEADER_COLOR);
+        nextButton.setFont(Constants.BUTTON_FONT);
+        nextButton.setBackground(Constants.HEADER_COLOR);
+        nextButton.setForeground(Constants.BACKGROUND_COLOR);
+        nextButton.setForeground(Constants.BACKGROUND_COLOR);
         nextButton.setText("Gå vidare");
-        nextButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        nextButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         nextButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nextButtonActionPerformed(evt);
             }
         });
 
-        totLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        totLabel.setFont(Constants.RESULT_FONT);
         totLabel.setText("Totalt:");
 
-        costLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        costLabel.setFont(Constants.RESULT_FONT);
         costLabel.setText("cost");
 
         javax.swing.GroupLayout infoPanelLayout = new javax.swing.GroupLayout(infoPanel);
@@ -142,7 +146,7 @@ public class ShoppingCartPanel extends javax.swing.JPanel implements ShoppingCar
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(itemScrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addComponent(infoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
