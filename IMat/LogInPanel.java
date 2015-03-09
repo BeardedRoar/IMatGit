@@ -49,6 +49,11 @@ public class LogInPanel extends javax.swing.JPanel {
         jPasswordField3 = new javax.swing.JPasswordField();
 
         setMinimumSize(new java.awt.Dimension(1000, 600));
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
 
         jPanel1.setBackground(Constants.BACKGROUND_COLOR);
 
@@ -67,6 +72,9 @@ public class LogInPanel extends javax.swing.JPanel {
         userNameTextField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 userNameTextFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                userNameTextFieldFocusLost(evt);
             }
         });
         userNameTextField.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -130,7 +138,7 @@ public class LogInPanel extends javax.swing.JPanel {
                 .addComponent(userNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
                 .addComponent(logInButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -140,7 +148,7 @@ public class LogInPanel extends javax.swing.JPanel {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(12, Short.MAX_VALUE)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -166,6 +174,9 @@ public class LogInPanel extends javax.swing.JPanel {
         userNameTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 userNameTextField1FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                userNameTextField1FocusLost(evt);
             }
         });
         userNameTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -227,7 +238,7 @@ public class LogInPanel extends javax.swing.JPanel {
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel6Layout.createSequentialGroup()
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(userNameTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)
+                            .addComponent(userNameTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)
                             .addComponent(jPasswordField3, javax.swing.GroupLayout.Alignment.LEADING))
                         .addGap(109, 109, 109)))
                 .addContainerGap())
@@ -243,7 +254,7 @@ public class LogInPanel extends javax.swing.JPanel {
                 .addComponent(jPasswordField3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                 .addComponent(registerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -351,6 +362,22 @@ public class LogInPanel extends javax.swing.JPanel {
     private void jPasswordField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordField2KeyPressed
         this.register();
     }//GEN-LAST:event_jPasswordField2KeyPressed
+
+    private void userNameTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_userNameTextField1FocusLost
+        if(userNameTextField1.getText().equals("")){
+            userNameTextField1.setText("Användarnamn");
+        }
+    }//GEN-LAST:event_userNameTextField1FocusLost
+
+    private void userNameTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_userNameTextFieldFocusLost
+        if(userNameTextField.getText().equals("")){
+            userNameTextField.setText("Användarnamn");
+        }
+    }//GEN-LAST:event_userNameTextFieldFocusLost
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        this.requestFocus();
+    }//GEN-LAST:event_formMouseClicked
 
     private void logIn(){
         if (model.logIn(userNameTextField.getText(), jPasswordField1.getPassword())) {
