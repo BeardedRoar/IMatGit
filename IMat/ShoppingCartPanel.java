@@ -5,6 +5,7 @@
  */
 package IMat;
 
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.util.Iterator;
 import java.util.List;
@@ -38,9 +39,12 @@ public class ShoppingCartPanel extends javax.swing.JPanel implements ShoppingCar
             this.itemPanel.add(tempPanel);
             tempPanel.addShoppingCartComponentListener(this);
             tempPanel.addShoppingCartComponentListener(sccl);
+            
         }
         
         this.costLabel.setText(model.getTotalCost() + " kr");
+        
+        this.DisableNextButtonIfCartIsEmpty();
     }
     
     public ShoppingCartPanel(IMatModel model, ShoppingCartComponentListener sccl, MainFrame frame) {
@@ -63,6 +67,7 @@ public class ShoppingCartPanel extends javax.swing.JPanel implements ShoppingCar
         nextButton = new javax.swing.JButton();
         totLabel = new javax.swing.JLabel();
         costLabel = new javax.swing.JLabel();
+        warningLabel = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(993, 600));
         setOpaque(false);
@@ -75,7 +80,7 @@ public class ShoppingCartPanel extends javax.swing.JPanel implements ShoppingCar
         itemPanel.setLayout(itemPanelLayout);
         itemPanelLayout.setHorizontalGroup(
             itemPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 967, Short.MAX_VALUE)
+            .addGap(0, 971, Short.MAX_VALUE)
         );
         itemPanelLayout.setVerticalGroup(
             itemPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -131,22 +136,31 @@ public class ShoppingCartPanel extends javax.swing.JPanel implements ShoppingCar
                 .addContainerGap())
         );
 
+        warningLabel.setForeground(Constants.HEADER_COLOR);
+        warningLabel.setText("* Din kundvagn är tom!");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(infoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(itemScrollPanel)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(itemScrollPanel)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(warningLabel)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addComponent(infoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(itemScrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(warningLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addComponent(infoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -157,10 +171,21 @@ public class ShoppingCartPanel extends javax.swing.JPanel implements ShoppingCar
         this.itemPanel.repaint();
     }
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
-        if (frame != null && (!model.getItems().isEmpty()))
+        if (frame != null && (!CartIsEmpty()))
             frame.setFeatureCard("checkoutCard");
     }//GEN-LAST:event_nextButtonActionPerformed
-
+    public boolean CartIsEmpty(){
+        return model.getItems().isEmpty();
+    }
+    
+    public void DisableNextButtonIfCartIsEmpty(){
+        if(CartIsEmpty()){
+          nextButton.setEnabled(true);  
+        }
+        else{
+            nextButton.setEnabled(false);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel costLabel;
@@ -169,6 +194,7 @@ public class ShoppingCartPanel extends javax.swing.JPanel implements ShoppingCar
     private javax.swing.JScrollPane itemScrollPanel;
     private javax.swing.JButton nextButton;
     private javax.swing.JLabel totLabel;
+    private javax.swing.JLabel warningLabel;
     // End of variables declaration//GEN-END:variables
 
     @Override
