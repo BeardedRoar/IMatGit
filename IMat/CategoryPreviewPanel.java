@@ -34,6 +34,9 @@ public class CategoryPreviewPanel extends javax.swing.JPanel implements Category
             image = new ImageIcon(getClass().getResource("/iMat.resources/" + name + ".jpg"));
         }
         initComponents();
+        if ("Frukt & Grönt".equals(name)){
+            this.nameLabel.setText("<html>Frukt & <p>Grönt</p>");
+        }
         this.addMouseListener(listener);
         this.isSub = true;
     }
@@ -69,18 +72,20 @@ public class CategoryPreviewPanel extends javax.swing.JPanel implements Category
         setMinimumSize(new java.awt.Dimension(180, 240));
         setPreferredSize(new java.awt.Dimension(180, 240));
 
-        categoryInternalPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        categoryInternalPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         categoryInternalPanel.setBackground(Constants.BACKGROUND_COLOR);
 
         iconLabel.setIcon(image);
-        iconLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        iconLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         iconLabel.setMaximumSize(new java.awt.Dimension(138, 111));
         iconLabel.setMinimumSize(new java.awt.Dimension(138, 111));
         iconLabel.setPreferredSize(new java.awt.Dimension(138, 111));
 
         nameLabel.setFont(Constants.RESULT_FONT);
+        nameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         nameLabel.setText(pc == null ? "Alla " + name : name);
-        nameLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        nameLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        nameLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout categoryInternalPanelLayout = new javax.swing.GroupLayout(categoryInternalPanel);
         categoryInternalPanel.setLayout(categoryInternalPanelLayout);
@@ -105,20 +110,7 @@ public class CategoryPreviewPanel extends javax.swing.JPanel implements Category
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(categoryInternalPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 10, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(categoryInternalPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 74, Short.MAX_VALUE))
-        );
+        add(categoryInternalPanel);
     }// </editor-fold>//GEN-END:initComponents
 
 

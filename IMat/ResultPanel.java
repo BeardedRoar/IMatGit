@@ -30,7 +30,7 @@ public class ResultPanel<T extends JPanel> extends javax.swing.JPanel {
         
         List<ProductPanel> products = model.getProductPanels(pc);
         Iterator<ProductPanel> it = products.iterator();
-        this.resultPanel.setLayout(new GridLayout((products.size() +3)/4, 4));
+        this.resultPanel.setLayout(new GridLayout((products.size() + 4)/5, 5));
         while(it.hasNext()){
             this.resultPanel.add(it.next());
         }
@@ -42,7 +42,7 @@ public class ResultPanel<T extends JPanel> extends javax.swing.JPanel {
         initComponents();
         
         Iterator<T> it = products.iterator();
-        this.resultPanel.setLayout(new GridLayout((products.size() +3)/4, 4));
+        this.resultPanel.setLayout(new GridLayout((products.size() + 4 )/5, 5));
         while(it.hasNext()){
             this.resultPanel.add(it.next());
         }

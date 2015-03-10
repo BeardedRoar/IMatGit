@@ -92,9 +92,11 @@ public class ProductPanel extends javax.swing.JPanel {
         EnbFavouriteLabel.setVisible(false);
 
         productPriceLabel.setFont(Constants.RESULT_FONT);
+        productPriceLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         productPriceLabel.setText(product.getPrice() + " " + product.getUnit());
 
         productNameLabel.setFont(Constants.RESULT_FONT);
+        productNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         productNameLabel.setText(product.getName());
 
         productIcon.setIcon(model.getImageIcon(product, 143, 111)
