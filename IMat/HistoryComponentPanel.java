@@ -41,7 +41,7 @@ public class HistoryComponentPanel extends javax.swing.JPanel {
         while (it.hasNext()){
             totPrice += it.next().getTotal();
         }
-        this.totalPriceLabel.setText("" + totPrice);
+        this.totalPriceLabel.setText("" + ((int)(totPrice*100))/100.0);
         
     }
 
