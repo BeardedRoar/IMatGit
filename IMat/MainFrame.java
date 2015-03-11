@@ -596,7 +596,7 @@ public class MainFrame extends javax.swing.JFrame {
                     this.setTitle("Mina Favoriter - IMat");
                 } else if (panel.getName().equals("Ofta Köpta")) {
                     this.resultPanelHolder.removeAll();
-                    this.resultPanelHolder.add(new ResultPanel(model.getOfthenBought(1, 12), model));
+                    this.resultPanelHolder.add(new ResultPanel(model.getOfthenBought(1, 10), model));
                     card.show(this.featurePanel, "resultCard");
                     this.setTitle("Ofta Köpta - IMat");
                 } else {
