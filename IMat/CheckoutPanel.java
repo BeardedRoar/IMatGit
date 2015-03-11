@@ -34,6 +34,10 @@ public class CheckoutPanel extends javax.swing.JPanel {
         postalCodeTextField1.setVisible(false);
         postalAdressTextField1.setVisible(false);
         errorLabel.setVisible(false);
+        errorLabel1.setVisible(false);
+        errorLabel2.setVisible(false);
+        errorLabel3.setVisible(false);
+        
         
         if(!model.getCardNumber().equals("")){ 
             cardNumberTextField.setText(model.getCardNumber());
