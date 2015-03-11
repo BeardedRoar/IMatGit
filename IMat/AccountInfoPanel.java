@@ -149,10 +149,8 @@ public class AccountInfoPanel extends javax.swing.JPanel {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 textFieldFocusGained(evt);
             }
-        });
-        cvcTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cvcTextFieldActionPerformed(evt);
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                cvcTextFieldFocusLost(evt);
             }
         });
 
@@ -165,10 +163,8 @@ public class AccountInfoPanel extends javax.swing.JPanel {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 textFieldFocusGained(evt);
             }
-        });
-        monthTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                monthTextFieldActionPerformed(evt);
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                monthTextFieldFocusLost(evt);
             }
         });
 
@@ -178,10 +174,8 @@ public class AccountInfoPanel extends javax.swing.JPanel {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 textFieldFocusGained(evt);
             }
-        });
-        yearTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                yearTextFieldActionPerformed(evt);
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                yearTextFieldFocusLost(evt);
             }
         });
 
@@ -379,29 +373,28 @@ public class AccountInfoPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(doneButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(adressTextField, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                            .addComponent(postalCodeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(postalAdressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(sendToMailCheckBox, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                            .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(nameTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(nameLabel, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(adressLabel, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(adressTextField2, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                            .addComponent(postalCodeLabel)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(postalAdressLabel))
-                        .addComponent(sendToOtherAdressCheckBox, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                            .addComponent(postalCodeTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(postalAdressTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(adressTextField)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(postalCodeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(postalAdressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(sendToMailCheckBox)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(nameTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nameLabel)
+                    .addComponent(adressLabel)
+                    .addComponent(adressTextField2)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(postalCodeLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(postalAdressLabel))
+                    .addComponent(sendToOtherAdressCheckBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(postalCodeTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(postalAdressTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -570,61 +563,73 @@ public class AccountInfoPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_textFieldFocusGained
 
     private void doneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doneButtonActionPerformed
-        model.setCardNumber(cardNumberTextField.getText());
-        model.setCardType((String)cardComboBox.getSelectedItem());
-        model.setValidMonth(Integer.parseInt(monthTextField.getText()));
-        model.setValidYear(Integer.parseInt(yearTextField.getText()));
-        model.setVerificationCode(Integer.parseInt(cvcTextField.getText()));
+        if (noFault){
+            model.setCardNumber(cardNumberTextField.getText());
+            model.setCardType((String)cardComboBox.getSelectedItem());
+            model.setValidMonth(Integer.parseInt(monthTextField.getText()));
+            model.setValidYear(Integer.parseInt(yearTextField.getText()));
+            model.setVerificationCode(Integer.parseInt(cvcTextField.getText()));
         
-        model.setFirstName(nameTextField.getText());
-        model.setLastName(nameTextField2.getText());
-        model.setAddress(adressTextField.getText());
+            model.setFirstName(nameTextField.getText());
+            model.setLastName(nameTextField2.getText());
+            model.setAddress(adressTextField.getText());
         
-        model.setPostCode(postalCodeLabel.getText());
-        model.setPostAddress(postalAdressTextField.getText());
+            model.setPostCode(postalCodeLabel.getText());
+            model.setPostAddress(postalAdressTextField.getText());
         
-        model.setEmail(emailTextField.getText());
-        model.setPhoneNumber(phoneTextField.getText());
-        model.setMobilePhoneNumber(mobilePhoneTextField.getText());
+            model.setEmail(emailTextField.getText());
+            model.setPhoneNumber(phoneTextField.getText());
+            model.setMobilePhoneNumber(mobilePhoneTextField.getText());
         
-        frame.setFeatureCard("frontPageCard");
+            frame.setFeatureCard("frontPageCard");
+        }
     }//GEN-LAST:event_doneButtonActionPerformed
 
     private void cardNumberTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cardNumberTextFieldFocusLost
         String cardNum = cardNumberTextField.getText();
         if(!(cardNum.matches("\\d+") && cardNum.length() == 16)){
             errorLabel1.setVisible(true);
+            noFault = false;
         } else{
             errorLabel1.setVisible(false);
+            noFault = true;
         }
     }//GEN-LAST:event_cardNumberTextFieldFocusLost
 
-    private void yearTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yearTextFieldActionPerformed
-        String cardNum = yearTextField.getText();
-        if(!(cardNum.matches("\\d+") && cardNum.length() == 4)){
+    private void yearTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_yearTextFieldFocusLost
+        String textVal = monthTextField.getText();
+        int num = Integer.parseInt(textVal);
+        if(!(textVal.matches("\\d+") && textVal.length() == 4 && num <= 2022 && num >= 2015 )){
             errorLabel2.setVisible(true);
+            noFault = false;
         } else{
             errorLabel2.setVisible(false);
+            noFault = true;
         }
-    }//GEN-LAST:event_yearTextFieldActionPerformed
+    }//GEN-LAST:event_yearTextFieldFocusLost
 
-    private void monthTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_monthTextFieldActionPerformed
-        String cardNum = monthTextField.getText();
-        if(!(cardNum.matches("\\d+") && (cardNum.length() == 2 || cardNum.length() == 1))){
-            errorLabel2.setVisible(true);
-        } else{
-            errorLabel2.setVisible(false);
-        }
-    }//GEN-LAST:event_monthTextFieldActionPerformed
-
-    private void cvcTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cvcTextFieldActionPerformed
+    private void cvcTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cvcTextFieldFocusLost
         String cardNum = cvcTextField.getText();
         if(!(cardNum.matches("\\d+") && cardNum.length() == 3)){
             errorLabel3.setVisible(true);
+            noFault = false;
         } else{
             errorLabel3.setVisible(false);
+            noFault = true;
         }
-    }//GEN-LAST:event_cvcTextFieldActionPerformed
+    }//GEN-LAST:event_cvcTextFieldFocusLost
+
+    private void monthTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_monthTextFieldFocusLost
+        String textVal = monthTextField.getText();
+        int num = Integer.parseInt(textVal);
+        if(!(textVal.matches("\\d+") && (textVal.length() == 2 || textVal.length() == 1) && num <= 12 && num >= 1 )){
+            errorLabel2.setVisible(true);
+            noFault = false;
+        } else{
+            errorLabel2.setVisible(false);
+            noFault = true;
+        }
+    }//GEN-LAST:event_monthTextFieldFocusLost
 
     
     
