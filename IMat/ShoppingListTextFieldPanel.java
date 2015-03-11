@@ -38,7 +38,8 @@ public class ShoppingListTextFieldPanel extends javax.swing.JPanel {
         this.item = item;
         initComponents();
         this.textField.setText(item.getProduct().getName());
-        this.numberTextField.setText("" + item.getAmount());
+        this.numberTextField.setText("" + (item.getProduct().getUnitSuffix().equals("kg") ?
+                item.getAmount() : Integer.toString((int)item.getAmount())));
     }
 
     /**
@@ -120,7 +121,6 @@ public class ShoppingListTextFieldPanel extends javax.swing.JPanel {
 
     private void textFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textFieldKeyPressed
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-            //this.addProduct();
             createPopup();
         }
     }//GEN-LAST:event_textFieldKeyPressed
@@ -137,7 +137,8 @@ public class ShoppingListTextFieldPanel extends javax.swing.JPanel {
     private void numberTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_numberTextFieldKeyPressed
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
             try{
-                model.setItemAmount(item, Double.parseDouble(numberTextField.getText()));
+                model.setItemAmount(item, (item.getProduct().getUnitSuffix().equals("kg") ? 
+                        Double.parseDouble(numberTextField.getText()) : (int)Double.parseDouble(numberTextField.getText())));
             } catch (Exception e){
                 
             }
@@ -154,7 +155,12 @@ public class ShoppingListTextFieldPanel extends javax.swing.JPanel {
     }
     
     public void unnableToFind(){
+        popup.removeAll();
+        popup.setVisible(false);
+        popup.add(new JMenuItem(this.textField.getText() + " not found"));
+        popup.show(this, this.textField.getWidth(), 0);
         textField.selectAll();
+        textField.requestFocus();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -177,19 +183,19 @@ public class ShoppingListTextFieldPanel extends javax.swing.JPanel {
         List<Product> products = model.findProducts(this.textField.getText());
         if (products.size() == 1){
             this.addProduct(products.get(0));
-        } else if (products.size() > 1){
-        popup.removeAll();
-        
-        Iterator<Product> it = products.iterator();
-        ProductMenuItem m;
-        Product tempItem = it.next();
-        while (it.hasNext()){
-            tempItem = it.next();
-            m = new ProductMenuItem(tempItem);
-            popup.add(m);
-        }
-        popup.show(this, this.textField.getWidth(), 0);
-        } else if (products.isEmpty()){
+        } else if (products.size() > 1) {
+            popup.removeAll();
+
+            Iterator<Product> it = products.iterator();
+            ProductMenuItem m;
+            Product tempItem;
+            while (it.hasNext()) {
+                tempItem = it.next();
+                m = new ProductMenuItem(tempItem);
+                popup.add(m);
+            }
+            popup.show(this, this.textField.getWidth(), 0);
+        } else if (products.isEmpty()) {
             this.unnableToFind();
         }
     

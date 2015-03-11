@@ -74,7 +74,10 @@ public class ShoppingListPreview implements ShoppingCartListener {
         ShoppingItem tempItem;
         while (it.hasNext()){
             tempItem = it.next();
-            m = new JMenuItem(tempItem.getAmount() + " " + tempItem.getProduct().getUnitSuffix() + " " + tempItem.getProduct().getName());
+            m = new JMenuItem((tempItem.getProduct().getUnitSuffix().equals("kg") ?
+                    tempItem.getAmount() : (int)tempItem.getAmount()) + " " + 
+                    tempItem.getProduct().getUnitSuffix() + " " + 
+                    tempItem.getProduct().getName());
             popup.add(m);
         }
     }
