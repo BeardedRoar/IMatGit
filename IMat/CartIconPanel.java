@@ -35,7 +35,7 @@ public class CartIconPanel extends javax.swing.JPanel implements ShoppingCartLis
         this.mod = model;
         this.frame = frame;
         initComponents();
-        this.totCostLabel.setText("Kostnad: " + model.getTotalCost() + " kr");
+        this.totCostLabel.setText("Kostnad: " + ((int)(model.getTotalCost()*100))/100.0 + " kr");
         this.slp = new ShoppingListPreview(imagePanel, model);
         this.mod.addCartListener(slp);
         try {

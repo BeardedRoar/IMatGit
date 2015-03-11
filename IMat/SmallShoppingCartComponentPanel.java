@@ -120,7 +120,7 @@ public class SmallShoppingCartComponentPanel extends javax.swing.JPanel {
         jPanel4.setOpaque(false);
 
         accualTotalPriceLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        accualTotalPriceLabel.setText(""+this.shoppingItem.getTotal() + " kr");
+        accualTotalPriceLabel.setText("" + ((int)(this.shoppingItem.getTotal()*100))/100.0 + " kr");
 
         totalPriceLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         totalPriceLabel.setText("Totalpris");

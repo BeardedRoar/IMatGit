@@ -223,7 +223,7 @@ public class ShoppingCartComponentPanel extends javax.swing.JPanel {
         totalPriceLabel.setText("Totalpris");
 
         accualTotalPriceLabel.setFont(Constants.RESULT_FONT);
-        accualTotalPriceLabel.setText(""+this.shoppingItem.getTotal() + " kr");
+        accualTotalPriceLabel.setText("" + ((int)(this.shoppingItem.getTotal()*100))/100.0 + " kr");
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -297,7 +297,7 @@ public class ShoppingCartComponentPanel extends javax.swing.JPanel {
                 nbrOfProductsTextfield.setText(getText());
             }
             this.model.setItemAmount(shoppingItem, getAmount());
-            accualTotalPriceLabel.setText("" + this.shoppingItem.getTotal() + " kr");
+            accualTotalPriceLabel.setText("" + ((int)(this.shoppingItem.getTotal()*100))/100.0 + " kr");
         }
         catch(NumberFormatException e){
             nbrOfProductsTextfield.setText(getText());
@@ -308,7 +308,7 @@ public class ShoppingCartComponentPanel extends javax.swing.JPanel {
         if(this.shoppingItem.getAmount()>0){
             this.model.setItemAmount(shoppingItem, this.shoppingItem.getAmount() + 1);
             nbrOfProductsTextfield.setText(getText());
-            accualTotalPriceLabel.setText("" + this.shoppingItem.getTotal() + " kr");
+            accualTotalPriceLabel.setText("" + ((int)(this.shoppingItem.getTotal()*100))/100.0 + " kr");
         }
     }//GEN-LAST:event_upButtonActionPerformed
 
@@ -316,7 +316,7 @@ public class ShoppingCartComponentPanel extends javax.swing.JPanel {
         if(this.shoppingItem.getAmount()>1){
            this.model.setItemAmount(shoppingItem, this.shoppingItem.getAmount() - 1); 
            nbrOfProductsTextfield.setText(getText());
-           accualTotalPriceLabel.setText("" + this.shoppingItem.getTotal() + " kr");
+           accualTotalPriceLabel.setText("" + ((int)(this.shoppingItem.getTotal()*100))/100.0 + " kr");
         }
     }//GEN-LAST:event_downButtonActionPerformed
 

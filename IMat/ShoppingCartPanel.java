@@ -39,7 +39,7 @@ public class ShoppingCartPanel extends javax.swing.JPanel implements ShoppingCar
         }
         
         this.model.addCartListener(this);
-        this.costLabel.setText(model.getTotalCost() + " kr");
+        this.costLabel.setText(((int)(model.getTotalCost()*100))/100.0 + " kr");
         this.DisableNextButtonIfCartIsEmpty();
     }
     
@@ -210,7 +210,7 @@ public class ShoppingCartPanel extends javax.swing.JPanel implements ShoppingCar
 
     @Override
     public void shoppingCartChanged(CartEvent ce) {
-        this.costLabel.setText(model.getTotalCost() + " kr");
+        this.costLabel.setText(((int)(model.getTotalCost()*100))/100.0 + " kr");
     }
 
     
