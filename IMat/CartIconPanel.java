@@ -171,11 +171,13 @@ public class CartIconPanel extends javax.swing.JPanel implements ShoppingCartLis
 
     @Override
     public void shoppingCartChanged(CartEvent ce) {
-        this.totCostLabel.setText("Kostnad: " + mod.getTotalCost() + " kr");
-        this.validationInLabel.setVisible(true);
-        this.validationNameLabel.setVisible(true);
-        this.validationNameLabel.setText(ce.getShoppingItem().getProduct().getName());
-        this.validationInLabel.setText((ce.isAddEvent() ? "lades i" : "togs bort ut") + " kundvagnen.");
+        this.totCostLabel.setText("Kostnad: " + ((int)(mod.getTotalCost()*100))/100.0 + " kr");
+        if (ce.getShoppingItem() != null) {
+            this.validationInLabel.setVisible(true);
+            this.validationNameLabel.setVisible(true);
+            this.validationNameLabel.setText(ce.getShoppingItem().getProduct().getName());
+            this.validationInLabel.setText((ce.isAddEvent() ? "lades i" : "togs bort ut") + " kundvagnen.");
+        }
         if (this.timer != null)
             this.timer.stop();
         this.timer = new Timer(2500, new ActionListener(){
