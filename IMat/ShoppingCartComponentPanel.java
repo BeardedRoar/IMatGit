@@ -129,7 +129,7 @@ public class ShoppingCartComponentPanel extends javax.swing.JPanel {
 
         nbrOfProductsTextfield.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         nbrOfProductsTextfield.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        nbrOfProductsTextfield.setText(Integer.toString((int) this.shoppingItem.getAmount()));
+        nbrOfProductsTextfield.setText(getText());
         nbrOfProductsTextfield.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 0, 0, new java.awt.Color(0, 0, 0)));
         nbrOfProductsTextfield.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -293,32 +293,30 @@ public class ShoppingCartComponentPanel extends javax.swing.JPanel {
 
     private void nbrOfProductsTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nbrOfProductsTextfieldActionPerformed
         try{
-            if(Integer.parseInt(nbrOfProductsTextfield.getText())<1){
-                nbrOfProductsTextfield.setText(Integer.toString((int) this.shoppingItem.getAmount()));
+            if(Double.parseDouble(nbrOfProductsTextfield.getText()) < 0){
+                nbrOfProductsTextfield.setText(getText());
             }
-            this.model.setItemAmount(shoppingItem, Integer.parseInt(nbrOfProductsTextfield.getText()));
+            this.model.setItemAmount(shoppingItem, getAmount());
             accualTotalPriceLabel.setText("" + this.shoppingItem.getTotal() + " kr");
         }
         catch(NumberFormatException e){
-            nbrOfProductsTextfield.setText(Integer.toString((int) this.shoppingItem.getAmount()));
+            nbrOfProductsTextfield.setText(getText());
         }
     }//GEN-LAST:event_nbrOfProductsTextfieldActionPerformed
 
     private void upButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_upButtonActionPerformed
         if(this.shoppingItem.getAmount()>0){
             this.model.setItemAmount(shoppingItem, this.shoppingItem.getAmount() + 1);
-            nbrOfProductsTextfield.setText(Integer.toString((int) this.shoppingItem.getAmount()));
+            nbrOfProductsTextfield.setText(getText());
             accualTotalPriceLabel.setText("" + this.shoppingItem.getTotal() + " kr");
-//            this.fireComponentChange(shoppingItem, true);
         }
     }//GEN-LAST:event_upButtonActionPerformed
 
     private void downButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_downButtonActionPerformed
         if(this.shoppingItem.getAmount()>1){
            this.model.setItemAmount(shoppingItem, this.shoppingItem.getAmount() - 1); 
-           nbrOfProductsTextfield.setText(Integer.toString((int) this.shoppingItem.getAmount()));
+           nbrOfProductsTextfield.setText(getText());
            accualTotalPriceLabel.setText("" + this.shoppingItem.getTotal() + " kr");
-//           this.fireComponentChange(shoppingItem, false);
         }
     }//GEN-LAST:event_downButtonActionPerformed
 
@@ -336,12 +334,27 @@ public class ShoppingCartComponentPanel extends javax.swing.JPanel {
 
     private void deleteLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteLabelMouseClicked
         shoppingCartPanel.removeCartComponentPanel(this);
-//        this.fireComponentChange(shoppingItem, false);
         shoppingCartPanel.DisableNextButtonIfCartIsEmpty();
     }//GEN-LAST:event_deleteLabelMouseClicked
 
     public ShoppingItem getShoppingItem() {
         return shoppingItem;
+    }
+    
+    private double getAmount(){
+        if ("kg".equals(this.shoppingItem.getProduct().getUnitSuffix())) {
+            return Double.parseDouble(nbrOfProductsTextfield.getText());
+        } else {
+            return (int)Double.parseDouble(nbrOfProductsTextfield.getText());
+        }
+    }
+    
+    private String getText(){
+        if ("kg".equals(this.shoppingItem.getProduct().getUnitSuffix())) {
+            return Double.toString(shoppingItem.getAmount());
+        } else {
+            return Integer.toString((int)shoppingItem.getAmount());
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
