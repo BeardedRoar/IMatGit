@@ -17,7 +17,7 @@ import se.chalmers.ait.dat215.project.ShoppingItem;
  *
  * @author Joel
  */
-public class ShoppingCartPanel extends javax.swing.JPanel implements ShoppingCartComponentListener {
+public class ShoppingCartPanel extends javax.swing.JPanel implements ShoppingCartListener {
     
     private final IMatModel model;
     private MainFrame frame;
@@ -25,7 +25,7 @@ public class ShoppingCartPanel extends javax.swing.JPanel implements ShoppingCar
     /**
      * Creates new form ShoppingCartPanel
      */
-    public ShoppingCartPanel(IMatModel model, ShoppingCartComponentListener sccl){
+    public ShoppingCartPanel(IMatModel model){
         this.model = model;
         initComponents();
         
@@ -34,18 +34,17 @@ public class ShoppingCartPanel extends javax.swing.JPanel implements ShoppingCar
         Iterator<ShoppingItem> it = items.iterator();
         ShoppingCartComponentPanel tempPanel;
         while (it.hasNext()){
-            tempPanel = new ShoppingCartComponentPanel(it.next(), this);
+            tempPanel = new ShoppingCartComponentPanel(it.next(), this, model);
             this.itemPanel.add(tempPanel);
-            tempPanel.addShoppingCartComponentListener(this);
-            tempPanel.addShoppingCartComponentListener(sccl);
         }
         
+        this.model.addCartListener(this);
         this.costLabel.setText(model.getTotalCost() + " kr");
         this.DisableNextButtonIfCartIsEmpty();
     }
     
-    public ShoppingCartPanel(IMatModel model, ShoppingCartComponentListener sccl, MainFrame frame) {
-        this(model, sccl);
+    public ShoppingCartPanel(IMatModel model, MainFrame frame) {
+        this(model);
         this.frame = frame;
     }
 
@@ -166,9 +165,9 @@ public class ShoppingCartPanel extends javax.swing.JPanel implements ShoppingCar
         );
     }// </editor-fold>//GEN-END:initComponents
     
-    public void removeCartComponentPanel(ShoppingCartComponentPanel s){
-        this.itemPanel.remove(s);
-        model.removeItemFromCart(s.getShoppingItem());
+    public void removeCartComponentPanel(ShoppingCartComponentPanel sccp){
+        this.itemPanel.remove(sccp);
+        model.removeItemFromCart(sccp.getShoppingItem());
         this.itemPanel.repaint();
     }
     
@@ -210,7 +209,9 @@ public class ShoppingCartPanel extends javax.swing.JPanel implements ShoppingCar
     // End of variables declaration//GEN-END:variables
 
     @Override
-    public void shoppingCartComponentChanged(ShoppingItem item, boolean itemAdded) {
+    public void shoppingCartChanged(CartEvent ce) {
         this.costLabel.setText(model.getTotalCost() + " kr");
     }
+
+    
 }

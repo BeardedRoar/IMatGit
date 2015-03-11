@@ -9,20 +9,16 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import se.chalmers.ait.dat215.project.CartEvent;
 import se.chalmers.ait.dat215.project.ShoppingCartListener;
-import se.chalmers.ait.dat215.project.ShoppingItem;
 
 /**
  *
  * @author Joel
  */
-public class CartIconPanel extends javax.swing.JPanel 
-implements ShoppingCartListener, ShoppingCartComponentListener{
+public class CartIconPanel extends javax.swing.JPanel implements ShoppingCartListener{
     private final IMatModel mod;
     private ShoppingListPreview slp;
     private final MainFrame frame;
@@ -202,14 +198,6 @@ implements ShoppingCartListener, ShoppingCartComponentListener{
 
     @Override
     public void shoppingCartChanged(CartEvent ce) {
-        this.numberLabel.setText("Antal produkter: " + mod.getItems().size());
-        this.totCostLabel.setText("Kostnad: " + mod.getTotalCost());
-        repaint();
-        revalidate();
-    }
-
-    @Override
-    public void shoppingCartComponentChanged(ShoppingItem item, boolean itemAdded) {
         this.numberLabel.setText("Antal produkter: " + mod.getItems().size());
         this.totCostLabel.setText("Kostnad: " + mod.getTotalCost());
         repaint();

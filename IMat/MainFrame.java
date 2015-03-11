@@ -101,7 +101,7 @@ public class MainFrame extends javax.swing.JFrame {
             this.setTitle("Historik - IMat");
         } else if("shoppingCartCard".equals(cardName)){
             this.shoppingCartPanelHolder.removeAll();
-            this.shoppingCartPanelHolder.add(new ShoppingCartPanel(model, iconPanel, this));
+            this.shoppingCartPanelHolder.add(new ShoppingCartPanel(model, this));
             this.setTitle("Kundvagn - IMat");
         } else if("confirmPanelCard".equals(cardName)){
             this.confirmPanelHolder.removeAll();
