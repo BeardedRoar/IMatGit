@@ -19,6 +19,7 @@ public class MainFrame extends javax.swing.JFrame {
     private CardLayout card;
     private CartIconPanel iconPanel;
     private MouseListener categoryListener;
+    private CheckoutPanel checkOutPanel;
 
     /**
      * Creates new form MainFrame
@@ -62,8 +63,9 @@ public class MainFrame extends javax.swing.JFrame {
 
         this.card = (CardLayout) this.featurePanel.getLayout();
         
-        this.checkoutPanelHolder.add(new CheckoutPanel(model, this));
-        this.confirmPanelHolder.add(new ConfirmPanel(model,this));
+        checkOutPanel = new CheckoutPanel(model, this);
+        this.checkoutPanelHolder.add(checkOutPanel);
+        this.confirmPanelHolder.add(new ConfirmPanel(model, checkOutPanel, this));
         this.logInPanelHolder.add(new LogInPanel(model, this));
         this.recipeViewHolder.add(new RecipeView(model, this));
         this.accountInfoHolder.add(new AccountInfoPanel(model, this));
@@ -105,7 +107,7 @@ public class MainFrame extends javax.swing.JFrame {
             this.setTitle("Kundvagn - IMat");
         } else if("confirmPanelCard".equals(cardName)){
             this.confirmPanelHolder.removeAll();
-            this.confirmPanelHolder.add(new ConfirmPanel(model, this));
+            this.confirmPanelHolder.add(new ConfirmPanel(model, checkOutPanel, this));
         } else if("resultCard".equals(cardName)){
             this.resultPanelHolder.removeAll();
             this.resultPanelHolder.add(new ResultPanel(model.getFavoritePanels(), model));

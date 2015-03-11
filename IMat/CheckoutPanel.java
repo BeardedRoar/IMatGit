@@ -17,6 +17,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
     private IMatModel model;
     private MainFrame frame;
     private boolean noFault = true;
+    private boolean deliverToOtherAdress = false;
     /**
      * Creates new form CheckoutPanel
      */
@@ -65,6 +66,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
             phoneTextField.setText(model.getPhoneNumber());
             mobilePhoneTextField.setText(model.getMobilePhoneNumber());
         }
+        
     }    
     
     public CheckoutPanel(IMatModel model, MainFrame frame){
@@ -568,19 +570,18 @@ public class CheckoutPanel extends javax.swing.JPanel {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(buyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addContainerGap()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(176, 291, Short.MAX_VALUE)))
+                        .addGap(176, 291, Short.MAX_VALUE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(cardInformationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(cardInformationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -640,6 +641,8 @@ public class CheckoutPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_nameTextField2ActionPerformed
 
     private void sendToOtherAdressCheckBoxMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sendToOtherAdressCheckBoxMousePressed
+        deliverToOtherAdress = !deliverToOtherAdress;
+        
         adressTextField2.setVisible(!sendToOtherAdressCheckBox.isSelected());
         postalCodeTextField1.setVisible(!sendToOtherAdressCheckBox.isSelected());
         postalAdressTextField1.setVisible(!sendToOtherAdressCheckBox.isSelected());
@@ -690,9 +693,115 @@ public class CheckoutPanel extends javax.swing.JPanel {
         frame.setFeatureCard("shoppingCartCard");
     }//GEN-LAST:event_backButtonActionPerformed
 
+    // getters for textfeíelds
+    public String getNameTextField(){ 
+        if(nameTextField.getText().equals(null)){
+            return "";
+        }
+        return nameTextField.getText();
+    }
     
+    public String getNameTextField2(){
+        if(nameTextField2.getText().equals(null)){
+            return "";
+        }
+        return nameTextField2.getText();
+    }
     
+    public String getAdressTextField(){
+        if(adressTextField.getText().equals(null)){
+            return "";
+        }
+        return adressTextField.getText();
+    }
     
+    public String getAdressTextField2(){
+        if(adressTextField2.getText().equals(null)){
+            return "";
+        }
+        return adressTextField2.getText();
+    }
+    
+    public String getPostalCodeTextField(){
+        if(postalCodeTextField.getText().equals(null)){
+            return "";
+        }
+        return postalCodeTextField.getText();
+    }
+    
+    public String getPostalCodeTextField1(){
+        if(postalCodeTextField1.getText().equals(null)){
+            return "";
+        }
+        return postalCodeTextField1.getText();
+    }
+    
+    public String getPostalAdressTextField(){
+        if(postalAdressTextField.getText().equals(null)){
+            return "";
+        }
+        return postalAdressTextField.getText();
+    }
+    
+    public String getPostalAdressTextField1(){
+        if(postalAdressTextField1.getText().equals(null)){
+            return "";
+        }
+        return postalAdressTextField1.getText();
+    }
+    
+    public String getEmailTextField(){
+        if(emailTextField.getText().equals(null)){
+            return "";
+        }
+        return emailTextField.getText();
+    }
+    
+    public String getPhoneTextField(){
+        if(phoneTextField.getText().equals(null)){
+            return "";
+        }
+        return phoneTextField.getText();
+    }
+    
+    public String getMobilePhoneTextField(){
+        if(mobilePhoneTextField.getText().equals(null)){
+            return "";
+        }
+        return mobilePhoneTextField.getText();
+    }
+    
+    public String getCardNumberTextField(){
+        if(cardNumberTextField.getText().equals(null)){
+            return "";
+        }
+        return cardNumberTextField.getText();
+    }
+    
+    public String getYearTextField(){
+        if(yearTextField.getText().equals(null)){
+            return "";
+        }
+        return yearTextField.getText();
+    }
+    
+    public String getMonthTextField(){
+        if(monthTextField.getText().equals(null)){
+            return "";
+        }
+        return monthTextField.getText();
+    }
+    
+    public String getCvcTextField(){
+        if(cvcTextField.getText().equals(null)){
+            return "";
+        }
+        return cvcTextField.getText();
+    }
+    
+    public boolean getDeliverToOtherAdress(){
+        return deliverToOtherAdress;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel adressLabel;

@@ -18,12 +18,15 @@ public class ConfirmPanel extends javax.swing.JPanel {
 
     private IMatModel model;
     private MainFrame frame;
+    private CheckoutPanel panel;
+    
     /**
      * Creates new form ConfirmPanel
      */
-    public ConfirmPanel(IMatModel model) {
+    public ConfirmPanel(IMatModel model, CheckoutPanel panel) {
         
         this.model = model;
+        this.panel = panel;
         initComponents();    
         this.setBackground(Constants.BACKGROUND_COLOR);
         
@@ -35,22 +38,29 @@ public class ConfirmPanel extends javax.swing.JPanel {
         }
         
         cardComboBox.setSelectedItem(model.getCardType());
-        cardNumberTextLabel.setText(model.getCardNumber());
-        yearTextLabel.setText(Integer.toString(model.getValidYear()));
-        monthTextLabel.setText(Integer.toString(model.getValidMonth()));
-        cvcTextLabel.setText(Integer.toString(model.getVerificationCode()));
-        nameTextLabel.setText(model.getFirstName());
-        nameTextLabel2.setText(model.getLastName());
-        adressTextLabel.setText(model.getAdress());
-        postalCodeTextLabel.setText(model.getPostCode());
-        emailTextLabel.setText(model.getEmail());
-        phoneTextLabel.setText(model.getPhoneNumber());
-        mobilePhoneTextLabel.setText(model.getMobilePhoneNumber());
+        cardNumberTextLabel.setText(panel.getCardNumberTextField());
+        yearTextLabel.setText(panel.getYearTextField());
+        monthTextLabel.setText(panel.getMonthTextField());
+        cvcTextLabel.setText(panel.getCvcTextField());
+        nameTextLabel.setText(panel.getNameTextField() + " " + panel.getNameTextField2());
+        if(panel.getDeliverToOtherAdress()){
+            adressTextLabel.setText(panel.getAdressTextField2());
+            postalCodeTextLabel.setText(panel.getPostalAdressTextField1());
+            nameTextLabel2.setText(panel.getPostalCodeTextField1());
+        }else{
+            nameTextLabel2.setText(panel.getPostalAdressTextField());
+            adressTextLabel.setText(panel.getAdressTextField());
+            postalCodeTextLabel.setText(panel.getPostalCodeTextField());
+        }    
+        emailTextLabel.setText(panel.getEmailTextField());
+        phoneTextLabel.setText(panel.getPhoneTextField());
+        mobilePhoneTextLabel.setText(panel.getMobilePhoneTextField());
+        
         
     }
     
-    public ConfirmPanel(IMatModel model, MainFrame frame){
-        this(model);
+    public ConfirmPanel(IMatModel model, CheckoutPanel panel, MainFrame frame){
+        this(model, panel);
         this.frame = frame;
     }
 
