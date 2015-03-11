@@ -551,7 +551,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
         buyButton.setBackground(Constants.HEADER_COLOR);
         buyButton.setFont(Constants.BUTTON_FONT);
         buyButton.setForeground(Constants.BACKGROUND_COLOR);
-        buyButton.setText("Köp");
+        buyButton.setText("Gå Vidare");
         buyButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         buyButton.setMinimumSize(new java.awt.Dimension(50, 25));
         buyButton.setPreferredSize(new java.awt.Dimension(50, 25));

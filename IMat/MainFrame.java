@@ -64,7 +64,6 @@ public class MainFrame extends javax.swing.JFrame {
         
         this.checkoutPanelHolder.add(new CheckoutPanel(model, this));
         this.confirmPanelHolder.add(new ConfirmPanel(model,this));
-        //this.endingPanelHolder.add(new EndingPanel(model, this, "buy"));
         this.logInPanelHolder.add(new LogInPanel(model, this));
         this.recipeViewHolder.add(new RecipeView(model, this));
         this.accountInfoHolder.add(new AccountInfoPanel(model, this));
@@ -488,6 +487,9 @@ public class MainFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void startTextPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_startTextPanelMousePressed
+        model.makeCategoryPanel(this.categoryPanel, "", categoryListener);
+        repaint();
+        revalidate();
         card.show(this.featurePanel, "frontPageCard");
         model.reSetLastCategory();
         this.setTitle("Start - IMat");
