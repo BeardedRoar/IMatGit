@@ -18,6 +18,10 @@ public class CheckoutPanel extends javax.swing.JPanel {
     private MainFrame frame;
     private boolean noFault = true;
     private boolean deliverToOtherAdress = false;
+    private boolean save = false;
+    private String year = "Fel! Du har skrivit fel på år";
+    private String month = "Fel! Du har skrivit fel på månad";
+    private String both = "Fel! Du har skrivit fel på år och månad";
     /**
      * Creates new form CheckoutPanel
      */
@@ -109,7 +113,6 @@ public class CheckoutPanel extends javax.swing.JPanel {
         sendToMailCheckBox = new javax.swing.JCheckBox();
         saveInformationCheckBox = new javax.swing.JCheckBox();
         deliveryInformationLabel = new javax.swing.JLabel();
-        errorLabel = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         buyButton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
@@ -123,6 +126,10 @@ public class CheckoutPanel extends javax.swing.JPanel {
         cardComboBox = new javax.swing.JComboBox();
         cardLabel = new javax.swing.JLabel();
         cardInformationLabel = new javax.swing.JLabel();
+        errorLabel = new javax.swing.JLabel();
+        errorLabel3 = new javax.swing.JLabel();
+        errorLabel2 = new javax.swing.JLabel();
+        errorLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -398,8 +405,6 @@ public class CheckoutPanel extends javax.swing.JPanel {
         deliveryInformationLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         deliveryInformationLabel.setText("Kunduppgifter");
 
-        errorLabel.setText("Fel! Du har skrivit in fel värde!");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -409,25 +414,18 @@ public class CheckoutPanel extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(deliveryInformationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(287, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(errorLabel)
-                .addGap(0, 122, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(deliveryInformationLabel)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(errorLabel)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -456,6 +454,9 @@ public class CheckoutPanel extends javax.swing.JPanel {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 textFieldFocusGained(evt);
             }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                cvcTextFieldFocusLost(evt);
+            }
         });
         cvcTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -472,6 +473,9 @@ public class CheckoutPanel extends javax.swing.JPanel {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 textFieldFocusGained(evt);
             }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                monthTextFieldFocusLost(evt);
+            }
         });
 
         yearTextField.setFont(Constants.INPUT_FONT);
@@ -479,6 +483,9 @@ public class CheckoutPanel extends javax.swing.JPanel {
         yearTextField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 textFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                yearTextFieldFocusLost(evt);
             }
         });
         yearTextField.addActionListener(new java.awt.event.ActionListener() {
@@ -495,6 +502,9 @@ public class CheckoutPanel extends javax.swing.JPanel {
         cardNumberTextField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 textFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                cardNumberTextFieldFocusLost(evt);
             }
         });
         cardNumberTextField.addActionListener(new java.awt.event.ActionListener() {
@@ -565,6 +575,14 @@ public class CheckoutPanel extends javax.swing.JPanel {
         cardInformationLabel.setMinimumSize(new java.awt.Dimension(140, 30));
         cardInformationLabel.setPreferredSize(new java.awt.Dimension(140, 30));
 
+        errorLabel.setText("Fel! Du har skrivit in fel värde!");
+
+        errorLabel3.setText("Fel! Du har skrivit in fel värde!");
+
+        errorLabel2.setText("Fel! Du har skrivit in fel värde!");
+
+        errorLabel1.setText("Fel! Du har skrivit in fel värde!");
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -574,10 +592,21 @@ public class CheckoutPanel extends javax.swing.JPanel {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(errorLabel)
+                        .addGap(18, 18, 18)
                         .addComponent(buyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(176, 291, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(errorLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE))
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(errorLabel2)
+                                    .addComponent(errorLabel1))
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(cardInformationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -593,9 +622,19 @@ public class CheckoutPanel extends javax.swing.JPanel {
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(cardInformationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGap(84, 84, 84)
+                                .addComponent(errorLabel1)
+                                .addGap(35, 35, 35)
+                                .addComponent(errorLabel2)
+                                .addGap(36, 36, 36)
+                                .addComponent(errorLabel3)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(errorLabel)))
                 .addContainerGap())
         );
 
@@ -651,8 +690,27 @@ public class CheckoutPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_sendToOtherAdressCheckBoxMousePressed
 
     private void buyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buyButtonActionPerformed
-        if(noFault){      
+         if(!errorLabel1.isVisible() && !errorLabel2.isVisible() && !errorLabel3.isVisible()){      
             if(frame != null){
+                errorLabel.setVisible(false);
+                if (save){
+                    model.setCardNumber(cardNumberTextField.getText());
+                    model.setCardType((String)cardComboBox.getSelectedItem());
+                    model.setValidMonth(Integer.parseInt(monthTextField.getText()));
+                    model.setValidYear(Integer.parseInt(yearTextField.getText()));
+                    model.setVerificationCode(Integer.parseInt(cvcTextField.getText()));
+        
+                    model.setFirstName(nameTextField.getText());
+                    model.setLastName(nameTextField2.getText());
+                    model.setAddress(adressTextField.getText());
+        
+                    model.setPostCode(postalCodeLabel.getText());
+                    model.setPostAddress(postalAdressTextField.getText());
+        
+                    model.setEmail(emailTextField.getText());
+                    model.setPhoneNumber(phoneTextField.getText());
+                    model.setMobilePhoneNumber(mobilePhoneTextField.getText());
+                }
                 frame.setFeatureCard("confirmPanelCard");
             }
         }else{
@@ -662,22 +720,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
 
     private void saveInformationCheckBoxMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveInformationCheckBoxMousePressed
         
-        model.setCardNumber(cardNumberTextField.getText());
-        model.setCardType((String)cardComboBox.getSelectedItem());
-        model.setValidMonth(Integer.parseInt(monthTextField.getText()));
-        model.setValidYear(Integer.parseInt(yearTextField.getText()));
-        model.setVerificationCode(Integer.parseInt(cvcTextField.getText()));
-        
-        model.setFirstName(nameTextField.getText());
-        model.setLastName(nameTextField2.getText());
-        model.setAddress(adressTextField.getText());
-        
-        model.setPostCode(postalCodeLabel.getText());
-        model.setPostAddress(postalAdressTextField.getText());
-        
-        model.setEmail(emailTextField.getText());
-        model.setPhoneNumber(phoneTextField.getText());
-        model.setMobilePhoneNumber(mobilePhoneTextField.getText());
+        save = !save;
     }//GEN-LAST:event_saveInformationCheckBoxMousePressed
 
     private void cvcTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cvcTextFieldActionPerformed
@@ -692,6 +735,86 @@ public class CheckoutPanel extends javax.swing.JPanel {
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         frame.setFeatureCard("shoppingCartCard");
     }//GEN-LAST:event_backButtonActionPerformed
+
+    private void cardNumberTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cardNumberTextFieldFocusLost
+         String cardNum = cardNumberTextField.getText();
+        if(!(cardNum.matches("\\d+") && cardNum.length() == 16)){
+            errorLabel1.setVisible(true);
+        } else{
+            errorLabel1.setVisible(false);
+        }
+    }//GEN-LAST:event_cardNumberTextFieldFocusLost
+
+    private void yearTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_yearTextFieldFocusLost
+           String textVal = yearTextField.getText();
+        if(textVal.matches("\\d+") && textVal.length() == 4){
+            int num = Integer.parseInt(textVal);
+            if(num <= 2022 && num >= 2015){
+                if(!errorLabel2.isVisible() || errorLabel2.getText().equals(year) || errorLabel2.getText().equals("")){
+                    errorLabel2.setVisible(false);
+                    errorLabel2.setText("");
+                }else if(errorLabel2.getText().equals(both)) {
+                    errorLabel2.setText(month);     
+                }else if(errorLabel2.getText().equals(month)) {
+                    errorLabel2.setText(both);
+                }      
+            }else{
+                errorLabel2.setVisible(true); 
+                if (errorLabel2.getText().equals(month)){
+                    errorLabel2.setText(both);
+                } else {
+                    errorLabel2.setText(year);
+                }
+            }
+        }else{
+            errorLabel2.setVisible(true);
+            if (errorLabel2.getText().equals(month)){
+                errorLabel2.setText(both);
+            } else {
+                errorLabel2.setText(year);
+            }
+        }
+    }//GEN-LAST:event_yearTextFieldFocusLost
+
+    private void monthTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_monthTextFieldFocusLost
+            String textVal = monthTextField.getText();
+        if(textVal.matches("\\d+") && (textVal.length() == 2 || textVal.length() == 1)){
+            int num = Integer.parseInt(textVal);
+            if(num <= 12 && num >= 1){
+                if(!errorLabel2.isVisible() || errorLabel2.getText().equals(month) || errorLabel2.getText().equals("")){
+                    errorLabel2.setVisible(false);
+                    errorLabel2.setText("");
+                }else if(errorLabel2.getText().equals(both)) {
+                    errorLabel2.setText(year);     
+                }else if(errorLabel2.getText().equals(year)) {
+                    errorLabel2.setText(both);
+                }       
+            }else{
+                errorLabel2.setVisible(true);
+                if (errorLabel2.getText().equals(year)){
+                    errorLabel2.setText(both);
+                } else {
+                    errorLabel2.setText(month);
+                }  
+            }
+        }else{
+            errorLabel2.setVisible(true);   
+            if (errorLabel2.getText().equals(year)){
+                errorLabel2.setText(both);
+            } else {
+                errorLabel2.setText(month);
+            }
+        }
+    }//GEN-LAST:event_monthTextFieldFocusLost
+
+    private void cvcTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cvcTextFieldFocusLost
+          String cardNum = cvcTextField.getText();
+        if(cardNum.matches("\\d+") && cardNum.length() == 3){       
+            errorLabel3.setVisible(false);
+        } else{
+            errorLabel3.setVisible(true);
+        }
+    }//GEN-LAST:event_cvcTextFieldFocusLost
 
     // getters for textfeíelds
     public String getNameTextField(){ 
@@ -821,6 +944,9 @@ public class CheckoutPanel extends javax.swing.JPanel {
     private javax.swing.JLabel emailLabel;
     private javax.swing.JTextField emailTextField;
     private javax.swing.JLabel errorLabel;
+    private javax.swing.JLabel errorLabel1;
+    private javax.swing.JLabel errorLabel2;
+    private javax.swing.JLabel errorLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
