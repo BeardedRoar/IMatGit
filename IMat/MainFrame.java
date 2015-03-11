@@ -601,6 +601,8 @@ public class MainFrame extends javax.swing.JFrame {
                     this.resultPanelHolder.add(new ResultPanel(model.getOfthenBought(1, 10), model));
                     card.show(this.featurePanel, "resultCard");
                     this.setTitle("Ofta Köpta - IMat");
+                } else if ("Veckans Recept".equals(panel.getName())){
+                    card.show(this.featurePanel, "recipeCard");
                 } else {
                     this.resultPanelHolder.removeAll();
                     this.resultPanelHolder.add(new ResultPanel(model.getCategoryPreviewPanels(panel.getName(), model, categoryListener), model));
