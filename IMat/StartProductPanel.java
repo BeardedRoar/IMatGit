@@ -227,14 +227,14 @@ public class StartProductPanel extends javax.swing.JPanel {
     private void nbrOfProductsTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nbrOfProductsTextfieldActionPerformed
         try{
             if(Double.parseDouble(nbrOfProductsTextfield.getText())<=0){
-                nbrOfProductsTextfield.setText(Double.toString(currentNbrOfProducts));
+                nbrOfProductsTextfield.setText(getText());
             } else {
                 currentNbrOfProducts = getAmount();
-                nbrOfProductsTextfield.setText(Double.toString(currentNbrOfProducts));
+                nbrOfProductsTextfield.setText(getText());
             }
         }
         catch(NumberFormatException e){
-            nbrOfProductsTextfield.setText(Double.toString(currentNbrOfProducts));
+            nbrOfProductsTextfield.setText(getText());
         }
     }//GEN-LAST:event_nbrOfProductsTextfieldActionPerformed
 
@@ -245,13 +245,13 @@ public class StartProductPanel extends javax.swing.JPanel {
 
     private void upButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_upButtonActionPerformed
         currentNbrOfProducts++;
-        nbrOfProductsTextfield.setText(Double.toString(currentNbrOfProducts));
+        nbrOfProductsTextfield.setText(getText());
     }//GEN-LAST:event_upButtonActionPerformed
 
     private void downButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_downButtonActionPerformed
         if(currentNbrOfProducts>1){
             currentNbrOfProducts--;
-            nbrOfProductsTextfield.setText(Double.toString(currentNbrOfProducts));
+            nbrOfProductsTextfield.setText(getText());
         }
     }//GEN-LAST:event_downButtonActionPerformed
 
@@ -290,6 +290,14 @@ public class StartProductPanel extends javax.swing.JPanel {
             return Double.parseDouble(nbrOfProductsTextfield.getText());
         } else {
             return (int)Double.parseDouble(nbrOfProductsTextfield.getText());
+        }
+    }
+    
+    private String getText(){
+        if ("kg".equals(this.product.getUnitSuffix())) {
+            return Double.toString(currentNbrOfProducts);
+        } else {
+            return Integer.toString((int)currentNbrOfProducts);
         }
     }
     
