@@ -288,7 +288,7 @@ public class ShoppingCartComponentPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_nbrOfProductsTextfieldFocusGained
 
     private void nbrOfProductsTextfieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nbrOfProductsTextfieldFocusLost
-        this.shoppingItem.setAmount(Integer.parseInt(nbrOfProductsTextfield.getText()));
+        this.shoppingItem.setAmount(getAmount());
     }//GEN-LAST:event_nbrOfProductsTextfieldFocusLost
 
     private void nbrOfProductsTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nbrOfProductsTextfieldActionPerformed
