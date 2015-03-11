@@ -21,7 +21,7 @@ import se.chalmers.ait.dat215.project.ShoppingItem;
  *
  * @author Joel
  */
-public class ShoppingListPreview implements ShoppingCartListener, ShoppingCartComponentListener {
+public class ShoppingListPreview implements ShoppingCartListener {
     
     private JPopupMenu popup = new JPopupMenu();
     private final Component component;
@@ -54,11 +54,6 @@ public class ShoppingListPreview implements ShoppingCartListener, ShoppingCartCo
         createList();
     }
 
-    @Override
-    public void shoppingCartComponentChanged(ShoppingItem item, boolean itemAdded) {
-        createList();
-    }
-
     private class PopupListener extends MouseAdapter {
 
         @Override
@@ -80,7 +75,6 @@ public class ShoppingListPreview implements ShoppingCartListener, ShoppingCartCo
         while (it.hasNext()){
             tempItem = it.next();
             m = new JMenuItem(tempItem.getAmount() + " " + tempItem.getProduct().getUnitSuffix() + " " + tempItem.getProduct().getName());
-            //m.addActionListener(al);
             popup.add(m);
         }
     }

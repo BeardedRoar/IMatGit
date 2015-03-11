@@ -16,18 +16,15 @@ import se.chalmers.ait.dat215.project.ShoppingItem;
 public class ShoppingCartComponentPanel extends javax.swing.JPanel {
 
     private final ShoppingItem shoppingItem;
-
-    public ShoppingItem getShoppingItem() {
-        return shoppingItem;
-    }
-    private ArrayList<ShoppingCartComponentListener> listenerList = new ArrayList();
     private ShoppingCartPanel shoppingCartPanel;
+    private final IMatModel model;
     /**
      * Creates new form shoppingCartComponentPanel
      */
-    public ShoppingCartComponentPanel(ShoppingItem shoppingItem, ShoppingCartPanel shoppingCartPanel) {
+    public ShoppingCartComponentPanel(ShoppingItem shoppingItem, ShoppingCartPanel shoppingCartPanel, IMatModel model) {
         this.shoppingItem = shoppingItem;
         this.shoppingCartPanel=shoppingCartPanel;
+        this.model = model;
         initComponents();
     }
 
@@ -299,9 +296,8 @@ public class ShoppingCartComponentPanel extends javax.swing.JPanel {
             if(Integer.parseInt(nbrOfProductsTextfield.getText())<1){
                 nbrOfProductsTextfield.setText(Integer.toString((int) this.shoppingItem.getAmount()));
             }
-            this.shoppingItem.setAmount(Integer.parseInt(nbrOfProductsTextfield.getText()));
+            this.model.setItemAmount(shoppingItem, Integer.parseInt(nbrOfProductsTextfield.getText()));
             accualTotalPriceLabel.setText("" + this.shoppingItem.getTotal() + " kr");
-            this.fireComponentChange(shoppingItem, false);
         }
         catch(NumberFormatException e){
             nbrOfProductsTextfield.setText(Integer.toString((int) this.shoppingItem.getAmount()));
@@ -310,19 +306,19 @@ public class ShoppingCartComponentPanel extends javax.swing.JPanel {
 
     private void upButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_upButtonActionPerformed
         if(this.shoppingItem.getAmount()>0){
-            this.shoppingItem.setAmount(this.shoppingItem.getAmount()+1);
+            this.model.setItemAmount(shoppingItem, this.shoppingItem.getAmount() + 1);
             nbrOfProductsTextfield.setText(Integer.toString((int) this.shoppingItem.getAmount()));
             accualTotalPriceLabel.setText("" + this.shoppingItem.getTotal() + " kr");
-            this.fireComponentChange(shoppingItem, true);
+//            this.fireComponentChange(shoppingItem, true);
         }
     }//GEN-LAST:event_upButtonActionPerformed
 
     private void downButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_downButtonActionPerformed
         if(this.shoppingItem.getAmount()>1){
-           this.shoppingItem.setAmount(this.shoppingItem.getAmount()-1);
+           this.model.setItemAmount(shoppingItem, this.shoppingItem.getAmount() - 1); 
            nbrOfProductsTextfield.setText(Integer.toString((int) this.shoppingItem.getAmount()));
            accualTotalPriceLabel.setText("" + this.shoppingItem.getTotal() + " kr");
-           this.fireComponentChange(shoppingItem, false);
+//           this.fireComponentChange(shoppingItem, false);
         }
     }//GEN-LAST:event_downButtonActionPerformed
 
@@ -340,22 +336,12 @@ public class ShoppingCartComponentPanel extends javax.swing.JPanel {
 
     private void deleteLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteLabelMouseClicked
         shoppingCartPanel.removeCartComponentPanel(this);
-        this.fireComponentChange(shoppingItem, false);
+//        this.fireComponentChange(shoppingItem, false);
         shoppingCartPanel.DisableNextButtonIfCartIsEmpty();
     }//GEN-LAST:event_deleteLabelMouseClicked
 
-    public void addShoppingCartComponentListener(ShoppingCartComponentListener sccl){
-       this.listenerList.add(sccl); 
-    }
-    
-    public void removeShoppingCartComponentListener(ShoppingCartComponentListener sccl){
-       this.listenerList.remove(sccl); 
-    }
-    
-    private void fireComponentChange(ShoppingItem item, boolean itemAdded){
-        for (ShoppingCartComponentListener sccl : listenerList){
-            sccl.shoppingCartComponentChanged(item, itemAdded);
-        }
+    public ShoppingItem getShoppingItem() {
+        return shoppingItem;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
