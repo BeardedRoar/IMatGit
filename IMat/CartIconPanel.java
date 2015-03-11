@@ -7,10 +7,13 @@ package IMat;
 
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
+import javax.swing.Timer;
 import se.chalmers.ait.dat215.project.CartEvent;
 import se.chalmers.ait.dat215.project.ShoppingCartListener;
 
@@ -23,6 +26,7 @@ public class CartIconPanel extends javax.swing.JPanel implements ShoppingCartLis
     private ShoppingListPreview slp;
     private final MainFrame frame;
     private BufferedImage selectedImage, mouseOnImage, mouseOffImage;
+    private Timer timer;
 
     /**
      * Creates new form CartIconPanel
@@ -31,8 +35,7 @@ public class CartIconPanel extends javax.swing.JPanel implements ShoppingCartLis
         this.mod = model;
         this.frame = frame;
         initComponents();
-        this.numberLabel.setText("Antal produkter: " + mod.getItems().size());
-        this.totCostLabel.setText("Kostnad: " + model.getTotalCost());
+        this.totCostLabel.setText("Kostnad: " + model.getTotalCost() + " kr");
         this.slp = new ShoppingListPreview(imagePanel, model);
         this.mod.addCartListener(slp);
         try {
@@ -47,20 +50,23 @@ public class CartIconPanel extends javax.swing.JPanel implements ShoppingCartLis
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                g.drawImage(selectedImage, 0, 0, null);
+                g.drawImage(selectedImage, 0, 7, null);
                 g.setFont(new Font("Tahoma", Font.PLAIN, 18));
                 g.setColor(Constants.BACKGROUND_COLOR);
                 if (mod.getItems().size() < 10)
-                    g.drawString("" + (int)mod.getItems().size(), 10, 27);
+                    g.drawString("" + (int)mod.getItems().size(), 10, 34);
                 else if (mod.getItems().size() < 100)
-                    g.drawString("" + (int)mod.getItems().size(), 5, 27);
+                    g.drawString("" + (int)mod.getItems().size(), 5, 34);
                 else
-                    g.drawString("" + (int)mod.getItems().size(), 2, 27);
+                    g.drawString("" + (int)mod.getItems().size(), 2, 34);
             }
              
         };
         tempPanel.setOpaque(false);
         this.imagePanel.add(tempPanel);
+        
+        this.validationInLabel.setVisible(false);
+        this.validationNameLabel.setVisible(false);
     }
 
     /**
@@ -72,44 +78,10 @@ public class CartIconPanel extends javax.swing.JPanel implements ShoppingCartLis
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        iconPanel = new javax.swing.JPanel();
-        iconLabel = new javax.swing.JLabel();
-        numberLabel = new javax.swing.JLabel();
         totCostLabel = new javax.swing.JLabel();
         imagePanel = new javax.swing.JPanel();
-
-        iconPanel.setOpaque(false);
-
-        iconLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iMat.resources/whiteCart.png"))); // NOI18N
-        iconLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        iconLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                iconLabelMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                iconLabelMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                iconLabelMouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout iconPanelLayout = new javax.swing.GroupLayout(iconPanel);
-        iconPanel.setLayout(iconPanelLayout);
-        iconPanelLayout.setHorizontalGroup(
-            iconPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, iconPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(iconLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        iconPanelLayout.setVerticalGroup(
-            iconPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(iconLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
-        numberLabel.setForeground(new java.awt.Color(255, 255, 255));
-        numberLabel.setText("jLabel1");
+        validationNameLabel = new javax.swing.JLabel();
+        validationInLabel = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(200, 70));
         setOpaque(false);
@@ -135,40 +107,42 @@ public class CartIconPanel extends javax.swing.JPanel implements ShoppingCartLis
         });
         imagePanel.setLayout(new java.awt.GridLayout(1, 0));
 
+        validationNameLabel.setForeground(Constants.BACKGROUND_COLOR);
+        validationNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        validationNameLabel.setText("jLabel1");
+
+        validationInLabel.setForeground(Constants.BACKGROUND_COLOR);
+        validationInLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        validationInLabel.setText("jLabel1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(54, Short.MAX_VALUE)
-                .addComponent(totCostLabel)
+                .addContainerGap(45, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(totCostLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(validationInLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(validationNameLabel, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(imagePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(validationNameLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(validationInLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(totCostLabel)
                 .addGap(25, 25, 25))
             .addGroup(layout.createSequentialGroup()
-                .addGap(7, 7, 7)
-                .addComponent(imagePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(imagePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void iconLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconLabelMouseExited
-        
-    }//GEN-LAST:event_iconLabelMouseExited
-
-    private void iconLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconLabelMouseEntered
-
-    }//GEN-LAST:event_iconLabelMouseEntered
-
-    private void iconLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconLabelMouseClicked
-        
-    }//GEN-LAST:event_iconLabelMouseClicked
 
     private void imagePanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imagePanelMouseEntered
         selectedImage = mouseOnImage;
@@ -189,17 +163,32 @@ public class CartIconPanel extends javax.swing.JPanel implements ShoppingCartLis
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel iconLabel;
-    private javax.swing.JPanel iconPanel;
     private javax.swing.JPanel imagePanel;
-    private javax.swing.JLabel numberLabel;
     private javax.swing.JLabel totCostLabel;
+    private javax.swing.JLabel validationInLabel;
+    private javax.swing.JLabel validationNameLabel;
     // End of variables declaration//GEN-END:variables
 
     @Override
     public void shoppingCartChanged(CartEvent ce) {
-        this.numberLabel.setText("Antal produkter: " + mod.getItems().size());
-        this.totCostLabel.setText("Kostnad: " + mod.getTotalCost());
+        this.totCostLabel.setText("Kostnad: " + mod.getTotalCost() + " kr");
+        this.validationInLabel.setVisible(true);
+        this.validationNameLabel.setVisible(true);
+        this.validationNameLabel.setText(ce.getShoppingItem().getProduct().getName());
+        this.validationInLabel.setText((ce.isAddEvent() ? "lades i" : "togs bort ut") + " kundvagnen.");
+        if (this.timer != null)
+            this.timer.stop();
+        this.timer = new Timer(2500, new ActionListener(){
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CartIconPanel.this.validationInLabel.setVisible(false);
+                CartIconPanel.this.validationNameLabel.setVisible(false);
+                CartIconPanel.this.timer.stop();
+            }
+            
+        });
+        this.timer.start();
         repaint();
         revalidate();
     }
