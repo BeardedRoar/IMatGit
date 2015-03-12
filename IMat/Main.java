@@ -18,6 +18,7 @@ public class Main {
     public static void main(String[] args){
         final IMatModel model = new IMatModel();
         MainFrame mFrame = new MainFrame(model);
+        mFrame.setLocation(25, 25);
         mFrame.addWindowListener(new WindowAdapter(){
             @Override
             public void windowClosing(WindowEvent e){
