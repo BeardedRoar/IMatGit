@@ -390,8 +390,9 @@ public class LogInPanel extends javax.swing.JPanel {
         if(model.constructPassword(jPasswordField2.getPassword()).equals(model.constructPassword(jPasswordField3.getPassword()))){
             model.register(userNameTextField1.getText(), jPasswordField2.getPassword());
             frame.setEndingCard("register");
+            frame.logIn();
         }
-        frame.logOut();
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
