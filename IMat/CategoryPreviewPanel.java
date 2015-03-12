@@ -72,11 +72,11 @@ public class CategoryPreviewPanel extends javax.swing.JPanel implements Category
         setMinimumSize(new java.awt.Dimension(180, 240));
         setPreferredSize(new java.awt.Dimension(180, 240));
 
-        categoryInternalPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        categoryInternalPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         categoryInternalPanel.setBackground(Constants.BACKGROUND_COLOR);
 
         iconLabel.setIcon(image);
-        iconLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        iconLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         iconLabel.setMaximumSize(new java.awt.Dimension(138, 111));
         iconLabel.setMinimumSize(new java.awt.Dimension(138, 111));
         iconLabel.setPreferredSize(new java.awt.Dimension(138, 111));
@@ -84,7 +84,7 @@ public class CategoryPreviewPanel extends javax.swing.JPanel implements Category
         nameLabel.setFont(Constants.RESULT_FONT);
         nameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         nameLabel.setText(pc == null ? "Alla " + name : name);
-        nameLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        nameLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         nameLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout categoryInternalPanelLayout = new javax.swing.GroupLayout(categoryInternalPanel);
