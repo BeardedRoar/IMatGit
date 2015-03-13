@@ -17,6 +17,9 @@ public class AccountInfoPanel extends javax.swing.JPanel {
     private IMatModel model;
     private MainFrame frame;
     private boolean noFault = true;
+    private String year = "Fel! Du har skrivit fel på år";
+    private String month = "Fel! Du har skrivit fel på månad";
+    private String both = "Fel! Du har skrivit fel på år och månad";
     /**
      * Creates new form CheckoutPanel
      */
@@ -28,10 +31,11 @@ public class AccountInfoPanel extends javax.swing.JPanel {
         adressTextField2.setVisible(false);
         postalCodeTextField1.setVisible(false);
         postalAdressTextField1.setVisible(false);
+        
         errorLabel1.setVisible(false);
         errorLabel2.setVisible(false);
         errorLabel3.setVisible(false);
-        
+         
         if(!model.getCardNumber().equals("")){ 
             cardNumberTextField.setText(model.getCardNumber());
         }
@@ -149,8 +153,10 @@ public class AccountInfoPanel extends javax.swing.JPanel {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 textFieldFocusGained(evt);
             }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                cvcTextFieldFocusLost(evt);
+        });
+        cvcTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                cvcTextFieldKeyReleased(evt);
             }
         });
 
@@ -185,8 +191,10 @@ public class AccountInfoPanel extends javax.swing.JPanel {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 textFieldFocusGained(evt);
             }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                cardNumberTextFieldFocusLost(evt);
+        });
+        cardNumberTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                cardNumberTextFieldKeyReleased(evt);
             }
         });
 
@@ -194,13 +202,14 @@ public class AccountInfoPanel extends javax.swing.JPanel {
         cardNumberLabel.setText("Kortnummer");
 
         errorLabel3.setForeground(new java.awt.Color(255, 0, 0));
-        errorLabel3.setText("Fel! Du har matat in på fel sätt");
+        errorLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iMat.resources/wrong.png"))); // NOI18N
 
         errorLabel1.setForeground(new java.awt.Color(255, 0, 0));
-        errorLabel1.setText("Fel! Du har matat in på fel sätt");
+        errorLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iMat.resources/wrong.png"))); // NOI18N
 
         errorLabel2.setForeground(new java.awt.Color(255, 0, 0));
-        errorLabel2.setText("Fel! Du har matat in på fel sätt");
+        errorLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iMat.resources/wrong.png"))); // NOI18N
+        errorLabel2.setToolTipText("");
 
         cardLabel.setFont(Constants.INPUT_FONT);
         cardLabel.setText("Kort");
@@ -224,20 +233,21 @@ public class AccountInfoPanel extends javax.swing.JPanel {
                                 .addComponent(yearTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(monthTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(cvcTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(cvcTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(errorLabel3))
                             .addComponent(cvcLabel))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(errorLabel2)
-                            .addComponent(errorLabel3, javax.swing.GroupLayout.Alignment.TRAILING)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(errorLabel2))
                     .addComponent(cardLabel)
                     .addComponent(cardNumberLabel)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(cardNumberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(errorLabel1))
                     .addComponent(dateLabel))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -248,7 +258,7 @@ public class AccountInfoPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cardNumberLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(cardNumberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(errorLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -259,12 +269,13 @@ public class AccountInfoPanel extends javax.swing.JPanel {
                     .addComponent(monthTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(errorLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cvcLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cvcTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(cvcLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cvcTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(errorLabel3))
-                .addGap(15, 15, 15))
+                .addGap(18, 18, 18))
         );
 
         jPanel3.setOpaque(false);
@@ -518,7 +529,7 @@ public class AccountInfoPanel extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cardInformationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 213, Short.MAX_VALUE))
+                .addGap(0, 361, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(doneButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -548,7 +559,7 @@ public class AccountInfoPanel extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 638, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 598, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -588,51 +599,87 @@ public class AccountInfoPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_doneButtonActionPerformed
 
-    private void cardNumberTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cardNumberTextFieldFocusLost
-        String cardNum = cardNumberTextField.getText();
-        if(!(cardNum.matches("\\d+") && cardNum.length() == 16)){
-            errorLabel1.setVisible(true);
-            noFault = false;
-        } else{
-            errorLabel1.setVisible(false);
-            noFault = true;
-        }
-    }//GEN-LAST:event_cardNumberTextFieldFocusLost
-
     private void yearTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_yearTextFieldFocusLost
-        String textVal = monthTextField.getText();
-        int num = Integer.parseInt(textVal);
-        if(!(textVal.matches("\\d+") && textVal.length() == 4 && num <= 2022 && num >= 2015 )){
+        String textVal = yearTextField.getText();
+        if(textVal.matches("\\d+") && textVal.length() == 4){
+            int num = Integer.parseInt(textVal);
+            if(num <= 2022 && num >= 2015){
+                if(!errorLabel2.isVisible() || errorLabel2.getText().equals(year) || errorLabel2.getText().equals("")){
+                    errorLabel2.setVisible(false);
+                    errorLabel2.setText("");
+                }else if(errorLabel2.getText().equals(both)) {
+                    errorLabel2.setText(month);     
+                }else if(errorLabel2.getText().equals(month)) {
+                    errorLabel2.setText(both);
+                }      
+            }else{
+                errorLabel2.setVisible(true); 
+                if (errorLabel2.getText().equals(month)){
+                    errorLabel2.setText(both);
+                } else {
+                    errorLabel2.setText(year);
+                }
+            }
+        }else{
             errorLabel2.setVisible(true);
-            noFault = false;
-        } else{
-            errorLabel2.setVisible(false);
-            noFault = true;
+            if (errorLabel2.getText().equals(month)){
+                errorLabel2.setText(both);
+            } else {
+                errorLabel2.setText(year);
+            }
         }
     }//GEN-LAST:event_yearTextFieldFocusLost
 
-    private void cvcTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cvcTextFieldFocusLost
-        String cardNum = cvcTextField.getText();
-        if(!(cardNum.matches("\\d+") && cardNum.length() == 3)){
-            errorLabel3.setVisible(true);
-            noFault = false;
-        } else{
-            errorLabel3.setVisible(false);
-            noFault = true;
-        }
-    }//GEN-LAST:event_cvcTextFieldFocusLost
-
     private void monthTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_monthTextFieldFocusLost
         String textVal = monthTextField.getText();
-        int num = Integer.parseInt(textVal);
-        if(!(textVal.matches("\\d+") && (textVal.length() == 2 || textVal.length() == 1) && num <= 12 && num >= 1 )){
-            errorLabel2.setVisible(true);
-            noFault = false;
-        } else{
-            errorLabel2.setVisible(false);
-            noFault = true;
+        if(textVal.matches("\\d+") && (textVal.length() == 2 || textVal.length() == 1)){
+            int num = Integer.parseInt(textVal);
+            if(num <= 12 && num >= 1){
+                if(!errorLabel2.isVisible() || errorLabel2.getText().equals(month) || errorLabel2.getText().equals("")){
+                    errorLabel2.setVisible(false);
+                    errorLabel2.setText("");
+                }else if(errorLabel2.getText().equals(both)) {
+                    errorLabel2.setText(year);     
+                }else if(errorLabel2.getText().equals(year)) {
+                    errorLabel2.setText(both);
+                }       
+            }else{
+                errorLabel2.setVisible(true);
+                if (errorLabel2.getText().equals(year)){
+                    errorLabel2.setText(both);
+                } else {
+                    errorLabel2.setText(month);
+                }  
+            }
+        }else{
+            errorLabel2.setVisible(true);   
+            if (errorLabel2.getText().equals(year)){
+                errorLabel2.setText(both);
+            } else {
+                errorLabel2.setText(month);
+            }
         }
     }//GEN-LAST:event_monthTextFieldFocusLost
+
+    private void cardNumberTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cardNumberTextFieldKeyReleased
+        String cardNum = cardNumberTextField.getText();
+        errorLabel1.setVisible(true);
+        if(!(cardNum.matches("\\d+") && cardNum.length() == 16)){
+            errorLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iMat.resources/wrong.png")));
+        } else{
+            errorLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iMat.resources/right.png")));
+        }
+    }//GEN-LAST:event_cardNumberTextFieldKeyReleased
+
+    private void cvcTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cvcTextFieldKeyReleased
+        String cardNum = cvcTextField.getText();
+        errorLabel3.setVisible(true);
+        if(!(cardNum.matches("\\d+") && cardNum.length() == 3)){
+            errorLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iMat.resources/wrong.png")));
+        } else{
+            errorLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iMat.resources/right.png")));
+        }
+    }//GEN-LAST:event_cvcTextFieldKeyReleased
 
     
     

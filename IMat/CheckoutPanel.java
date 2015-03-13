@@ -750,7 +750,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_cardNumberTextFieldFocusLost
 
     private void yearTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_yearTextFieldFocusLost
-           String textVal = yearTextField.getText();
+        String textVal = yearTextField.getText();
         if(textVal.matches("\\d+") && textVal.length() == 4){
             int num = Integer.parseInt(textVal);
             if(num <= 2022 && num >= 2015){
