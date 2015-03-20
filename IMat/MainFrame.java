@@ -114,6 +114,12 @@ public class MainFrame extends javax.swing.JFrame {
         } else if("resultCard".equals(cardName)){
             this.resultPanelHolder.removeAll();
             this.resultPanelHolder.add(new ResultPanel(model.getFavoritePanels(), model));
+        } else if("accountInfoCard".equals(cardName)){
+            this.accountInfoHolder.removeAll();
+            this.accountInfoHolder.add(new AccountInfoPanel(model, this));
+        } else if ("checkoutCard".equals(cardName)){
+            this.checkoutPanelHolder.removeAll();
+            this.checkoutPanelHolder.add(new CheckoutPanel(model, this));
         }
     }
     
